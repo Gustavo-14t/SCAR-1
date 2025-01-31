@@ -4,6 +4,8 @@
  */
 package view;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Estudo_TI
@@ -27,12 +29,12 @@ public class TelaLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        image = new javax.swing.JLabel();
+        imagemScar = new javax.swing.JLabel();
         usuario = new javax.swing.JLabel();
         senha = new javax.swing.JLabel();
         campoUsuario = new javax.swing.JTextField();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jButton1 = new javax.swing.JButton();
+        butaoOcultar = new javax.swing.JToggleButton();
+        butaoEntrar = new javax.swing.JButton();
         campoSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -44,31 +46,43 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanel1.setForeground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        image.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Documents\\NetBeansProjects\\Condominio\\src\\main\\java\\img\\SCAR.png")); // NOI18N
-        image.setText("jLabel1");
-        jPanel1.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 460));
+        imagemScar.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Documents\\NetBeansProjects\\SCAR\\SCAR-1\\src\\main\\java\\img\\SCAR_1.png")); // NOI18N
+        imagemScar.setText("jLabel1");
+        jPanel1.add(imagemScar, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 0, 470, 460));
 
         usuario.setForeground(new java.awt.Color(255, 255, 255));
         usuario.setText("USUARIO");
-        jPanel1.add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, 90, -1));
+        jPanel1.add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 90, -1));
 
         senha.setForeground(new java.awt.Color(255, 255, 255));
         senha.setText("SENHA");
-        jPanel1.add(senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, 80, -1));
+        jPanel1.add(senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 230, 80, -1));
 
         campoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoUsuarioActionPerformed(evt);
             }
         });
-        jPanel1.add(campoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 145, 247, 40));
+        jPanel1.add(campoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, 247, 40));
 
-        jToggleButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(681, 270, 60, 40));
+        butaoOcultar.setBackground(new java.awt.Color(153, 153, 153));
+        butaoOcultar.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Documents\\NetBeansProjects\\SCAR\\SCAR-1\\src\\main\\java\\img\\escondido.png")); // NOI18N
+        butaoOcultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butaoOcultarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(butaoOcultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 250, 50, 38));
 
-        jButton1.setText("ENTRAR");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(573, 384, -1, -1));
-        jPanel1.add(campoSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 273, 247, 38));
+        butaoEntrar.setText("ENTRAR");
+        jPanel1.add(butaoEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 330, 100, 30));
+
+        campoSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoSenhaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(campoSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, 247, 38));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 460));
         jPanel1.getAccessibleContext().setAccessibleName("");
@@ -81,6 +95,26 @@ public class TelaLogin extends javax.swing.JFrame {
     private void campoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoUsuarioActionPerformed
+  
+    //variavel que verifica se a senha esta oculta ou nao
+    boolean oculto = true;
+    private void butaoOcultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butaoOcultarActionPerformed
+
+        if (oculto) {
+        campoSenha.setEchoChar((char) 0); // Exibe a senha
+        oculto = false;
+        butaoOcultar.setIcon(new ImageIcon("C:/Users/devmat/Documents/NetBeansProjects/SCAR/SCAR-1/src/main/java/img/escondido.png")); // Ajuste o caminho correto
+    } else {
+        campoSenha.setEchoChar('\u2022'); // Oculta a senha
+        oculto = true;
+        butaoOcultar.setIcon(new ImageIcon("C:/Users/devmat/Documents/NetBeansProjects/SCAR/SCAR-1/src/main/java/img/visualizar.png")); // Ajuste o caminho correto
+    }
+                    
+    }//GEN-LAST:event_butaoOcultarActionPerformed
+
+    private void campoSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoSenhaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -118,12 +152,12 @@ public class TelaLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton butaoEntrar;
+    private javax.swing.JToggleButton butaoOcultar;
     private javax.swing.JPasswordField campoSenha;
     private javax.swing.JTextField campoUsuario;
-    private javax.swing.JLabel image;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel imagemScar;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel senha;
     private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
