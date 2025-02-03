@@ -4,6 +4,8 @@
  */
 package view;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Estudo_TI
@@ -44,7 +46,7 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanel1.setForeground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        image.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Documents\\NetBeansProjects\\Condominio\\src\\main\\java\\img\\SCAR.png")); // NOI18N
+        image.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Documents\\NetBeansProjects\\SCAR-1\\src\\main\\java\\img\\SCAR.png")); // NOI18N
         image.setText("jLabel1");
         jPanel1.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 460));
 
@@ -64,6 +66,12 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanel1.add(campoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 145, 247, 40));
 
         butaoOcultar.setBackground(new java.awt.Color(0, 0, 0));
+        butaoOcultar.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Documents\\NetBeansProjects\\SCAR-1\\src\\main\\java\\img\\visualizar.png")); // NOI18N
+        butaoOcultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butaoOcultarActionPerformed(evt);
+            }
+        });
         jPanel1.add(butaoOcultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(681, 270, 60, 40));
 
         butaoEntrar.setText("ENTRAR");
@@ -81,6 +89,19 @@ public class TelaLogin extends javax.swing.JFrame {
     private void campoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoUsuarioActionPerformed
+boolean oculto = false;
+    private void butaoOcultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butaoOcultarActionPerformed
+        // TODO add your handling code here:
+         if (oculto) {
+        campoSenha.setEchoChar((char) 0); // Exibe a senha
+        oculto = false;
+        butaoOcultar.setIcon(new ImageIcon("C:/Users/devmat/Documents/NetBeansProjects/SCAR/SCAR-1/src/main/java/img/escondido.png")); // Ajuste o caminho correto
+    } else {
+        campoSenha.setEchoChar('\u2022'); // Oculta a senha
+        oculto = true;
+        butaoOcultar.setIcon(new ImageIcon("C:/Users/devmat/Documents/NetBeansProjects/SCAR/SCAR-1/src/main/java/img/visualizar.png")); // Ajuste o caminho correto
+    }
+    }//GEN-LAST:event_butaoOcultarActionPerformed
 
     /**
      * @param args the command line arguments
