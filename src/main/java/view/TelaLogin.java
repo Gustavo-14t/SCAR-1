@@ -33,8 +33,13 @@ public class TelaLogin extends javax.swing.JFrame {
         usuario = new javax.swing.JLabel();
         senha = new javax.swing.JLabel();
         campoUsuario = new javax.swing.JTextField();
+
         butaoOcultar = new javax.swing.JToggleButton();
         butaoEntrar = new javax.swing.JButton();
+
+        butaoOcultar = new javax.swing.JToggleButton();
+        butaoEntrar = new javax.swing.JButton();
+
         campoSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -74,6 +79,7 @@ public class TelaLogin extends javax.swing.JFrame {
         });
         jPanel1.add(butaoOcultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 250, 50, 38));
 
+
         butaoEntrar.setText("ENTRAR");
         jPanel1.add(butaoEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 330, 100, 30));
 
@@ -83,6 +89,14 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
         jPanel1.add(campoSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, 247, 38));
+
+        butaoEntrar.setText("ENTRAR");
+        jPanel1.add(butaoEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 330, 100, 30));
+
+        campoSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoSenhaActionPerformed(evt);
+
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 460));
         jPanel1.getAccessibleContext().setAccessibleName("");
@@ -152,11 +166,19 @@ public class TelaLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+
     private javax.swing.JButton butaoEntrar;
     private javax.swing.JToggleButton butaoOcultar;
     private javax.swing.JPasswordField campoSenha;
     private javax.swing.JTextField campoUsuario;
     private javax.swing.JLabel imagemScar;
+
+    private javax.swing.JButton butaoEntrar;
+    private javax.swing.JToggleButton butaoOcultar;
+    private javax.swing.JPasswordField campoSenha;
+    private javax.swing.JTextField campoUsuario;
+    private javax.swing.JLabel imagemScar;
+
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel senha;
     private javax.swing.JLabel usuario;
