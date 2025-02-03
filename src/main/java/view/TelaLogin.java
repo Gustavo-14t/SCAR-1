@@ -32,7 +32,7 @@ public class TelaLogin extends javax.swing.JFrame {
         senha = new javax.swing.JLabel();
         campoUsuario = new javax.swing.JTextField();
         jToggleButton1 = new javax.swing.JToggleButton();
-        jButton1 = new javax.swing.JButton();
+        bEntrar = new javax.swing.JButton();
         campoSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -66,8 +66,8 @@ public class TelaLogin extends javax.swing.JFrame {
         jToggleButton1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(681, 270, 60, 40));
 
-        jButton1.setText("ENTRAR");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(573, 384, -1, -1));
+        bEntrar.setText("ENTRAR");
+        jPanel1.add(bEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(573, 384, -1, -1));
         jPanel1.add(campoSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 273, 247, 38));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 460));
@@ -118,10 +118,10 @@ public class TelaLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bEntrar;
     private javax.swing.JPasswordField campoSenha;
     private javax.swing.JTextField campoUsuario;
     private javax.swing.JLabel image;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel senha;
