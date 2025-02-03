@@ -6,7 +6,7 @@ package com.mycompany.condominio;
 
 import java.sql.Connection;
 import static model.conexaoBD.getConection;
-import view.TelaLogin;
+//import view.TelaLogin;
 
 /**
  *
@@ -23,7 +23,7 @@ public class Condominio {
             System.out.println("Deu ruim");
         }
         */
-        TelaLogin login = new TelaLogin();
-        login.setVisible(true);
+        //TelaLogin login = new TelaLogin();
+        //login.setVisible(true);
     }
 }
