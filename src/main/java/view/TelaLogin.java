@@ -31,8 +31,8 @@ public class TelaLogin extends javax.swing.JFrame {
         usuario = new javax.swing.JLabel();
         senha = new javax.swing.JLabel();
         campoUsuario = new javax.swing.JTextField();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        bEntrar = new javax.swing.JButton();
+        butaoOcultar = new javax.swing.JToggleButton();
+        butaoEntrar = new javax.swing.JButton();
         campoSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -63,11 +63,11 @@ public class TelaLogin extends javax.swing.JFrame {
         });
         jPanel1.add(campoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 145, 247, 40));
 
-        jToggleButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(681, 270, 60, 40));
+        butaoOcultar.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(butaoOcultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(681, 270, 60, 40));
 
-        bEntrar.setText("ENTRAR");
-        jPanel1.add(bEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(573, 384, -1, -1));
+        butaoEntrar.setText("ENTRAR");
+        jPanel1.add(butaoEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(573, 384, -1, -1));
         jPanel1.add(campoSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 273, 247, 38));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 460));
@@ -118,12 +118,12 @@ public class TelaLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bEntrar;
+    private javax.swing.JButton butaoEntrar;
+    private javax.swing.JToggleButton butaoOcultar;
     private javax.swing.JPasswordField campoSenha;
     private javax.swing.JTextField campoUsuario;
     private javax.swing.JLabel image;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel senha;
     private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
