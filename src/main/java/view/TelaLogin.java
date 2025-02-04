@@ -4,7 +4,10 @@
  */
 package view;
 
+import controller.LoginController;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import model.Funcionario;
 
 /**
  *
@@ -46,7 +49,6 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanel1.setForeground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        image.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Documents\\SCAR-main\\src\\main\\java\\img\\SCAR.png")); // NOI18N
         image.setText("jLabel1");
         jPanel1.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 460));
 
@@ -74,6 +76,11 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanel1.add(butaoOcultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(682, 272, 59, 40));
 
         butaoEntrar.setText("ENTRAR");
+        butaoEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butaoEntrarActionPerformed(evt);
+            }
+        });
         jPanel1.add(butaoEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(573, 384, -1, -1));
         jPanel1.add(campoSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 273, 247, 38));
 
@@ -101,6 +108,30 @@ boolean oculto = false;
         butaoOcultar.setIcon(new ImageIcon("C:/Users/devmat/Documents/NetBeansProjects/SCAR/SCAR-1/src/main/java/img/visualizar.png")); // Ajuste o caminho correto
     }
     }//GEN-LAST:event_butaoOcultarActionPerformed
+
+    private void butaoEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butaoEntrarActionPerformed
+        // TODO add your handling code here:
+         // Captura os dados inseridos pelo usuário
+        String cpf = campoUsuario.getText();
+        String senha = campoSenha.getText();
+        LoginController controller = new LoginController();
+        //criando variável que receba o retorno do método authenticate
+        Funcionario logou = controller.authenticate(cpf,senha);
+
+        // Colocar o código de login do usuário
+        //getText() captura o que o usuário digitou
+        //equals() compara se duas Strings são iguais
+        if(logou != null){
+            JOptionPane.showMessageDialog(null,"Bem-vindo");
+            TelaHome home = new TelaHome();
+            home.setVisible(true);
+
+            dispose();
+
+        }else{
+            JOptionPane.showMessageDialog(null,"Usuário ou senha incorretos");
+        }//fim do if
+    }//GEN-LAST:event_butaoEntrarActionPerformed
 
     /**
      * @param args the command line arguments

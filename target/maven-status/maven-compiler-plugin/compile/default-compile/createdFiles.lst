@@ -1,8 +1,11 @@
 view\TelaLogin.class
+controller\LoginController.class
 view\TelaHome$1.class
+model\Funcionario.class
 view\TelaLogin$1.class
 view\TelaLogin$3.class
 com\mycompany\condominio\Condominio.class
 view\TelaLogin$2.class
 view\TelaHome.class
 model\conexaoBD.class
+view\TelaLogin$4.class
