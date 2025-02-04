@@ -72,7 +72,7 @@ public class TelaLogin extends javax.swing.JFrame {
                 butaoOcultarActionPerformed(evt);
             }
         });
-        jPanel1.add(butaoOcultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(681, 270, 60, 40));
+        jPanel1.add(butaoOcultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(682, 272, 59, 40));
 
         butaoEntrar.setText("ENTRAR");
         jPanel1.add(butaoEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(573, 384, -1, -1));
