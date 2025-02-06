@@ -4,11 +4,15 @@ view\TelaLogin$3.class
 model\Chave.class
 view\TelaHome.class
 model\Reserva.class
+view\TelaCadastro$2.class
 model\conexaoBD.class
 model\Unidade.class
 view\TelaLogin$4.class
 model\Atividade.class
 model\Morador.class
+view\TelaCadastro$1.class
+view\TelaCadastro.class
+view\TelaHome$2.class
 controller\LoginController.class
 view\TelaHome$1.class
 view\TelaLogin$1.class

@@ -18,6 +18,8 @@ public class TelaLogin extends javax.swing.JFrame {
     /**
      * Creates new form TelaLogin
      */
+    
+    
     public TelaLogin() {
         initComponents();
     }
@@ -125,7 +127,7 @@ boolean oculto = false;
         //equals() compara se duas Strings são iguais
         if(logou != null){
             JOptionPane.showMessageDialog(null,"Bem-vindo");
-            TelaHome home = new TelaHome();
+            TelaHome home = new TelaHome(logou);
             home.setVisible(true);
 
             dispose();
