@@ -49,11 +49,12 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanel1.setForeground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        image.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Documents\\NetBeansProjects\\SCAR-1\\src\\main\\java\\img\\SCAR.png")); // NOI18N
         image.setText("jLabel1");
-        jPanel1.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 460));
+        jPanel1.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 0, 470, 460));
 
         usuario.setForeground(new java.awt.Color(255, 255, 255));
-        usuario.setText("USUARIO");
+        usuario.setText("USUARIO/CPF");
         jPanel1.add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, 90, -1));
 
         senha.setForeground(new java.awt.Color(255, 255, 255));
@@ -67,7 +68,8 @@ public class TelaLogin extends javax.swing.JFrame {
         });
         jPanel1.add(campoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 145, 247, 40));
 
-        butaoOcultar.setBackground(new java.awt.Color(0, 0, 0));
+        butaoOcultar.setBackground(new java.awt.Color(204, 204, 204));
+        butaoOcultar.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Documents\\NetBeansProjects\\SCAR-1\\src\\main\\java\\img\\visualizar.png")); // NOI18N
         butaoOcultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 butaoOcultarActionPerformed(evt);
@@ -82,7 +84,7 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
         jPanel1.add(butaoEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(573, 384, -1, -1));
-        jPanel1.add(campoSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 273, 247, 38));
+        jPanel1.add(campoSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 273, 190, 38));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 460));
         jPanel1.getAccessibleContext().setAccessibleName("");
