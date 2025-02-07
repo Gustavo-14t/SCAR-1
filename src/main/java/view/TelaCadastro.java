@@ -17,7 +17,7 @@ public class TelaCadastro extends javax.swing.JFrame {
      */
     Funcionario use;
     
-    public TelaCadastro(Funcionario funcionario) {
+    public TelaCadastro(String departamento,Funcionario funcionario) {
         initComponents();
         
         use = funcionario;
@@ -97,7 +97,9 @@ public class TelaCadastro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-   
+       
+        TelaHome home = new TelaHome(use.getDepartamento(),use);
+        home.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -131,8 +133,8 @@ public class TelaCadastro extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Funcionario use = null;
-                
-                new TelaCadastro(use).setVisible(true);
+                String departamento = null;
+                new TelaCadastro(departamento,use).setVisible(true);
             }
         });
     }

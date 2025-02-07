@@ -115,26 +115,46 @@ boolean oculto = false;
 
     private void butaoEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butaoEntrarActionPerformed
         // TODO add your handling code here:
-         // Captura os dados inseridos pelo usuário
-        String cpf = campoUsuario.getText();
-        String senha = campoSenha.getText();
-        LoginController controller = new LoginController();
-        //criando variável que receba o retorno do método authenticate
-        Funcionario logou = controller.authenticate(cpf,senha);
+        // TODO add your handling code here:
+// Captura os dados inseridos pelo usuário
+String cpf = campoUsuario.getText();
+String senha = campoSenha.getText();
 
-        // Colocar o código de login do usuário
-        //getText() captura o que o usuário digitou
-        //equals() compara se duas Strings são iguais
-        if(logou != null){
-            JOptionPane.showMessageDialog(null,"Bem-vindo");
-            TelaHome home = new TelaHome(logou);
-            home.setVisible(true);
+// Cria o controlador de login e tenta autenticar
+LoginController controller = new LoginController();
+Funcionario logou = controller.authenticate(cpf, senha);
 
-            dispose();
+// Verifica se o login foi bem-sucedido
+if (logou != null) {
 
-        }else{
-            JOptionPane.showMessageDialog(null,"Usuário ou senha incorretos");
-        }//fim do if
+    // Verifica o departamento do funcionário
+    String departamento = logou.getDepartamento();
+
+    // Se o departamento for Síndico, abre a tela do Síndico
+    if ("Síndico".equals(departamento)) {
+         JOptionPane.showMessageDialog(null, "Bem-vindo!");
+        TelaHome home = new TelaHome("Síndico", logou);
+        home.setVisible(true);
+    }
+    // Se o departamento for Porteiro, abre a tela do Porteiro
+    else if ("Porteiro".equals(departamento)) {
+         JOptionPane.showMessageDialog(null, "Bem-vindo!");
+        TelaHome home = new TelaHome("Porteiro", logou);
+        home.setVisible(true);
+    } else {
+        // Caso o departamento não seja reconhecido, podemos adicionar uma mensagem de erro
+        JOptionPane.showMessageDialog(null, "Acesso negado.");
+        return;
+    }
+
+    // Fecha a tela de login
+    dispose();
+
+} else {
+    // Caso o login falhe
+    JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos.");
+}
+
     }//GEN-LAST:event_butaoEntrarActionPerformed
 
     /**

@@ -17,10 +17,31 @@ public class TelaHome extends javax.swing.JFrame {
      */
     Funcionario use;
     
-    public TelaHome(Funcionario funcionario) {
+    public TelaHome(String departamento , Funcionario funcionario) {
         initComponents();
         use = funcionario;
+        
+          // Verifica o departamento do funcionário e ajusta a interface
+        if (departamento.equals("Síndico")){
+            // Adiciona funcionalidades exclusivas para o Síndico
+            BuCadastro.setEnabled(true); // Exemplo, permitir cadastro
+            buRelatorio.setEnabled(true); // Exemplo, permitir relatórios
+            buFinanceiro.setEnabled(true); // Exemplo, permitir acesso financeiro
+            buReserva.setEnabled(true); // Exemplo, permitir reservas
+            // Adicione mais botões se necessário
+     
+        } else if (departamento.equals("Porteiro")) {
+            // Adiciona funcionalidades exclusivas para o Porteiro
+            BuCadastro.setEnabled(false); // Exemplo, desabilitar cadastro
+            buRelatorio.setEnabled(false); // Exemplo, desabilitar relatórios
+            buFinanceiro.setEnabled(false); // Exemplo, desabilitar financeiro
+            buReserva.setEnabled(true); // Exemplo, permitir reservas
+            // Adicione mais configurações para o porteiro
+ 
+    }//fim do else
     }
+
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -143,8 +164,11 @@ public class TelaHome extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BuCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuCadastroActionPerformed
-   TelaCadastro cadastro = new TelaCadastro(use);
+        
+        TelaCadastro cadastro = new TelaCadastro(use.getDepartamento(),use);
             cadastro.setVisible(true);
+            
+            dispose();
     }//GEN-LAST:event_BuCadastroActionPerformed
 
     /**
@@ -178,7 +202,8 @@ public class TelaHome extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Funcionario use = null;
-                new TelaHome(use).setVisible(true);
+                String departamento = null;
+                new TelaHome(departamento,use).setVisible(true);
             }
         });
     }
