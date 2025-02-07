@@ -49,12 +49,14 @@ public class TelaCadastro extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 153, 0));
 
         butaoMenu.setBackground(new java.awt.Color(255, 153, 51));
         butaoMenu.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Downloads\\menu-hamburguer.png")); // NOI18N
+        butaoMenu.setBorder(null);
         butaoMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 butaoMenuActionPerformed(evt);
@@ -66,9 +68,9 @@ public class TelaCadastro extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(butaoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(67, 67, 67)
+                .addComponent(butaoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(808, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -80,49 +82,77 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, -1));
 
+        barraMenu.setBackground(new java.awt.Color(255, 204, 0));
         barraMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Downloads\\editar.png")); // NOI18N
         jLabel1.setText("RELÁTÓRIO");
-        jLabel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        barraMenu.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 69, 180, 56));
+        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel1.setIconTextGap(15);
+        barraMenu.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 200, 55));
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("ENTRADAS E SAÍDAS");
-        jLabel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        barraMenu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 180, 56));
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Downloads\\saida.png")); // NOI18N
+        jLabel2.setText("ENTRADAS  E SAÍDAS");
+        jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel2.setIconTextGap(6);
+        barraMenu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 200, 55));
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Downloads\\usuarios-alt.png")); // NOI18N
         jLabel3.setText("CADASTRO");
-        jLabel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        barraMenu.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 180, 56));
+        jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jLabel3.setIconTextGap(15);
+        barraMenu.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 200, 55));
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Downloads\\reserve-mais.png")); // NOI18N
         jLabel4.setText("RESERVA");
-        jLabel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        barraMenu.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 180, 56));
+        jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jLabel4.setIconTextGap(20);
+        barraMenu.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 200, 55));
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Documents\\NetBeansProjects\\SCAR-1\\src\\main\\java\\img\\dolar.png")); // NOI18N
         jLabel5.setText("FINANCEIRO");
-        jLabel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        barraMenu.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 180, 56));
+        jLabel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jLabel5.setIconTextGap(10);
+        barraMenu.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 200, 55));
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Downloads\\pasta.png")); // NOI18N
         jLabel6.setText("SOLICITAR SERVIÇOS");
-        jLabel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        barraMenu.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 180, 56));
+        jLabel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel6.setIconTextGap(6);
+        barraMenu.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 200, 55));
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Documents\\NetBeansProjects\\SCAR-1\\src\\main\\java\\img\\simbolo-de-informacao (1).png")); // NOI18N
-        barraMenu.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 50, 50));
+        barraMenu.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 50, 50));
 
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Documents\\NetBeansProjects\\SCAR-1\\src\\main\\java\\img\\config.png")); // NOI18N
-        barraMenu.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 430, 50, 50));
+        barraMenu.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 50, 50));
 
-        jPanel1.add(barraMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 54, 180, 490));
+        jPanel1.add(barraMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 54, 200, 490));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
