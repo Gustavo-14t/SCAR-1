@@ -69,7 +69,6 @@ public class TelaHome extends javax.swing.JFrame {
         BuCadastro.setBackground(new java.awt.Color(255, 153, 0));
         BuCadastro.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         BuCadastro.setForeground(new java.awt.Color(0, 0, 0));
-        BuCadastro.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Downloads\\usuarios-alt.png")); // NOI18N
         BuCadastro.setText("CADASTRO");
         BuCadastro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         BuCadastro.addActionListener(new java.awt.event.ActionListener() {
@@ -81,28 +80,24 @@ public class TelaHome extends javax.swing.JFrame {
         buReserva.setBackground(new java.awt.Color(255, 153, 0));
         buReserva.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         buReserva.setForeground(new java.awt.Color(0, 0, 0));
-        buReserva.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Downloads\\calendario.png")); // NOI18N
         buReserva.setText("RESERVA");
         buReserva.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         buRelatorio.setBackground(new java.awt.Color(255, 153, 0));
         buRelatorio.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         buRelatorio.setForeground(new java.awt.Color(0, 0, 0));
-        buRelatorio.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Downloads\\estatisticas.png")); // NOI18N
         buRelatorio.setText("RELATORIO");
         buRelatorio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         buConfig.setBackground(new java.awt.Color(255, 153, 0));
         buConfig.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         buConfig.setForeground(new java.awt.Color(0, 0, 0));
-        buConfig.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Downloads\\config.png")); // NOI18N
         buConfig.setText("CONFIGURAÇÕES");
         buConfig.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         buFinanceiro.setBackground(new java.awt.Color(255, 153, 0));
         buFinanceiro.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         buFinanceiro.setForeground(new java.awt.Color(0, 0, 0));
-        buFinanceiro.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Downloads\\dolar.png")); // NOI18N
         buFinanceiro.setText("FINANCEIRO");
         buFinanceiro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -146,7 +141,7 @@ public class TelaHome extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 480, Short.MAX_VALUE))
+                .addContainerGap(480, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

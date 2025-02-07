@@ -22,6 +22,7 @@ public class TelaLogin extends javax.swing.JFrame {
     
     public TelaLogin() {
         initComponents();
+     
     }
 
     /**
@@ -51,7 +52,7 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanel1.setForeground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        image.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Documents\\NetBeansProjects\\SCAR-1\\src\\main\\java\\img\\SCAR.png")); // NOI18N
+        image.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Downloads\\SCAR.png")); // NOI18N
         image.setText("jLabel1");
         jPanel1.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 0, 470, 460));
 
@@ -63,6 +64,7 @@ public class TelaLogin extends javax.swing.JFrame {
         senha.setText("SENHA");
         jPanel1.add(senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, 80, -1));
 
+        campoUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         campoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoUsuarioActionPerformed(evt);
@@ -71,13 +73,14 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanel1.add(campoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 145, 247, 40));
 
         butaoOcultar.setBackground(new java.awt.Color(204, 204, 204));
-        butaoOcultar.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Documents\\NetBeansProjects\\SCAR-1\\src\\main\\java\\img\\visualizar.png")); // NOI18N
+        butaoOcultar.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Downloads\\visualizar.png")); // NOI18N
+        butaoOcultar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         butaoOcultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 butaoOcultarActionPerformed(evt);
             }
         });
-        jPanel1.add(butaoOcultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(682, 272, 59, 40));
+        jPanel1.add(butaoOcultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(684, 270, 60, 40));
 
         butaoEntrar.setText("ENTRAR");
         butaoEntrar.addActionListener(new java.awt.event.ActionListener() {
@@ -85,8 +88,10 @@ public class TelaLogin extends javax.swing.JFrame {
                 butaoEntrarActionPerformed(evt);
             }
         });
-        jPanel1.add(butaoEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(573, 384, -1, -1));
-        jPanel1.add(campoSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 273, 190, 38));
+        jPanel1.add(butaoEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 370, -1, -1));
+
+        campoSenha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(campoSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 270, 190, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 460));
         jPanel1.getAccessibleContext().setAccessibleName("");
