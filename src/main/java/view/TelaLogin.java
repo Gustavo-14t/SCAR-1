@@ -131,9 +131,9 @@ if (logou != null) {
     String departamento = logou.getDepartamento();
 
     // Se o departamento for Síndico, abre a tela do Síndico
-    if ("Síndico".equals(departamento)) {
+    if ("SÍndico".equals(departamento)) {
          JOptionPane.showMessageDialog(null, "Bem-vindo!");
-        TelaHome home = new TelaHome("Síndico", logou);
+        TelaHome home = new TelaHome("SÍndico", logou);
         home.setVisible(true);
     }
     // Se o departamento for Porteiro, abre a tela do Porteiro
