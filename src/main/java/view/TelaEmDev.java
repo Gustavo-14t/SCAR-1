@@ -43,7 +43,6 @@ public class TelaEmDev extends javax.swing.JInternalFrame {
         getContentPane().add(jInternalFrame1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, 0, 0));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Estudo_TI\\Documents\\NetBeansProjects\\SCAR\\SCAR-1\\src\\main\\java\\img\\chpic.su_-_Yellowboi_002.png")); // NOI18N
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 500, 480));
 
