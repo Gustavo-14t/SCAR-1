@@ -47,14 +47,14 @@ public class TelaCadastro extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         butaoMenu = new javax.swing.JButton();
         barraMenu = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         bEntSaida = new javax.swing.JButton();
         bCadastro = new javax.swing.JButton();
         bRelatorio = new javax.swing.JButton();
         bReserva = new javax.swing.JButton();
         bFinanceiro = new javax.swing.JButton();
         bSolicServis = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
         optionCadastro = new javax.swing.JPanel();
         bCadUni = new javax.swing.JButton();
         bCadFun = new javax.swing.JButton();
@@ -103,6 +103,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 153, 0));
 
         butaoMenu.setBackground(new java.awt.Color(255, 153, 51));
+        butaoMenu.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Downloads\\menu-hamburguer.png")); // NOI18N
         butaoMenu.setBorder(null);
         butaoMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,15 +116,15 @@ public class TelaCadastro extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addComponent(butaoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(808, Short.MAX_VALUE))
+                .addGap(66, 66, 66)
+                .addComponent(butaoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(804, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(butaoMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                .addContainerGap(16, Short.MAX_VALUE)
+                .addComponent(butaoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -131,12 +132,6 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         barraMenu.setBackground(new java.awt.Color(255, 204, 0));
         barraMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        barraMenu.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 50, 50));
-
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        barraMenu.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 50, 50));
 
         bEntSaida.setText("ENTRADAS E SAÍDAS");
         bEntSaida.addActionListener(new java.awt.event.ActionListener() {
@@ -186,6 +181,16 @@ public class TelaCadastro extends javax.swing.JFrame {
         });
         barraMenu.add(bSolicServis, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 200, 60));
 
+        jButton6.setBackground(new java.awt.Color(255, 204, 0));
+        jButton6.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Documents\\NetBeansProjects\\SCAR-1\\src\\main\\java\\img\\config.png")); // NOI18N
+        jButton6.setBorder(null);
+        barraMenu.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 450, 50, 50));
+
+        jButton7.setBackground(new java.awt.Color(255, 204, 0));
+        jButton7.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Documents\\NetBeansProjects\\SCAR-1\\src\\main\\java\\img\\simbolo-de-informacao (1).png")); // NOI18N
+        jButton7.setBorder(null);
+        barraMenu.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 50, 50));
+
         jPanel1.add(barraMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 54, 200, 510));
 
         optionCadastro.setBackground(new java.awt.Color(255, 255, 255));
@@ -231,10 +236,10 @@ public class TelaCadastro extends javax.swing.JFrame {
         );
         areaTrabalhoLayout.setVerticalGroup(
             areaTrabalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 510, Short.MAX_VALUE)
         );
 
-        jPanel1.add(areaTrabalho, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 730, 500));
+        jPanel1.add(areaTrabalho, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 730, 510));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 930, 560));
 
@@ -378,8 +383,8 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel optionCadastro;
