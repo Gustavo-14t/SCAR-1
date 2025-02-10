@@ -4,6 +4,8 @@
  */
 package view;
 
+
+import javax.swing.JOptionPane;
 import model.Funcionario;
 
 /**
@@ -20,8 +22,13 @@ public class TelaCadastro extends javax.swing.JFrame {
     public TelaCadastro(String departamento,Funcionario funcionario) {
         initComponents();
         barraMenu.setVisible(false);
+        optionCadastro.setVisible(false);
+         optionRelatorio.setVisible(false);
+         optionReserva.setVisible(false);
         use = funcionario;
-    }
+        
+        
+     }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,17 +40,29 @@ public class TelaCadastro extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        optionRelatorio = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         butaoMenu = new javax.swing.JButton();
         barraMenu = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        bEntSaida = new javax.swing.JButton();
+        bCadastro = new javax.swing.JButton();
+        bRelatorio = new javax.swing.JButton();
+        bReserva = new javax.swing.JButton();
+        bFinanceiro = new javax.swing.JButton();
+        bSolicServis = new javax.swing.JButton();
+        optionCadastro = new javax.swing.JPanel();
+        bCadUni = new javax.swing.JButton();
+        bCadFun = new javax.swing.JButton();
+        bCadMor = new javax.swing.JButton();
+        optionReserva = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        areaTrabalho = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -52,10 +71,38 @@ public class TelaCadastro extends javax.swing.JFrame {
         jPanel1.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        optionRelatorio.setBackground(new java.awt.Color(255, 255, 255));
+        optionRelatorio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton3.setText("RELATÓRIO DE RESERVA");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        optionRelatorio.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 20));
+
+        jButton4.setText("RELATÓRIO FINANCEIRO");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        optionRelatorio.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 200, 20));
+
+        jButton2.setText("RELATÓRIO ENTRADA/SAÍDA");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        optionRelatorio.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 200, 20));
+
+        jPanel1.add(optionRelatorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 200, 60));
+
         jPanel2.setBackground(new java.awt.Color(255, 153, 0));
 
         butaoMenu.setBackground(new java.awt.Color(255, 153, 51));
-        butaoMenu.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Downloads\\menu-hamburguer.png")); // NOI18N
         butaoMenu.setBorder(null);
         butaoMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,83 +132,196 @@ public class TelaCadastro extends javax.swing.JFrame {
         barraMenu.setBackground(new java.awt.Color(255, 204, 0));
         barraMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Downloads\\editar.png")); // NOI18N
-        jLabel1.setText("RELÁTÓRIO");
-        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jLabel1.setIconTextGap(15);
-        barraMenu.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 200, 55));
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Downloads\\saida.png")); // NOI18N
-        jLabel2.setText("ENTRADAS  E SAÍDAS");
-        jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jLabel2.setIconTextGap(6);
-        barraMenu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 200, 55));
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Downloads\\usuarios-alt.png")); // NOI18N
-        jLabel3.setText("CADASTRO");
-        jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setIconTextGap(15);
-        barraMenu.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 200, 55));
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Downloads\\reserve-mais.png")); // NOI18N
-        jLabel4.setText("RESERVA");
-        jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setIconTextGap(20);
-        barraMenu.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 200, 55));
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Documents\\NetBeansProjects\\SCAR-1\\src\\main\\java\\img\\dolar.png")); // NOI18N
-        jLabel5.setText("FINANCEIRO");
-        jLabel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jLabel5.setIconTextGap(10);
-        barraMenu.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 200, 55));
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Downloads\\pasta.png")); // NOI18N
-        jLabel6.setText("SOLICITAR SERVIÇOS");
-        jLabel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jLabel6.setIconTextGap(6);
-        barraMenu.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 200, 55));
-
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Documents\\NetBeansProjects\\SCAR-1\\src\\main\\java\\img\\simbolo-de-informacao (1).png")); // NOI18N
         barraMenu.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 50, 50));
 
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Documents\\NetBeansProjects\\SCAR-1\\src\\main\\java\\img\\config.png")); // NOI18N
         barraMenu.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 50, 50));
 
-        jPanel1.add(barraMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 54, 200, 490));
+        bEntSaida.setText("ENTRADAS E SAÍDAS");
+        bEntSaida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bEntSaidaActionPerformed(evt);
+            }
+        });
+        barraMenu.add(bEntSaida, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 200, 60));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, -1));
+        bCadastro.setText("CADASTRO");
+        bCadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCadastroActionPerformed(evt);
+            }
+        });
+        barraMenu.add(bCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 200, 60));
+
+        bRelatorio.setText("RELATÓRIO");
+        bRelatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bRelatorioActionPerformed(evt);
+            }
+        });
+        barraMenu.add(bRelatorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 200, 60));
+
+        bReserva.setText("RESERVA");
+        bReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bReservaActionPerformed(evt);
+            }
+        });
+        barraMenu.add(bReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 200, 60));
+
+        bFinanceiro.setText("FINANCEIRO");
+        bFinanceiro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bFinanceiroActionPerformed(evt);
+            }
+        });
+        barraMenu.add(bFinanceiro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 200, 60));
+
+        bSolicServis.setText("SOLICITAR SERVIÇOS");
+        bSolicServis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSolicServisActionPerformed(evt);
+            }
+        });
+        barraMenu.add(bSolicServis, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 200, 60));
+
+        jPanel1.add(barraMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 54, 200, 510));
+
+        optionCadastro.setBackground(new java.awt.Color(255, 255, 255));
+        optionCadastro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        bCadUni.setText("CADASTRAR UNIDADE");
+        optionCadastro.add(bCadUni, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 200, 20));
+
+        bCadFun.setText("CADASTRAR FUNCIONARIO");
+        optionCadastro.add(bCadFun, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 20));
+
+        bCadMor.setText("CADASTRAR MORADOR");
+        bCadMor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCadMorActionPerformed(evt);
+            }
+        });
+        optionCadastro.add(bCadMor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 200, 20));
+
+        jPanel1.add(optionCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 200, -1));
+
+        optionReserva.setBackground(new java.awt.Color(255, 255, 255));
+        optionReserva.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setText("FAZER RESERVA");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        optionReserva.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, -1));
+
+        jButton5.setText("RESERVAS FEITAS");
+        optionReserva.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 200, -1));
+
+        jPanel1.add(optionReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 200, 60));
+
+        javax.swing.GroupLayout areaTrabalhoLayout = new javax.swing.GroupLayout(areaTrabalho);
+        areaTrabalho.setLayout(areaTrabalhoLayout);
+        areaTrabalhoLayout.setHorizontalGroup(
+            areaTrabalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 730, Short.MAX_VALUE)
+        );
+        areaTrabalhoLayout.setVerticalGroup(
+            areaTrabalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 500, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(areaTrabalho, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 730, 500));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 930, 560));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void butaoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butaoMenuActionPerformed
         // TODO add your handling code here:
-       
+       if(optionCadastro.isVisible()|| optionRelatorio.isVisible() || optionReserva.isVisible() ){
+            optionCadastro.setVisible(false);
+            optionRelatorio.setVisible(false);
+            optionReserva.setVisible(false);
+        }
+        
          barraMenu.setVisible(!barraMenu.isVisible());
     }//GEN-LAST:event_butaoMenuActionPerformed
+
+    private void bEntSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEntSaidaActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_bEntSaidaActionPerformed
+
+    private void bCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadastroActionPerformed
+        // TODO add your handling code here:
+        if(optionRelatorio.isVisible()|| optionReserva.isVisible() ){
+            optionRelatorio.setVisible(false);
+            optionReserva.setVisible(false);
+        }
+        
+        optionCadastro.setVisible(!optionCadastro.isVisible());
+    }//GEN-LAST:event_bCadastroActionPerformed
+
+    private void bRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRelatorioActionPerformed
+        // TODO add your handling code here:
+        if(optionCadastro.isVisible()|| optionReserva.isVisible() ){
+            optionCadastro.setVisible(false);
+            optionReserva.setVisible(false);
+        }
+        
+        optionRelatorio.setVisible(!optionRelatorio.isVisible());
+        
+    }//GEN-LAST:event_bRelatorioActionPerformed
+
+    private void bReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bReservaActionPerformed
+        // TODO add your handling code here:
+        if(optionCadastro.isVisible()|| optionRelatorio.isVisible() ){
+            optionCadastro.setVisible(false);
+            optionRelatorio.setVisible(false);
+        }
+        
+        optionReserva.setVisible(!optionReserva.isVisible());
+    }//GEN-LAST:event_bReservaActionPerformed
+
+    private void bFinanceiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bFinanceiroActionPerformed
+        // TODO add your handling code here:
+        TelaEmDev telaDev = new TelaEmDev();
+        areaTrabalho.add(telaDev);
+       telaDev.setVisible(true);
+    }//GEN-LAST:event_bFinanceiroActionPerformed
+
+    private void bSolicServisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSolicServisActionPerformed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_bSolicServisActionPerformed
+
+    private void bCadMorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadMorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bCadMorActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,17 +361,29 @@ public class TelaCadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane areaTrabalho;
+    private javax.swing.JButton bCadFun;
+    private javax.swing.JButton bCadMor;
+    private javax.swing.JButton bCadUni;
+    private javax.swing.JButton bCadastro;
+    private javax.swing.JButton bEntSaida;
+    private javax.swing.JButton bFinanceiro;
+    private javax.swing.JButton bRelatorio;
+    private javax.swing.JButton bReserva;
+    private javax.swing.JButton bSolicServis;
     private javax.swing.JPanel barraMenu;
     private javax.swing.JButton butaoMenu;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel optionCadastro;
+    private javax.swing.JPanel optionRelatorio;
+    private javax.swing.JPanel optionReserva;
     // End of variables declaration//GEN-END:variables
 }
