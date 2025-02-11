@@ -44,11 +44,12 @@ public class TelaCadastroUnidade extends javax.swing.JInternalFrame {
         campoDescricao = new javax.swing.JTextField();
         nomeChave = new javax.swing.JLabel();
         campoNomeChave = new javax.swing.JTextField();
+        jToggleButton1 = new javax.swing.JToggleButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listaUnidade = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
+        campoPesquisar = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
@@ -106,11 +107,16 @@ public class TelaCadastroUnidade extends javax.swing.JInternalFrame {
         campoNomeChave.setBackground(new java.awt.Color(255, 255, 255));
         campoNomeChave.setForeground(new java.awt.Color(0, 0, 0));
 
+        jToggleButton1.setText("Cadastrar");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 718, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(559, Short.MAX_VALUE)
+                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -150,7 +156,10 @@ public class TelaCadastroUnidade extends javax.swing.JInternalFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 439, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(282, Short.MAX_VALUE)
+                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(106, 106, 106))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -235,9 +244,9 @@ public class TelaCadastroUnidade extends javax.swing.JInternalFrame {
 
         jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 98, 706, 285));
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel4.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 40, 380, 35));
+        campoPesquisar.setBackground(new java.awt.Color(255, 255, 255));
+        campoPesquisar.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel4.add(campoPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 40, 380, 35));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -278,6 +287,7 @@ public class TelaCadastroUnidade extends javax.swing.JInternalFrame {
     private javax.swing.JTextField campoNome;
     private javax.swing.JTextField campoNomeChave;
     private javax.swing.JTextField campoNumero;
+    private javax.swing.JTextField campoPesquisar;
     private javax.swing.JComboBox<String> campoTipo;
     private javax.swing.JLabel capacidade;
     private javax.swing.JLabel descicao;
@@ -289,7 +299,7 @@ public class TelaCadastroUnidade extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JTable listaUnidade;
     private javax.swing.JLabel nome;
     private javax.swing.JLabel nomeChave;

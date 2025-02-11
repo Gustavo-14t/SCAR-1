@@ -20,15 +20,14 @@ import model.conexaoBD;
 public class ChaveController {
      public boolean cadastroChave( Chave chave){
      //criuando uma String que recebe uma comando SQL
-     String query = "INSERT INTO Atividade (id_unidade, nome) values (?,?) ";
+     String query = "INSERT INTO Atividade ( nome) values (?) ";
      
      try(Connection conection = conexaoBD.getConection();
         PreparedStatement preparedStatement =
                 conection.prepareStatement(query)){       
             
             // mandar os dados para dentro do insert
-            preparedStatement.setInt(1,chave.getId_unidade());
-            preparedStatement.setString(2,chave.getNome());
+            preparedStatement.setString(1,chave.getNome());
 
             /*try(ResultSet resultSet = preparedStatement.executeQuery()){
                 return resultSet.next();
@@ -48,7 +47,7 @@ public class ChaveController {
      public List<Chave> listarChave(){
         List<Chave> lista = new ArrayList<>();
         
-        String query = "SELECT id_chave,id_unidade,nome FROM Chave ;";
+        String query = "SELECT id_chave,nome FROM Chave ;";
 
         try(Connection connection = conexaoBD.getConection();//conexão com o banco de dados
      PreparedStatement preparedStatement = connection.prepareStatement(query)){
@@ -59,7 +58,6 @@ public class ChaveController {
                 Chave chave = new Chave();
                 
                 chave.setId_chave(resultSet.getInt("id_chave"));
-                chave.setId_unidade(resultSet.getInt("id_unidade"));
                 chave.setNome(resultSet.getString("nome"));
                 
                 

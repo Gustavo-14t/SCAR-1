@@ -11,24 +11,18 @@ package model;
 public class Chave {
     
     int id_chave;
-    int id_unidade;
     String nome;
-    
-    //Construtor vazio;
-    
-    public Chave (){}
-    
-    // Construtor com todas as informaçõe;
 
-    public Chave(int id_chave, int id_unidade, String nome) {
+    public Chave(int id_chave, String nome) {
         this.id_chave = id_chave;
-        this.id_unidade = id_unidade;
         this.nome = nome;
     }
 
-    public Chave(int id_unidade, String nome) {
-        this.id_unidade = id_unidade;
+    public Chave(String nome) {
         this.nome = nome;
+    }
+
+    public Chave() {
     }
 
     public int getId_chave() {
@@ -39,14 +33,6 @@ public class Chave {
         this.id_chave = id_chave;
     }
 
-    public int getId_unidade() {
-        return id_unidade;
-    }
-
-    public void setId_unidade(int id_unidade) {
-        this.id_unidade = id_unidade;
-    }
-
     public String getNome() {
         return nome;
     }
@@ -54,6 +40,7 @@ public class Chave {
     public void setNome(String nome) {
         this.nome = nome;
     }
+    
     
     
 }
