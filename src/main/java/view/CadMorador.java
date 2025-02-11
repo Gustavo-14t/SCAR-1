@@ -28,66 +28,54 @@ public class CadMorador extends javax.swing.JInternalFrame {
 
         telaDeletar = new javax.swing.JTabbedPane();
         telaCadastro = new javax.swing.JPanel();
-        CADASTRAR = new javax.swing.JToggleButton();
+        butaoCadastrar = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        campNome = new javax.swing.JTextArea();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        cxampCpf = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        campEmail = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
         campNascimento = new javax.swing.JFormattedTextField();
+        campoEmail = new javax.swing.JTextField();
+        campoNome = new javax.swing.JTextField();
+        campoCpf = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        campPesquisa = new javax.swing.JTextArea();
         jScrollPane5 = new javax.swing.JScrollPane();
         tabelaMorador = new javax.swing.JTable();
         botaoDeletar = new javax.swing.JButton();
+        campoPesquisar = new javax.swing.JTextField();
 
+        telaCadastro.setBackground(new java.awt.Color(255, 204, 0));
         telaCadastro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        CADASTRAR.setText("CADASTRAR");
-        CADASTRAR.addActionListener(new java.awt.event.ActionListener() {
+        butaoCadastrar.setBackground(new java.awt.Color(255, 204, 0));
+        butaoCadastrar.setForeground(new java.awt.Color(0, 0, 0));
+        butaoCadastrar.setText("CADASTRAR");
+        butaoCadastrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        butaoCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CADASTRARActionPerformed(evt);
+                butaoCadastrarActionPerformed(evt);
             }
         });
-        telaCadastro.add(CADASTRAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, 110, 40));
+        telaCadastro.add(butaoCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, 110, 40));
 
-        jLabel1.setText("Nome");
-        telaCadastro.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("NOME:");
+        telaCadastro.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, 20));
 
-        campNome.setColumns(20);
-        campNome.setRows(5);
-        jScrollPane1.setViewportView(campNome);
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("CPF:");
+        telaCadastro.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 30, 20));
 
-        telaCadastro.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 270, 40));
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("E-MAIL:");
+        telaCadastro.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 70, 50, 20));
 
-        cxampCpf.setColumns(20);
-        cxampCpf.setRows(5);
-        jScrollPane2.setViewportView(cxampCpf);
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("DATA DE NASCIMENTO:");
+        telaCadastro.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, -1, -1));
 
-        telaCadastro.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 270, 40));
-
-        jLabel2.setText("CPF");
-        telaCadastro.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 156, 40, 30));
-
-        jLabel3.setText("Email");
-        telaCadastro.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 66, 50, 20));
-
-        campEmail.setColumns(20);
-        campEmail.setRows(5);
-        jScrollPane3.setViewportView(campEmail);
-
-        telaCadastro.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 340, 30));
-
-        jLabel4.setText("Data de Nascimento");
-        telaCadastro.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, -1, -1));
-
+        campNascimento.setBackground(new java.awt.Color(255, 255, 255));
+        campNascimento.setForeground(new java.awt.Color(0, 0, 0));
         try {
             campNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
@@ -98,21 +86,37 @@ public class CadMorador extends javax.swing.JInternalFrame {
                 campNascimentoActionPerformed(evt);
             }
         });
-        telaCadastro.add(campNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 190, 150, 40));
+        telaCadastro.add(campNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, 150, 40));
+
+        campoEmail.setBackground(new java.awt.Color(255, 255, 255));
+        campoEmail.setForeground(new java.awt.Color(0, 0, 0));
+        telaCadastro.add(campoEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 250, 35));
+
+        campoNome.setBackground(new java.awt.Color(255, 255, 255));
+        campoNome.setForeground(new java.awt.Color(0, 0, 0));
+        telaCadastro.add(campoNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 250, 35));
+
+        campoCpf.setBackground(new java.awt.Color(255, 255, 255));
+        campoCpf.setForeground(new java.awt.Color(0, 0, 0));
+        campoCpf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoCpfActionPerformed(evt);
+            }
+        });
+        telaCadastro.add(campoCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 250, 35));
 
         telaDeletar.addTab("Cadastrar", telaCadastro);
 
+        jPanel1.setBackground(new java.awt.Color(255, 204, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel5.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("PESQUISAR :");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 80, 30));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, 20));
 
-        campPesquisa.setColumns(20);
-        campPesquisa.setRows(5);
-        jScrollPane4.setViewportView(campPesquisa);
-
-        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 510, 30));
-
+        tabelaMorador.setBackground(new java.awt.Color(255, 255, 255));
+        tabelaMorador.setForeground(new java.awt.Color(0, 0, 0));
         tabelaMorador.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -136,15 +140,22 @@ public class CadMorador extends javax.swing.JInternalFrame {
         ));
         jScrollPane5.setViewportView(tabelaMorador);
 
-        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 700, 250));
+        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 700, 270));
 
+        botaoDeletar.setBackground(new java.awt.Color(255, 204, 0));
+        botaoDeletar.setForeground(new java.awt.Color(0, 0, 0));
         botaoDeletar.setText("EXCLUIR");
+        botaoDeletar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         botaoDeletar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoDeletarActionPerformed(evt);
             }
         });
-        jPanel1.add(botaoDeletar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 380, 90, 30));
+        jPanel1.add(botaoDeletar, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 380, 90, 30));
+
+        campoPesquisar.setBackground(new java.awt.Color(255, 255, 255));
+        campoPesquisar.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(campoPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 250, 35));
 
         telaDeletar.addTab("Deletar", jPanel1);
 
@@ -162,9 +173,9 @@ public class CadMorador extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CADASTRARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CADASTRARActionPerformed
+    private void butaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butaoCadastrarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CADASTRARActionPerformed
+    }//GEN-LAST:event_butaoCadastrarActionPerformed
 
     private void campNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campNascimentoActionPerformed
         // TODO add your handling code here:
@@ -174,25 +185,25 @@ public class CadMorador extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_botaoDeletarActionPerformed
 
+    private void campoCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCpfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoCpfActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton CADASTRAR;
     private javax.swing.JButton botaoDeletar;
-    private javax.swing.JTextArea campEmail;
+    private javax.swing.JToggleButton butaoCadastrar;
     private javax.swing.JFormattedTextField campNascimento;
-    private javax.swing.JTextArea campNome;
-    private javax.swing.JTextArea campPesquisa;
-    private javax.swing.JTextArea cxampCpf;
+    private javax.swing.JTextField campoCpf;
+    private javax.swing.JTextField campoEmail;
+    private javax.swing.JTextField campoNome;
+    private javax.swing.JTextField campoPesquisar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable tabelaMorador;
     private javax.swing.JPanel telaCadastro;
