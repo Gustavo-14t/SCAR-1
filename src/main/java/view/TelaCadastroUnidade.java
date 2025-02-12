@@ -59,148 +59,76 @@ public class TelaCadastroUnidade extends javax.swing.JInternalFrame {
         jTabbedPane1.setForeground(new java.awt.Color(0, 0, 0));
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 0));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         nome.setForeground(new java.awt.Color(0, 0, 0));
         nome.setText("NOME:");
+        jPanel1.add(nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 70, -1));
 
         campoNome.setBackground(new java.awt.Color(255, 255, 255));
         campoNome.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(campoNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 220, 35));
 
         tipo.setForeground(new java.awt.Color(0, 0, 0));
         tipo.setText("TIPO:");
+        jPanel1.add(tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 62, -1));
 
         campoTipo.setBackground(new java.awt.Color(255, 255, 255));
         campoTipo.setForeground(new java.awt.Color(0, 0, 0));
         campoTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Casa", "Espaço De Evento", "Outros", " " }));
+        jPanel1.add(campoTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 220, 35));
 
         numero.setForeground(new java.awt.Color(0, 0, 0));
         numero.setText("NUMERO:");
+        jPanel1.add(numero, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 56, -1));
 
         campoNumero.setBackground(new java.awt.Color(255, 255, 255));
         campoNumero.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(campoNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 220, 35));
 
         bloco.setForeground(new java.awt.Color(0, 0, 0));
         bloco.setText("BLOCO:");
+        jPanel1.add(bloco, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 64, -1));
 
         campoBloco.setBackground(new java.awt.Color(255, 255, 255));
         campoBloco.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(campoBloco, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 220, 35));
 
         capacidade.setForeground(new java.awt.Color(0, 0, 0));
         capacidade.setText("CAPACIDADE:");
+        jPanel1.add(capacidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 84, -1));
 
         campoCapacidade.setBackground(new java.awt.Color(255, 255, 255));
         campoCapacidade.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(campoCapacidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, 220, 35));
 
         dimensoes.setForeground(new java.awt.Color(0, 0, 0));
         dimensoes.setText("DIMENSÕES");
+        jPanel1.add(dimensoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, 80, -1));
 
         campoDimensoes.setBackground(new java.awt.Color(255, 255, 255));
         campoDimensoes.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(campoDimensoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 220, 35));
 
         descicao.setForeground(new java.awt.Color(0, 0, 0));
         descicao.setText("DESCRIÇÃO");
+        jPanel1.add(descicao, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 103, -1));
 
         campoDescricao.setBackground(new java.awt.Color(255, 255, 255));
         campoDescricao.setForeground(new java.awt.Color(0, 0, 0));
         campoDescricao.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jPanel1.add(campoDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, 220, 110));
 
         nomeChave.setForeground(new java.awt.Color(0, 0, 0));
         nomeChave.setText("NOME CHAVE:");
+        jPanel1.add(nomeChave, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 30, 90, -1));
 
         campoNomeChave.setBackground(new java.awt.Color(255, 255, 255));
         campoNomeChave.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(campoNomeChave, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 50, 120, 35));
 
         jToggleButton1.setText("Cadastrar");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-
-         
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(559, Short.MAX_VALUE)
-                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(194, 194, 194)
-                            .addComponent(capacidade, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(156, 156, 156)
-                            .addComponent(nomeChave, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(44, 44, 44)
-                            .addComponent(campoCapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(20, 20, 20)
-                            .addComponent(campoNomeChave, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(202, 202, 202)
-                            .addComponent(dimensoes, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(campoTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(44, 44, 44)
-                            .addComponent(campoDimesoes, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(numero, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(208, 208, 208)
-                            .addComponent(descicao, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(campoNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(bloco, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(campoBloco, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(44, 44, 44)
-                            .addComponent(campoDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(282, Short.MAX_VALUE)
-                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(106, 106, 106))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(nome)
-                        .addComponent(capacidade)
-                        .addComponent(nomeChave))
-                    .addGap(7, 7, 7)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(campoCapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(campoNomeChave, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(17, 17, 17)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(tipo)
-                        .addComponent(dimensoes))
-                    .addGap(6, 6, 6)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(campoTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(campoDimesoes, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(18, 18, 18)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(numero)
-                        .addComponent(descicao))
-                    .addGap(6, 6, 6)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(campoNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(bloco)
-                            .addGap(6, 6, 6)
-                            .addComponent(campoBloco, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(campoDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 0, Short.MAX_VALUE)))
-
-        );
+        jPanel1.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 220, 125, 57));
 
         jTabbedPane1.addTab("Cadastrar", jPanel1);
 
@@ -211,7 +139,7 @@ public class TelaCadastroUnidade extends javax.swing.JInternalFrame {
         listaUnidade.setForeground(new java.awt.Color(0, 0, 0));
         listaUnidade.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"A", "AB", "ABC", "ABCD", ""},
+                {"", "", "", "", ""},
                 {"", "", "", "", ""},
                 {"", "", "", "", null},
                 {"", "", null, "", ""},
@@ -305,9 +233,7 @@ public class TelaCadastroUnidade extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-
     private javax.swing.JToggleButton jToggleButton1;
-
     private javax.swing.JTable listaUnidade;
     private javax.swing.JLabel nome;
     private javax.swing.JLabel nomeChave;

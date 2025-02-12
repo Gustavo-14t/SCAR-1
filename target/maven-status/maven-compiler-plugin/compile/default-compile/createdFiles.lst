@@ -10,9 +10,11 @@ view\TelaHome$8.class
 view\TelaHome$1.class
 view\CadFuncionario$5.class
 controller\MoradorController.class
+view\CadMorador$4.class
 com\mycompany\condominio\Condominio.class
 view\TelaLogin$2.class
 controller\FuncionarioController.class
+view\CadFuncionario$12.class
 controller\ContResController.class
 view\CadFuncionario.class
 view\CadFuncionario$2.class
