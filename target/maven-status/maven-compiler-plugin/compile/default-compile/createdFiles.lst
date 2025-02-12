@@ -23,6 +23,7 @@ view\TelaHome$4.class
 view\TelaReservas$1.class
 view\CadFuncionario$9.class
 view\CadMorador$8.class
+view\TelaCadastroUnidade$4.class
 view\TelaLogin$4.class
 view\CadFuncionario$6.class
 view\TelaCadastroUnidade.class
@@ -36,6 +37,7 @@ view\CadMorador$5.class
 view\TelaReservas$2.class
 view\CadFuncionario$3.class
 model\Funcionario.class
+view\TelaCadastroUnidade$3.class
 controller\UnidadeController.class
 view\TelaLogin$3.class
 view\RelatorioReserva.class
@@ -50,8 +52,10 @@ view\TelaHome$11.class
 view\CadFuncionario$7.class
 view\TelaHome$3.class
 view\CadMorador$1.class
+view\TelaCadastroUnidade$6.class
 view\RelatorioReserva$1.class
 view\CadMorador$6.class
+view\TelaCadastroUnidade$2.class
 view\TelaLogin.class
 controller\AtividadeController.class
 view\TelaReservas$3.class
@@ -59,7 +63,9 @@ view\TelaHome$6.class
 view\TelaHome$9.class
 view\CadFuncionario$4.class
 view\TelaHome.class
+view\TelaHome$14.class
 view\CadMorador$3.class
+view\TelaCadastroUnidade$5.class
 view\TelaHome$10.class
 controller\ChaveController.class
 view\TelaHome$2.class

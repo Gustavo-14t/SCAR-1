@@ -199,6 +199,11 @@ public class TelaHome extends javax.swing.JFrame {
         optionCadastro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bCadUni.setText("CADASTRAR UNIDADE");
+        bCadUni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCadUniActionPerformed(evt);
+            }
+        });
         optionCadastro.add(bCadUni, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 200, 20));
 
         bCadFun.setText("CADASTRAR FUNCIONARIO");
@@ -333,6 +338,13 @@ public class TelaHome extends javax.swing.JFrame {
         areaTrabalho.add(func);
        func.setVisible(true);
     }//GEN-LAST:event_bCadFunActionPerformed
+
+    private void bCadUniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadUniActionPerformed
+        // TODO add your handling code here:
+        TelaCadastroUnidade unidade = new TelaCadastroUnidade();
+        areaTrabalho.add(unidade);
+       unidade.setVisible(true);
+    }//GEN-LAST:event_bCadUniActionPerformed
 
     /**
      * @param args the command line arguments

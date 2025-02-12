@@ -56,7 +56,7 @@ public class MoradorController {
      public List<Morador> listarMorador(){
         List<Morador> lista = new ArrayList<>();
         
-        String query = "SELECT id_unidade,nome,cpf,email,data_nasc FROM Morador ;";
+        String query = "SELECT id_morador,id_unidade,nome,cpf,email,data_nasc FROM Morador ;";
 
         try(Connection connection = conexaoBD.getConection();//conexão com o banco de dados
      PreparedStatement preparedStatement = connection.prepareStatement(query)){
@@ -66,7 +66,8 @@ public class MoradorController {
             while(resultSet.next()){
                 Morador morador = new Morador();
                 
-                morador.setId_morador(resultSet.getInt("id_unidade"));
+                morador.setId_morador(resultSet.getInt("id_morador"));
+                morador.setId_unidade(resultSet.getInt("id_unidade"));
                 morador.setNome(resultSet.getString("nome"));
                 morador.setCpf(resultSet.getString("cpf"));
                 morador.setEmail(resultSet.getString("email"));
