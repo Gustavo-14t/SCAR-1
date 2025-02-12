@@ -304,6 +304,9 @@ public class TelaHome extends javax.swing.JFrame {
 
     private void bCadMorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadMorActionPerformed
         // TODO add your handling code here:
+         CadMorador morador = new CadMorador();
+        areaTrabalho.add(morador);
+       morador.setVisible(true);
     }//GEN-LAST:event_bCadMorActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
