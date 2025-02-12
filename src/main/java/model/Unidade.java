@@ -11,6 +11,7 @@ package model;
 public class Unidade {
     
     int id_unidade;
+     int id_chave;
     String tipo;
     String numero;
     String bloco;
@@ -18,15 +19,10 @@ public class Unidade {
     String descricao;
     String nome;
     String domensoes;
-    
-    // Construtor vazio;
-    
-    public Unidade (){}
-    
-    // Construtor com todas as informaçoes;
 
-    public Unidade(int id_unidade, String tipo, String numero, String bloco, String capacidade, String descricao, String nome, String domensoes) {
+    public Unidade(int id_unidade, int id_chave, String tipo, String numero, String bloco, String capacidade, String descricao, String nome, String domensoes) {
         this.id_unidade = id_unidade;
+        this.id_chave = id_chave;
         this.tipo = tipo;
         this.numero = numero;
         this.bloco = bloco;
@@ -36,7 +32,8 @@ public class Unidade {
         this.domensoes = domensoes;
     }
 
-    public Unidade(String tipo, String numero, String bloco, String capacidade, String descricao, String nome, String domensoes) {
+    public Unidade(int id_chave, String tipo, String numero, String bloco, String capacidade, String descricao, String nome, String domensoes) {
+        this.id_chave = id_chave;
         this.tipo = tipo;
         this.numero = numero;
         this.bloco = bloco;
@@ -44,6 +41,9 @@ public class Unidade {
         this.descricao = descricao;
         this.nome = nome;
         this.domensoes = domensoes;
+    }
+
+    public Unidade() {
     }
 
     public int getId_unidade() {
@@ -52,6 +52,14 @@ public class Unidade {
 
     public void setId_unidade(int id_unidade) {
         this.id_unidade = id_unidade;
+    }
+
+    public int getId_chave() {
+        return id_chave;
+    }
+
+    public void setId_chave(int id_chave) {
+        this.id_chave = id_chave;
     }
 
     public String getTipo() {
@@ -109,7 +117,6 @@ public class Unidade {
     public void setDomensoes(String domensoes) {
         this.domensoes = domensoes;
     }
-    
     
     
     

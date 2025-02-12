@@ -20,20 +20,21 @@ import model.conexaoBD;
 public class UnidadeController {
     public boolean cadastroUnidade( Unidade unidade){
      //criuando uma String que recebe uma comando SQL
-     String query = "INSERT INTO Unidade (tipo,nome,cpf,email,data_nasc) values (?,?,?,?,?) ";
+     String query = "INSERT INTO Unidade (id_chave,nome,tipo,numero,bloco,capacidade,descricao,dimensao) values (?,?,?,?,?,?,?,?) ";
      
      try(Connection conection = conexaoBD.getConection();
         PreparedStatement preparedStatement =
                 conection.prepareStatement(query)){       
             
             // mandar os dados para dentro do insert
-            preparedStatement.setString(1,unidade.getTipo());
-             preparedStatement.setString(2,unidade.getNumero());
-            preparedStatement.setString(3,unidade.getBloco());
-            preparedStatement.setString(4,unidade.getCapacidade());
-             preparedStatement.setString(5,unidade.getDescricao());
-             preparedStatement.setString(6,unidade.getNome());
-              preparedStatement.setString(7,unidade.getDomensoes());
+            preparedStatement.setInt(1,unidade.getId_chave());
+             preparedStatement.setString(2,unidade.getNome());
+            preparedStatement.setString(3,unidade.getTipo());
+            preparedStatement.setString(4,unidade.getNumero());
+             preparedStatement.setString(5,unidade.getBloco());
+             preparedStatement.setString(6,unidade.getCapacidade());
+              preparedStatement.setString(7,unidade.getDescricao());
+              preparedStatement.setString(8,unidade.getDomensoes());
     
             
             /*try(ResultSet resultSet = preparedStatement.executeQuery()){
@@ -55,7 +56,7 @@ public class UnidadeController {
      public List<Unidade> listarUnidade(){
         List<Unidade> lista = new ArrayList<>();
         
-        String query = "SELECT tipo,numero,bloco,capacidade,descricao,nome,dimensoes FROM Unidade ;";
+        String query = "SELECT id_chave,nome,tipo,numero,bloco,capacidade,descricao,dimensao FROM Unidade ;";
 
         try(Connection connection = conexaoBD.getConection();//conexão com o banco de dados
      PreparedStatement preparedStatement = connection.prepareStatement(query)){
@@ -63,13 +64,14 @@ public class UnidadeController {
             ResultSet resultSet = preparedStatement.executeQuery();
             
             while(resultSet.next()){
-                Unidade unidade = new Unidade();     
+                Unidade unidade = new Unidade();
+                unidade.setId_chave(resultSet.getInt("id_chave"));
+                unidade.setNome(resultSet.getString("nome"));
                  unidade.setTipo(resultSet.getString("tipo"));
                   unidade.setNumero(resultSet.getString("numero"));
                 unidade.setBloco(resultSet.getString("bloco"));
                 unidade.setCapacidade(resultSet.getString("capacidade"));
                 unidade.setDescricao(resultSet.getString("Descricao"));
-                unidade.setNome(resultSet.getString("nome"));
                 unidade.setDomensoes(resultSet.getString("dimensoes"));
 
                 lista.add(unidade);

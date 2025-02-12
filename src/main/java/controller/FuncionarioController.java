@@ -21,7 +21,7 @@ public class FuncionarioController {
     
     public boolean cadastroUsuario( Funcionario funcionario){
      //criuando uma String que recebe uma comando SQL
-     String query = "INSERT INTO Usuario ( nome,cpf,telefone, endereco, departamento, senha) values (?,?,?,?,?,?) ";
+     String query = "INSERT INTO Funcionario ( nome,cpf,telefone, endereco, departamento, senha) values (?,?,?,?,?,?) ";
      
      try(Connection conection = conexaoBD.getConection();
         PreparedStatement preparedStatement =
@@ -56,7 +56,7 @@ public class FuncionarioController {
      public List<Funcionario> listarUsuario(){
         List<Funcionario> lista = new ArrayList<>();
         
-        String query = "SELECT id_usuario,nome,cpf,telefone,endereco,departamento FROM Usuario ;";
+        String query = "SELECT id_funcionario,nome,cpf,telefone,endereco,departamento FROM Funcionario ;";
 
         try(Connection connection = conexaoBD.getConection();//conexão com o banco de dados
      PreparedStatement preparedStatement = connection.prepareStatement(query)){
@@ -110,7 +110,7 @@ public class FuncionarioController {
      
      public List<Funcionario> listarUsuarioNome(String nome){
      
-     String query = "SELECT id_funcionario,nome,cpf,telefone,departamento FROM Funcionario where nome LIKE ?;";
+     String query = "SELECT id_funcionario,nome,cpf,telefone,endereco,departamento FROM Funcionario where nome LIKE ?;";
      
       List<Funcionario> lista = new ArrayList<>();
         // criando o try catch
@@ -129,6 +129,7 @@ public class FuncionarioController {
                   funcionario.setNome(resultset.getString("nome"));
                   funcionario.setCpf(resultset.getString("cpf"));
                   funcionario.setTelefone(resultset.getString("telefone"));
+                   funcionario.setEndereco(resultset.getString("endereco"));
                   funcionario.setDepartamento(resultset.getString("departamento"));
                   
                   
