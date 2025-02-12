@@ -29,11 +29,14 @@ public class RelatorioReserva extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaRelatório = new javax.swing.JTable();
-        bBaixarRel = new javax.swing.JToggleButton();
-        jLabel1 = new javax.swing.JLabel();
+        butaoBaixarRelatorio = new javax.swing.JToggleButton();
+        relatoriomensal = new javax.swing.JLabel();
 
+        jPanel1.setBackground(new java.awt.Color(255, 204, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tabelaRelatório.setBackground(new java.awt.Color(255, 255, 255));
+        tabelaRelatório.setForeground(new java.awt.Color(0, 0, 0));
         tabelaRelatório.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -63,19 +66,22 @@ public class RelatorioReserva extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tabelaRelatório);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(9, 50, 700, 340));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 690, 330));
 
-        bBaixarRel.setText("Baixar Relatório");
-        bBaixarRel.addActionListener(new java.awt.event.ActionListener() {
+        butaoBaixarRelatorio.setBackground(new java.awt.Color(255, 204, 0));
+        butaoBaixarRelatorio.setForeground(new java.awt.Color(0, 0, 0));
+        butaoBaixarRelatorio.setText("Baixar Relatório");
+        butaoBaixarRelatorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bBaixarRelActionPerformed(evt);
+                butaoBaixarRelatorioActionPerformed(evt);
             }
         });
-        jPanel1.add(bBaixarRel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 400, 130, 30));
+        jPanel1.add(butaoBaixarRelatorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, 130, 30));
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel1.setText("RELATÓRIO MENSAL");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, -1, -1));
+        relatoriomensal.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        relatoriomensal.setForeground(new java.awt.Color(0, 0, 0));
+        relatoriomensal.setText("RELATÓRIO MENSAL");
+        jPanel1.add(relatoriomensal, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -93,16 +99,16 @@ public class RelatorioReserva extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bBaixarRelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBaixarRelActionPerformed
+    private void butaoBaixarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butaoBaixarRelatorioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bBaixarRelActionPerformed
+    }//GEN-LAST:event_butaoBaixarRelatorioActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton bBaixarRel;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JToggleButton butaoBaixarRelatorio;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel relatoriomensal;
     private javax.swing.JTable tabelaRelatório;
     // End of variables declaration//GEN-END:variables
 }

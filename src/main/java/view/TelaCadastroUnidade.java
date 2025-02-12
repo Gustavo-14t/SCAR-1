@@ -39,7 +39,7 @@ public class TelaCadastroUnidade extends javax.swing.JInternalFrame {
         capacidade = new javax.swing.JLabel();
         campoCapacidade = new javax.swing.JTextField();
         dimensoes = new javax.swing.JLabel();
-        campoDimesoes = new javax.swing.JTextField();
+        campoDimensoes = new javax.swing.JTextField();
         descicao = new javax.swing.JLabel();
         campoDescricao = new javax.swing.JTextField();
         nomeChave = new javax.swing.JLabel();
@@ -51,58 +51,61 @@ public class TelaCadastroUnidade extends javax.swing.JInternalFrame {
         listaUnidade = new javax.swing.JTable();
         campoPesquisar = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        butaoDeletar = new javax.swing.JButton();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTabbedPane1.setBackground(new java.awt.Color(255, 153, 0));
+        jTabbedPane1.setForeground(new java.awt.Color(0, 0, 0));
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 0));
 
         nome.setForeground(new java.awt.Color(0, 0, 0));
-        nome.setText("Nome:");
+        nome.setText("NOME:");
 
         campoNome.setBackground(new java.awt.Color(255, 255, 255));
         campoNome.setForeground(new java.awt.Color(0, 0, 0));
 
         tipo.setForeground(new java.awt.Color(0, 0, 0));
-        tipo.setText("Tipo:");
+        tipo.setText("TIPO:");
 
         campoTipo.setBackground(new java.awt.Color(255, 255, 255));
         campoTipo.setForeground(new java.awt.Color(0, 0, 0));
-        campoTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Casa", "Espaço De Evento", "Outos", " " }));
+        campoTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Casa", "Espaço De Evento", "Outros", " " }));
 
         numero.setForeground(new java.awt.Color(0, 0, 0));
-        numero.setText("Numero:");
+        numero.setText("NUMERO:");
 
         campoNumero.setBackground(new java.awt.Color(255, 255, 255));
         campoNumero.setForeground(new java.awt.Color(0, 0, 0));
 
         bloco.setForeground(new java.awt.Color(0, 0, 0));
-        bloco.setText("Bloco:");
+        bloco.setText("BLOCO:");
 
         campoBloco.setBackground(new java.awt.Color(255, 255, 255));
         campoBloco.setForeground(new java.awt.Color(0, 0, 0));
 
         capacidade.setForeground(new java.awt.Color(0, 0, 0));
-        capacidade.setText("Capacidade:");
+        capacidade.setText("CAPACIDADE:");
 
         campoCapacidade.setBackground(new java.awt.Color(255, 255, 255));
         campoCapacidade.setForeground(new java.awt.Color(0, 0, 0));
 
         dimensoes.setForeground(new java.awt.Color(0, 0, 0));
-        dimensoes.setText("Dimensões");
+        dimensoes.setText("DIMENSÕES");
 
-        campoDimesoes.setBackground(new java.awt.Color(255, 255, 255));
-        campoDimesoes.setForeground(new java.awt.Color(0, 0, 0));
+        campoDimensoes.setBackground(new java.awt.Color(255, 255, 255));
+        campoDimensoes.setForeground(new java.awt.Color(0, 0, 0));
 
         descicao.setForeground(new java.awt.Color(0, 0, 0));
-        descicao.setText("Descrição:");
+        descicao.setText("DESCRIÇÃO");
 
         campoDescricao.setBackground(new java.awt.Color(255, 255, 255));
         campoDescricao.setForeground(new java.awt.Color(0, 0, 0));
         campoDescricao.setHorizontalAlignment(javax.swing.JTextField.LEFT);
 
         nomeChave.setForeground(new java.awt.Color(0, 0, 0));
-        nomeChave.setText("Nome Chave:");
+        nomeChave.setText("NOME CHAVE:");
 
         campoNomeChave.setBackground(new java.awt.Color(255, 255, 255));
         campoNomeChave.setForeground(new java.awt.Color(0, 0, 0));
@@ -113,6 +116,7 @@ public class TelaCadastroUnidade extends javax.swing.JInternalFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(559, Short.MAX_VALUE)
                 .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -194,6 +198,79 @@ public class TelaCadastroUnidade extends javax.swing.JInternalFrame {
                             .addComponent(campoBloco, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(campoDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(0, 0, Short.MAX_VALUE)))
+
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(0, 47, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(194, 194, 194)
+                        .addComponent(capacidade, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(156, 156, 156)
+                        .addComponent(nomeChave, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44)
+                        .addComponent(campoCapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(campoNomeChave, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(202, 202, 202)
+                        .addComponent(dimensoes, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(campoTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44)
+                        .addComponent(campoDimensoes, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(numero, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(208, 208, 208)
+                        .addComponent(descicao, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(campoNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bloco, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoBloco, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(44, 44, 44)
+                        .addComponent(campoDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 47, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(0, 78, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nome)
+                    .addComponent(capacidade)
+                    .addComponent(nomeChave))
+                .addGap(7, 7, 7)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoCapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoNomeChave, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tipo)
+                    .addComponent(dimensoes))
+                .addGap(6, 6, 6)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(campoTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoDimensoes, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(numero)
+                    .addComponent(descicao))
+                .addGap(6, 6, 6)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(campoNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(bloco, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(campoBloco, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 79, Short.MAX_VALUE))
+
         );
 
         jTabbedPane1.addTab("Cadastrar", jPanel1);
@@ -205,13 +282,13 @@ public class TelaCadastroUnidade extends javax.swing.JInternalFrame {
         listaUnidade.setForeground(new java.awt.Color(0, 0, 0));
         listaUnidade.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"", "", "", "", ""},
+                {"A", "AB", "ABC", "ABCD", ""},
                 {"", "", "", "", ""},
                 {"", "", "", "", null},
                 {"", "", null, "", ""},
                 {"", "", "", "", null},
                 {null, "", "", "", null},
-                {"", null, "", null, "a"},
+                {"", null, "", null, ""},
                 {null, null, null, null, ""},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -242,7 +319,7 @@ public class TelaCadastroUnidade extends javax.swing.JInternalFrame {
         listaUnidade.setSelectionForeground(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(listaUnidade);
 
-        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 98, 706, 285));
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 90, 706, 285));
 
         campoPesquisar.setBackground(new java.awt.Color(255, 255, 255));
         campoPesquisar.setForeground(new java.awt.Color(0, 0, 0));
@@ -253,11 +330,11 @@ public class TelaCadastroUnidade extends javax.swing.JInternalFrame {
         jLabel1.setText("PESQUISAR:");
         jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 14, 87, -1));
 
-        jButton1.setBackground(new java.awt.Color(255, 204, 0));
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("DELETAR");
-        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(328, 395, 85, 38));
+        butaoDeletar.setBackground(new java.awt.Color(255, 204, 0));
+        butaoDeletar.setForeground(new java.awt.Color(0, 0, 0));
+        butaoDeletar.setText("DELETAR");
+        butaoDeletar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel4.add(butaoDeletar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, 85, 38));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -280,10 +357,11 @@ public class TelaCadastroUnidade extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bloco;
+    private javax.swing.JButton butaoDeletar;
     private javax.swing.JTextField campoBloco;
     private javax.swing.JTextField campoCapacidade;
     private javax.swing.JTextField campoDescricao;
-    private javax.swing.JTextField campoDimesoes;
+    private javax.swing.JTextField campoDimensoes;
     private javax.swing.JTextField campoNome;
     private javax.swing.JTextField campoNomeChave;
     private javax.swing.JTextField campoNumero;
@@ -292,14 +370,16 @@ public class TelaCadastroUnidade extends javax.swing.JInternalFrame {
     private javax.swing.JLabel capacidade;
     private javax.swing.JLabel descicao;
     private javax.swing.JLabel dimensoes;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+
     private javax.swing.JToggleButton jToggleButton1;
+
+
     private javax.swing.JTable listaUnidade;
     private javax.swing.JLabel nome;
     private javax.swing.JLabel nomeChave;
