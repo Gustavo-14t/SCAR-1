@@ -222,10 +222,10 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
         campoNome = new javax.swing.JTextField();
         campoEndereco = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaFunc = new javax.swing.JTable();
+        tabelaFuncionario = new javax.swing.JTable();
         boxCargo = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        bCadastrar = new javax.swing.JToggleButton();
+        butaoCadastrar = new javax.swing.JToggleButton();
         butaoOcultar = new javax.swing.JButton();
         campoSenha = new javax.swing.JPasswordField();
         campoCpf = new javax.swing.JFormattedTextField();
@@ -233,38 +233,59 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         campoPesquisa = new javax.swing.JTextField();
         tabelaFuncDel = new javax.swing.JScrollPane();
-        tabelaFunc1 = new javax.swing.JTable();
+        tabelaFuncionario2 = new javax.swing.JTable();
         bdelet = new javax.swing.JToggleButton();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel2.setBackground(new java.awt.Color(255, 204, 0));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("CARGO");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 60, 20));
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("CARGO:");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, 60, 20));
 
-        jLabel2.setText("SENHA");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 140, 20));
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("SENHA:");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, 50, 20));
 
-        jLabel3.setText("CPF");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 140, 20));
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("CPF:");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 70, 20));
 
-        jLabel4.setText("TELEFONE");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 140, 20));
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("TELEFONE:");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 140, 20));
 
-        jLabel5.setText("ENDEREÇO");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 140, 20));
-        jPanel2.add(campoTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 250, 30));
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("ENDEREÇO:");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 140, 20));
 
+        campoTelefone.setBackground(new java.awt.Color(255, 255, 255));
+        campoTelefone.setForeground(new java.awt.Color(0, 0, 0));
+        campoTelefone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoTelefoneActionPerformed(evt);
+            }
+        });
+        jPanel2.add(campoTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 250, 35));
+
+        campoNome.setBackground(new java.awt.Color(255, 255, 255));
+        campoNome.setForeground(new java.awt.Color(0, 0, 0));
         campoNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoNomeActionPerformed(evt);
             }
         });
-        jPanel2.add(campoNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 250, 30));
-        jPanel2.add(campoEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 250, 30));
+        jPanel2.add(campoNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 250, 35));
 
-        tabelaFunc.setModel(new javax.swing.table.DefaultTableModel(
+        campoEndereco.setBackground(new java.awt.Color(255, 255, 255));
+        campoEndereco.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel2.add(campoEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 250, 35));
+
+        tabelaFuncionario.setBackground(new java.awt.Color(255, 255, 255));
+        tabelaFuncionario.setForeground(new java.awt.Color(0, 0, 0));
+        tabelaFuncionario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -287,9 +308,10 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tabelaFunc);
+        jScrollPane1.setViewportView(tabelaFuncionario);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 710, 150));
+
 
         boxCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "guarda", "porteiro", "sindico", "zelador", "jardineiro", " " }));
         boxCargo.addActionListener(new java.awt.event.ActionListener() {
@@ -299,15 +321,23 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
         });
         jPanel2.add(boxCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, 150, -1));
 
-        jLabel6.setText("NOME");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 140, 20));
 
-        bCadastrar.setText("CADASTRAR");
-        bCadastrar.addActionListener(new java.awt.event.ActionListener() {
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("NOME:");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 60, 20));
+
+        butaoCadastrar.setBackground(new java.awt.Color(255, 204, 0));
+        butaoCadastrar.setForeground(new java.awt.Color(0, 0, 0));
+        butaoCadastrar.setText("CADASTRAR");
+        butaoCadastrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        butaoCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bCadastrarActionPerformed(evt);
+                butaoCadastrarActionPerformed(evt);
             }
         });
+
+       
+
         jPanel2.add(bCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, -1, -1));
 
         butaoOcultar.addActionListener(new java.awt.event.ActionListener() {
@@ -324,28 +354,36 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
         });
         jPanel2.add(campoSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, 220, 30));
 
+
+        campoCpf.setBackground(new java.awt.Color(255, 255, 255));
+        campoCpf.setForeground(new java.awt.Color(0, 0, 0));
         try {
             campoCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###-###-###.##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel2.add(campoCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 250, 30));
+        jPanel2.add(campoCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 250, 35));
 
         jTabbedPane1.addTab("Cadastrar", jPanel2);
 
+        cadFunc.setBackground(new java.awt.Color(255, 204, 0));
         cadFunc.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("PESQUISAR");
         cadFunc.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 80, 30));
 
+        campoPesquisa.setBackground(new java.awt.Color(255, 255, 255));
         campoPesquisa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoPesquisaActionPerformed(evt);
             }
         });
-        cadFunc.add(campoPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 310, 30));
+        cadFunc.add(campoPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 310, 35));
 
-        tabelaFunc1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaFuncionario2.setBackground(new java.awt.Color(255, 255, 255));
+        tabelaFuncionario2.setForeground(new java.awt.Color(0, 0, 0));
+        tabelaFuncionario2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -378,6 +416,9 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+
+       
+
         tabelaFunc1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabelaFunc1MouseClicked(evt);
@@ -385,15 +426,19 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
         });
         tabelaFuncDel.setViewportView(tabelaFunc1);
 
+
         cadFunc.add(tabelaFuncDel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 690, 310));
 
+        bdelet.setBackground(new java.awt.Color(255, 204, 0));
+        bdelet.setForeground(new java.awt.Color(0, 0, 0));
         bdelet.setText("Deletar");
+        bdelet.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         bdelet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bdeletActionPerformed(evt);
             }
         });
-        cadFunc.add(bdelet, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 400, 100, -1));
+        cadFunc.add(bdelet, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 390, 110, 30));
 
         jTabbedPane1.addTab("Deletar", cadFunc);
 
@@ -406,8 +451,9 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_campoPesquisaActionPerformed
 
-    private void bCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadastrarActionPerformed
+    private void butaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butaoCadastrarActionPerformed
         // TODO add your handling code here:
+
         try{
        FuncionarioController controller = new FuncionarioController();
          // criando um objeto do tipo usuario da pasta model
@@ -435,6 +481,7 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_bCadastrarActionPerformed
 
+
     private void campoNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoNomeActionPerformed
@@ -456,6 +503,11 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
         }                                      
 
     }//GEN-LAST:event_bdeletActionPerformed
+
+
+    private void campoTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoTelefoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoTelefoneActionPerformed
 
     private void boxCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxCargoActionPerformed
         // TODO add your handling code here:
@@ -507,10 +559,11 @@ boolean oculto = false;
     }//GEN-LAST:event_tabelaFunc1MouseClicked
 
 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton bCadastrar;
     private javax.swing.JToggleButton bdelet;
     private javax.swing.JComboBox<String> boxCargo;
+    private javax.swing.JToggleButton butaoCadastrar;
     private javax.swing.JButton butaoOcultar;
     private javax.swing.JPanel cadFunc;
     private javax.swing.JFormattedTextField campoCpf;
@@ -529,8 +582,8 @@ boolean oculto = false;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable tabelaFunc;
-    private javax.swing.JTable tabelaFunc1;
     private javax.swing.JScrollPane tabelaFuncDel;
+    private javax.swing.JTable tabelaFuncionario;
+    private javax.swing.JTable tabelaFuncionario2;
     // End of variables declaration//GEN-END:variables
 }

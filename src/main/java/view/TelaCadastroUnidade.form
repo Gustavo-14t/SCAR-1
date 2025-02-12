@@ -22,6 +22,14 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="99" red="ff" type="rgb"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="0" type="rgb"/>
+        </Property>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="0" y="0" width="-1" height="-1"/>
@@ -47,6 +55,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
+
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace pref="559" max="32767" attributes="0"/>
                       <Component id="jToggleButton1" min="-2" pref="125" max="-2" attributes="0"/>
@@ -93,15 +102,20 @@
                                   </Group>
                                   <EmptySpace min="44" pref="44" max="-2" attributes="0"/>
                                   <Component id="campoDescricao" min="-2" pref="220" max="-2" attributes="0"/>
+
                               </Group>
+                              <EmptySpace min="44" pref="44" max="-2" attributes="0"/>
+                              <Component id="campoDescricao" min="-2" pref="220" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
+                      <EmptySpace min="0" pref="47" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
+
+                 
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace pref="282" max="32767" attributes="0"/>
                       <Component id="jToggleButton1" min="-2" pref="57" max="-2" attributes="0"/>
@@ -146,9 +160,11 @@
                                   <Component id="campoBloco" min="-2" pref="35" max="-2" attributes="0"/>
                               </Group>
                               <Component id="campoDescricao" min="-2" pref="110" max="-2" attributes="0"/>
+
                           </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="campoDescricao" min="-2" pref="110" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace min="0" pref="79" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -159,7 +175,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Nome:"/>
+                <Property name="text" type="java.lang.String" value="NOME:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="campoNome">
@@ -177,7 +193,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Tipo:"/>
+                <Property name="text" type="java.lang.String" value="TIPO:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="campoTipo">
@@ -192,7 +208,7 @@
                   <StringArray count="4">
                     <StringItem index="0" value="Casa"/>
                     <StringItem index="1" value="Espa&#xe7;o De Evento"/>
-                    <StringItem index="2" value="Outos"/>
+                    <StringItem index="2" value="Outros"/>
                     <StringItem index="3" value=" "/>
                   </StringArray>
                 </Property>
@@ -206,7 +222,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Numero:"/>
+                <Property name="text" type="java.lang.String" value="NUMERO:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="campoNumero">
@@ -224,7 +240,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Bloco:"/>
+                <Property name="text" type="java.lang.String" value="BLOCO:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="campoBloco">
@@ -242,7 +258,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Capacidade:"/>
+                <Property name="text" type="java.lang.String" value="CAPACIDADE:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="campoCapacidade">
@@ -260,10 +276,10 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Dimens&#xf5;es"/>
+                <Property name="text" type="java.lang.String" value="DIMENS&#xd5;ES"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="campoDimesoes">
+            <Component class="javax.swing.JTextField" name="campoDimensoes">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -278,7 +294,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o:"/>
+                <Property name="text" type="java.lang.String" value="DESCRI&#xc7;&#xc3;O"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="campoDescricao">
@@ -297,7 +313,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Nome Chave:"/>
+                <Property name="text" type="java.lang.String" value="NOME CHAVE:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="campoNomeChave">
@@ -356,7 +372,7 @@
                   </AuxValues>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="6" y="98" width="706" height="285"/>
+                      <AbsoluteConstraints x="6" y="90" width="706" height="285"/>
                     </Constraint>
                   </Constraints>
 
@@ -373,7 +389,7 @@
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="5" rowCount="20">
                             <Column editable="false" title="Nome" type="java.lang.Object">
-                              <Data value=""/>
+                              <Data value="A"/>
                               <Data value=""/>
                               <Data value=""/>
                               <Data value=""/>
@@ -395,7 +411,7 @@
                               <Data value="null"/>
                             </Column>
                             <Column editable="false" title="Numero" type="java.lang.Object">
-                              <Data value=""/>
+                              <Data value="AB"/>
                               <Data value=""/>
                               <Data value=""/>
                               <Data value=""/>
@@ -417,7 +433,7 @@
                               <Data value="null"/>
                             </Column>
                             <Column editable="false" title="Bloco" type="java.lang.Object">
-                              <Data value=""/>
+                              <Data value="ABC"/>
                               <Data value=""/>
                               <Data value=""/>
                               <Data value="null"/>
@@ -439,7 +455,7 @@
                               <Data value="null"/>
                             </Column>
                             <Column editable="false" title="Tipo" type="java.lang.Object">
-                              <Data value=""/>
+                              <Data value="ABCD"/>
                               <Data value=""/>
                               <Data value=""/>
                               <Data value=""/>
@@ -467,7 +483,7 @@
                               <Data value=""/>
                               <Data value="null"/>
                               <Data value="null"/>
-                              <Data value="a"/>
+                              <Data value=""/>
                               <Data value=""/>
                               <Data value="null"/>
                               <Data value="null"/>
@@ -525,7 +541,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton1">
+                <Component class="javax.swing.JButton" name="butaoDeletar">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="cc" red="ff" type="rgb"/>
@@ -542,7 +558,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="328" y="395" width="85" height="38"/>
+                      <AbsoluteConstraints x="310" y="380" width="85" height="38"/>
                     </Constraint>
                   </Constraints>
                 </Component>
