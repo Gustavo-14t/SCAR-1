@@ -20,7 +20,7 @@ import model.conexaoBD;
 public class UnidadeController {
     public boolean cadastroUnidade( Unidade unidade){
      //criuando uma String que recebe uma comando SQL
-     String query = "INSERT INTO Unidade (id_chave,nome,tipo,numero,bloco,capacidade,descricao,dimensao) values (?,?,?,?,?,?,?,?) ";
+     String query = "INSERT INTO Unidade (id_chave,nome,tipo,numero,bloco,capacidade,descricao,dimensoes) values (?,?,?,?,?,?,?,?) ";
      
      try(Connection conection = conexaoBD.getConection();
         PreparedStatement preparedStatement =
@@ -56,7 +56,7 @@ public class UnidadeController {
      public List<Unidade> listarUnidade(){
         List<Unidade> lista = new ArrayList<>();
         
-        String query = "SELECT id_chave,nome,tipo,numero,bloco,capacidade,descricao,dimensao FROM Unidade ;";
+        String query = "SELECT  id_unidade,id_chave,nome,tipo,numero,bloco,capacidade,descricao,dimensoes FROM Unidade ;";
 
         try(Connection connection = conexaoBD.getConection();//conexão com o banco de dados
      PreparedStatement preparedStatement = connection.prepareStatement(query)){
@@ -65,6 +65,7 @@ public class UnidadeController {
             
             while(resultSet.next()){
                 Unidade unidade = new Unidade();
+                unidade.setId_unidade(resultSet.getInt("id_unidade"));
                 unidade.setId_chave(resultSet.getInt("id_chave"));
                 unidade.setNome(resultSet.getString("nome"));
                  unidade.setTipo(resultSet.getString("tipo"));

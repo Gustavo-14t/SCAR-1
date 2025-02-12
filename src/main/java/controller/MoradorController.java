@@ -21,7 +21,7 @@ public class MoradorController {
     
     public boolean cadastroMorador( Morador morador){
      //criuando uma String que recebe uma comando SQL
-     String query = "INSERT INTO Usuario (id_unidade,nome,cpf,email,data_nasc) values (?,?,?,?,?) ";
+     String query = "INSERT INTO Morador (id_unidade,nome,cpf,email,data_nasc) values (?,?,?,?,?) ";
      
      try(Connection conection = conexaoBD.getConection();
         PreparedStatement preparedStatement =
@@ -125,6 +125,7 @@ public class MoradorController {
                 // receba o valor e cadastre em produto
                   Morador morador = new Morador();
                   morador.setId_morador(resultset.getInt("id_morador"));
+                  morador.setId_unidade(resultset.getInt("id_unidade"));
                   morador.setNome(resultset.getString("nome"));
                   morador.setCpf(resultset.getString("cpf"));
                   morador.setEmail(resultset.getString("email"));
