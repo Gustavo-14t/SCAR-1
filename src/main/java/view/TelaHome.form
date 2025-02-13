@@ -110,22 +110,47 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="0" width="930" height="-1"/>
+              <AbsoluteConstraints x="0" y="0" width="930" height="60"/>
             </Constraint>
           </Constraints>
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="930" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                      <Component id="butaoHome" min="-2" pref="55" max="-2" attributes="0"/>
+                      <EmptySpace pref="833" max="32767" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="66" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="15" max="32767" attributes="0"/>
+                      <Component id="butaoHome" min="-2" pref="45" max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
           </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JButton" name="butaoHome">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="99" red="ff" type="rgb"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\devmat\Documents\SCAR-main\src\main\java\img\casa.png"/>
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="null"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="butaoHomeActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="barraMenu">
           <Properties>
@@ -145,6 +170,9 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="bEntSaida">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\devmat\Documents\SCAR-main\src\main\java\img\saida.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="ENTRADAS E SA&#xcd;DAS"/>
               </Properties>
               <Events>
@@ -158,7 +186,11 @@
             </Component>
             <Component class="javax.swing.JButton" name="bCadastro">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\devmat\Documents\SCAR-main\src\main\java\img\usuarios-alt.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="CADASTRO"/>
+                <Property name="iconTextGap" type="int" value="20"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bCadastroActionPerformed"/>
@@ -171,7 +203,11 @@
             </Component>
             <Component class="javax.swing.JButton" name="bRelatorio">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\devmat\Documents\SCAR-main\src\main\java\img\editar.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="RELAT&#xd3;RIO"/>
+                <Property name="iconTextGap" type="int" value="20"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bRelatorioActionPerformed"/>
@@ -184,7 +220,11 @@
             </Component>
             <Component class="javax.swing.JButton" name="bReserva">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\devmat\Documents\SCAR-main\src\main\java\img\calendario.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="RESERVA"/>
+                <Property name="iconTextGap" type="int" value="20"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bReservaActionPerformed"/>
@@ -197,6 +237,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="bFinanceiro">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\devmat\Documents\SCAR-main\src\main\java\img\dolar.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="FINANCEIRO"/>
               </Properties>
               <Events>
@@ -210,6 +253,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="bSolicServis">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\devmat\Documents\SCAR-main\src\main\java\img\servico-de-atendimento-ao-consumidor.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="SOLICITAR SERVI&#xc7;OS"/>
               </Properties>
               <Events>
@@ -226,6 +272,9 @@
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="cc" red="ff" type="rgb"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\devmat\Documents\SCAR-main\src\main\java\img\config.png"/>
+                </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -240,6 +289,9 @@
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="cc" red="ff" type="rgb"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\devmat\Documents\SCAR-main\src\main\java\img\interrogatorio.png"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
