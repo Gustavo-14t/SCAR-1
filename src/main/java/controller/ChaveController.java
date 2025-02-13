@@ -18,31 +18,34 @@ import model.conexaoBD;
  * @author devmat
  */
 public class ChaveController {
-     public boolean cadastroChave( Chave chave){
-     //criuando uma String que recebe uma comando SQL
-     String query = "INSERT INTO Atividade ( nome) values (?) ";
-     
-     try(Connection conection = conexaoBD.getConection();
-        PreparedStatement preparedStatement =
-                conection.prepareStatement(query)){       
+      public int cadastroChave(Chave chave) {
+        // Comando SQL para inserir a chave
+        String query = "INSERT INTO Chave (nome) VALUES (?)";
+        
+        try (Connection connection = conexaoBD.getConection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
             
-            // mandar os dados para dentro do insert
-            preparedStatement.setString(1,chave.getNome());
+            // Enviar os dados para o banco
+            preparedStatement.setString(1, chave.getNome());
 
-            /*try(ResultSet resultSet = preparedStatement.executeQuery()){
-                return resultSet.next();
-            }// final do segundo try*/
-            // verifica se o insert foi executado
+            // Executar o comando de inserção
             int rowsAffected = preparedStatement.executeUpdate();
-            return rowsAffected > 0;
-            
-        }catch(SQLException e){
-            // imprimindo erro que deu ao inserir usuário
-            System.err.print("Erro ao Inserir Dados!" + e);
-            return false;
-        }// final do try catch
-    
-}// fim do método cadastroTurno()
+
+            if (rowsAffected > 0) {
+                // Se a inserção foi bem-sucedida, recuperar o ID gerado
+                try (ResultSet resultSet = preparedStatement.getGeneratedKeys()) {
+                    if (resultSet.next()) {
+                        return resultSet.getInt(1); // Retorna o ID gerado
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            // Exibir erro caso haja problemas ao inserir a chave
+            System.err.println("Erro ao Inserir Dados! " + e);
+        }
+        return -1; // Caso haja algum erro ou a inserção falhe, retorna um ID inválido
+    }
+
      
      public List<Chave> listarChave(){
         List<Chave> lista = new ArrayList<>();

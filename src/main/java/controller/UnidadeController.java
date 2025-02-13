@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import model.Unidade;
@@ -18,39 +19,70 @@ import model.conexaoBD;
  * @author devmat
  */
 public class UnidadeController {
-    public boolean cadastroUnidade( Unidade unidade){
-     //criuando uma String que recebe uma comando SQL
-     String query = "INSERT INTO Unidade (id_chave,nome,tipo,numero,bloco,capacidade,descricao,dimensoes) values (?,?,?,?,?,?,?,?) ";
-     
-     try(Connection conection = conexaoBD.getConection();
-        PreparedStatement preparedStatement =
-                conection.prepareStatement(query)){       
-            
-            // mandar os dados para dentro do insert
-            preparedStatement.setInt(1,unidade.getId_chave());
-             preparedStatement.setString(2,unidade.getNome());
-            preparedStatement.setString(3,unidade.getTipo());
-            preparedStatement.setString(4,unidade.getNumero());
-             preparedStatement.setString(5,unidade.getBloco());
-             preparedStatement.setString(6,unidade.getCapacidade());
-              preparedStatement.setString(7,unidade.getDescricao());
-              preparedStatement.setString(8,unidade.getDomensoes());
-    
-            
-            /*try(ResultSet resultSet = preparedStatement.executeQuery()){
-                return resultSet.next();
-            }// final do segundo try*/
-            // verifica se o insert foi executado
-            int rowsAffected = preparedStatement.executeUpdate();
-            return rowsAffected > 0;
-            
-        }catch(SQLException e){
-            // imprimindo erro que deu ao inserir usuário
-            System.err.print("Erro ao Inserir Dados!" + e);
+    public boolean cadastroUnidade(Unidade unidade) {
+    String queryChave = "INSERT INTO Chave (nome) VALUES (?);";
+    String queryUnidade = "INSERT INTO Unidade (id_chave, tipo, numero, bloco, capacidade, descricao, nome, dimensoes) "
+            + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+    try (Connection conection = conexaoBD.getConection()) {
+
+        // Iniciando a transação
+        conection.setAutoCommit(false); // Começando a transação
+
+        // Inserindo na tabela Chave
+        try (PreparedStatement preparedStatementChave = conection.prepareStatement(queryChave, 
+                Statement.RETURN_GENERATED_KEYS)) {
+
+            preparedStatementChave.setString(1, unidade.getNome());
+            int rowsAffectedChave = preparedStatementChave.executeUpdate();
+
+            // Verificando se a inserção na tabela Chave foi bem-sucedida
+            if (rowsAffectedChave > 0) {
+                // Obtendo o id gerado para a chave
+                try (ResultSet generatedKeys = preparedStatementChave.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        long idChave = generatedKeys.getLong(1); // Obtendo o id da Chave
+
+                        // Inserindo na tabela Unidade com o id da Chave
+                        try (PreparedStatement preparedStatementUnidade = conection.prepareStatement(queryUnidade)) {
+                            preparedStatementUnidade.setLong(1, idChave);
+                            preparedStatementUnidade.setString(2, unidade.getTipo());
+                            preparedStatementUnidade.setString(3, unidade.getNumero());
+                            preparedStatementUnidade.setString(4, unidade.getBloco());
+                            preparedStatementUnidade.setString(5, unidade.getCapacidade());
+                            preparedStatementUnidade.setString(6, unidade.getDescricao());
+                            preparedStatementUnidade.setString(7, unidade.getNome());
+                            preparedStatementUnidade.setString(8, unidade.getDomensoes());
+
+                            int rowsAffectedUnidade = preparedStatementUnidade.executeUpdate();
+
+                            // Verificando se a inserção na tabela Unidade foi bem-sucedida
+                            if (rowsAffectedUnidade > 0) {
+                                // Confirmando a transação
+                                conection.commit();
+                                return true; // Cadastro bem-sucedido
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Se algum dos inserts falhar, fazemos o rollback
+            conection.rollback();
             return false;
-        }// final do try catch
-    
-}// fim do método cadastroTurno()
+
+        } catch (SQLException e) {
+            conection.rollback(); // Fazendo rollback em caso de erro
+            System.err.print("Erro ao Inserir Dados: " + e);
+            return false;
+        }
+
+    } catch (SQLException e) {
+        System.err.print("Erro na conexão ou preparação do SQL: " + e);
+        return false;
+    }
+}
+
     
     
      public List<Unidade> listarUnidade(){
@@ -106,4 +138,45 @@ public class UnidadeController {
             return false;
         }//fim do 
      }//fim do public boolean
+     public List<Unidade> listarUnidadeNome(String nome){
+     
+     String query = "SELECT id_unidade,id_chave,nome,tipo,numero,bloco,capacidade FROM Unidade where nome LIKE ?;";
+     
+      List<Unidade> lista = new ArrayList<>();
+        // criando o try catch
+        try(Connection conection = conexaoBD.getConection();
+        PreparedStatement preparedStatement = conection.prepareStatement(query)){
+            
+             preparedStatement.setString(1,'%'+nome+'%');
+                
+                ResultSet resultset = preparedStatement.executeQuery();
+            // passando o valor do select para um objeto produto
+            // enquanto resultset for diferente de null
+            while(resultset.next()){
+                // receba o valor e cadastre em produto
+                  Unidade unidade = new Unidade();
+                  unidade.setId_unidade(resultset.getInt("id_unidade"));
+                unidade.setId_chave(resultset.getInt("id_chave"));
+                unidade.setNome(resultset.getString("nome"));
+                 unidade.setTipo(resultset.getString("tipo"));
+                  unidade.setNumero(resultset.getString("numero"));
+                unidade.setBloco(resultset.getString("bloco"));
+                unidade.setCapacidade(resultset.getString("capacidade"));
+                
+                  
+                  
+                  
+                  // jogando o produto dentro da lista
+                  lista.add(unidade);
+             }// fim do while
+            return lista;
+         
+     }catch(SQLException erro){
+         System.err.print("Erro:  " + erro);
+            return null;
+     }//fim do catch
+     
+     
+ }// fim do método listarProdutorNome
+     
 }

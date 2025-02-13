@@ -29,7 +29,7 @@ public class CadMorador extends javax.swing.JInternalFrame {
         initComponents();
         ListagemUnidades();
         pesquisarUsuario();
-        
+        ListagemUsuarioDelet();
     }
 
     /**
@@ -108,6 +108,47 @@ public class CadMorador extends javax.swing.JInternalFrame {
          campoEmail.setText("");
                 
     }
+    public void ListagemUsuarioDelet(){
+    
+        
+        // chamando o produtos controller
+        MoradorController controller = new MoradorController();
+        // capturando a lista de produtos que vem do banco de dados
+        List<Morador> listarMorador= controller.listarMorador();
+        
+        // Obtendo o modelo da tabela
+        DefaultTableModel modeloTabela = 
+                (DefaultTableModel) tabelaMorador.getModel();
+    
+    // Limpando a tabela antes de adicionar novos dados
+       modeloTabela.setRowCount(0);
+    
+    // Verificando se a lista não é nula
+    if (listarMorador != null && !listarMorador.isEmpty()) {
+        // Jogando os dados para dentro da minha tabela
+        for (Morador morador : listarMorador) {
+            // Criando uma nova linha para a tabela
+            Object[] linha = {
+             morador.getId_morador(), // Ajuste para int
+             morador.getId_unidade(), // Ajuste para int
+             morador.getNome(), // Verifique se é null
+             morador.getCpf(), // Verifique se é null
+             morador.getEmail(), // Verifique se é null
+             morador.getData_nasc() // Verifique se é null
+            };
+            // Adicionando a linha ao modelo da tabela
+            modeloTabela.addRow(linha);
+           
+        }
+         
+        
+    } else {
+        JOptionPane.showMessageDialog
+        (this, "Nenhum Cliente encontrado.");
+    }
+       
+ }//fim do método de listagemUsuarioP()
+    
     
          public void ListagemUnidades(){
         
@@ -372,7 +413,8 @@ public class CadMorador extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog
             (null,"Usuario Cadastrado com Sucesso!");
 
-            
+            ListagemUsuarioDelet();
+             ListagemUnidades();
             limparCampos();
 
         }catch(Exception e){
@@ -394,7 +436,7 @@ public class CadMorador extends javax.swing.JInternalFrame {
             controller.deletarMorador (this.idMorador);
             JOptionPane.showMessageDialog(null,"Usuario excluído com sucesso");
 
-             
+             ListagemUsuarioDelet();
            campoPesquisar.setText("");
             
         }catch(Exception erro){
