@@ -6,7 +6,7 @@ Este projeto foi desenvolvido por alunos do SENAI na unidade disciplinar de Dese
 
 # SCAR - (Software de Condomínio Adaptado a Residência)
 
-## Telas e sua funcionalidades: 
+## Telas e suas funcionalidades: 
 
 ### Tela Login
 ![Tela de Login](SCAR-TELAS/TelaLogin.png)
