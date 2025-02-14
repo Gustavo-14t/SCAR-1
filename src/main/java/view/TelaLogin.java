@@ -73,8 +73,8 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanel1.add(campoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 145, 247, 40));
 
         butaoOcultar.setBackground(new java.awt.Color(204, 204, 204));
-        butaoOcultar.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Downloads\\visualizar.png")); // NOI18N
-        butaoOcultar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        butaoOcultar.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Documents\\SCAR-main\\src\\main\\java\\img\\visualizar.png")); // NOI18N
+        butaoOcultar.setBorder(null);
         butaoOcultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 butaoOcultarActionPerformed(evt);
@@ -110,11 +110,11 @@ boolean oculto = false;
          if (oculto) {
         campoSenha.setEchoChar((char) 0); // Exibe a senha
         oculto = false;
-        butaoOcultar.setIcon(new ImageIcon("C:/Users/devmat/Documents/NetBeansProjects/SCAR/SCAR-1/src/main/java/img/escondido.png")); // Ajuste o caminho correto
+        butaoOcultar.setIcon(new ImageIcon("C:/Users/devmat/Documents/SCAR-main/src/main/java/img/olhos-cruzados.png")); // Ajuste o caminho correto
     } else {
         campoSenha.setEchoChar('\u2022'); // Oculta a senha
         oculto = true;
-        butaoOcultar.setIcon(new ImageIcon("C:/Users/devmat/Documents/NetBeansProjects/SCAR/SCAR-1/src/main/java/img/visualizar.png")); // Ajuste o caminho correto
+        butaoOcultar.setIcon(new ImageIcon("C:/Users/devmat/Documents/SCAR-main/src/main/java/img/visualizar.png/")); // Ajuste o caminho correto
     }
     }//GEN-LAST:event_butaoOcultarActionPerformed
 

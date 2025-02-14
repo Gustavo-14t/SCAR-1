@@ -17,7 +17,7 @@ public class TelaHome extends javax.swing.JFrame {
     /**
      * Creates new form TelaHome
      */
-    Funcionario use;
+    Funcionario func;
     
     public TelaHome(String departamento,Funcionario funcionario) {
         initComponents();
@@ -25,7 +25,11 @@ public class TelaHome extends javax.swing.JFrame {
         optionCadastro.setVisible(false);
          optionRelatorio.setVisible(false);
          optionReserva.setVisible(false);
-        use = funcionario;
+        func = funcionario;
+        
+         TelaAtividade atv = new TelaAtividade();
+        areaTrabalho.add(atv);
+       atv.setVisible(true);
         
           // Verifica o departamento do funcionário e ajusta a interface
         if (departamento.equals("Síndico")){
@@ -64,6 +68,7 @@ public class TelaHome extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        butaoHome = new javax.swing.JButton();
         barraMenu = new javax.swing.JPanel();
         bEntSaida = new javax.swing.JButton();
         bCadastro = new javax.swing.JButton();
@@ -121,22 +126,37 @@ public class TelaHome extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 153, 0));
 
+        butaoHome.setBackground(new java.awt.Color(255, 153, 0));
+        butaoHome.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Documents\\SCAR-main\\src\\main\\java\\img\\casa.png")); // NOI18N
+        butaoHome.setBorder(null);
+        butaoHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butaoHomeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 930, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(butaoHome, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(833, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 66, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 15, Short.MAX_VALUE)
+                .addComponent(butaoHome, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, -1));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 60));
 
         barraMenu.setBackground(new java.awt.Color(255, 204, 0));
         barraMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        bEntSaida.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Documents\\SCAR-main\\src\\main\\java\\img\\saida.png")); // NOI18N
         bEntSaida.setText("ENTRADAS E SAÍDAS");
         bEntSaida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,7 +165,9 @@ public class TelaHome extends javax.swing.JFrame {
         });
         barraMenu.add(bEntSaida, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 200, 60));
 
+        bCadastro.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Documents\\SCAR-main\\src\\main\\java\\img\\usuarios-alt.png")); // NOI18N
         bCadastro.setText("CADASTRO");
+        bCadastro.setIconTextGap(20);
         bCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bCadastroActionPerformed(evt);
@@ -153,7 +175,9 @@ public class TelaHome extends javax.swing.JFrame {
         });
         barraMenu.add(bCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 200, 60));
 
+        bRelatorio.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Documents\\SCAR-main\\src\\main\\java\\img\\editar.png")); // NOI18N
         bRelatorio.setText("RELATÓRIO");
+        bRelatorio.setIconTextGap(20);
         bRelatorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bRelatorioActionPerformed(evt);
@@ -161,7 +185,9 @@ public class TelaHome extends javax.swing.JFrame {
         });
         barraMenu.add(bRelatorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 200, 60));
 
+        bReserva.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Documents\\SCAR-main\\src\\main\\java\\img\\calendario.png")); // NOI18N
         bReserva.setText("RESERVA");
+        bReserva.setIconTextGap(20);
         bReserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bReservaActionPerformed(evt);
@@ -169,6 +195,7 @@ public class TelaHome extends javax.swing.JFrame {
         });
         barraMenu.add(bReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 200, 60));
 
+        bFinanceiro.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Documents\\SCAR-main\\src\\main\\java\\img\\dolar.png")); // NOI18N
         bFinanceiro.setText("FINANCEIRO");
         bFinanceiro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,6 +204,7 @@ public class TelaHome extends javax.swing.JFrame {
         });
         barraMenu.add(bFinanceiro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 200, 60));
 
+        bSolicServis.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Documents\\SCAR-main\\src\\main\\java\\img\\servico-de-atendimento-ao-consumidor.png")); // NOI18N
         bSolicServis.setText("SOLICITAR SERVIÇOS");
         bSolicServis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,10 +214,12 @@ public class TelaHome extends javax.swing.JFrame {
         barraMenu.add(bSolicServis, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 200, 60));
 
         jButton6.setBackground(new java.awt.Color(255, 204, 0));
+        jButton6.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Documents\\SCAR-main\\src\\main\\java\\img\\config.png")); // NOI18N
         jButton6.setBorder(null);
         barraMenu.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 450, 50, 50));
 
         jButton7.setBackground(new java.awt.Color(255, 204, 0));
+        jButton7.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Documents\\SCAR-main\\src\\main\\java\\img\\interrogatorio.png")); // NOI18N
         jButton7.setBorder(null);
         barraMenu.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 50, 50));
 
@@ -261,7 +291,15 @@ public class TelaHome extends javax.swing.JFrame {
 
     private void bEntSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEntSaidaActionPerformed
         // TODO add your handling code here:
-        
+        TelaEmDev telaDev = new TelaEmDev();
+        areaTrabalho.add(telaDev);
+       telaDev.setVisible(true);
+       
+       if(optionCadastro.isVisible()|| optionRelatorio.isVisible() || optionReserva.isVisible() ){
+            optionCadastro.setVisible(false);
+            optionRelatorio.setVisible(false);
+            optionReserva.setVisible(false);
+        }
     }//GEN-LAST:event_bEntSaidaActionPerformed
 
     private void bCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadastroActionPerformed
@@ -300,11 +338,27 @@ public class TelaHome extends javax.swing.JFrame {
         TelaEmDev telaDev = new TelaEmDev();
         areaTrabalho.add(telaDev);
        telaDev.setVisible(true);
+       
+       if(optionCadastro.isVisible()|| optionRelatorio.isVisible() || optionReserva.isVisible() ){
+            optionCadastro.setVisible(false);
+            optionRelatorio.setVisible(false);
+            optionReserva.setVisible(false);
+        }
+        
+    
     }//GEN-LAST:event_bFinanceiroActionPerformed
 
     private void bSolicServisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSolicServisActionPerformed
         // TODO add your handling code here:
+       TelaEmDev telaDev = new TelaEmDev();
+        areaTrabalho.add(telaDev);
+       telaDev.setVisible(true);
        
+       if(optionCadastro.isVisible()|| optionRelatorio.isVisible() || optionReserva.isVisible() ){
+            optionCadastro.setVisible(false);
+            optionRelatorio.setVisible(false);
+            optionReserva.setVisible(false);
+        }
     }//GEN-LAST:event_bSolicServisActionPerformed
 
     private void bCadMorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadMorActionPerformed
@@ -312,11 +366,25 @@ public class TelaHome extends javax.swing.JFrame {
          CadMorador morador = new CadMorador();
         areaTrabalho.add(morador);
        morador.setVisible(true);
+       
+       if(optionCadastro.isVisible()|| optionRelatorio.isVisible() || optionReserva.isVisible() ){
+            optionCadastro.setVisible(false);
+            optionRelatorio.setVisible(false);
+            optionReserva.setVisible(false);
+        }
     }//GEN-LAST:event_bCadMorActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        
+        TelaEmDev telaDev = new TelaEmDev();
+        areaTrabalho.add(telaDev);
+       telaDev.setVisible(true);
+       
+       if(optionCadastro.isVisible()|| optionRelatorio.isVisible() || optionReserva.isVisible() ){
+            optionCadastro.setVisible(false);
+            optionRelatorio.setVisible(false);
+            optionReserva.setVisible(false);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -325,11 +393,28 @@ public class TelaHome extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        
+        TelaEmDev telaDev = new TelaEmDev();
+        areaTrabalho.add(telaDev);
+       telaDev.setVisible(true);
+       
+       if(optionCadastro.isVisible()|| optionRelatorio.isVisible() || optionReserva.isVisible() ){
+            optionCadastro.setVisible(false);
+            optionRelatorio.setVisible(false);
+            optionReserva.setVisible(false);
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        TelaReservas reserva = new TelaReservas(func);
+        areaTrabalho.add(reserva);
+       reserva.setVisible(true);
+       
+       if(optionCadastro.isVisible()|| optionRelatorio.isVisible() || optionReserva.isVisible()){
+            optionCadastro.setVisible(false);
+            optionRelatorio.setVisible(false);
+            optionReserva.setVisible(false);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void bCadFunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadFunActionPerformed
@@ -337,6 +422,12 @@ public class TelaHome extends javax.swing.JFrame {
          CadFuncionario func = new CadFuncionario();
         areaTrabalho.add(func);
        func.setVisible(true);
+       
+       if(optionCadastro.isVisible()|| optionRelatorio.isVisible() || optionReserva.isVisible()){
+            optionCadastro.setVisible(false);
+            optionRelatorio.setVisible(false);
+            optionReserva.setVisible(false);
+        }
     }//GEN-LAST:event_bCadFunActionPerformed
 
     private void bCadUniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadUniActionPerformed
@@ -344,7 +435,26 @@ public class TelaHome extends javax.swing.JFrame {
         TelaCadastroUnidade unidade = new TelaCadastroUnidade();
         areaTrabalho.add(unidade);
        unidade.setVisible(true);
+       
+       if(optionCadastro.isVisible()|| optionRelatorio.isVisible() || optionReserva.isVisible()){
+            optionCadastro.setVisible(false);
+            optionRelatorio.setVisible(false);
+            optionReserva.setVisible(false);
+        }
     }//GEN-LAST:event_bCadUniActionPerformed
+
+    private void butaoHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butaoHomeActionPerformed
+        // TODO add your handling code here:
+        TelaAtividade tela = new TelaAtividade();
+         areaTrabalho.add(tela);
+       tela.setVisible(true);
+       
+       if(optionCadastro.isVisible()|| optionRelatorio.isVisible() || optionReserva.isVisible()){
+            optionCadastro.setVisible(false);
+            optionRelatorio.setVisible(false);
+            optionReserva.setVisible(false);
+        }
+    }//GEN-LAST:event_butaoHomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -396,6 +506,7 @@ public class TelaHome extends javax.swing.JFrame {
     private javax.swing.JButton bReserva;
     private javax.swing.JButton bSolicServis;
     private javax.swing.JPanel barraMenu;
+    private javax.swing.JButton butaoHome;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
