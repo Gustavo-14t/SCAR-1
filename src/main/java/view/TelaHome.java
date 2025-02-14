@@ -17,7 +17,7 @@ public class TelaHome extends javax.swing.JFrame {
     /**
      * Creates new form TelaHome
      */
-    Funcionario use;
+    Funcionario func;
     
     public TelaHome(String departamento,Funcionario funcionario) {
         initComponents();
@@ -25,7 +25,7 @@ public class TelaHome extends javax.swing.JFrame {
         optionCadastro.setVisible(false);
          optionRelatorio.setVisible(false);
          optionReserva.setVisible(false);
-        use = funcionario;
+        func = funcionario;
         
          TelaAtividade atv = new TelaAtividade();
         areaTrabalho.add(atv);
@@ -406,7 +406,7 @@ public class TelaHome extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        TelaReservas reserva = new TelaReservas();
+        TelaReservas reserva = new TelaReservas(func);
         areaTrabalho.add(reserva);
        reserva.setVisible(true);
        

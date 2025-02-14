@@ -5,13 +5,16 @@
 package view;
 
 import controller.MoradorController;
+import controller.ReservaController;
 import controller.UnidadeController;
+import java.time.LocalDate;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import model.Funcionario;
 import model.Morador;
+import model.Reserva;
 import model.Unidade;
 
 /**
@@ -27,13 +30,15 @@ public class TelaReservas extends javax.swing.JInternalFrame {
     /**
      * Creates new form TelaReservas
      */
-    public TelaReservas() {
+    public TelaReservas(Funcionario fun) {
         initComponents();
         
         ListagemUsuarioDelet();
         ListagemUnidades();
         pesquisarUsuario();
         pesquisarUnidade();
+        
+        funcionario = fun;
     }
 
     /**
@@ -254,13 +259,13 @@ public class TelaReservas extends javax.swing.JInternalFrame {
         tabelaUnidade = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        campMorador = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         campUnidade = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaMorador = new javax.swing.JTable();
+        campMorador = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(730, 500));
@@ -302,19 +307,11 @@ public class TelaReservas extends javax.swing.JInternalFrame {
 
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("PESQUISAR :");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 70, -1));
-
-        campMorador.setBackground(new java.awt.Color(255, 255, 255));
-        campMorador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campMoradorActionPerformed(evt);
-            }
-        });
-        getContentPane().add(campMorador, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 300, 30));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 80, -1));
 
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("PESQUISAR :");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 70, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 80, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -330,7 +327,7 @@ public class TelaReservas extends javax.swing.JInternalFrame {
                 campUnidadeActionPerformed(evt);
             }
         });
-        jPanel1.add(campUnidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, 300, 30));
+        jPanel1.add(campUnidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 300, 30));
 
         tabelaMorador.setBackground(new java.awt.Color(255, 255, 255));
         tabelaMorador.setModel(new javax.swing.table.DefaultTableModel(
@@ -361,6 +358,14 @@ public class TelaReservas extends javax.swing.JInternalFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 720, 110));
 
+        campMorador.setBackground(new java.awt.Color(255, 255, 255));
+        campMorador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campMoradorActionPerformed(evt);
+            }
+        });
+        jPanel1.add(campMorador, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 300, 30));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 470));
 
         pack();
@@ -368,6 +373,31 @@ public class TelaReservas extends javax.swing.JInternalFrame {
 
     private void butaoReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butaoReservarActionPerformed
         // TODO add your handling code here:
+        // TODO add your handling code here:
+        //criando o objeto Controller
+        ReservaController controller = new ReservaController();
+        
+        Reserva reserva = new Reserva ();
+        //passando os valores para o objeto vendas
+        reserva.setId_chave(this.idChave);
+        reserva.setId_morador(this.idMorador);
+        reserva.setId_unidade(this.idUnidade);
+        reserva.setId_funcionario(funcionario.getId_funcionario());
+        // captura a data atual do computador
+        LocalDate dataatual = LocalDate.now();
+        reserva.setData_reserva(dataatual.toString());
+        
+        reserva.setStatu("reservada");
+   
+        // passando os dados da venda para o banco de dados
+        boolean cadastrou = controller.cadastroReserva(reserva);
+        if(cadastrou){
+            JOptionPane.showMessageDialog(
+                    null,"Sua Reserva foi Cadastrada com sucesso!");
+        }else{
+           JOptionPane.showMessageDialog(
+                    null,"Não foi possivel cadastrar Reserva!"); 
+        }// fim do else
     }//GEN-LAST:event_butaoReservarActionPerformed
 
     private void campMoradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campMoradorActionPerformed
@@ -412,6 +442,9 @@ public class TelaReservas extends javax.swing.JInternalFrame {
         idUnidade = modeloTabela.getValueAt(linhaSelecionada, 0) != null 
                     ? Integer.parseInt(modeloTabela.getValueAt(linhaSelecionada, 0).toString()) 
                     : 0;  // Valor padrão para idUnidade (caso seja nulo)
+        idChave = modeloTabela.getValueAt(linhaSelecionada, 0) != null 
+                    ? Integer.parseInt(modeloTabela.getValueAt(linhaSelecionada, 1).toString()) 
+                    : 1;  // Valor padrão para idUnidade (caso seja nulo)
         
         
     } // fim do if
