@@ -9,6 +9,7 @@ controller\ReservaController.class
 model\Unidade.class
 view\TelaHome$5.class
 view\TelaReservas$4.class
+view\TelaHome$16.class
 view\TelaHome$8.class
 view\TelaHome$1.class
 view\CadFuncionario$5.class

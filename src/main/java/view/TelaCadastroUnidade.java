@@ -94,10 +94,12 @@ public class TelaCadastroUnidade extends javax.swing.JInternalFrame {
     unidade.getId_unidade() != 0 ? unidade.getId_unidade() : "N/A", // Ajuste para int
     unidade.getId_chave() != 0 ? unidade.getId_chave() : "N/A", // Ajuste para int
     unidade.getNome() != null ? unidade.getNome() : "N/A", // Verifique se é null
-    unidade.getTipo() != null ? unidade.getTipo() : "N/A", // Verifique se é null
     unidade.getNumero() != null ? unidade.getNumero() : "N/A", // Verifique se é null
     unidade.getBloco() != null ? unidade.getBloco() : "N/A", // Verifique se é null
+    unidade.getTipo() != null ? unidade.getTipo() : "N/A", // Verifique se é null
     unidade.getCapacidade() != null ? unidade.getCapacidade() : "N/A" // Verifique se é null
+                    
+                   
 };
 
    
