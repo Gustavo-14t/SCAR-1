@@ -77,18 +77,18 @@ public class TelaReservas extends javax.swing.JInternalFrame {
             //o método atual
              @Override
             public void insertUpdate(javax.swing.event.DocumentEvent e){
-                pesquisar();
+                pesquisarU();
             }// fim do insertUpdate
              @Override
             public void removeUpdate(javax.swing.event.DocumentEvent e){
-                pesquisar();
+                pesquisarU();
             }
              @Override
          public void changedUpdate(javax.swing.event.DocumentEvent e){
-                pesquisar();
+                pesquisarU();
          }
-        private void pesquisar (){
-            ListagemUsuarioN(campUnidade.getText());
+        private void pesquisarU (){
+            ListagemUnidadeNome(campUnidade.getText());
         }//fim do método pesquisar
         });//fim do método de captura
     }//fim do método PesquisarUsuario
@@ -155,10 +155,12 @@ public class TelaReservas extends javax.swing.JInternalFrame {
     unidade.getId_unidade() != 0 ? unidade.getId_unidade() : "N/A", // Ajuste para int
     unidade.getId_chave() != 0 ? unidade.getId_chave() : "N/A", // Ajuste para int
     unidade.getNome() != null ? unidade.getNome() : "N/A", // Verifique se é null
-    unidade.getTipo() != null ? unidade.getTipo() : "N/A", // Verifique se é null
     unidade.getNumero() != null ? unidade.getNumero() : "N/A", // Verifique se é null
     unidade.getBloco() != null ? unidade.getBloco() : "N/A", // Verifique se é null
+    unidade.getTipo() != null ? unidade.getTipo() : "N/A", // Verifique se é null
     unidade.getCapacidade() != null ? unidade.getCapacidade() : "N/A" // Verifique se é null
+                    
+                   
 };
 
    
@@ -233,13 +235,13 @@ public class TelaReservas extends javax.swing.JInternalFrame {
         for (Unidade unidade : listaunidade) {
             // Criando uma nova linha para a tabela
             Object[] linha = {
-                unidade.getId_unidade(),
+                 unidade.getId_unidade(),
                 unidade.getId_chave(),
-                unidade.getTipo(),
+                unidade.getNome(),
                 unidade.getNumero(),
-                unidade.getBloco(),
-                unidade.getCapacidade(),
-                 unidade.getNome()
+                 unidade.getBloco(),
+                unidade.getTipo(),
+                unidade.getCapacidade()
             };
             // Adicionando a linha ao modelo da tabela
             modeloTabela.addRow(linha);

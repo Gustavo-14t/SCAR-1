@@ -132,11 +132,12 @@ public class TelaCadastroUnidade extends javax.swing.JInternalFrame {
             Object[] linha = {
                 unidade.getId_unidade(),
                 unidade.getId_chave(),
-                unidade.getTipo(),
+                unidade.getNome(),
                 unidade.getNumero(),
-                unidade.getBloco(),
-                unidade.getCapacidade(),
-                 unidade.getNome()
+                 unidade.getBloco(),
+                unidade.getTipo(),
+                unidade.getCapacidade()
+                
             };
             // Adicionando a linha ao modelo da tabela
             modeloTabela.addRow(linha);
