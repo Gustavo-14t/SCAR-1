@@ -15,6 +15,10 @@ public class TelaAtividade extends javax.swing.JInternalFrame {
      */
     public TelaAtividade() {
         initComponents();
+        
+        bCadastrar.setVisible(false);
+        bExcluir.setVisible(false);
+        bConcluida.setVisible(false);
     }
 
     /**
@@ -45,10 +49,10 @@ public class TelaAtividade extends javax.swing.JInternalFrame {
         jPanel13 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTextArea6 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        bCadastrar = new javax.swing.JButton();
+        bAtvConc = new javax.swing.JButton();
+        bConcluida = new javax.swing.JButton();
+        bExcluir = new javax.swing.JButton();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -64,6 +68,11 @@ public class TelaAtividade extends javax.swing.JInternalFrame {
         jTextArea1.setForeground(new java.awt.Color(0, 0, 0));
         jTextArea1.setRows(5);
         jTextArea1.setText("Nome da Atividade: Reunião de \nPlanejamento\n\nDescrição da Atividade: Reunião \npara discutir as metas e\n estratégias do projeto, \nalinhar expectativas\n e definir prazos.\n\nData da Atividade: 15/02/2025\nStatus da Atividade: Pendente");
+        jTextArea1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextArea1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTextArea1);
 
         jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 170));
@@ -235,64 +244,73 @@ public class TelaAtividade extends javax.swing.JInternalFrame {
 
         jPanel1.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 200, 180, 170));
 
-        jButton1.setBackground(new java.awt.Color(255, 204, 0));
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Cadastrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bCadastrar.setBackground(new java.awt.Color(255, 204, 0));
+        bCadastrar.setForeground(new java.awt.Color(0, 0, 0));
+        bCadastrar.setText("Cadastrar");
+        bCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bCadastrarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 400, 130, 40));
+        jPanel1.add(bCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 400, 130, 40));
 
-        jButton2.setBackground(new java.awt.Color(255, 204, 0));
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setText("Atividades Concluídas");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 400, 200, 40));
+        bAtvConc.setBackground(new java.awt.Color(255, 204, 0));
+        bAtvConc.setForeground(new java.awt.Color(0, 0, 0));
+        bAtvConc.setText("Atividades Concluídas");
+        jPanel1.add(bAtvConc, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 400, 200, 40));
 
-        jButton3.setBackground(new java.awt.Color(255, 204, 0));
-        jButton3.setForeground(new java.awt.Color(0, 0, 0));
-        jButton3.setText("Concluída");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        bConcluida.setBackground(new java.awt.Color(255, 204, 0));
+        bConcluida.setForeground(new java.awt.Color(0, 0, 0));
+        bConcluida.setText("Concluída");
+        bConcluida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                bConcluidaActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 400, 130, 40));
+        jPanel1.add(bConcluida, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 400, 130, 40));
 
-        jButton4.setBackground(new java.awt.Color(255, 204, 0));
-        jButton4.setForeground(new java.awt.Color(0, 0, 0));
-        jButton4.setText("Excluir");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        bExcluir.setBackground(new java.awt.Color(255, 204, 0));
+        bExcluir.setForeground(new java.awt.Color(0, 0, 0));
+        bExcluir.setText("Excluir");
+        bExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                bExcluirActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 400, 130, 40));
+        jPanel1.add(bExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 400, 130, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 470));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void bCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadastrarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_bCadastrarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void bConcluidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConcluidaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_bConcluidaActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void bExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bExcluirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_bExcluirActionPerformed
+
+    private void jTextArea1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea1MouseClicked
+        // TODO add your handling code here:
+        bCadastrar.setVisible(true);
+        bExcluir.setVisible(true);
+        bConcluida.setVisible(true);
+        
+        
+    }//GEN-LAST:event_jTextArea1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton bAtvConc;
+    private javax.swing.JButton bCadastrar;
+    private javax.swing.JButton bConcluida;
+    private javax.swing.JButton bExcluir;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
