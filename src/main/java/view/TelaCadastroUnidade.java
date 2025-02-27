@@ -94,9 +94,9 @@ public class TelaCadastroUnidade extends javax.swing.JInternalFrame {
     unidade.getId_unidade() != 0 ? unidade.getId_unidade() : "N/A", // Ajuste para int
     unidade.getId_chave() != 0 ? unidade.getId_chave() : "N/A", // Ajuste para int
     unidade.getNome() != null ? unidade.getNome() : "N/A", // Verifique se é null
-    unidade.getTipo() != null ? unidade.getTipo() : "N/A", // Verifique se é null
     unidade.getNumero() != null ? unidade.getNumero() : "N/A", // Verifique se é null
     unidade.getBloco() != null ? unidade.getBloco() : "N/A", // Verifique se é null
+     unidade.getTipo() != null ? unidade.getTipo() : "N/A", // Verifique se é null
     unidade.getCapacidade() != null ? unidade.getCapacidade() : "N/A" // Verifique se é null
 };
 
@@ -132,11 +132,12 @@ public class TelaCadastroUnidade extends javax.swing.JInternalFrame {
             Object[] linha = {
                 unidade.getId_unidade(),
                 unidade.getId_chave(),
-                unidade.getTipo(),
+                unidade.getNome(),
                 unidade.getNumero(),
                 unidade.getBloco(),
-                unidade.getCapacidade(),
-                 unidade.getNome()
+                 unidade.getTipo(),
+                unidade.getCapacidade()
+                
             };
             // Adicionando a linha ao modelo da tabela
             modeloTabela.addRow(linha);
@@ -374,13 +375,14 @@ public class TelaCadastroUnidade extends javax.swing.JInternalFrame {
     UnidadeController unidadeController = new UnidadeController();
     Unidade unidade = new Unidade(
         idChave, 
-        campoNome.getText(),
+        campoTipo.getSelectedItem().toString(),
         campoNumero.getText(),
         campoBloco.getText(),
-        campoTipo.getSelectedItem().toString(),
         campoCapacidade.getText(),
-        campoDimensoes.getText(),
-        campoDescricao.getText()
+        campoDescricao.getText(),
+        campoNome.getText(),
+        campoDimensoes.getText()
+        
     );
     unidadeController.cadastroUnidade(unidade);
     JOptionPane.showMessageDialog(null, "Unidade Cadastrada com Sucesso!");
