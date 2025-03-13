@@ -74,7 +74,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
         butaoOcultar.setBackground(new java.awt.Color(204, 204, 204));
         butaoOcultar.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Documents\\SCAR-main\\src\\main\\java\\img\\visualizar.png")); // NOI18N
-        butaoOcultar.setBorder(null);
+        butaoOcultar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         butaoOcultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 butaoOcultarActionPerformed(evt);

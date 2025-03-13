@@ -136,10 +136,10 @@ public class TelaCadastroUnidade extends javax.swing.JInternalFrame {
                 unidade.getId_chave(),
                 unidade.getNome(),
                 unidade.getNumero(),
-                 unidade.getBloco(),
+                unidade.getBloco(),
                 unidade.getTipo(),
-                unidade.getCapacidade()
-                
+               unidade.getCapacidade()
+             
             };
             // Adicionando a linha ao modelo da tabela
             modeloTabela.addRow(linha);
@@ -362,6 +362,11 @@ public class TelaCadastroUnidade extends javax.swing.JInternalFrame {
 
     private void butaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butaoCadastrarActionPerformed
         // TODO add your handling code here:
+        if(campoNome.getText().isEmpty() || campoNumero.getText().isEmpty() || campoBloco.getText().isEmpty() ||
+    campoCapacidade.getText().isEmpty() || campoDimensoes.getText().isEmpty() || 
+                campoDescricao.getText().isEmpty() || campoNomeChave.getText().isEmpty() ){
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos");
+        }else{
       
        try {
     ChaveController controller = new ChaveController();
@@ -377,13 +382,14 @@ public class TelaCadastroUnidade extends javax.swing.JInternalFrame {
     UnidadeController unidadeController = new UnidadeController();
     Unidade unidade = new Unidade(
         idChave, 
-        campoNome.getText(),
+        campoTipo.getSelectedItem().toString(),
         campoNumero.getText(),
         campoBloco.getText(),
-        campoTipo.getSelectedItem().toString(),
         campoCapacidade.getText(),
-        campoDimensoes.getText(),
-        campoDescricao.getText()
+        campoDescricao.getText(),    
+        campoNome.getText(),
+        campoDimensoes.getText()
+       
     );
     unidadeController.cadastroUnidade(unidade);
     JOptionPane.showMessageDialog(null, "Unidade Cadastrada com Sucesso!");
@@ -395,7 +401,7 @@ public class TelaCadastroUnidade extends javax.swing.JInternalFrame {
     JOptionPane.showMessageDialog(null, "Erro ao cadastrar: " + e.getMessage());
 }
 
-        
+        }
     }//GEN-LAST:event_butaoCadastrarActionPerformed
 
     private void campoTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoTipoActionPerformed

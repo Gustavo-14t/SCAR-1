@@ -21,9 +21,10 @@ import model.conexaoBD;
 public class UnidadeController {
     public boolean cadastroUnidade(Unidade unidade) {
     String queryChave = "INSERT INTO Chave (nome) VALUES (?);";
-    String queryUnidade = "INSERT INTO Unidade (id_chave, tipo, numero, bloco, capacidade, descricao, nome, dimensoes) "
+    String queryUnidade = "INSERT INTO Unidade (id_chave, nome, tipo, numero, bloco, capacidade, descricao, dimensoes) "
             + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-
+    
+    
     try (Connection conection = conexaoBD.getConection()) {
 
         // Iniciando a transação
@@ -46,12 +47,12 @@ public class UnidadeController {
                         // Inserindo na tabela Unidade com o id da Chave
                         try (PreparedStatement preparedStatementUnidade = conection.prepareStatement(queryUnidade)) {
                             preparedStatementUnidade.setLong(1, idChave);
-                            preparedStatementUnidade.setString(2, unidade.getTipo());
-                            preparedStatementUnidade.setString(3, unidade.getNumero());
-                            preparedStatementUnidade.setString(4, unidade.getBloco());
-                            preparedStatementUnidade.setString(5, unidade.getCapacidade());
-                            preparedStatementUnidade.setString(6, unidade.getDescricao());
-                            preparedStatementUnidade.setString(7, unidade.getNome());
+                            preparedStatementUnidade.setString(2, unidade.getNome());
+                            preparedStatementUnidade.setString(3, unidade.getTipo());
+                            preparedStatementUnidade.setString(4, unidade.getNumero());
+                            preparedStatementUnidade.setString(5, unidade.getBloco());
+                            preparedStatementUnidade.setString(6, unidade.getCapacidade());                     
+                            preparedStatementUnidade.setString(7, unidade.getDescricao());
                             preparedStatementUnidade.setString(8, unidade.getDomensoes());
 
                             int rowsAffectedUnidade = preparedStatementUnidade.executeUpdate();
@@ -138,6 +139,8 @@ public class UnidadeController {
             return false;
         }//fim do 
      }//fim do public boolean
+     
+     
      public List<Unidade> listarUnidadeNome(String nome){
      
      String query = "SELECT id_unidade,id_chave,nome,tipo,numero,bloco,capacidade FROM Unidade where nome LIKE ?;";

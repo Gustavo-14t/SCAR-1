@@ -556,6 +556,9 @@ boolean oculto = false;
 
     private void bCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadastrarActionPerformed
         // TODO add your handling code here:
+        if(campoNome.getText().isEmpty() || campoCpf.getText().isEmpty() || campoTelefone.getText().isEmpty() || campoEndereco.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos");
+        }else{
         
         try{
        FuncionarioController controller = new FuncionarioController();
@@ -581,6 +584,7 @@ boolean oculto = false;
         }catch(Exception e){
              JOptionPane.showMessageDialog
             (null,"Usuario Não Cadastrado! "+e);
+        }
         }
     }//GEN-LAST:event_bCadastrarActionPerformed
 
