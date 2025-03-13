@@ -396,6 +396,9 @@ public class CadMorador extends javax.swing.JInternalFrame {
 
     private void butaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butaoCadastrarActionPerformed
         // TODO add your handling code here:
+        if(campoNome.getText().isEmpty() || campoCpf.getText().isEmpty() || campoEmail.getText().isEmpty() || campNascimento.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos");
+        }else{
         //criando o objeto Controller     
        try{
        MoradorController controller = new MoradorController();
@@ -420,6 +423,7 @@ public class CadMorador extends javax.swing.JInternalFrame {
         }catch(Exception e){
              JOptionPane.showMessageDialog
             (null,"Usuario Não Cadastrado! "+e);
+        }
         }
     }//GEN-LAST:event_butaoCadastrarActionPerformed
 
