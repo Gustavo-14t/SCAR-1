@@ -8,6 +8,7 @@ view\CadMorador$7.class
 controller\ReservaController.class
 model\Unidade.class
 view\TelaHome$5.class
+view\telaReservaFeita$1.class
 view\TelaReservas$4.class
 view\TelaHome$16.class
 view\TelaHome$8.class
@@ -69,6 +70,7 @@ view\TelaLogin.class
 controller\AtividadeController.class
 view\TelaReservas$3.class
 view\TelaHome$6.class
+view\telaReservaFeita.class
 view\TelaHome$9.class
 view\CadFuncionario$4.class
 view\TelaAtividade$4.class

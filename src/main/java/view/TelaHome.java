@@ -49,9 +49,19 @@ public class TelaHome extends javax.swing.JFrame {
             // Adicione mais configurações para o porteiro
  
     }//fim do else
+    }  
         
+    public void fecharTelas(){
+        if(optionCadastro.isVisible()|| optionRelatorio.isVisible() || optionReserva.isVisible() ){
+            optionCadastro.setVisible(false);
+            optionRelatorio.setVisible(false);
+            optionReserva.setVisible(false);
+            
+           
+        }
+}
         
-     }
+     
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -311,11 +321,7 @@ public class TelaHome extends javax.swing.JFrame {
         areaTrabalho.add(telaDev);
        telaDev.setVisible(true);
        
-       if(optionCadastro.isVisible()|| optionRelatorio.isVisible() || optionReserva.isVisible() ){
-            optionCadastro.setVisible(false);
-            optionRelatorio.setVisible(false);
-            optionReserva.setVisible(false);
-        }
+       fecharTelas();
     }//GEN-LAST:event_bEntSaidaActionPerformed
 
     private void bCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadastroActionPerformed
@@ -355,11 +361,7 @@ public class TelaHome extends javax.swing.JFrame {
         areaTrabalho.add(telaDev);
        telaDev.setVisible(true);
        
-       if(optionCadastro.isVisible()|| optionRelatorio.isVisible() || optionReserva.isVisible() ){
-            optionCadastro.setVisible(false);
-            optionRelatorio.setVisible(false);
-            optionReserva.setVisible(false);
-        }
+      fecharTelas();
         
     
     }//GEN-LAST:event_bFinanceiroActionPerformed
@@ -370,11 +372,7 @@ public class TelaHome extends javax.swing.JFrame {
         areaTrabalho.add(telaDev);
        telaDev.setVisible(true);
        
-       if(optionCadastro.isVisible()|| optionRelatorio.isVisible() || optionReserva.isVisible() ){
-            optionCadastro.setVisible(false);
-            optionRelatorio.setVisible(false);
-            optionReserva.setVisible(false);
-        }
+       fecharTelas();
     }//GEN-LAST:event_bSolicServisActionPerformed
 
     private void bCadMorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadMorActionPerformed
@@ -396,11 +394,7 @@ public class TelaHome extends javax.swing.JFrame {
         areaTrabalho.add(telaDev);
        telaDev.setVisible(true);
        
-       if(optionCadastro.isVisible()|| optionRelatorio.isVisible() || optionReserva.isVisible() ){
-            optionCadastro.setVisible(false);
-            optionRelatorio.setVisible(false);
-            optionReserva.setVisible(false);
-        }
+      fecharTelas();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -408,6 +402,8 @@ public class TelaHome extends javax.swing.JFrame {
         TelaEmDev telaDev = new TelaEmDev();
         areaTrabalho.add(telaDev);
        telaDev.setVisible(true);
+       
+       fecharTelas();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -416,11 +412,7 @@ public class TelaHome extends javax.swing.JFrame {
         areaTrabalho.add(telaDev);
        telaDev.setVisible(true);
        
-       if(optionCadastro.isVisible()|| optionRelatorio.isVisible() || optionReserva.isVisible() ){
-            optionCadastro.setVisible(false);
-            optionRelatorio.setVisible(false);
-            optionReserva.setVisible(false);
-        }
+      fecharTelas();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -429,11 +421,7 @@ public class TelaHome extends javax.swing.JFrame {
         areaTrabalho.add(reserva);
        reserva.setVisible(true);
        
-       if(optionCadastro.isVisible()|| optionRelatorio.isVisible() || optionReserva.isVisible()){
-            optionCadastro.setVisible(false);
-            optionRelatorio.setVisible(false);
-            optionReserva.setVisible(false);
-        }
+       fecharTelas();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void bCadFunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadFunActionPerformed
@@ -442,11 +430,7 @@ public class TelaHome extends javax.swing.JFrame {
         areaTrabalho.add(func);
        func.setVisible(true);
        
-       if(optionCadastro.isVisible()|| optionRelatorio.isVisible() || optionReserva.isVisible()){
-            optionCadastro.setVisible(false);
-            optionRelatorio.setVisible(false);
-            optionReserva.setVisible(false);
-        }
+       fecharTelas();
     }//GEN-LAST:event_bCadFunActionPerformed
 
     private void bCadUniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadUniActionPerformed
@@ -455,11 +439,7 @@ public class TelaHome extends javax.swing.JFrame {
         areaTrabalho.add(unidade);
        unidade.setVisible(true);
        
-       if(optionCadastro.isVisible()|| optionRelatorio.isVisible() || optionReserva.isVisible()){
-            optionCadastro.setVisible(false);
-            optionRelatorio.setVisible(false);
-            optionReserva.setVisible(false);
-        }
+       fecharTelas();
     }//GEN-LAST:event_bCadUniActionPerformed
 
     private void butaoHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butaoHomeActionPerformed
@@ -468,18 +448,17 @@ public class TelaHome extends javax.swing.JFrame {
          areaTrabalho.add(tela);
        tela.setVisible(true);
        
-       if(optionCadastro.isVisible()|| optionRelatorio.isVisible() || optionReserva.isVisible()){
-            optionCadastro.setVisible(false);
-            optionRelatorio.setVisible(false);
-            optionReserva.setVisible(false);
-        }
+      fecharTelas();
     }//GEN-LAST:event_butaoHomeActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        TelaEmDev telaDev = new TelaEmDev();
-        areaTrabalho.add(telaDev);
-       telaDev.setVisible(true);
+        telaReservaFeita reserF = new telaReservaFeita();
+         areaTrabalho.add(reserF);
+       reserF.setVisible(true);
+       
+       
+      fecharTelas();                             
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
