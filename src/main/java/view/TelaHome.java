@@ -399,9 +399,9 @@ public class TelaHome extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        TelaEmDev telaDev = new TelaEmDev();
-        areaTrabalho.add(telaDev);
-       telaDev.setVisible(true);
+       telaRelatorioReserva relareserv = new telaRelatorioReserva();
+        areaTrabalho.add(relareserv);
+       relareserv.setVisible(true);
        
        fecharTelas();
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -464,15 +464,13 @@ public class TelaHome extends javax.swing.JFrame {
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
         int resposta = JOptionPane.showConfirmDialog(null, 
-                                                     "Deseja sair do sistema ?", 
-                                                     "Confirmação", 
-                                                     JOptionPane.YES_NO_OPTION);
+      "Deseja sair do sistema ?", 
+       "Confirmação", 
+       JOptionPane.YES_NO_OPTION);
 
         // Verifica a resposta do usuário
         if (resposta == JOptionPane.YES_OPTION) {
-        
-    
-        
+
         TelaLogin login = new TelaLogin ();
         login.setVisible(true);
         

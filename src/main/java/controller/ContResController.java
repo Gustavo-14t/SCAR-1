@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.ControleReserva;
+import model.RelatorioReserva;
 import model.conexaoBD;
 
 /**
@@ -100,4 +101,38 @@ public class ContResController {
             return false;
         }//fim do 
      }//fim do public boolean
+    
+     public List <RelatorioReserva> listarTodasAsVendas(){
+        String query = " SELECT c.nome as Cliente ,p.nome as Produto ,u.nome as Vendedor,v.quantidade as Quantidade ,v.valor as Preco,v.datavenda as Data_da_venda "
+                + " FROM Vendas v INNER JOIN clientes c ON v.idcliente =c.id " +
+                    " INNER JOIN produtos p ON v.idproduto = p.id " +
+                     "  INNER JOIN Usuario u ON v.idvendedor = u.id_cliente;";
+        
+                     List<RelatorioReserva> lista = new ArrayList<>();
+                     
+        try(Connection conection = conexaoBD.getConection();
+        PreparedStatement preparedStatement =conection.prepareStatement(query);
+         ResultSet resultset = preparedStatement.executeQuery() ){
+            
+            while(resultset.next()){
+                RelatorioReserva reserva = new RelatorioReserva();
+                
+                //vendas.setNomeCliente(resultset.getString("Cliente"));
+                //vendas.setNomeProduto(resultset.getString("Produto"));
+                //vendas.setNomeVendedor(resultset.getString("Vendedor"));
+                //vendas.setQuantidade(resultset.getInt("Quantidade"));
+                //vendas.setPreco(resultset.getFloat("Preco"));
+                //vendas.setDataVenda(resultset.getString("Data_da_venda"));
+                
+                lista.add(reserva);
+
+            }//fim do while
+ 
+            return lista;
+
+        }catch(SQLException e){
+            System.err.print("Erro ao listar vendas "+ e);
+            return null;
+        }// final do try catch
+}
 }

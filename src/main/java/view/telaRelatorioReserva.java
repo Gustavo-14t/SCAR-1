@@ -8,12 +8,12 @@ package view;
  *
  * @author devmat
  */
-public class RelatorioReserva extends javax.swing.JInternalFrame {
+public class telaRelatorioReserva extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form RelatorioReserva
      */
-    public RelatorioReserva() {
+    public telaRelatorioReserva() {
         initComponents();
     }
 

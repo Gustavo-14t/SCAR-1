@@ -45,6 +45,7 @@ view\TelaAtividade$3.class
 view\TelaReservas$2.class
 view\CadFuncionario$3.class
 model\Funcionario.class
+view\tRelaReserv.class
 view\TelaCadastroUnidade$3.class
 controller\UnidadeController.class
 view\TelaLogin$3.class
