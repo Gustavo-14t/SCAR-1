@@ -4,6 +4,12 @@
  */
 package view;
 
+import controller.ReservaController;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.Reserva;
+
 /**
  *
  * @author devmat
@@ -17,6 +23,39 @@ public class telaReservaFeita extends javax.swing.JInternalFrame {
         initComponents();
     }
 
+     public void ListagemVendas(){
+        //cria um objeto de vendasController
+        ReservaController controller = new  ReservaController();
+        //capturando a lista de relatório de vendas
+        List<Reserva> lista = controller.listarReservas();
+        
+        //modelo padrão de tabela
+       DefaultTableModel modeloTabela = (DefaultTableModel)tabelaReserva.getModel();
+        
+       //Limpando a tabela antes de adicionar nobvos dados
+       modeloTabela.setRowCount(0);
+       
+       //verificar se a lista esta vazia
+       if(lista !=null && !lista.isEmpty()){
+           for (Reserva reserva : lista){
+               Object[] linha = {
+                   reserva.getId_morador(),
+                   reserva.getId_unidade(),
+                   reserva.getId_funcionario(),
+                   reserva.getData_reserva(),
+                   reserva.getStatu(),
+                   
+                       
+               };//fim do objeto linha
+               modeloTabela.addRow(linha);
+               
+           }//fim do for
+       }else{
+           JOptionPane.showMessageDialog(null,"Não existem vendas!");
+       }//fim do else
+        
+    }//fim do método de ListagemVendas()
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,10 +69,10 @@ public class telaReservaFeita extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaReserva = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        bAprovar = new javax.swing.JButton();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -53,23 +92,23 @@ public class telaReservaFeita extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(255, 204, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaReserva.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Morador", "Unidade", "Funcionario", "Data Reserva", "Status"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabelaReserva);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 67, 659, 175));
 
@@ -84,8 +123,13 @@ public class telaReservaFeita extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 12, 287, 35));
 
-        jButton1.setText("jButton1");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 270, -1, -1));
+        bAprovar.setText("Aprovar");
+        bAprovar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAprovarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(bAprovar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 270, -1, -1));
 
         jTabbedPane1.addTab("tab1", jPanel1);
 
@@ -98,15 +142,20 @@ public class telaReservaFeita extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    private void bAprovarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAprovarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_bAprovarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton bAprovar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tabelaReserva;
     // End of variables declaration//GEN-END:variables
 }
