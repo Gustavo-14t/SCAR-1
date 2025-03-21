@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import model.RelatorioReserva;
 import model.Reserva;
 import model.conexaoBD;
 
@@ -103,4 +104,38 @@ public class ReservaController {
             return false;
         }//fim do 
      }//fim do public boolean
+     public List <Reserva> listarReservas(){
+        String query = " SELECT c.nome as Cliente ,p.nome as Produto ,u.nome as Vendedor,v.quantidade as Quantidade ,v.valor as Preco,v.datavenda as Data_da_venda "
+                + " FROM Vendas v INNER JOIN clientes c ON v.idcliente =c.id " +
+                    " INNER JOIN produtos p ON v.idproduto = p.id " +
+                     "  INNER JOIN Usuario u ON v.idvendedor = u.id_cliente;";
+        
+                     List<Reserva> lista = new ArrayList<>();
+                     
+        try(Connection conection = conexaoBD.getConection();
+        PreparedStatement preparedStatement =conection.prepareStatement(query);
+         ResultSet resultset = preparedStatement.executeQuery() ){
+            
+            while(resultset.next()){
+                Reserva reserva = new Reserva();
+                
+               reserva.setId_chave(resultset.getInt("id_chave"));
+                  reserva.setId_morador(resultset.getInt("id_morador"));
+                reserva.setId_unidade(resultset.getInt("id_unidade"));
+                reserva.setId_funcionario(resultset.getInt("id_funcionario"));
+                reserva.setData_reserva(resultset.getString("data_reserva"));
+                reserva.setStatu(resultset.getString("statu"));
+                
+                lista.add(reserva);
+
+            }//fim do while
+ 
+            return lista;
+
+        }catch(SQLException e){
+            System.err.print("Erro ao listar vendas "+ e);
+            return null;
+        }// final do try catch
+}
+
 }
