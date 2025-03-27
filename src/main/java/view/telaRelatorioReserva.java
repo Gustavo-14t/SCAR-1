@@ -4,6 +4,15 @@
  */
 package view;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.Desktop;
+import java.io.File;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author devmat
@@ -28,7 +37,7 @@ public class telaRelatorioReserva extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaRelatório = new javax.swing.JTable();
+        tabelaRelatorio = new javax.swing.JTable();
         butaoBaixarRelatorio = new javax.swing.JToggleButton();
         relatoriomensal = new javax.swing.JLabel();
 
@@ -37,36 +46,36 @@ public class telaRelatorioReserva extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(255, 204, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tabelaRelatório.setBackground(new java.awt.Color(255, 255, 255));
-        tabelaRelatório.setForeground(new java.awt.Color(0, 0, 0));
-        tabelaRelatório.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaRelatorio.setBackground(new java.awt.Color(255, 255, 255));
+        tabelaRelatorio.setForeground(new java.awt.Color(0, 0, 0));
+        tabelaRelatorio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Funcionário Entrega", "Entrega", "Func Devolução", "Devolução", "Nome do Morador", "Status"
+                "Funcionário Entrega", "Entrega", "Func Devolução", "Devolução", "Nome do Morador"
             }
         ));
-        jScrollPane1.setViewportView(tabelaRelatório);
+        jScrollPane1.setViewportView(tabelaRelatorio);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 690, 330));
 
@@ -92,6 +101,70 @@ public class telaRelatorioReserva extends javax.swing.JInternalFrame {
 
     private void butaoBaixarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butaoBaixarRelatorioActionPerformed
         // TODO add your handling code here:
+        String pdfPath = "RelatorioDeVendas.pdf";
+        
+        try{
+            
+            //criando documento pdf
+            Document documento = new Document();
+            PdfWriter.getInstance(documento, new java.io.FileOutputStream(pdfPath));
+            
+            //abrir pdf
+            documento.open();
+            
+            //Criando tabela no pdf
+            //getColumn captura a quantidade do colunas da tabelaVendas
+            int  colunas = tabelaRelatorio.getColumnCount() ;
+            //definindo a nossa tabela dentro do pdf
+            PdfPTable tabela = new PdfPTable(colunas);
+            //definindo a escala da tabela 100%, 80%, 50% 
+            tabela.setWidthPercentage(100);
+            
+            //adicionando o nome das colunas na tabela do pdf
+            for(int i=0 ; i< colunas; i++){
+                tabela.addCell(new Phrase(tabelaRelatorio.getColumnName(i)));
+            }//fim do laço de repetição FOR
+            
+            //adicionando os dados na tabela pdf 
+            DefaultTableModel modeloTabela = (DefaultTableModel) tabelaRelatorio.getModel();
+            //usnado laço de repetição para inserir os dados 
+            for(int l = 0; l < modeloTabela.getRowCount(); l ++){
+                for (int c = 0; c < modeloTabela.getColumnCount(); c++ ){
+                    //Adicionando os dados e jogando em um objeto 
+                    Object valorcelula = modeloTabela.getValueAt(l,c);
+                tabela.addCell(valorcelula != null ? valorcelula.toString():"");
+                
+            }//fim do 2° for     
+            }//fim do 1° for
+            
+            //adicionando a tabela dentro do pdf
+            documento.add(tabela);
+            
+            // fechando o documento 
+            documento.close();
+            
+            //mensagem de sucesso
+            JOptionPane.showMessageDialog(this,"PDF GERADO COM SUCESSO");
+            
+            //abrir o pdf automaticamente
+            File pdffile = new File(pdfPath);
+            //se pdf existir 
+            if(pdffile.exists()){
+                
+            if(Desktop.isDesktopSupported()){
+                //achou o aplicativo que abre o pdf então
+                //abre o arquivo dentro do aplicativo
+                Desktop.getDesktop().open(pdffile);
+            }
+            else{
+                JOptionPane.showMessageDialog(this,"Nenhum aplicativo suporta o PDF!");
+            }//fim do else
+            }//fim do if
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Não fgoi possível gerar PDF!" +e);
+        }//fim do trycatch
+                                         
     }//GEN-LAST:event_butaoBaixarRelatorioActionPerformed
 
 
@@ -100,6 +173,6 @@ public class telaRelatorioReserva extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel relatoriomensal;
-    private javax.swing.JTable tabelaRelatório;
+    private javax.swing.JTable tabelaRelatorio;
     // End of variables declaration//GEN-END:variables
 }
