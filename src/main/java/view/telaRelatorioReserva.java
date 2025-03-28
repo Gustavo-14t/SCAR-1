@@ -8,10 +8,13 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import controller.ContResController;
 import java.awt.Desktop;
 import java.io.File;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.RelatorioReserva;
 
 /**
  *
@@ -24,8 +27,10 @@ public class telaRelatorioReserva extends javax.swing.JInternalFrame {
      */
     public telaRelatorioReserva() {
         initComponents();
+        ListagemRelatorio();
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -99,6 +104,40 @@ public class telaRelatorioReserva extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void ListagemRelatorio(){
+        //cria um objeto de vendasController
+        ContResController controller = new  ContResController();
+        //capturando a lista de relatório de vendas
+        List<RelatorioReserva> lista = controller.listarRelatorios();
+        
+        //modelo padrão de tabela
+       DefaultTableModel modeloTabela = (DefaultTableModel)tabelaRelatorio.getModel();
+        
+       //Limpando a tabela antes de adicionar nobvos dados
+       modeloTabela.setRowCount(0);
+       
+       //verificar se a lista esta vazia
+       if(lista !=null && !lista.isEmpty()){
+           for (RelatorioReserva reserva : lista){
+               Object[] linha = {
+                   reserva.getFunc_entrega(),
+                   reserva.getData_entrega(),
+                   reserva.getFunc_devolucao(),
+                   reserva.getData_devolucao(),
+                   reserva.getMorador(),
+   
+               };//fim do objeto linha
+               modeloTabela.addRow(linha);
+               
+           }//fim do for
+       }else{
+           JOptionPane.showMessageDialog(null,"Não existem vendas!");
+       }//fim do else
+    
+    }
+    
+    
+    
     private void butaoBaixarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butaoBaixarRelatorioActionPerformed
         // TODO add your handling code here:
         String pdfPath = "RelatorioDeVendas.pdf";

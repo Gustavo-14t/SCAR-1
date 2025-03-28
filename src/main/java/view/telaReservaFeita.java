@@ -9,6 +9,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Reserva;
+import model.ReservaList;
 
 /**
  *
@@ -28,7 +29,7 @@ public class telaReservaFeita extends javax.swing.JInternalFrame {
         //cria um objeto de vendasController
         ReservaController controller = new  ReservaController();
         //capturando a lista de relatório de vendas
-        List<Reserva> lista = controller.listarRserva();
+        List<ReservaList> lista = controller.listarReservas();
         
         //modelo padrão de tabela
        DefaultTableModel modeloTabela = (DefaultTableModel)tabelaReserva.getModel();
@@ -38,12 +39,12 @@ public class telaReservaFeita extends javax.swing.JInternalFrame {
        
        //verificar se a lista esta vazia
        if(lista !=null && !lista.isEmpty()){
-           for (Reserva reserva : lista){
+           for (ReservaList reserva : lista){
                Object[] linha = {
-                   reserva.getId_chave(),
-                   reserva.getId_morador(),
-                   reserva.getId_unidade(),
-                   reserva.getId_funcionario(),
+                   reserva.getMorador(),
+                   reserva.getChave(),
+                   reserva.getUnidade(),
+                   reserva.getFuncionario(),
                    reserva.getData_reserva(),
                    reserva.getStatu(),
                    
