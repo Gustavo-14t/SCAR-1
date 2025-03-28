@@ -21,13 +21,14 @@ public class telaReservaFeita extends javax.swing.JInternalFrame {
      */
     public telaReservaFeita() {
         initComponents();
+        ListagemReservas();
     }
 
-     public void ListagemVendas(){
+     public void ListagemReservas(){
         //cria um objeto de vendasController
         ReservaController controller = new  ReservaController();
         //capturando a lista de relatório de vendas
-        List<Reserva> lista = controller.listarReservas();
+        List<Reserva> lista = controller.listarRserva();
         
         //modelo padrão de tabela
        DefaultTableModel modeloTabela = (DefaultTableModel)tabelaReserva.getModel();
@@ -39,6 +40,7 @@ public class telaReservaFeita extends javax.swing.JInternalFrame {
        if(lista !=null && !lista.isEmpty()){
            for (Reserva reserva : lista){
                Object[] linha = {
+                   reserva.getId_chave(),
                    reserva.getId_morador(),
                    reserva.getId_unidade(),
                    reserva.getId_funcionario(),
@@ -94,18 +96,18 @@ public class telaReservaFeita extends javax.swing.JInternalFrame {
 
         tabelaReserva.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Morador", "Unidade", "Funcionario", "Data Reserva", "Status"
+                "Morador", "Chave", "Unidade", "Funcionario", "Data Reserva", "Status"
             }
         ));
         jScrollPane1.setViewportView(tabelaReserva);

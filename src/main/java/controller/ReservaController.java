@@ -105,10 +105,12 @@ public class ReservaController {
         }//fim do 
      }//fim do public boolean
      public List <Reserva> listarReservas(){
-        String query = " SELECT c.nome as Cliente ,p.nome as Produto ,u.nome as Vendedor,v.quantidade as Quantidade ,v.valor as Preco,v.datavenda as Data_da_venda "
-                + " FROM Vendas v INNER JOIN clientes c ON v.idcliente =c.id " +
-                    " INNER JOIN produtos p ON v.idproduto = p.id " +
-                     "  INNER JOIN Usuario u ON v.idvendedor = u.id_cliente;";
+        String query = " SELECT m.nome as Morador ,u.nome as Unidade ,"
+                + "f.nome as Funcionario,c.nome as Chave ,v.data_reserva as Data_reserva,v.statu as Sttatus \n" +
+"FROM Reserva v INNER JOIN Morador m  ON v.id_morador =m.id_morador \n" +
+"INNER JOIN unidade u ON v.id_unidade = u.id_unidade \n" +
+"INNER JOIN Funcionario f ON v.id_funcionario = f.id_funcionario\n" +
+"INNER JOIN chave c ON v.id_chave = c.id_chave;";
         
                      List<Reserva> lista = new ArrayList<>();
                      
@@ -133,7 +135,7 @@ public class ReservaController {
             return lista;
 
         }catch(SQLException e){
-            System.err.print("Erro ao listar vendas "+ e);
+            System.err.print("Erro ao listar Reservas "+ e);
             return null;
         }// final do try catch
 }

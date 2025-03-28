@@ -389,7 +389,7 @@ public class TelaReservas extends javax.swing.JInternalFrame {
         LocalDate dataatual = LocalDate.now();
         reserva.setData_reserva(dataatual.toString());
         
-        reserva.setStatu("reservada");
+        reserva.setStatu("pendente");
    
         // passando os dados da venda para o banco de dados
         boolean cadastrou = controller.cadastroReserva(reserva);
