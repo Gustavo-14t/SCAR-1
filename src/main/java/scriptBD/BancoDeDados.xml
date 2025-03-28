@@ -7,7 +7,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
 
 
 <root>
-    -- 📌 Criando o banco de dados Condominio
+   -- 📌 Criando o banco de dados Condominio
 -- Cria o banco de dados "Condominio" se ele não existir
 CREATE DATABASE Condominio;
 -- Seleciona o banco de dados "Condominio" para ser utilizado
@@ -100,8 +100,8 @@ CREATE TABLE Atividade (
 CREATE TABLE ControleReserva (
     id_controleReserva INT PRIMARY KEY IDENTITY (1,3), -- A coluna 'id_controleReserva' é a chave primária com incremento de 3 em 3
     id_reserva INT FOREIGN KEY (id_reserva) REFERENCES Reserva(id_reserva) NOT NULL, -- Referência à reserva associada
-    data_entrega DATE NOT NULL, -- Data de entrega da chave
-    data_devolucao DATE, -- Data de devolução da chave
+    data_entrega VARCHAR(100) NOT NULL, -- Data de entrega da chave
+    data_devolucao VARCHAR(100), -- Data de devolução da chave
     funcionario_entrega VARCHAR(100) NOT NULL, -- Funcionário responsável pela entrega
     funcionario_devolucao VARCHAR(100) -- Funcionário responsável pela devolução
 );
@@ -160,10 +160,10 @@ VALUES
 
 -- Inserindo dados na tabela ControleReserva
 -- Insere dados de exemplo na tabela "ControleReserva", controlando a entrega e devolução das chaves
-INSERT INTO ControleReserva (data_entrega, data_devolucao, funcionario_entrega, funcionario_devolucao)
+INSERT INTO ControleReserva (id_reserva,funcionario_entrega,data_entrega, funcionario_devolucao,data_devolucao )
 VALUES
-('2025-02-10', NULL, 'Carlos Souza', NULL),
-('2025-02-12', '2025-02-13', 'Mariana Lima', 'Roberto Alves'),
+(1,'Carlos Souza','2025-02-10', NULL,NULL),
+(4, 'Mariana Lima','2025-02-12', 'Roberto Alves','2025-02-13');
 
 -- 📌 Consultando a tabela Unidade
 SELECT * FROM Unidade;
@@ -178,15 +178,31 @@ SELECT * FROM Morador;
 SELECT * FROM Chave;
 
 -- 📌 Consultando a tabela Reserva
-SELECT * FROM Reserva;
+SELECT * FROM Reserva;--fazer um inner join para aprovar ou não uma reserva
 
 -- 📌 Consultando a tabela Atividade
 SELECT * FROM Atividade;
 
 -- 📌 Consultando a tabela ControleReserva
-SELECT * FROM ControleReserva;
+SELECT * FROM ControleReserva;--fazer inner join 
 
 delete from chave where id_chave > 7 
+
+--inner Join para Reserva
+SELECT m.nome as Morador ,u.nome as Unidade ,f.nome as Funcionario,c.nome as Chave ,v.data_reserva as Data_reserva,v.statu as Sttatus 
+FROM Reserva v INNER JOIN Morador m  ON v.id_morador =m.id_morador 
+INNER JOIN unidade u ON v.id_unidade = u.id_unidade 
+INNER JOIN Funcionario f ON v.id_funcionario = f.id_funcionario
+INNER JOIN chave c ON v.id_chave = c.id_chave;
+
+--Inner Join para Controle reserva
+SELECT cr.id_controleReserva, m.nome AS nome_morador, cr.data_entrega, cr.data_devolucao , cr.funcionario_entrega, cr.funcionario_devolucao
+FROM ControleReserva cr
+INNER JOIN Reserva r ON cr.id_reserva = r.id_reserva
+INNER JOIN Morador m ON r.id_morador = m.id_morador;
+
+delete from ControleReserva where funcionario_entrega = 'Mariana Lima'
+
 
 </root>
 
