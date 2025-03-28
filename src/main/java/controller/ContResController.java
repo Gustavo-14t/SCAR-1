@@ -102,11 +102,12 @@ public class ContResController {
         }//fim do 
      }//fim do public boolean
     
-     public List <RelatorioReserva> listarTodasAsVendas(){
-        String query = " SELECT c.nome as Cliente ,p.nome as Produto ,u.nome as Vendedor,v.quantidade as Quantidade ,v.valor as Preco,v.datavenda as Data_da_venda "
-                + " FROM Vendas v INNER JOIN clientes c ON v.idcliente =c.id " +
-                    " INNER JOIN produtos p ON v.idproduto = p.id " +
-                     "  INNER JOIN Usuario u ON v.idvendedor = u.id_cliente;";
+     public List <RelatorioReserva> listarRelatorios(){
+        String query = " SELECT cr.id_controleReserva, m.nome AS nome_morador, cr.data_entrega, "
+                + "cr.data_devolucao , cr.funcionario_entrega, cr.funcionario_devolucao\n" +
+                "FROM ControleReserva cr\n" +
+                "INNER JOIN Reserva r ON cr.id_reserva = r.id_reserva\n" +
+                "INNER JOIN Morador m ON r.id_morador = m.id_morador;";
         
                      List<RelatorioReserva> lista = new ArrayList<>();
                      
@@ -117,12 +118,12 @@ public class ContResController {
             while(resultset.next()){
                 RelatorioReserva reserva = new RelatorioReserva();
                 
-                //vendas.setNomeCliente(resultset.getString("Cliente"));
-                //vendas.setNomeProduto(resultset.getString("Produto"));
-                //vendas.setNomeVendedor(resultset.getString("Vendedor"));
-                //vendas.setQuantidade(resultset.getInt("Quantidade"));
-                //vendas.setPreco(resultset.getFloat("Preco"));
-                //vendas.setDataVenda(resultset.getString("Data_da_venda"));
+                reserva.setFunc_entrega(resultset.getString("funcionario_entrega"));
+                reserva.setData_entrega(resultset.getString("data_entrega"));
+                reserva.setFunc_devolucao(resultset.getString("funcionario_devolucao"));
+                reserva.setData_devolucao(resultset.getString("data_devolucao"));
+                reserva.setMorador(resultset.getString("nome_morador"));
+                
                 
                 lista.add(reserva);
 
