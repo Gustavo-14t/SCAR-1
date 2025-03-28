@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import model.RelatorioReserva;
 import model.Reserva;
+import model.ReservaList;
 import model.conexaoBD;
 
 /**
@@ -104,7 +105,7 @@ public class ReservaController {
             return false;
         }//fim do 
      }//fim do public boolean
-     public List <Reserva> listarReservas(){
+     public List <ReservaList> listarReservas(){
         String query = " SELECT m.nome as Morador ,u.nome as Unidade ,"
                 + "f.nome as Funcionario,c.nome as Chave ,v.data_reserva as Data_reserva,v.statu as Sttatus \n" +
 "FROM Reserva v INNER JOIN Morador m  ON v.id_morador =m.id_morador \n" +
@@ -112,21 +113,21 @@ public class ReservaController {
 "INNER JOIN Funcionario f ON v.id_funcionario = f.id_funcionario\n" +
 "INNER JOIN chave c ON v.id_chave = c.id_chave;";
         
-                     List<Reserva> lista = new ArrayList<>();
+                     List<ReservaList> lista = new ArrayList<>();
                      
         try(Connection conection = conexaoBD.getConection();
         PreparedStatement preparedStatement =conection.prepareStatement(query);
          ResultSet resultset = preparedStatement.executeQuery() ){
             
             while(resultset.next()){
-                Reserva reserva = new Reserva();
+                ReservaList reserva = new ReservaList();
                 
-               reserva.setId_chave(resultset.getInt("id_chave"));
-                  reserva.setId_morador(resultset.getInt("id_morador"));
-                reserva.setId_unidade(resultset.getInt("id_unidade"));
-                reserva.setId_funcionario(resultset.getInt("id_funcionario"));
-                reserva.setData_reserva(resultset.getString("data_reserva"));
-                reserva.setStatu(resultset.getString("statu"));
+               reserva.setChave(resultset.getString("Chave"));
+               reserva.setMorador(resultset.getString("Morador"));
+               reserva.setUnidade(resultset.getString("Unidade"));
+               reserva.setFuncionario(resultset.getString("Funcionario"));
+               reserva.setData_reserva(resultset.getString("Data_reserva"));
+               reserva.setStatu(resultset.getString("Sttatus"));
                 
                 lista.add(reserva);
 
