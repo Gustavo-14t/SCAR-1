@@ -10,7 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import model.RelatorioReserva;
 import model.Reserva;
 import model.ReservaList;
 import model.conexaoBD;
@@ -53,6 +52,26 @@ public class ReservaController {
     
 }// fim do método cadastroTurno()
     
+   public boolean editarReserva(Reserva reserva){
+     String query ="update Reserva set statu = ? where id_morador = ?";
+     // conexão com banco de dados
+     try (Connection conection =conexaoBD.getConection();
+         PreparedStatement preparedStatement =conection.prepareStatement(query)) {
+         // mandar os dados para o metodo update
+         preparedStatement.setString(1, reserva.getStatu());
+         preparedStatement.setInt(2, reserva.getId_morador());
+         
+         
+         int cadastrou = preparedStatement.executeUpdate();
+         return cadastrou > 0;
+         
+     }catch(SQLException e){
+         System.err.print("Erro Editar Status da reserva "+e);
+         return false;
+     }// fim do try catch     
+  }// fim do metodo editar      
+ 
+    
     
      public List<Reserva> listarRserva(){
         List<Reserva> lista = new ArrayList<>();
@@ -86,32 +105,89 @@ public class ReservaController {
         }//fim do try
         
     }//fim do método listarClientes()
-     
-     
-     public boolean deletarUnidade(int idReserva){
-         String query = "DELETE FROM Reserva WHERE id_reserva = ?";
-        //Connection - conecta-se ao banco de dados
-        //PreparedStatement manda o comando sql para executar no BD
-        try (Connection connection = conexaoBD.getConection();//conexão com o banco de dados
-     PreparedStatement preparedStatement = connection.prepareStatement(query)){//mandar o comando select 
-            //mandando idUsuario para dentro do camando sql
-            preparedStatement.setInt(1,idReserva);
-            
-                        int resultado = preparedStatement.executeUpdate();
-            return resultado > 0;
-           
-        }catch(SQLException e){
-             System.err.print(e+ " Exclusão não realizada  ");
-            return false;
-        }//fim do 
-     }//fim do public boolean
-     public List <ReservaList> listarReservas(){
+
+     public List <ReservaList> listarReservasAprov(){
         String query = " SELECT m.nome as Morador ,u.nome as Unidade ,"
                 + "f.nome as Funcionario,c.nome as Chave ,v.data_reserva as Data_reserva,v.statu as Sttatus \n" +
 "FROM Reserva v INNER JOIN Morador m  ON v.id_morador =m.id_morador \n" +
 "INNER JOIN unidade u ON v.id_unidade = u.id_unidade \n" +
 "INNER JOIN Funcionario f ON v.id_funcionario = f.id_funcionario\n" +
-"INNER JOIN chave c ON v.id_chave = c.id_chave;";
+"INNER JOIN chave c ON v.id_chave = c.id_chave"
+                + " WHERE v.statu = 'Aprovado'";
+
+        
+                     List<ReservaList> lista = new ArrayList<>();
+                     
+        try(Connection conection = conexaoBD.getConection();
+        PreparedStatement preparedStatement =conection.prepareStatement(query);
+         ResultSet resultset = preparedStatement.executeQuery() ){
+            
+            while(resultset.next()){
+                ReservaList reserva = new ReservaList();
+                
+               reserva.setChave(resultset.getString("Chave"));
+               reserva.setMorador(resultset.getString("Morador"));
+               reserva.setUnidade(resultset.getString("Unidade"));
+               reserva.setFuncionario(resultset.getString("Funcionario"));
+               reserva.setData_reserva(resultset.getString("Data_reserva"));
+               reserva.setStatu(resultset.getString("Sttatus"));
+                
+                lista.add(reserva);
+
+            }//fim do while
+ 
+            return lista;
+
+        }catch(SQLException e){
+            System.err.print("Erro ao listar Reservas "+ e);
+            return null;
+        }// final do try catch
+}
+     
+     public List <ReservaList> listarReservasPendente(){
+        String query = " SELECT m.nome as Morador ,u.nome as Unidade ,"
+                + "f.nome as Funcionario,c.nome as Chave ,v.data_reserva as Data_reserva,v.statu as Sttatus \n" +
+"FROM Reserva v INNER JOIN Morador m  ON v.id_morador =m.id_morador \n" +
+"INNER JOIN unidade u ON v.id_unidade = u.id_unidade \n" +
+"INNER JOIN Funcionario f ON v.id_funcionario = f.id_funcionario\n" +
+"INNER JOIN chave c ON v.id_chave = c.id_chave"
+                + " WHERE v.statu = 'pendente'";
+        
+                     List<ReservaList> lista = new ArrayList<>();
+                     
+        try(Connection conection = conexaoBD.getConection();
+        PreparedStatement preparedStatement =conection.prepareStatement(query);
+         ResultSet resultset = preparedStatement.executeQuery() ){
+            
+            while(resultset.next()){
+                ReservaList reserva = new ReservaList();
+                
+               reserva.setChave(resultset.getString("Chave"));
+               reserva.setMorador(resultset.getString("Morador"));
+               reserva.setUnidade(resultset.getString("Unidade"));
+               reserva.setFuncionario(resultset.getString("Funcionario"));
+               reserva.setData_reserva(resultset.getString("Data_reserva"));
+               reserva.setStatu(resultset.getString("Sttatus"));
+                
+                lista.add(reserva);
+
+            }//fim do while
+ 
+            return lista;
+
+        }catch(SQLException e){
+            System.err.print("Erro ao listar Reservas "+ e);
+            return null;
+        }// final do try catch
+}
+     public List <ReservaList> listarReservasNeg(){
+        String query = "SELECT m.nome as Morador ,u.nome as Unidade ,"
+                + "f.nome as Funcionario,c.nome as Chave ,v.data_reserva as Data_reserva,v.statu as Sttatus \n" +
+"FROM Reserva v INNER JOIN Morador m  ON v.id_morador =m.id_morador \n" +
+"INNER JOIN unidade u ON v.id_unidade = u.id_unidade \n" +
+"INNER JOIN Funcionario f ON v.id_funcionario = f.id_funcionario\n" +
+"INNER JOIN chave c ON v.id_chave = c.id_chave"
+                + " WHERE v.statu = 'Negado'";
         
                      List<ReservaList> lista = new ArrayList<>();
                      

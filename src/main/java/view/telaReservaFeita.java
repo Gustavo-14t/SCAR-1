@@ -5,9 +5,11 @@
 package view;
 
 import controller.ReservaController;
+import java.time.LocalDate;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.Funcionario;
 import model.Reserva;
 import model.ReservaList;
 
@@ -17,22 +19,33 @@ import model.ReservaList;
  */
 public class telaReservaFeita extends javax.swing.JInternalFrame {
 
+    Funcionario funcionario;
+    
+    int idUnidade;
+    int idMorador;
+    int idChave;
+    
+    
     /**
      * Creates new form telaReservaFeita
      */
-    public telaReservaFeita() {
+    public telaReservaFeita(Funcionario funcao) {
         initComponents();
-        ListagemReservas();
+        ListagemReservaAprov();
+        ListagemReservaPende();
+        ListagemReservaNegada();
+        
+      funcionario = funcao;
     }
 
-     public void ListagemReservas(){
+     public void ListagemReservaAprov(){
         //cria um objeto de vendasController
         ReservaController controller = new  ReservaController();
         //capturando a lista de relatório de vendas
-        List<ReservaList> lista = controller.listarReservas();
+        List<ReservaList> lista = controller.listarReservasAprov();
         
         //modelo padrão de tabela
-       DefaultTableModel modeloTabela = (DefaultTableModel)tabelaReserva.getModel();
+       DefaultTableModel modeloTabela = (DefaultTableModel)tabelaReservaA.getModel();
         
        //Limpando a tabela antes de adicionar nobvos dados
        modeloTabela.setRowCount(0);
@@ -54,11 +67,77 @@ public class telaReservaFeita extends javax.swing.JInternalFrame {
                
            }//fim do for
        }else{
-           JOptionPane.showMessageDialog(null,"Não existem vendas!");
+           JOptionPane.showMessageDialog(null,"Não existem Reservas Aprovadas!");
        }//fim do else
         
     }//fim do método de ListagemVendas()
     
+      public void ListagemReservaNegada(){
+        //cria um objeto de vendasController
+        ReservaController controller = new  ReservaController();
+        //capturando a lista de relatório de vendas
+        List<ReservaList> lista = controller.listarReservasNeg();
+        
+        //modelo padrão de tabela
+       DefaultTableModel modeloTabela = (DefaultTableModel)tabelaReservaN.getModel();
+        
+       //Limpando a tabela antes de adicionar nobvos dados
+       modeloTabela.setRowCount(0);
+       
+       //verificar se a lista esta vazia
+       if(lista !=null && !lista.isEmpty()){
+           for (ReservaList reserva : lista){
+               Object[] linha = {
+                   reserva.getMorador(),
+                   reserva.getChave(),
+                   reserva.getUnidade(),
+                   reserva.getFuncionario(),
+                   reserva.getData_reserva(),
+                   reserva.getStatu(),
+                   
+                       
+               };//fim do objeto linha
+               modeloTabela.addRow(linha);
+               
+           }//fim do for
+       }else{
+           JOptionPane.showMessageDialog(null,"Não existem Reservas Negadas!");
+       }//fim do else
+        
+    }//fim do método de ListagemVendas()
+       public void ListagemReservaPende(){
+        //cria um objeto de vendasController
+        ReservaController controller = new  ReservaController();
+        //capturando a lista de relatório de vendas
+        List<ReservaList> lista = controller.listarReservasPendente();
+        
+        //modelo padrão de tabela
+       DefaultTableModel modeloTabela = (DefaultTableModel)tabelaReservaP.getModel();
+        
+       //Limpando a tabela antes de adicionar nobvos dados
+       modeloTabela.setRowCount(0);
+       
+       //verificar se a lista esta vazia
+       if(lista !=null && !lista.isEmpty()){
+           for (ReservaList reserva : lista){
+               Object[] linha = {
+                   reserva.getMorador(),
+                   reserva.getChave(),
+                   reserva.getUnidade(),
+                   reserva.getFuncionario(),
+                   reserva.getData_reserva(),
+                   reserva.getStatu(),
+                   
+                       
+               };//fim do objeto linha
+               modeloTabela.addRow(linha);
+               
+           }//fim do for
+       }else{
+           JOptionPane.showMessageDialog(null,"Não existem Reservas pendentes!");
+       }//fim do else
+        
+    }//fim do método de ListagemVendas()
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -70,32 +149,114 @@ public class telaReservaFeita extends javax.swing.JInternalFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tabelaReservaA = new javax.swing.JTable();
+        campoAprovado = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        buttomEntreg = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tabelaReservaN = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaReserva = new javax.swing.JTable();
+        tabelaReservaP = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        campoPendente = new javax.swing.JTextField();
         bAprovar = new javax.swing.JButton();
+        buttomNegar = new javax.swing.JButton();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 725, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 443, Short.MAX_VALUE)
-        );
+        jPanel2.setBackground(new java.awt.Color(255, 204, 0));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTabbedPane1.addTab("tab2", jPanel2);
+        tabelaReservaA.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Morador", "Chave", "Unidade", "Funcionario", "Data Reserva", "Status"
+            }
+        ));
+        tabelaReservaA.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaReservaAMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tabelaReservaA);
+
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 67, 690, 240));
+
+        campoAprovado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoAprovadoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(campoAprovado, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 287, 35));
+
+        jLabel2.setForeground(new java.awt.Color(51, 51, 55));
+        jLabel2.setText("Pesquisar");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 70, 23));
+
+        buttomEntreg.setText("Registrar Devolução");
+        buttomEntreg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttomEntregActionPerformed(evt);
+            }
+        });
+        jPanel2.add(buttomEntreg, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 340, 150, -1));
+
+        jTabbedPane1.addTab("Reservas Aprovadas", jPanel2);
+
+        jPanel3.setBackground(new java.awt.Color(255, 204, 0));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tabelaReservaN.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Morador", "Chave", "Unidade", "Funcionario", "Data Reserva", "Status"
+            }
+        ));
+        jScrollPane3.setViewportView(tabelaReservaN);
+
+        jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 37, 690, 290));
+
+        jTabbedPane1.addTab("Reservas Negadas", jPanel3);
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tabelaReserva.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaReservaP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -111,7 +272,12 @@ public class telaReservaFeita extends javax.swing.JInternalFrame {
                 "Morador", "Chave", "Unidade", "Funcionario", "Data Reserva", "Status"
             }
         ));
-        jScrollPane1.setViewportView(tabelaReserva);
+        tabelaReservaP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaReservaPMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabelaReservaP);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 67, 659, 175));
 
@@ -119,46 +285,152 @@ public class telaReservaFeita extends javax.swing.JInternalFrame {
         jLabel1.setText("Pesquisar");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 18, 60, 23));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        campoPendente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                campoPendenteActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 12, 287, 35));
+        jPanel1.add(campoPendente, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 12, 287, 35));
 
-        bAprovar.setText("Aprovar");
+        bAprovar.setText("Aprovar Reserva");
         bAprovar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bAprovarActionPerformed(evt);
             }
         });
-        jPanel1.add(bAprovar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 270, -1, -1));
+        jPanel1.add(bAprovar, new org.netbeans.lib.awtextra.AbsoluteConstraints(554, 270, 130, -1));
 
-        jTabbedPane1.addTab("tab1", jPanel1);
+        buttomNegar.setText("Negar Reserva");
+        buttomNegar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttomNegarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(buttomNegar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, -1, -1));
+
+        jTabbedPane1.addTab("Reservas Pendentes", jPanel1);
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 470));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void campoPendenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoPendenteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_campoPendenteActionPerformed
 
     private void bAprovarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAprovarActionPerformed
         // TODO add your handling code here:
+        // TODO add your handling code here:
+         //criando o objeto Controller
+         //passando os valores para o objeto vendas
+        ReservaController controller = new ReservaController();
         
+        Reserva reserva = new Reserva ();
+        //passando os valores para o objeto vendas
+         reserva.setStatu("Aprovado");
+        reserva.setId_morador(this.idMorador);
+        
+   
+        // passando os dados da venda para o banco de dados
+        boolean cadastrou = controller.editarReserva(reserva);
+        if(cadastrou){
+            JOptionPane.showMessageDialog(
+                    null,"Devoluçao registrada com Sucesso");
+        }else{
+           JOptionPane.showMessageDialog(
+                    null,"Não foi possivel Registrar devolução!"); 
+        }// fim do else
     }//GEN-LAST:event_bAprovarActionPerformed
+
+    private void campoAprovadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoAprovadoActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_campoAprovadoActionPerformed
+
+    
+    private void tabelaReservaAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaReservaAMouseClicked
+        // TODO add your handling code here:
+           int linhaSelecionada = tabelaReservaA.getSelectedRow();
+
+    // Verificando se alguma linha foi selecionada
+    if (linhaSelecionada >= 0) {
+        // Definir modelo default para a tabela
+        DefaultTableModel modeloTabela = (DefaultTableModel) tabelaReservaA.getModel();
+
+        // Verificando se os valores não são nulos antes de usar toString()
+        
+         idMorador= modeloTabela.getValueAt(linhaSelecionada, 0) != null 
+                    ? Integer.parseInt(modeloTabela.getValueAt(linhaSelecionada, 0).toString()) 
+                    : 0;  // Valor padrão para idUnidade (caso seja nulo)
+        
+    } // fim do if
+    }//GEN-LAST:event_tabelaReservaAMouseClicked
+
+    private void tabelaReservaPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaReservaPMouseClicked
+         // TODO add your handling code here:
+        int linhaSelecionada = tabelaReservaP.getSelectedRow();
+
+    // Verificando se alguma linha foi selecionada
+    if (linhaSelecionada >= 0) {
+        // Definir modelo default para a tabela
+        DefaultTableModel modeloTabela = (DefaultTableModel) tabelaReservaP.getModel();
+
+        // Verificando se os valores não são nulos antes de usar toString()
+        
+         idMorador= modeloTabela.getValueAt(linhaSelecionada, 0) != null 
+                    ? Integer.parseInt(modeloTabela.getValueAt(linhaSelecionada, 0).toString()) 
+                    : 0;  // Valor padrão para idUnidade (caso seja nulo)
+        
+    } // fim do if
+    }//GEN-LAST:event_tabelaReservaPMouseClicked
+
+    private void buttomNegarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttomNegarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttomNegarActionPerformed
+
+    private void buttomEntregActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttomEntregActionPerformed
+        // TODO add your handling code here:
+         //criando o objeto Controller
+        ReservaController controller = new ReservaController();
+        
+        Reserva reserva = new Reserva ();
+        //passando os valores para o objeto vendas
+       
+        LocalDate dataatual = LocalDate.now();
+        reserva.setData_reserva(dataatual.toString());
+        
+        reserva.setStatu("Devolvida");
+   
+        // passando os dados da venda para o banco de dados
+        boolean cadastrou = controller.cadastroReserva(reserva);
+        if(cadastrou){
+            JOptionPane.showMessageDialog(
+                    null,"Devoluçao registrada com Sucesso");
+        }else{
+           JOptionPane.showMessageDialog(
+                    null,"Não foi possivel Registrar devolução!"); 
+        }// fim do else
+    }//GEN-LAST:event_buttomEntregActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAprovar;
+    private javax.swing.JButton buttomEntreg;
+    private javax.swing.JButton buttomNegar;
+    private javax.swing.JTextField campoAprovado;
+    private javax.swing.JTextField campoPendente;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTable tabelaReserva;
+    private javax.swing.JTable tabelaReservaA;
+    private javax.swing.JTable tabelaReservaN;
+    private javax.swing.JTable tabelaReservaP;
     // End of variables declaration//GEN-END:variables
 }

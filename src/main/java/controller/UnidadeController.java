@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
 import model.Unidade;
 import model.conexaoBD;
 
@@ -178,8 +179,85 @@ public class UnidadeController {
          System.err.print("Erro:  " + erro);
             return null;
      }//fim do catch
+          
+ }// fim do método listarProdutorNome
+     
+  
+     
+     public List<Unidade> listarEventNome(String nome){
+     
+     String query = "SELECT id_unidade,id_chave,nome,tipo,numero,bloco,capacidade "
+             + "FROM Unidade where tipo = 'Espaço de evento' AND nome LIKE ?;";
+     
+      List<Unidade> lista = new ArrayList<>();
+        // criando o try catch
+        try(Connection conection = conexaoBD.getConection();
+        PreparedStatement preparedStatement = conection.prepareStatement(query)){
+            
+             preparedStatement.setString(1,'%'+nome+'%');
+                
+                ResultSet resultset = preparedStatement.executeQuery();
+            // passando o valor do select para um objeto produto
+            // enquanto resultset for diferente de null
+            while(resultset.next()){
+                // receba o valor e cadastre em produto
+                  Unidade unidade = new Unidade();
+                  unidade.setId_unidade(resultset.getInt("id_unidade"));
+                unidade.setId_chave(resultset.getInt("id_chave"));
+                unidade.setNome(resultset.getString("nome"));
+                 unidade.setTipo(resultset.getString("tipo"));
+                  unidade.setNumero(resultset.getString("numero"));
+                unidade.setBloco(resultset.getString("bloco"));
+                unidade.setCapacidade(resultset.getString("capacidade"));
+                
+                  
+                  
+                  
+                  // jogando o produto dentro da lista
+                  lista.add(unidade);
+             }// fim do while
+            return lista;
+         
+     }catch(SQLException erro){
+         System.err.print("Erro:  " + erro);
+            return null;
+     }//fim do catch
      
      
  }// fim do método listarProdutorNome
      
+     public List<Unidade> listarEspacoEvent(){
+        List<Unidade> lista = new ArrayList<>();
+        
+        String query = "SELECT id_unidade,id_chave,nome,tipo,numero,bloco,capacidade FROM Unidade "
+                + "WHERE tipo = 'Espaço de evento' ;";
+
+        try(Connection connection = conexaoBD.getConection();//conexão com o banco de dados
+     PreparedStatement preparedStatement = connection.prepareStatement(query)){
+            
+            ResultSet resultSet = preparedStatement.executeQuery();
+            
+            while(resultSet.next()){
+                Unidade unidade = new Unidade();
+                unidade.setId_unidade(resultSet.getInt("id_unidade"));
+                unidade.setId_chave(resultSet.getInt("id_chave"));
+                unidade.setNome(resultSet.getString("nome"));
+                 unidade.setTipo(resultSet.getString("tipo"));
+                  unidade.setNumero(resultSet.getString("numero"));
+                unidade.setBloco(resultSet.getString("bloco"));
+                unidade.setCapacidade(resultSet.getString("capacidade"));
+                
+
+                lista.add(unidade);
+
+            }//fim do while
+          
+             return lista;
+            
+        }catch(SQLException e){
+         System.err.println("Erro listar o Morador "+ e );
+         return null;
+        }//fim do try
+        
+    }//fim do método listarClientes()
 }
