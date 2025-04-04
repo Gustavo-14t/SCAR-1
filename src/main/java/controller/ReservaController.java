@@ -52,24 +52,31 @@ public class ReservaController {
     
 }// fim do método cadastroTurno()
     
-   public boolean editarReserva(Reserva reserva){
-     String query ="update Reserva set statu = ? where id_morador = ?";
-     // conexão com banco de dados
-     try (Connection conection =conexaoBD.getConection();
-         PreparedStatement preparedStatement =conection.prepareStatement(query)) {
-         // mandar os dados para o metodo update
-         preparedStatement.setString(1, reserva.getStatu());
-         preparedStatement.setInt(2, reserva.getId_morador());
-         
-         
-         int cadastrou = preparedStatement.executeUpdate();
-         return cadastrou > 0;
-         
-     }catch(SQLException e){
-         System.err.print("Erro Editar Status da reserva "+e);
-         return false;
-     }// fim do try catch     
-  }// fim do metodo editar      
+   public boolean editarReserva(ReservaList reserva){
+      String query = "UPDATE r\n" +
+"SET r.statu = ?\n" +
+"FROM Reserva r\n" +
+"INNER JOIN Morador m ON r.id_morador = m.id_morador\n" +
+"INNER JOIN Unidade u ON r.id_unidade = u.id_unidade\n" +
+"WHERE m.nome = ? and u.nome = ? ";
+                   
+    // Conexão com o banco de dados
+    try (Connection conection = conexaoBD.getConection();
+         PreparedStatement preparedStatement = conection.prepareStatement(query)) {
+
+        // Definindo os parâmetros do preparedStatement
+        preparedStatement.setString(1, reserva.getStatu());  // Novo status da reserva
+        preparedStatement.setString(2, reserva.getMorador()); // id do morador da reserva
+        preparedStatement.setString(3, reserva.getUnidade());
+        // Executando o update
+        int cadastrou = preparedStatement.executeUpdate();
+        return cadastrou > 0;
+
+    } catch (SQLException e) {
+        System.err.println("Erro ao editar o status da reserva: " + e);
+        return false;
+    } // fim do try-catch
+} // fim do método editarReserva
  
     
     

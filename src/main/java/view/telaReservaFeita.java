@@ -21,9 +21,9 @@ public class telaReservaFeita extends javax.swing.JInternalFrame {
 
     Funcionario funcionario;
     
-    int idUnidade;
-    int idMorador;
-    int idChave;
+    String nomeUnidade;
+    String nomeMorador;
+    String x;
     
     
     /**
@@ -326,21 +326,23 @@ public class telaReservaFeita extends javax.swing.JInternalFrame {
          //passando os valores para o objeto vendas
         ReservaController controller = new ReservaController();
         
-        Reserva reserva = new Reserva ();
+        ReservaList reserva = new ReservaList ();
         //passando os valores para o objeto vendas
          reserva.setStatu("Aprovado");
-        reserva.setId_morador(this.idMorador);
-        
+        reserva.setMorador(this.nomeMorador);
+        reserva.setUnidade(this.nomeUnidade);
    
         // passando os dados da venda para o banco de dados
         boolean cadastrou = controller.editarReserva(reserva);
         if(cadastrou){
             JOptionPane.showMessageDialog(
                     null,"Devoluçao registrada com Sucesso");
+            
         }else{
            JOptionPane.showMessageDialog(
                     null,"Não foi possivel Registrar devolução!"); 
-        }// fim do else
+        }// fim do else 
+        ListagemReservaPende();
     }//GEN-LAST:event_bAprovarActionPerformed
 
     private void campoAprovadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoAprovadoActionPerformed
@@ -360,9 +362,12 @@ public class telaReservaFeita extends javax.swing.JInternalFrame {
 
         // Verificando se os valores não são nulos antes de usar toString()
         
-         idMorador= modeloTabela.getValueAt(linhaSelecionada, 0) != null 
-                    ? Integer.parseInt(modeloTabela.getValueAt(linhaSelecionada, 0).toString()) 
-                    : 0;  // Valor padrão para idUnidade (caso seja nulo)
+        nomeMorador = modeloTabela.getValueAt(linhaSelecionada, 0) != null 
+                    ? modeloTabela.getValueAt(linhaSelecionada, 0).toString() 
+                    : "";  // Valor padrão para nomeMorador (caso seja nulo)
+        nomeUnidade = modeloTabela.getValueAt(linhaSelecionada, 0) != null 
+                    ? modeloTabela.getValueAt(linhaSelecionada, 2).toString() 
+                    : "";  // Valor padrão para nomeMorador (caso seja nulo)
         
     } // fim do if
     }//GEN-LAST:event_tabelaReservaAMouseClicked
@@ -378,9 +383,12 @@ public class telaReservaFeita extends javax.swing.JInternalFrame {
 
         // Verificando se os valores não são nulos antes de usar toString()
         
-         idMorador= modeloTabela.getValueAt(linhaSelecionada, 0) != null 
-                    ? Integer.parseInt(modeloTabela.getValueAt(linhaSelecionada, 0).toString()) 
-                    : 0;  // Valor padrão para idUnidade (caso seja nulo)
+         nomeMorador = modeloTabela.getValueAt(linhaSelecionada, 0) != null 
+                    ? modeloTabela.getValueAt(linhaSelecionada, 0).toString() 
+                    : "";  // Valor padrão para nomeMorador (caso seja nulo)
+         nomeUnidade = modeloTabela.getValueAt(linhaSelecionada, 0) != null 
+                    ? modeloTabela.getValueAt(linhaSelecionada, 2).toString() 
+                    : "";  // Valor padrão para nomeMorador (caso seja nulo)
         
     } // fim do if
     }//GEN-LAST:event_tabelaReservaPMouseClicked

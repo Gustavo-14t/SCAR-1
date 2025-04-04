@@ -7,7 +7,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
 
 
 <root>
-   -- 📌 Criando o banco de dados Condominio
+  -- 📌 Criando o banco de dados Condominio
 -- Cria o banco de dados "Condominio" se ele não existir
 CREATE DATABASE Condominio;
 -- Seleciona o banco de dados "Condominio" para ser utilizado
@@ -221,6 +221,14 @@ INNER JOIN Chave c ON v.id_chave = c.id_chave
 WHERE v.statu = 'pendente';
 
 update Reserva set statu = ? where id_Reserva = ?
+
+UPDATE r
+SET r.statu = ?
+FROM Reserva r
+INNER JOIN Morador m ON r.id_morador = m.id_morador
+INNER JOIN Unidade u ON r.id_unidade = u.id_unidade
+WHERE m.nome = ? and u.nome = ?;
+
 
 </root>
 
