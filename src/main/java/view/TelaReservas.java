@@ -34,7 +34,7 @@ public class TelaReservas extends javax.swing.JInternalFrame {
         initComponents();
         
         ListagemUsuarioDelet();
-        ListagemUnidades();
+        listarEspacoEvent();
         pesquisarUsuario();
         pesquisarUnidade();
         
@@ -88,7 +88,7 @@ public class TelaReservas extends javax.swing.JInternalFrame {
                 pesquisarU();
          }
         private void pesquisarU (){
-            ListagemUnidadeNome(campUnidade.getText());
+            listarEventNome(campUnidade.getText());
         }//fim do método pesquisar
         });//fim do método de captura
     }//fim do método PesquisarUsuario
@@ -133,7 +133,7 @@ public class TelaReservas extends javax.swing.JInternalFrame {
 }// fim do metodo ListagemUsuarioN()
     
     
-    public void ListagemUnidadeNome(String nomUsuario){
+    public void listarEventNome(String nomUsuario){
        UnidadeController controller = new UnidadeController();
         // capturando a lista de produtos que vem do banco de dados
         List<Unidade> listausuario = controller.listarUnidadeNome(nomUsuario);
@@ -169,7 +169,7 @@ public class TelaReservas extends javax.swing.JInternalFrame {
         }
     } else {
         JOptionPane.showMessageDialog
-        (this, "Nenhum produto encontrado.");
+        (this, "Nenhum usuario encontrado.");
     }
 }// fim do metodo ListagemUsuarioN()
     
@@ -210,17 +210,17 @@ public class TelaReservas extends javax.swing.JInternalFrame {
         
     } else {
         JOptionPane.showMessageDialog
-        (this, "Nenhum Cliente encontrado.");
+        (this, "Nenhum Morador encontrado.");
     }
        
  }//fim do método de listagemUsuarioP()
     
-    public void ListagemUnidades(){
+    public void listarEspacoEvent(){
         
         // chamando o produtos controller
         UnidadeController controller = new UnidadeController();
         // capturando a lista de produtos que vem do banco de dados
-        List<Unidade> listaunidade = controller.listarUnidade();
+        List<Unidade> listaunidade = controller.listarEspacoEvent();
         
         // Obtendo o modelo da tabela
         DefaultTableModel modeloTabela = 

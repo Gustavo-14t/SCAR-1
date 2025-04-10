@@ -7,7 +7,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
 
 
 <root>
-   -- 📌 Criando o banco de dados Condominio
+  -- 📌 Criando o banco de dados Condominio
 -- Cria o banco de dados "Condominio" se ele não existir
 CREATE DATABASE Condominio;
 -- Seleciona o banco de dados "Condominio" para ser utilizado
@@ -202,6 +202,32 @@ INNER JOIN Reserva r ON cr.id_reserva = r.id_reserva
 INNER JOIN Morador m ON r.id_morador = m.id_morador;
 
 delete from ControleReserva where funcionario_entrega = 'Mariana Lima'
+
+SELECT id_unidade,id_chave,numero,tipo,bloco,nome,capacidade FROM Unidade WHERE tipo = 'Espaço de evento'
+SELECT id_unidade,id_chave,nome,tipo,numero,bloco,capacidade FROM Unidade where tipo = 'Espaço de evento' AND nome LIKE ?
+
+SELECT 
+    m.nome AS Morador,
+    u.nome AS Unidade,
+    f.nome AS Funcionario,
+    c.nome AS Chave,
+    v.data_reserva AS Data_reserva,
+    v.statu AS Status
+FROM Reserva v
+INNER JOIN Morador m ON v.id_morador = m.id_morador
+INNER JOIN Unidade u ON v.id_unidade = u.id_unidade
+INNER JOIN Funcionario f ON v.id_funcionario = f.id_funcionario
+INNER JOIN Chave c ON v.id_chave = c.id_chave
+WHERE v.statu = 'pendente';
+
+update Reserva set statu = ? where id_Reserva = ?
+
+UPDATE r
+SET r.statu = ?
+FROM Reserva r
+INNER JOIN Morador m ON r.id_morador = m.id_morador
+INNER JOIN Unidade u ON r.id_unidade = u.id_unidade
+WHERE m.nome = ? and u.nome = ?;
 
 
 </root>
