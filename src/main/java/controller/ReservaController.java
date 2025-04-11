@@ -53,7 +53,7 @@ public class ReservaController {
 }// fim do método cadastroTurno()
     
    public boolean editarReserva(ReservaList reserva){
-      String query = "UPDATE r\n" +
+      String query = "UPDATE r \n" +
 "SET r.statu = ?\n" +
 "FROM Reserva r\n" +
 "INNER JOIN Morador m ON r.id_morador = m.id_morador\n" +
@@ -188,13 +188,13 @@ public class ReservaController {
         }// final do try catch
 }
      public boolean deletarReserva(){
-         String query = "DELETE FROM Reserva WHERE morador = ?, chave = ?";
+         String query = "DELETE FROM Reserva WHERE morador = ? and chave = ?";
         //Connection - conecta-se ao banco de dados
         //PreparedStatement manda o comando sql para executar no BD
         try (Connection connection = conexaoBD.getConection();//conexão com o banco de dados
      PreparedStatement preparedStatement = connection.prepareStatement(query)){//mandar o comando select 
             //mandando idUsuario para dentro do camando sql
-            preparedStatement.setInt();
+            //preparedStatement.setInt();
             
                         int resultado = preparedStatement.executeUpdate();
             return resultado > 0;

@@ -50,10 +50,10 @@ public class ContResController {
     
 }// fim do método cadastroTurno()
     
-    public boolean editarContRes( RelatorioReserva contRes){
+    public boolean editarContRes( RelatorioReserva reserva){
      //criuando uma String que recebe uma comando SQL
      String query = "UPDATE cr "
-             + "SET cr.data_devolucao = ?, cr.funcionario_devolucao = ? "
+             + "SET cr.funcionario_devolucao = ? "
              + "FROM ControleReserva cr INNER JOIN Reserva r ON cr.id_reserva = r.id_reserva "
              + "INNER JOIN Morador m ON r.id_morador = m.id_morador "
              + "WHERE  m.nome = ? AND cr.funcionario_entrega = ?; ";
@@ -63,10 +63,9 @@ public class ContResController {
                 conection.prepareStatement(query)){       
             
             // mandar os dados para dentro do insert
-            preparedStatement.setString(1,contRes.getData_devolucao());
-            preparedStatement.setString(2,contRes.getFunc_devolucao());
-            preparedStatement.setString(3,contRes.getMorador());
-            preparedStatement.setString(4,contRes.getFunc_entrega());
+            preparedStatement.setString(1,reserva.getFunc_devolucao());
+            preparedStatement.setString(2,reserva.getMorador());
+            preparedStatement.setString(3,reserva.getFunc_entrega());
              
     
             

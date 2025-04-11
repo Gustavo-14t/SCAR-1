@@ -6,7 +6,6 @@ package view;
 
 import controller.ContResController;
 import controller.ReservaController;
-import java.time.LocalDate;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -27,7 +26,6 @@ public class telaReservaFeita extends javax.swing.JInternalFrame {
     String nomeUnidade;
     String nomeMorador;
     String funcEntrega;
-    String entrega;
     String morador;
     
     /**
@@ -354,7 +352,7 @@ public class telaReservaFeita extends javax.swing.JInternalFrame {
         }// fim do else 
         ListagemReservaPende();
         ListagemReservaAprov();
-        
+        ListagemRelatorio();
     }//GEN-LAST:event_bAprovarActionPerformed
 
     private void campoAprovadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoAprovadoActionPerformed
@@ -407,71 +405,49 @@ public class telaReservaFeita extends javax.swing.JInternalFrame {
 
     private void buttomNegarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttomNegarActionPerformed
         // TODO add your handling code here:
-        ReservaController controller = new ReservaController();
-        
-        ReservaList reserva = new ReservaList ();
-        //passando os valores para o objeto vendas
-         reserva.setStatu("Negado");
-        reserva.setMorador(this.nomeMorador);
-        reserva.setUnidade(this.nomeUnidade);
    
-        // passando os dados da venda para o banco de dados
-        boolean cadastrou = controller.editarReserva(reserva);
-        if(cadastrou){
-            JOptionPane.showMessageDialog(
-                    null,"Devoluçao registrada com Sucesso");
-            
-        }else{
-           JOptionPane.showMessageDialog(
-                    null,"Não foi possivel Registrar devolução!"); 
-        }// fim do else 
-        ListagemReservaPende();
-        ListagemReservaAprov();
     }//GEN-LAST:event_buttomNegarActionPerformed
 
     private void buttomEntregActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttomEntregActionPerformed
         // TODO add your handling code here:
        //criando o objeto Controller
-         //passando os valores para o objeto vendas
-        ContResController controller = new ContResController();
-        
-        RelatorioReserva reserva = new RelatorioReserva ();
-        //passando os valores para o objeto vendas
-         
-        reserva.setMorador(this.nomeMorador);
-        //reserva.setFunc_entrega(funcionario.getId_funcionario());
+  
+    ContResController controller = new ContResController();
+    
+    RelatorioReserva reserva = new RelatorioReserva ();
+    reserva.setFunc_devolucao(this.funcionario.getNome());
+    reserva.setFunc_entrega(this.funcEntrega);
+    reserva.setMorador(this.morador);
+    
    
-        // passando os dados da venda para o banco de dados
-        boolean cadastrou = controller.editarContRes(reserva);
-        if(cadastrou){
-            JOptionPane.showMessageDialog(
-                    null,"Devoluçao registrada com Sucesso");
-            
-        }else{
-           JOptionPane.showMessageDialog(
-                    null,"Não foi possivel Registrar devolução!"); 
-        }// fim do else 
+    boolean cadastrou = controller.editarContRes(reserva);
+    
+    if (cadastrou) {
+        JOptionPane.showMessageDialog(null,"Devolução registrada com Sucesso");
+    } else {
+        JOptionPane.showMessageDialog(null,"Não foi possível registrar devolução!");
+    }
+    
+    ListagemRelatorio();
+    
     }//GEN-LAST:event_buttomEntregActionPerformed
 
     private void tabelaDevolucaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaDevolucaoMouseClicked
         // TODO add your handling code here:
-         int linhaSelecionada = tabelaReservaP.getSelectedRow();
+         int linhaSelecionada = tabelaDevolucao.getSelectedRow();
 
     // Verificando se alguma linha foi selecionada
     if (linhaSelecionada >= 0) {
         // Definir modelo default para a tabela
-        DefaultTableModel modeloTabela = (DefaultTableModel) tabelaReservaP.getModel();
+        DefaultTableModel modeloTabela = (DefaultTableModel) tabelaDevolucao.getModel();
 
         // Verificando se os valores não são nulos antes de usar toString()
         
          funcEntrega = modeloTabela.getValueAt(linhaSelecionada, 0) != null 
                     ? modeloTabela.getValueAt(linhaSelecionada, 0).toString() 
                     : "";  // Valor padrão para nomeMorador (caso seja nulo)
-         entrega = modeloTabela.getValueAt(linhaSelecionada, 0) != null 
-                    ? modeloTabela.getValueAt(linhaSelecionada, 1).toString() 
-                    : "";  // Valor padrão para nomeMorador (caso seja nulo)
          morador = modeloTabela.getValueAt(linhaSelecionada, 0) != null 
-                    ? modeloTabela.getValueAt(linhaSelecionada, 5).toString() 
+                    ? modeloTabela.getValueAt(linhaSelecionada, 4).toString() 
                     : "";  // Valor padrão para nomeMorador (caso seja nulo)
     }//GEN-LAST:event_tabelaDevolucaoMouseClicked
     }
