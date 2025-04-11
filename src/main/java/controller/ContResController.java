@@ -50,6 +50,40 @@ public class ContResController {
     
 }// fim do método cadastroTurno()
     
+    public boolean editarContRes( RelatorioReserva reserva){
+     //criuando uma String que recebe uma comando SQL
+     String query = "UPDATE cr "
+             + "SET cr.funcionario_devolucao = ? "
+             + "FROM ControleReserva cr INNER JOIN Reserva r ON cr.id_reserva = r.id_reserva "
+             + "INNER JOIN Morador m ON r.id_morador = m.id_morador "
+             + "WHERE  m.nome = ? AND cr.funcionario_entrega = ?; ";
+     
+     try(Connection conection = conexaoBD.getConection();
+        PreparedStatement preparedStatement =
+                conection.prepareStatement(query)){       
+            
+            // mandar os dados para dentro do insert
+            preparedStatement.setString(1,reserva.getFunc_devolucao());
+            preparedStatement.setString(2,reserva.getMorador());
+            preparedStatement.setString(3,reserva.getFunc_entrega());
+             
+    
+            
+            /*try(ResultSet resultSet = preparedStatement.executeQuery()){
+                return resultSet.next();
+            }// final do segundo try*/
+            // verifica se o insert foi executado
+            int rowsAffected = preparedStatement.executeUpdate();
+            return rowsAffected > 0;
+            
+        }catch(SQLException e){
+            // imprimindo erro que deu ao inserir usuário
+            System.err.print("Erro ao Inserir Dados!" + e);
+            return false;
+        }// final do try catch
+    
+}// fim do método cadastroTurno()
+    
     
      public List<ControleReserva> listarUnidade(){
         List<ControleReserva> lista = new ArrayList<>();

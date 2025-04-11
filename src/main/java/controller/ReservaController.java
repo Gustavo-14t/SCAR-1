@@ -53,7 +53,7 @@ public class ReservaController {
 }// fim do método cadastroTurno()
     
    public boolean editarReserva(ReservaList reserva){
-      String query = "UPDATE r\n" +
+      String query = "UPDATE r \n" +
 "SET r.statu = ?\n" +
 "FROM Reserva r\n" +
 "INNER JOIN Morador m ON r.id_morador = m.id_morador\n" +
@@ -187,41 +187,22 @@ public class ReservaController {
             return null;
         }// final do try catch
 }
-     public List <ReservaList> listarReservasNeg(){
-        String query = "SELECT m.nome as Morador ,u.nome as Unidade ,"
-                + "f.nome as Funcionario,c.nome as Chave ,v.data_reserva as Data_reserva,v.statu as Sttatus \n" +
-"FROM Reserva v INNER JOIN Morador m  ON v.id_morador =m.id_morador \n" +
-"INNER JOIN unidade u ON v.id_unidade = u.id_unidade \n" +
-"INNER JOIN Funcionario f ON v.id_funcionario = f.id_funcionario\n" +
-"INNER JOIN chave c ON v.id_chave = c.id_chave"
-                + " WHERE v.statu = 'Negado'";
-        
-                     List<ReservaList> lista = new ArrayList<>();
-                     
-        try(Connection conection = conexaoBD.getConection();
-        PreparedStatement preparedStatement =conection.prepareStatement(query);
-         ResultSet resultset = preparedStatement.executeQuery() ){
+     public boolean deletarReserva(){
+         String query = "DELETE FROM Reserva WHERE morador = ? and chave = ?";
+        //Connection - conecta-se ao banco de dados
+        //PreparedStatement manda o comando sql para executar no BD
+        try (Connection connection = conexaoBD.getConection();//conexão com o banco de dados
+     PreparedStatement preparedStatement = connection.prepareStatement(query)){//mandar o comando select 
+            //mandando idUsuario para dentro do camando sql
+            //preparedStatement.setInt();
             
-            while(resultset.next()){
-                ReservaList reserva = new ReservaList();
-                
-               reserva.setChave(resultset.getString("Chave"));
-               reserva.setMorador(resultset.getString("Morador"));
-               reserva.setUnidade(resultset.getString("Unidade"));
-               reserva.setFuncionario(resultset.getString("Funcionario"));
-               reserva.setData_reserva(resultset.getString("Data_reserva"));
-               reserva.setStatu(resultset.getString("Sttatus"));
-                
-                lista.add(reserva);
-
-            }//fim do while
- 
-            return lista;
-
+                        int resultado = preparedStatement.executeUpdate();
+            return resultado > 0;
+           
         }catch(SQLException e){
-            System.err.print("Erro ao listar Reservas "+ e);
-            return null;
-        }// final do try catch
-}
+             System.err.print(e+ " Exclusão não realizada  ");
+            return false;
+        }//fim do 
+     }//fim do public boolean
 
 }
