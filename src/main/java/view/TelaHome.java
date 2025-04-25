@@ -88,7 +88,7 @@ public class TelaHome extends javax.swing.JFrame {
         bSolicServis = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        bSAC = new javax.swing.JButton();
         optionCadastro = new javax.swing.JPanel();
         bCadUni = new javax.swing.JButton();
         bCadFun = new javax.swing.JButton();
@@ -226,6 +226,11 @@ public class TelaHome extends javax.swing.JFrame {
         jButton6.setBackground(new java.awt.Color(255, 204, 0));
         jButton6.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Documents\\SCAR-main\\src\\main\\java\\img\\config.png")); // NOI18N
         jButton6.setBorder(null);
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
         barraMenu.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 380, 50, 50));
 
         jButton7.setBackground(new java.awt.Color(255, 204, 0));
@@ -238,10 +243,15 @@ public class TelaHome extends javax.swing.JFrame {
         });
         barraMenu.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 60, 50));
 
-        jButton8.setBackground(new java.awt.Color(255, 204, 0));
-        jButton8.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Documents\\SCAR-main\\src\\main\\java\\img\\interrogatorio.png")); // NOI18N
-        jButton8.setBorder(null);
-        barraMenu.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 50, 50));
+        bSAC.setBackground(new java.awt.Color(255, 204, 0));
+        bSAC.setIcon(new javax.swing.ImageIcon("C:\\Users\\devmat\\Documents\\SCAR-main\\src\\main\\java\\img\\interrogatorio.png")); // NOI18N
+        bSAC.setBorder(null);
+        bSAC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSACActionPerformed(evt);
+            }
+        });
+        barraMenu.add(bSAC, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 50, 50));
 
         jPanel1.add(barraMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 54, 200, 510));
 
@@ -478,6 +488,18 @@ public class TelaHome extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void bSACActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSACActionPerformed
+        // TODO add your handling code here
+        
+        TelaSac sac = new TelaSac();
+        sac.setVisible(true);
+                
+    }//GEN-LAST:event_bSACActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -526,6 +548,7 @@ public class TelaHome extends javax.swing.JFrame {
     private javax.swing.JButton bFinanceiro;
     private javax.swing.JButton bRelatorio;
     private javax.swing.JButton bReserva;
+    private javax.swing.JButton bSAC;
     private javax.swing.JButton bSolicServis;
     private javax.swing.JPanel barraMenu;
     private javax.swing.JButton butaoHome;
@@ -536,7 +559,6 @@ public class TelaHome extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel optionCadastro;
