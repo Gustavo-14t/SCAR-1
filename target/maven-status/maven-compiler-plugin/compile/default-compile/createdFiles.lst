@@ -29,6 +29,7 @@ model\Reserva.class
 model\conexaoBD.class
 model\Atividade.class
 model\Morador.class
+view\TelaServiceRequest.class
 controller\LoginController.class
 view\TelaHome$11.class
 view\CadFuncionario$7.class
@@ -66,7 +67,9 @@ view\TelaReservas$8.class
 controller\ContResController.class
 view\TelaHome$19.class
 view\CadFuncionario$2.class
+view\TelaSac$2.class
 view\CadMorador$8.class
+view\TelaFinanceiro.class
 view\TelaCadastroUnidade$4.class
 view\TelaLogin$4.class
 view\TelaCadastroUnidade.class

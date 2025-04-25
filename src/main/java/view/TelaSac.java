@@ -4,6 +4,10 @@
  */
 package view;
 
+import java.awt.Desktop;
+import java.net.URI;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author devmat
@@ -33,6 +37,7 @@ public class TelaSac extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,7 +63,14 @@ public class TelaSac extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("SensorDeMizéra@gmail.com");
+        jLabel5.setText("Cardoso@gmail.com");
+
+        jButton1.setText("Consultar Documentação");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout tSacLayout = new javax.swing.GroupLayout(tSac);
         tSac.setLayout(tSacLayout);
@@ -74,7 +86,10 @@ public class TelaSac extends javax.swing.JFrame {
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(tSacLayout.createSequentialGroup()
                         .addGap(84, 84, 84)
-                        .addComponent(jLabel2)))
+                        .addComponent(jLabel2))
+                    .addGroup(tSacLayout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(63, Short.MAX_VALUE))
             .addGroup(tSacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(tSacLayout.createSequentialGroup()
@@ -93,7 +108,9 @@ public class TelaSac extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                .addGap(24, 24, 24))
             .addGroup(tSacLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(tSacLayout.createSequentialGroup()
                     .addGap(83, 83, 83)
@@ -114,6 +131,16 @@ public class TelaSac extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        try{
+            URI link = new URI("https://gustavo-14t.github.io/SCAR-1/");
+            Desktop.getDesktop().browse(link);
+        }catch(Exception erro){
+            JOptionPane.showMessageDialog(null,erro);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,6 +178,7 @@ public class TelaSac extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
