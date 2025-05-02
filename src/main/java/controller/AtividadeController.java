@@ -18,7 +18,7 @@ import model.conexaoBD;
  * @author devmat
  */
 public class AtividadeController {
-    public boolean cadastroUsuario( Atividade atividade){
+    public boolean cadastroAtividade( Atividade atividade){
      //criuando uma String que recebe uma comando SQL
      String query = "INSERT INTO Atividade (id_funcionario, nome, descricao, datas, statu) values (?,?,?,?,?) ";
      
