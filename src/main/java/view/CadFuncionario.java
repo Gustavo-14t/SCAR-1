@@ -495,7 +495,7 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
            campoPesquisa.setText("");
             
         }catch(Exception erro){
-            JOptionPane.showMessageDialog(null,"Erro ao excluir o Produto "+ erro);
+            JOptionPane.showMessageDialog(null,"Erro ao excluir o Funcionario "+ erro);
         }                                      
 
     }//GEN-LAST:event_bdeletActionPerformed
