@@ -444,7 +444,7 @@ public class TelaReservas extends javax.swing.JInternalFrame {
         idUnidade = modeloTabela.getValueAt(linhaSelecionada, 0) != null 
                     ? Integer.parseInt(modeloTabela.getValueAt(linhaSelecionada, 0).toString()) 
                     : 0;  // Valor padrão para idUnidade (caso seja nulo)
-        idChave = modeloTabela.getValueAt(linhaSelecionada, 0) != null 
+        idChave = modeloTabela.getValueAt(linhaSelecionada, 1) != null 
                     ? Integer.parseInt(modeloTabela.getValueAt(linhaSelecionada, 1).toString()) 
                     : 1;  // Valor padrão para idUnidade (caso seja nulo)
         
