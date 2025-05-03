@@ -203,9 +203,9 @@ public class CadMorador extends javax.swing.JInternalFrame {
         campNascimento = new javax.swing.JFormattedTextField();
         campoEmail = new javax.swing.JTextField();
         campoNome = new javax.swing.JTextField();
-        campoCpf = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaUnidade = new javax.swing.JTable();
+        campoCpf = new javax.swing.JFormattedTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -265,15 +265,6 @@ public class CadMorador extends javax.swing.JInternalFrame {
         campoNome.setForeground(new java.awt.Color(0, 0, 0));
         telaCadastro.add(campoNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 250, 35));
 
-        campoCpf.setBackground(new java.awt.Color(255, 255, 255));
-        campoCpf.setForeground(new java.awt.Color(0, 0, 0));
-        campoCpf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoCpfActionPerformed(evt);
-            }
-        });
-        telaCadastro.add(campoCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 250, 35));
-
         tabelaUnidade.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null},
@@ -312,6 +303,15 @@ public class CadMorador extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(tabelaUnidade);
 
         telaCadastro.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 700, 180));
+
+        campoCpf.setBackground(new java.awt.Color(255, 255, 255));
+        campoCpf.setForeground(new java.awt.Color(0, 0, 0));
+        try {
+            campoCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        telaCadastro.add(campoCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 250, 40));
 
         telaDeletar.addTab("Cadastrar", telaCadastro);
 
@@ -449,10 +449,6 @@ public class CadMorador extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_botaoDeletarActionPerformed
 
-    private void campoCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCpfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoCpfActionPerformed
-
     private void tabelaUnidadeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaUnidadeMouseClicked
         // TODO add your handling code here:
         int linhaSelecionada = tabelaUnidade.getSelectedRow();
@@ -507,7 +503,7 @@ public class CadMorador extends javax.swing.JInternalFrame {
     private javax.swing.JButton botaoDeletar;
     private javax.swing.JToggleButton butaoCadastrar;
     private javax.swing.JFormattedTextField campNascimento;
-    private javax.swing.JTextField campoCpf;
+    private javax.swing.JFormattedTextField campoCpf;
     private javax.swing.JTextField campoEmail;
     private javax.swing.JTextField campoNome;
     private javax.swing.JTextField campoPesquisar;

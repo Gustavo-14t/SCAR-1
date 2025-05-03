@@ -199,7 +199,6 @@ public class TelaReservas extends javax.swing.JInternalFrame {
              morador.getId_unidade(), // Ajuste para int
              morador.getNome(), // Verifique se é null
              morador.getCpf(), // Verifique se é null
-             morador.getEmail(), // Verifique se é null
              morador.getData_nasc() // Verifique se é null
             };
             // Adicionando a linha ao modelo da tabela
@@ -390,7 +389,11 @@ public class TelaReservas extends javax.swing.JInternalFrame {
         reserva.setData_reserva(dataatual.toString());
         
         reserva.setStatu("pendente");
-   
+        
+        if (idMorador == 0 || idUnidade == 0 || idChave == 0) {
+    JOptionPane.showMessageDialog(this, "Selecione um morador e uma unidade antes de reservar.");
+    return;
+}
         // passando os dados da venda para o banco de dados
         boolean cadastrou = controller.cadastroReserva(reserva);
         if(cadastrou){
@@ -432,7 +435,7 @@ public class TelaReservas extends javax.swing.JInternalFrame {
 
     private void tabelaUnidadeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaUnidadeMouseClicked
         // TODO add your handling code here:
-        int linhaSelecionada = tabelaMorador.getSelectedRow();
+        int linhaSelecionada = tabelaUnidade.getSelectedRow();
 
     // Verificando se alguma linha foi selecionada
     if (linhaSelecionada >= 0) {
