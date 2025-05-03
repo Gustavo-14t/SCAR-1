@@ -12,6 +12,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import model.Unidade;
 import model.conexaoBD;
 
@@ -21,71 +22,34 @@ import model.conexaoBD;
  */
 public class UnidadeController {
     public boolean cadastroUnidade(Unidade unidade) {
-    String queryChave = "INSERT INTO Chave (nome) VALUES (?);";
     String queryUnidade = "INSERT INTO Unidade (id_chave, nome, tipo, numero, bloco, capacidade, descricao, dimensoes) "
             + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    
-    
+
     try (Connection conection = conexaoBD.getConection()) {
+        try (PreparedStatement preparedStatementUnidade = conection.prepareStatement(queryUnidade)) {
+            preparedStatementUnidade.setLong(1, unidade.getId_chave());
+            preparedStatementUnidade.setString(2, unidade.getNome());
+            preparedStatementUnidade.setString(3, unidade.getTipo());
+            preparedStatementUnidade.setString(4, unidade.getNumero());
+            preparedStatementUnidade.setString(5, unidade.getBloco());
+            preparedStatementUnidade.setString(6, unidade.getCapacidade());
+            preparedStatementUnidade.setString(7, unidade.getDescricao());
+            preparedStatementUnidade.setString(8, unidade.getDomensoes());
 
-        // Iniciando a transação
-        conection.setAutoCommit(false); // Começando a transação
-
-        // Inserindo na tabela Chave
-        try (PreparedStatement preparedStatementChave = conection.prepareStatement(queryChave, 
-                Statement.RETURN_GENERATED_KEYS)) {
-
-            preparedStatementChave.setString(1, unidade.getNome());
-            int rowsAffectedChave = preparedStatementChave.executeUpdate();
-
-            // Verificando se a inserção na tabela Chave foi bem-sucedida
-            if (rowsAffectedChave > 0) {
-                // Obtendo o id gerado para a chave
-                try (ResultSet generatedKeys = preparedStatementChave.getGeneratedKeys()) {
-                    if (generatedKeys.next()) {
-                        long idChave = generatedKeys.getLong(1); // Obtendo o id da Chave
-
-                        // Inserindo na tabela Unidade com o id da Chave
-                        try (PreparedStatement preparedStatementUnidade = conection.prepareStatement(queryUnidade)) {
-                            preparedStatementUnidade.setLong(1, idChave);
-                            preparedStatementUnidade.setString(2, unidade.getNome());
-                            preparedStatementUnidade.setString(3, unidade.getTipo());
-                            preparedStatementUnidade.setString(4, unidade.getNumero());
-                            preparedStatementUnidade.setString(5, unidade.getBloco());
-                            preparedStatementUnidade.setString(6, unidade.getCapacidade());                     
-                            preparedStatementUnidade.setString(7, unidade.getDescricao());
-                            preparedStatementUnidade.setString(8, unidade.getDomensoes());
-
-                            int rowsAffectedUnidade = preparedStatementUnidade.executeUpdate();
-
-                            // Verificando se a inserção na tabela Unidade foi bem-sucedida
-                            if (rowsAffectedUnidade > 0) {
-                                // Confirmando a transação
-                                conection.commit();
-                                return true; // Cadastro bem-sucedido
-                            }
-                        }
-                    }
-                }
-            }
-
-            // Se algum dos inserts falhar, fazemos o rollback
-            conection.rollback();
-            return false;
+            int rowsAffected = preparedStatementUnidade.executeUpdate();
+            return rowsAffected > 0;
 
         } catch (SQLException e) {
-            conection.rollback(); // Fazendo rollback em caso de erro
-            System.err.print("Erro ao Inserir Dados: " + e);
+            System.err.println("Erro ao inserir unidade: " + e);
             return false;
         }
 
     } catch (SQLException e) {
-        System.err.print("Erro na conexão ou preparação do SQL: " + e);
+        System.err.println("Erro de conexão: " + e);
         return false;
     }
 }
-
-    
+  
     
      public List<Unidade> listarUnidade(){
         List<Unidade> lista = new ArrayList<>();

@@ -22,7 +22,7 @@ public class TelaAtividade extends javax.swing.JInternalFrame {
         
     }
     
-    private void listarAtividadesNaTela() {
+    /*private void listarAtividadesNaTela() {
     painelAtividades.removeAll(); // limpa antes de atualizar
 
     controller.AtividadeController controller = new controller.AtividadeController();
@@ -49,7 +49,7 @@ public class TelaAtividade extends javax.swing.JInternalFrame {
         painelAtividades.revalidate();
         painelAtividades.repaint();
     }
-}
+}*/
 
     /**
      * This method is called from within the constructor to initialize the form.
