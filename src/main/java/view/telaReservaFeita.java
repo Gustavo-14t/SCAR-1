@@ -344,11 +344,11 @@ public class telaReservaFeita extends javax.swing.JInternalFrame {
         boolean cadastrou = controller.editarReserva(reserva);
         if(cadastrou){
             JOptionPane.showMessageDialog(
-                    null,"Devoluçao registrada com Sucesso");
+                    null,"Reserva aprovada com sucesso");
             
         }else{
            JOptionPane.showMessageDialog(
-                    null,"Não foi possivel Registrar devolução!"); 
+                    null,"Não foi possivel aprovar reserva!"); 
         }// fim do else 
         ListagemReservaPende();
         ListagemReservaAprov();
