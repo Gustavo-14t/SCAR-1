@@ -223,6 +223,8 @@ public class CadAtv extends javax.swing.JFrame {
             ListagemUsuario();  
              
             limparCampos();
+            
+            dispose();
 
         }catch(Exception e){
              JOptionPane.showMessageDialog
