@@ -4,11 +4,14 @@
  */
 package view;
 
+import controller.AtividadeController;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Insets;
+import javax.swing.JOptionPane;
+import model.Atividade;
 
 
 /**
@@ -22,7 +25,7 @@ public class TelaAtividade extends javax.swing.JInternalFrame {
      */
     public TelaAtividade() {
         initComponents();
-        
+                
     painelAtividades.setLayout(new javax.swing.BoxLayout(painelAtividades, javax.swing.BoxLayout.Y_AXIS));
 
 // Envolva com JScrollPane
@@ -237,6 +240,11 @@ area.setBorder(javax.swing.BorderFactory.createCompoundBorder(
         bAtvConc.setBackground(new java.awt.Color(255, 204, 0));
         bAtvConc.setForeground(new java.awt.Color(0, 0, 0));
         bAtvConc.setText("Atividades Concluídas");
+        bAtvConc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAtvConcActionPerformed(evt);
+            }
+        });
         jPanel1.add(bAtvConc, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 720, 60));
@@ -248,29 +256,72 @@ area.setBorder(javax.swing.BorderFactory.createCompoundBorder(
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
-    
     private void bCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadastrarActionPerformed
         // TODO add your handling code here:
-         CadAtv cadastro = new CadAtv ();
+        CadAtv cadastro = new CadAtv ();
         cadastro.setVisible(true);
-        
-         cadastro.addWindowListener(new java.awt.event.WindowAdapter() {
-        @Override
-        public void windowClosed(java.awt.event.WindowEvent e) {
-            listarAtividadesNaTela(); // Atualiza a lista
-        }
-    });
-    }//GEN-LAST:event_bCadastrarActionPerformed
 
-    private void bConcluidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConcluidaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bConcluidaActionPerformed
+        cadastro.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosed(java.awt.event.WindowEvent e) {
+                listarAtividadesNaTela(); // Atualiza a lista
+            }
+        });
+    }//GEN-LAST:event_bCadastrarActionPerformed
 
     private void bExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bExcluirActionPerformed
         // TODO add your handling code here:
+        AtividadeController controller = new AtividadeController();
+
+        Atividade atividade = new Atividade ();
+        //passando os valores para o objeto vendas
+        atividade.setId_atividade(atividadeSelecionada.getId_atividade());
+
+        // passando os dados da venda para o banco de dados
+        boolean cadastrou = controller.deletarAtividade(atividadeSelecionada.getId_atividade());
+        if(cadastrou){
+            JOptionPane.showMessageDialog(
+                null,"Atividade excluída com sucesso");
+
+        }else{
+            JOptionPane.showMessageDialog(
+                null,"Não foi possível excluir atividade");
+        }// fim do else
+        listarAtividadesNaTela();
     }//GEN-LAST:event_bExcluirActionPerformed
 
+    private void bConcluidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConcluidaActionPerformed
+        // TODO add your handling code here:
+        //criando o objeto Controller
+        //passando os valores para o objeto vendas
+        AtividadeController controller = new AtividadeController();
+
+        Atividade atividade = new Atividade ();
+        //passando os valores para o objeto vendas
+        atividade.setStatu("Concluída");
+        atividade.setId_atividade(atividadeSelecionada.getId_atividade());
+
+        // passando os dados da venda para o banco de dados
+        boolean cadastrou = controller.updateAtividade(atividade);
+        if(cadastrou){
+            JOptionPane.showMessageDialog(
+                null,"Atividade foi concluída");
+
+        }else{
+            JOptionPane.showMessageDialog(
+                null,"Não foi possível concluir atividade");
+        }// fim do else
+        listarAtividadesNaTela();
+    }//GEN-LAST:event_bConcluidaActionPerformed
+
+    private void bAtvConcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAtvConcActionPerformed
+        // TODO add your handling code here:
+        AtividadeConcluida atividade = new AtividadeConcluida();
+        atividade.setVisible(true);
+    }//GEN-LAST:event_bAtvConcActionPerformed
+
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAtvConc;

@@ -54,7 +54,41 @@ public class AtividadeController {
      public List<Atividade> listarAtividade(){
         List<Atividade> lista = new ArrayList<>();
         
-        String query = "SELECT id_atividade,id_funcionario,nome,descricao,datas,statu FROM Atividade ;";
+        String query = "SELECT id_atividade,id_funcionario,nome,descricao,datas,statu FROM Atividade where statu = 'pendente' ;";
+
+        try(Connection connection = conexaoBD.getConection();//conexão com o banco de dados
+     PreparedStatement preparedStatement = connection.prepareStatement(query)){
+            
+            ResultSet resultSet = preparedStatement.executeQuery();
+            
+            while(resultSet.next()){
+                Atividade atividade = new Atividade();
+                
+                atividade.setId_atividade(resultSet.getInt("id_atividade"));
+                atividade.setId_funcionario(resultSet.getInt("id_funcionario"));
+                atividade.setNome(resultSet.getString("nome"));
+                atividade.setDescricao(resultSet.getString("descricao"));
+                atividade.setDatas(resultSet.getString("datas"));
+                 atividade.setStatu(resultSet.getString("statu"));
+                
+                
+                lista.add(atividade);
+
+            }//fim do while
+          
+             return lista;
+            
+        }catch(SQLException e){
+         System.err.println("Erro listar o usuário "+ e );
+         return null;
+        }//fim do try
+        
+    }//fim do método listarClientes()
+     
+     public List<Atividade> listarAtividadeConc(){
+        List<Atividade> lista = new ArrayList<>();
+        
+        String query = "SELECT id_atividade,id_funcionario,nome,descricao,datas,statu FROM Atividade where statu = 'Concluída' ;";
 
         try(Connection connection = conexaoBD.getConection();//conexão com o banco de dados
      PreparedStatement preparedStatement = connection.prepareStatement(query)){
@@ -86,7 +120,7 @@ public class AtividadeController {
     }//fim do método listarClientes()
      
      
-     public boolean deletarUsuario(int idAtividade){
+     public boolean deletarAtividade(int idAtividade){
         
          String query = "DELETE FROM Atividade WHERE id_atividade = ?";
         //Connection - conecta-se ao banco de dados
@@ -101,6 +135,26 @@ public class AtividadeController {
            
         }catch(SQLException e){
              System.err.print(e+ " Exclusão não realizada  ");
+            return false;
+        }//fim do 
+     }//fim do public boolean
+     
+     public boolean updateAtividade(Atividade atividade){
+        
+         String query = "Update  Atividade set statu = ? WHERE id_atividade = ?";
+        //Connection - conecta-se ao banco de dados
+        //PreparedStatement manda o comando sql para executar no BD
+        try (Connection connection = conexaoBD.getConection();//conexão com o banco de dados
+     PreparedStatement preparedStatement = connection.prepareStatement(query)){//mandar o comando select 
+            //mandando idUsuario para dentro do camando sql
+            preparedStatement.setString(1,atividade.getStatu());
+            preparedStatement.setInt(2,atividade.getId_atividade());
+            
+                        int resultado = preparedStatement.executeUpdate();
+            return resultado > 0;
+           
+        }catch(SQLException e){
+             System.err.print(e+ "Não Foi possível marcar ativide como concluída");
             return false;
         }//fim do 
      }//fim do public boolean
