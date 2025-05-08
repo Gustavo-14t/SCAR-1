@@ -26,7 +26,7 @@ public class TelaHome extends javax.swing.JFrame {
          optionRelatorio.setVisible(false);
          optionReserva.setVisible(false);
         func = funcionario;
-        
+                
          TelaAtividade atv = new TelaAtividade();
         areaTrabalho.add(atv);
        atv.setVisible(true);
