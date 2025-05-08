@@ -26,30 +26,170 @@ public class TelaFinanceiro extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        financeiroMorador = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        pagamento = new javax.swing.JTextField();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tabelaMorador = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 51));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 730, Short.MAX_VALUE)
+        jButton1.setText("Gerar Boleto");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 400, 114, 42));
+
+        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Total a pagar : ");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, -1, 35));
+
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Pesquisar");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 59, 24));
+
+        pagamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pagamentoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(pagamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 36, 384, 33));
+
+        tabelaMorador.setBackground(new java.awt.Color(255, 255, 255));
+        tabelaMorador.setForeground(new java.awt.Color(0, 0, 0));
+        tabelaMorador.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "CASA", "NOME", "CPF", "EMAIL", "DATA NASCIMENTO"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabelaMorador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaMoradorMouseClicked(evt);
+            }
+        });
+        jScrollPane5.setViewportView(tabelaMorador);
+
+        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 700, 270));
+
+        jLabel3.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel3.setText("R$: ");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 370, 160, 40));
+
+        financeiroMorador.addTab("Pagamento do Morador", jPanel1);
+
+        jPanel2.setBackground(new java.awt.Color(255, 204, 51));
+        jPanel2.setForeground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 725, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 470, Short.MAX_VALUE)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 453, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 470));
+        financeiroMorador.addTab("Extrato do Condominío", jPanel2);
+
+        getContentPane().add(financeiroMorador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 480));
+        financeiroMorador.getAccessibleContext().setAccessibleName("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void pagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagamentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pagamentoActionPerformed
+
+    private void tabelaMoradorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMoradorMouseClicked
+        // TODO add your handling code here:
+        /*int linhaSelecionada = tabelaMorador.getSelectedRow();
+
+        // Verificando se alguma linha foi selecionada
+        if (linhaSelecionada >= 0) {
+            // Definir modelo default para a tabela
+            DefaultTableModel modeloTabela = (DefaultTableModel) tabelaMorador.getModel();
+
+            // Verificando se os valores não são nulos antes de usar toString()
+            idMorador = modeloTabela.getValueAt(linhaSelecionada, 0) != null
+            ? Integer.parseInt(modeloTabela.getValueAt(linhaSelecionada, 0).toString())
+            : 0;  // Valor padrão para idMorador (caso seja nulo)
+
+            idUnidade = modeloTabela.getValueAt(linhaSelecionada, 1) != null
+            ? Integer.parseInt(modeloTabela.getValueAt(linhaSelecionada, 1).toString())
+            : 0;  // Valor padrão para idUnidade (caso seja nulo)
+
+            campoNome.setText(modeloTabela.getValueAt(linhaSelecionada, 2) != null
+                ? modeloTabela.getValueAt(linhaSelecionada, 2).toString()
+                : "N/A");  // Valor padrão para Nome (caso seja nulo)
+
+            campoCpf.setText(modeloTabela.getValueAt(linhaSelecionada, 3) != null
+                ? modeloTabela.getValueAt(linhaSelecionada, 3).toString()
+                : "N/A");  // Valor padrão para CPF (caso seja nulo)
+
+            campoEmail.setText(modeloTabela.getValueAt(linhaSelecionada, 4) != null
+                ? modeloTabela.getValueAt(linhaSelecionada, 4).toString()
+                : "N/A");  // Valor padrão para Email (caso seja nulo)
+
+            campNascimento.setText(modeloTabela.getValueAt(linhaSelecionada, 5) != null
+                ? modeloTabela.getValueAt(linhaSelecionada, 5).toString()
+                : "N/A");  // Valor padrão para Data de Nascimento (caso seja nulo)
+        } // fim do if*/
+    }//GEN-LAST:event_tabelaMoradorMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTabbedPane financeiroMorador;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTextField pagamento;
+    private javax.swing.JTable tabelaMorador;
     // End of variables declaration//GEN-END:variables
 }
