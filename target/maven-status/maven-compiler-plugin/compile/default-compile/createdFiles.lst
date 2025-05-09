@@ -101,6 +101,7 @@ view\TelaLogin$3.class
 view\CadFuncionario$10.class
 view\telaReservaFeita$2.class
 view\TelaHome$3.class
+view\TelaServiceRequest$2.class
 view\TelaAtividade.class
 view\TelaCadastroUnidade$2.class
 view\TelaLogin.class

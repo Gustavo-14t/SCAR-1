@@ -22,8 +22,22 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
     public TelaServiceRequest() {
         initComponents();
         
+        outServicText.setVisible(false);
+        outroServico.setVisible(false);
         
         ListagemUsuario();
+        
+    }
+    
+    public void campoCargoActionPerformed() {
+        // Obtém o cargo selecionado no JComboBox
+        String cargoSelecionado = (String)  boxServicos.getSelectedItem();
+         if(cargoSelecionado != null && (cargoSelecionado.equals("Outros"))){
+            
+            outServicText.setVisible(true);
+        outroServico.setVisible(true);
+            
+        }//fim do if
     }
     
     public void ListagemUsuario(){
@@ -80,6 +94,12 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaMorador = new javax.swing.JTable();
         jToggleButton1 = new javax.swing.JToggleButton();
+        boxServicos = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        outServicText = new javax.swing.JLabel();
+        descricao = new javax.swing.JTextField();
+        outroServico = new javax.swing.JTextField();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -114,6 +134,31 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 350, 130, -1));
 
+        boxServicos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jardinagem", "Manutenção geral", "Limpeza", "Segurança", "Outros" }));
+        boxServicos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boxServicosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(boxServicos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 220, 30));
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Descrição");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Serviços");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
+
+        outServicText.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        outServicText.setForeground(new java.awt.Color(0, 0, 0));
+        outServicText.setText("Outro serviço");
+        jPanel1.add(outServicText, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, -1, 20));
+        jPanel1.add(descricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 220, 30));
+        jPanel1.add(outroServico, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 220, 30));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 727, 469));
 
         pack();
@@ -124,11 +169,22 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
        
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
+    private void boxServicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxServicosActionPerformed
+        // TODO add your handling code here:
+       campoCargoActionPerformed();
+    }//GEN-LAST:event_boxServicosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> boxServicos;
+    private javax.swing.JTextField descricao;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JLabel outServicText;
+    private javax.swing.JTextField outroServico;
     private javax.swing.JTable tabelaMorador;
     // End of variables declaration//GEN-END:variables
 }
