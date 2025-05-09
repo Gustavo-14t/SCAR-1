@@ -229,8 +229,8 @@ public class TelaCadastroUnidade extends javax.swing.JInternalFrame {
         jPanel1.add(campoBloco, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 220, 35));
 
         capacidade.setForeground(new java.awt.Color(0, 0, 0));
-        capacidade.setText("CAPACIDADE:");
-        jPanel1.add(capacidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 84, -1));
+        capacidade.setText("CAPACIDADE(PESSOAS):");
+        jPanel1.add(capacidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 140, -1));
 
         campoCapacidade.setBackground(new java.awt.Color(255, 255, 255));
         campoCapacidade.setForeground(new java.awt.Color(0, 0, 0));
