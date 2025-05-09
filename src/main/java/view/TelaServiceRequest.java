@@ -5,16 +5,20 @@
 package view;
 
 import controller.MoradorController;
+import controller.ServicoController;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Morador;
+import model.Servico;
 
 /**
  *
  * @author devmat
  */
 public class TelaServiceRequest extends javax.swing.JInternalFrame {
+    
+    String morador;
 
     /**
      * Creates new form TelaServiceRequest
@@ -37,7 +41,10 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
             outServicText.setVisible(true);
         outroServico.setVisible(true);
             
-        }//fim do if
+        }else{
+             outServicText.setVisible(false);
+        outroServico.setVisible(false);
+         }//fim do else
     }
     
     public void ListagemUsuario(){
@@ -90,16 +97,28 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaMorador = new javax.swing.JTable();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        bSolicitarServico = new javax.swing.JToggleButton();
         boxServicos = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         outServicText = new javax.swing.JLabel();
         descricao = new javax.swing.JTextField();
         outroServico = new javax.swing.JTextField();
+        campoPrazo = new javax.swing.JFormattedTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tabelaServicos = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tabelaServicos1 = new javax.swing.JTable();
+        jButton3 = new javax.swing.JButton();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -122,17 +141,22 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
                 "ID", "CASA", "NOME", "CPF", "EMAIL", "DAT_NASC"
             }
         ));
+        tabelaMorador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaMoradorMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabelaMorador);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 23, 693, 171));
 
-        jToggleButton1.setText("Solicitar Serviço");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        bSolicitarServico.setText("Solicitar Serviço");
+        bSolicitarServico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                bSolicitarServicoActionPerformed(evt);
             }
         });
-        jPanel1.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 350, 130, -1));
+        jPanel1.add(bSolicitarServico, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 360, 130, -1));
 
         boxServicos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jardinagem", "Manutenção geral", "Limpeza", "Segurança", "Outros" }));
         boxServicos.addActionListener(new java.awt.event.ActionListener() {
@@ -144,8 +168,8 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Descrição");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, -1));
+        jLabel1.setText("Prazo");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -159,32 +183,191 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
         jPanel1.add(descricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 220, 30));
         jPanel1.add(outroServico, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 220, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 727, 469));
+        try {
+            campoPrazo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        campoPrazo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoPrazoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(campoPrazo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 220, 30));
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Descrição");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, -1));
+
+        jTabbedPane1.addTab("Solicitação de Serviço", jPanel1);
+
+        jPanel3.setBackground(new java.awt.Color(255, 204, 51));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tabelaServicos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "ID_SERVIÇO", "MORADOR", "SERVIÇO", "PRAZO", "STATUS"
+            }
+        ));
+        jScrollPane2.setViewportView(tabelaServicos);
+
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 40, 680, 220));
+
+        jButton1.setText("Aprovar");
+        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(596, 300, 100, -1));
+
+        jButton2.setText("Negar");
+        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 300, 100, -1));
+
+        jTabbedPane1.addTab("Verificação de Serviço Solicitado", jPanel3);
+
+        jPanel2.setBackground(new java.awt.Color(255, 204, 51));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tabelaServicos1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "ID_SERVIÇO", "MORADOR", "SERVIÇO", "PRAZO", "STATUS"
+            }
+        ));
+        jScrollPane3.setViewportView(tabelaServicos1);
+
+        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 40, 680, 220));
+
+        jButton3.setText("Concluída");
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(546, 310, 150, -1));
+
+        jTabbedPane1.addTab("Serviços Solicitados", jPanel2);
+
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 470));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+    private void bSolicitarServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSolicitarServicoActionPerformed
         // TODO add your handling code here:
+       // TODO add your handling code here:
+       String selectService = (String) boxServicos.getSelectedItem();
        
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+       if (selectService.equals("Outros") && outroServico.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Escreva um outro serviço");
+       } 
+        if(descricao.getText().isEmpty() || campoPrazo.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos");
+            if (morador == null || morador.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Selecione um morador na tabela!");
+        }
+        }else{
+        
+        try{
+       ServicoController controller = new ServicoController();
+         // criando um objeto do tipo usuario da pasta model
+         Servico servico = new Servico();
+          if(selectService.equals("outros")){
+               servico.setNomeMorador(this.morador);
+                servico.setNome(outroServico.getText());
+                servico.setDescricao(descricao.getText());
+                servico.setPrazo(campoPrazo.getText());  
+            }else{
+                servico.setNomeMorador(this.morador);
+                servico.setNome(boxServicos.getSelectedItem().toString());
+                servico.setDescricao(descricao.getText());
+                servico.setPrazo(campoPrazo.getText());  
+            }
+
+                // chamando o metodo de cadastrar o usuario no banco de dados
+            controller.SolicitarServico(servico);
+            JOptionPane.showMessageDialog
+            (null,"Serviço solicitado com Sucesso!");
+
+            ListagemUsuario();  
+             
+            //limparCampos();
+            
+
+        }catch(Exception e){
+             JOptionPane.showMessageDialog
+            (null,"Não foi possível solicitar Serviço! "+e);
+        }
+      }
+    }//GEN-LAST:event_bSolicitarServicoActionPerformed
 
     private void boxServicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxServicosActionPerformed
         // TODO add your handling code here:
        campoCargoActionPerformed();
     }//GEN-LAST:event_boxServicosActionPerformed
 
+    private void campoPrazoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoPrazoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoPrazoActionPerformed
+
+    private void tabelaMoradorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMoradorMouseClicked
+        // TODO add your handling code here:
+        int linhaSelecionada = tabelaMorador.getSelectedRow();
+
+        //verificando se alguam linha foi selecionada
+        if(linhaSelecionada>=0){
+            //definir modelo default para a tabela
+            DefaultTableModel modeloTabela =
+            (DefaultTableModel) tabelaMorador.getModel();
+
+            //jogando os dados da tabela para os campos de texto
+            morador = modeloTabela.getValueAt(linhaSelecionada, 0).toString();
+
+        }//fim do if   
+    }//GEN-LAST:event_tabelaMoradorMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton bSolicitarServico;
     private javax.swing.JComboBox<String> boxServicos;
+    private javax.swing.JFormattedTextField campoPrazo;
     private javax.swing.JTextField descricao;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel outServicText;
     private javax.swing.JTextField outroServico;
     private javax.swing.JTable tabelaMorador;
+    private javax.swing.JTable tabelaServicos;
+    private javax.swing.JTable tabelaServicos1;
     // End of variables declaration//GEN-END:variables
 }
