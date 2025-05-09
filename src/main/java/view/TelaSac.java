@@ -175,6 +175,7 @@ public class TelaSac extends javax.swing.JFrame {
                 new TelaSac().setVisible(true);
             }
         });
+    
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
