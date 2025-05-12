@@ -28,13 +28,14 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         PanelEntrada = new javax.swing.JPanel();
-        nomeMorador = new javax.swing.JTextField();
+        campoNomeMorador = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         tabelaMorador = new javax.swing.JTable();
         bPermitirEntrada = new javax.swing.JButton();
+        bCadastrarVisitante = new javax.swing.JButton();
         PanelSaida = new javax.swing.JPanel();
-        nomeVisitante = new javax.swing.JTextField();
+        campoNomeVistante = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaVisitante = new javax.swing.JTable();
@@ -42,7 +43,7 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
 
         PanelEntrada.setBackground(new java.awt.Color(255, 204, 0));
 
-        nomeMorador.setBackground(new java.awt.Color(255, 255, 255));
+        campoNomeMorador.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -89,6 +90,9 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
         bPermitirEntrada.setForeground(new java.awt.Color(255, 255, 255));
         bPermitirEntrada.setText("PERMITIR ENTRADA");
 
+        bCadastrarVisitante.setForeground(new java.awt.Color(255, 255, 255));
+        bCadastrarVisitante.setText("CADASTRAR VISITANTE");
+
         javax.swing.GroupLayout PanelEntradaLayout = new javax.swing.GroupLayout(PanelEntrada);
         PanelEntrada.setLayout(PanelEntradaLayout);
         PanelEntradaLayout.setHorizontalGroup(
@@ -99,14 +103,16 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
                     .addGroup(PanelEntradaLayout.createSequentialGroup()
                         .addGroup(PanelEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nomeMorador, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoNomeMorador, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelEntradaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bPermitirEntrada)
-                .addGap(284, 284, 284))
+                .addGroup(PanelEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(bCadastrarVisitante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bPermitirEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(275, 275, 275))
         );
         PanelEntradaLayout.setVerticalGroup(
             PanelEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,19 +120,21 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
                 .addGap(7, 7, 7)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nomeMorador, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campoNomeMorador, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
                 .addComponent(bPermitirEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(bCadastrarVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Entrada", PanelEntrada);
 
         PanelSaida.setBackground(new java.awt.Color(255, 204, 0));
 
-        nomeVisitante.setBackground(new java.awt.Color(255, 255, 255));
+        campoNomeVistante.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -161,12 +169,12 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
                     .addGroup(PanelSaidaLayout.createSequentialGroup()
                         .addGroup(PanelSaidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(nomeVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(campoNomeVistante, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(PanelSaidaLayout.createSequentialGroup()
-                .addGap(296, 296, 296)
-                .addComponent(bPermitirSaida)
+                .addGap(290, 290, 290)
+                .addComponent(bPermitirSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelSaidaLayout.setVerticalGroup(
@@ -175,12 +183,12 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nomeVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campoNomeVistante, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(46, 46, 46)
                 .addComponent(bPermitirSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Saida", PanelSaida);
@@ -239,15 +247,16 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelEntrada;
     private javax.swing.JPanel PanelSaida;
+    private javax.swing.JButton bCadastrarVisitante;
     private javax.swing.JButton bPermitirEntrada;
     private javax.swing.JButton bPermitirSaida;
+    private javax.swing.JTextField campoNomeMorador;
+    private javax.swing.JTextField campoNomeVistante;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField nomeMorador;
-    private javax.swing.JTextField nomeVisitante;
     private javax.swing.JTable tabelaMorador;
     private javax.swing.JTable tabelaVisitante;
     // End of variables declaration//GEN-END:variables
