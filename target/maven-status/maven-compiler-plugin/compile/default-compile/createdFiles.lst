@@ -1,6 +1,7 @@
 view\TelaReservas$7.class
 view\TelaEmDev.class
 view\TelaFinanceiro$1.class
+view\TelaCadastroVisitante$1.class
 view\CadMorador$7.class
 view\TelaServiceRequest$4.class
 controller\ReservaController.class
@@ -52,11 +53,13 @@ view\TelaAtividade$7.class
 view\TelaCadastroUnidade$6.class
 view\CadMorador$6.class
 view\TelaHome$6.class
+view\TelaCadastroVisitante$2.class
 view\TelaHome.class
 view\TelaFinanceiro$2.class
 view\TelaCadastroUnidade$5.class
 view\TelaHome$10.class
 view\CadAtv$5.class
+view\TelaCadastroVisitante.class
 view\TelaHome$17.class
 view\AtividadeConcluida$2.class
 view\TelaAtividade$1.class
@@ -118,6 +121,7 @@ view\TelaCadastroUnidade$2.class
 view\TelaLogin.class
 controller\AtividadeController.class
 view\TelaServiceRequest$1.class
+view\TelaFinanceiro$5.class
 view\TelaReservas$3.class
 view\telaRelatorioReserva$1.class
 view\telaReservaFeita.class

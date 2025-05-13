@@ -44,6 +44,7 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
         PanelEntrada.setBackground(new java.awt.Color(255, 204, 0));
 
         campoNomeMorador.setBackground(new java.awt.Color(255, 255, 255));
+        campoNomeMorador.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -135,6 +136,7 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
         PanelSaida.setBackground(new java.awt.Color(255, 204, 0));
 
         campoNomeVistante.setBackground(new java.awt.Color(255, 255, 255));
+        campoNomeVistante.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -150,7 +152,7 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "NOME", "CPF", "TELEFONE", "PLACA VEICULO"
             }
         ));
         jScrollPane1.setViewportView(tabelaVisitante);
