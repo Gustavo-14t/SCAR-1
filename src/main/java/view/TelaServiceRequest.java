@@ -19,6 +19,7 @@ import model.Servico;
 public class TelaServiceRequest extends javax.swing.JInternalFrame {
     
     String morador;
+    int idServicos;
 
     /**
      * Creates new form TelaServiceRequest
@@ -30,8 +31,77 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
         outroServico.setVisible(false);
         
         ListagemUsuario();
-        
+        ListagemServicoPende();
+        ListagemServicoAprovado();
     }
+    
+    public void ListagemServicoAprovado(){
+        //cria um objeto de vendasController
+        ServicoController controller = new  ServicoController();
+        //capturando a lista de relatório de vendas
+        List<Servico> lista = controller.listaServicoAprovados();
+        
+        //modelo padrão de tabela
+       DefaultTableModel modeloTabela = (DefaultTableModel)tabelaServicos2.getModel();
+        
+       //Limpando a tabela antes de adicionar nobvos dados
+       modeloTabela.setRowCount(0);
+       
+       //verificar se a lista esta vazia
+       if(lista !=null && !lista.isEmpty()){
+           for (Servico servico : lista){
+               Object[] linha = {
+                   servico.getId_servico(),
+                   servico.getNomeMorador(),
+                   servico.getNome(),
+                   servico.getDescricao(),
+                   servico.getPrazo(),
+                   servico.getStatu()
+                   
+                       
+               };//fim do objeto linha
+               modeloTabela.addRow(linha);
+               
+           }//fim do for
+       }else{
+           JOptionPane.showMessageDialog(null,"Não existem pedidos de serviço pendentes!");
+       }//fim do else
+        
+    }//fim do método de ListagemVendas()
+    
+     public void ListagemServicoPende(){
+        //cria um objeto de vendasController
+        ServicoController controller = new  ServicoController();
+        //capturando a lista de relatório de vendas
+        List<Servico> lista = controller.listaServicoPend();
+        
+        //modelo padrão de tabela
+       DefaultTableModel modeloTabela = (DefaultTableModel)tabelaServicos.getModel();
+        
+       //Limpando a tabela antes de adicionar nobvos dados
+       modeloTabela.setRowCount(0);
+       
+       //verificar se a lista esta vazia
+       if(lista !=null && !lista.isEmpty()){
+           for (Servico servico : lista){
+               Object[] linha = {
+                   servico.getId_servico(),
+                   servico.getNomeMorador(),
+                   servico.getNome(),
+                   servico.getDescricao(),
+                   servico.getPrazo(),
+                   servico.getStatu()
+                   
+                       
+               };//fim do objeto linha
+               modeloTabela.addRow(linha);
+               
+           }//fim do for
+       }else{
+           JOptionPane.showMessageDialog(null,"Não existem pedidos de serviço pendentes!");
+       }//fim do else
+        
+    }//fim do método de ListagemVendas()
     
     public void campoCargoActionPerformed() {
         // Obtém o cargo selecionado no JComboBox
@@ -83,7 +153,7 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
         
     } else {
         JOptionPane.showMessageDialog
-        (this, "Nenhum Cliente encontrado.");
+        (this, "Nenhum Morador encontrado.");
     }
        
  }//fim do método de listagemUsuarioP()
@@ -117,7 +187,7 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
         jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tabelaServicos1 = new javax.swing.JTable();
+        tabelaServicos2 = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -207,31 +277,46 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
 
         tabelaServicos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID_SERVIÇO", "MORADOR", "SERVIÇO", "PRAZO", "STATUS"
+                "ID", "MORADOR", "SERVIÇO", "DESCRICÃO", "PRAZO", "STATUS"
             }
         ));
+        tabelaServicos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaServicosMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tabelaServicos);
 
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 40, 680, 220));
 
         jButton1.setText("Aprovar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(596, 300, 100, -1));
 
         jButton2.setText("Negar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 300, 100, -1));
 
         jTabbedPane1.addTab("Verificação de Serviço Solicitado", jPanel3);
@@ -239,26 +324,31 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
         jPanel2.setBackground(new java.awt.Color(255, 204, 51));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tabelaServicos1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaServicos2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID_SERVIÇO", "MORADOR", "SERVIÇO", "PRAZO", "STATUS"
+                "ID_SERVIÇO", "MORADOR", "SERVIÇO", "SERVICO", "PRAZO", "STATUS"
             }
         ));
-        jScrollPane3.setViewportView(tabelaServicos1);
+        tabelaServicos2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaServicos2MouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(tabelaServicos2);
 
         jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 40, 680, 220));
 
@@ -309,8 +399,8 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
             (null,"Serviço solicitado com Sucesso!");
 
             ListagemUsuario();  
-             
-            //limparCampos();
+            ListagemServicoPende();
+            ListagemServicoAprovado();
             
 
         }catch(Exception e){
@@ -345,6 +435,84 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
         }//fim do if   
     }//GEN-LAST:event_tabelaMoradorMouseClicked
 
+    private void tabelaServicos2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaServicos2MouseClicked
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+        int linhaSelecionada = tabelaServicos2.getSelectedRow();
+
+    // Verificando se alguma linha foi selecionada
+    if (linhaSelecionada >= 0) {
+        // Definir modelo default para a tabela
+        DefaultTableModel modeloTabela = (DefaultTableModel) tabelaServicos2.getModel();
+
+        // Verificando se os valores não são nulos antes de usar toString()
+        idServicos = modeloTabela.getValueAt(linhaSelecionada, 0) != null 
+                    ? Integer.parseInt(modeloTabela.getValueAt(linhaSelecionada, 0).toString()) 
+                    : 0;  // Valor padrão para idMorador (caso seja nulo)       
+        
+    } // fim do if
+    }//GEN-LAST:event_tabelaServicos2MouseClicked
+
+    private void tabelaServicosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaServicosMouseClicked
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+        int linhaSelecionada = tabelaServicos.getSelectedRow();
+
+    // Verificando se alguma linha foi selecionada
+    if (linhaSelecionada >= 0) {
+        // Definir modelo default para a tabela
+        DefaultTableModel modeloTabela = (DefaultTableModel) tabelaServicos.getModel();
+
+        // Verificando se os valores não são nulos antes de usar toString()
+        idServicos = modeloTabela.getValueAt(linhaSelecionada, 0) != null 
+                    ? Integer.parseInt(modeloTabela.getValueAt(linhaSelecionada, 0).toString()) 
+                    : 0;  // Valor padrão para idMorador (caso seja nulo)       
+        
+    } // fim do if
+    }//GEN-LAST:event_tabelaServicosMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+      ServicoController controller = new ServicoController();
+        
+        Servico svc = new Servico ();
+        //passando os valores para o objeto vendas
+         svc.setStatu("Aprovado");
+        svc.setId_servico(this.idServicos);     
+   
+        // passando os dados da venda para o banco de dados
+        boolean cadastrou = controller.editarServico(svc);
+        if(cadastrou){
+            JOptionPane.showMessageDialog(
+                    null,"Servico aprovado com sucesso");
+            
+        }else{
+           JOptionPane.showMessageDialog(
+                    null,"Não foi possivel aprovar Servico!"); 
+        }// fim do else 
+        ListagemServicoPende();
+        ListagemServicoAprovado();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+        
+        ServicoController controller = new ServicoController();
+
+        try{
+            controller.negarServico (idServicos);
+            JOptionPane.showMessageDialog(null,"Servico negado com sucesso");
+           
+        }catch(Exception erro){
+            JOptionPane.showMessageDialog(null,"Erro ao negar Reserva" + erro);
+        }     
+        ListagemUsuario();
+        ListagemServicoPende();
+        ListagemServicoAprovado();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton bSolicitarServico;
@@ -368,6 +536,6 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
     private javax.swing.JTextField outroServico;
     private javax.swing.JTable tabelaMorador;
     private javax.swing.JTable tabelaServicos;
-    private javax.swing.JTable tabelaServicos1;
+    private javax.swing.JTable tabelaServicos2;
     // End of variables declaration//GEN-END:variables
 }
