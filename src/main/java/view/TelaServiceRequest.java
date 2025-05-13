@@ -35,6 +35,13 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
         ListagemServicoAprovado();
     }
     
+    public void LimparCampos(){
+        outroServico.setText("");
+         descricao.setText("");
+         campoPrazo.setText("");
+         boxServicos.setSelectedIndex(-1);
+    }
+    
     public void ListagemServicoAprovado(){
         //cria um objeto de vendasController
         ServicoController controller = new  ServicoController();
@@ -353,6 +360,11 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
         jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 40, 680, 220));
 
         jButton3.setText("Concluída");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(546, 310, 150, -1));
 
         jTabbedPane1.addTab("Serviços Solicitados", jPanel2);
@@ -372,32 +384,35 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
        } 
         if(descricao.getText().isEmpty() || campoPrazo.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Preencha todos os campos");
-            if (morador == null || morador.isEmpty()) {
+        }if (morador == null || morador.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Selecione um morador na tabela!");
         }
-        }else{
+        else{
         
         try{
        ServicoController controller = new ServicoController();
          // criando um objeto do tipo usuario da pasta model
          Servico servico = new Servico();
-          if(selectService.equals("outros")){
-               servico.setNomeMorador(this.morador);
+          if(selectService.equals("Outros")){
+              
                 servico.setNome(outroServico.getText());
-                servico.setDescricao(descricao.getText());
-                servico.setPrazo(campoPrazo.getText());  
+              
             }else{
-                servico.setNomeMorador(this.morador);
+                
                 servico.setNome(boxServicos.getSelectedItem().toString());
+                
+            }
+          
+                servico.setNomeMorador(this.morador);
                 servico.setDescricao(descricao.getText());
                 servico.setPrazo(campoPrazo.getText());  
-            }
 
                 // chamando o metodo de cadastrar o usuario no banco de dados
             controller.SolicitarServico(servico);
             JOptionPane.showMessageDialog
             (null,"Serviço solicitado com Sucesso!");
-
+                
+            LimparCampos();
             ListagemUsuario();  
             ListagemServicoPende();
             ListagemServicoAprovado();
@@ -502,7 +517,7 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
         ServicoController controller = new ServicoController();
 
         try{
-            controller.negarServico (idServicos);
+            controller.negarServico ( this.idServicos);
             JOptionPane.showMessageDialog(null,"Servico negado com sucesso");
            
         }catch(Exception erro){
@@ -512,6 +527,30 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
         ListagemServicoPende();
         ListagemServicoAprovado();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+            // TODO add your handling code here:
+      ServicoController controller = new ServicoController();
+        
+        Servico svc = new Servico ();
+        //passando os valores para o objeto vendas
+         svc.setStatu("Concluído");
+        svc.setId_servico(this.idServicos);     
+   
+        // passando os dados da venda para o banco de dados
+        boolean cadastrou = controller.editarServico(svc);
+        if(cadastrou){
+            JOptionPane.showMessageDialog(
+                    null,"Servico concluído com sucesso");
+            
+        }else{
+           JOptionPane.showMessageDialog(
+                    null,"Não foi possível marcar serviço como concluído!"); 
+        }// fim do else 
+        ListagemServicoPende();
+        ListagemServicoAprovado();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

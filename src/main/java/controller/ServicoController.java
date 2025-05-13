@@ -149,7 +149,7 @@ public class ServicoController {
     }//fim do método listarClientes()
     
     public boolean negarServico(int idServico){
-         String query = "DELETE FROM Servico WHERE id_morador = ?";
+         String query = "DELETE FROM Servico WHERE id_servico = ?";
          try (Connection connection = conexaoBD.getConection();//conexão com o banco de dados
      PreparedStatement preparedStatement = connection.prepareStatement(query)){//mandar o comando select 
             //mandando idUsuario para dentro do camando sql

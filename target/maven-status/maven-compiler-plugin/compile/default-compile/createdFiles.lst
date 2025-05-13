@@ -115,6 +115,7 @@ controller\ServicoController.class
 controller\UnidadeController.class
 view\TelaAtividade$WrapLayout.class
 view\TelaLogin$3.class
+view\TelaServiceRequest$9.class
 view\CadFuncionario$10.class
 view\telaReservaFeita$2.class
 view\TelaHome$3.class
