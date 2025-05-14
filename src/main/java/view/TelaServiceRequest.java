@@ -4,12 +4,14 @@
  */
 package view;
 
+import controller.ContServiceController;
 import controller.MoradorController;
 import controller.ServicoController;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Morador;
+import model.RelatorioServico;
 import model.Servico;
 
 /**
@@ -33,6 +35,39 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
         ListagemUsuario();
         ListagemServicoPende();
         ListagemServicoAprovado();
+        ListagemRelatorio();
+    }
+    
+    public void ListagemRelatorio(){
+        //cria um objeto de vendasController
+        ContServiceController controller = new  ContServiceController();
+        //capturando a lista de relatório de vendas
+        List<RelatorioServico> lista = controller.listarServico();
+        
+        //modelo padrão de tabela
+       DefaultTableModel modeloTabela = (DefaultTableModel)tabelaControleServico.getModel();
+        
+       //Limpando a tabela antes de adicionar nobvos dados
+       modeloTabela.setRowCount(0);
+       
+       //verificar se a lista esta vazia
+       if(lista !=null && !lista.isEmpty()){
+           for (RelatorioServico servico : lista){
+               Object[] linha = {
+                   servico.getMorador(),
+                   servico.getNomeServico(),
+                   servico.getDiaDaSolciticao(),
+                   servico.getDataConclusao(),
+                   servico.getStatu(),
+   
+               };//fim do objeto linha
+               modeloTabela.addRow(linha);
+               
+           }//fim do for
+       }else{
+           JOptionPane.showMessageDialog(null,"Não existem Servicos!");
+       }//fim do else
+    
     }
     
     public void LimparCampos(){
@@ -196,6 +231,10 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         tabelaServicos2 = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tabelaControleServico = new javax.swing.JTable();
+        jButton4 = new javax.swing.JButton();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -367,7 +406,46 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
         });
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(546, 310, 150, -1));
 
-        jTabbedPane1.addTab("Serviços Solicitados", jPanel2);
+        jTabbedPane1.addTab("Serviços Aprovados", jPanel2);
+
+        jPanel4.setBackground(new java.awt.Color(255, 204, 51));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tabelaControleServico.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "MORADOR", "SERVIÇO", "DATA_SOLICITAÇÃO", "DATA_CONCLUSÃO", "STATUS"
+            }
+        ));
+        jScrollPane4.setViewportView(tabelaControleServico);
+
+        jPanel4.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 690, 340));
+
+        jButton4.setText("BAIXAR RELATÓRIO");
+        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 390, 170, 30));
+
+        jTabbedPane1.addTab("Relatórios", jPanel4);
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 470));
 
@@ -416,7 +494,7 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
             ListagemUsuario();  
             ListagemServicoPende();
             ListagemServicoAprovado();
-            
+            ListagemRelatorio();
 
         }catch(Exception e){
              JOptionPane.showMessageDialog
@@ -508,6 +586,7 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
         }// fim do else 
         ListagemServicoPende();
         ListagemServicoAprovado();
+        ListagemRelatorio();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -550,6 +629,7 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
         }// fim do else 
         ListagemServicoPende();
         ListagemServicoAprovado();
+        ListagemRelatorio();
     }//GEN-LAST:event_jButton3ActionPerformed
 
 
@@ -561,18 +641,22 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel outServicText;
     private javax.swing.JTextField outroServico;
+    private javax.swing.JTable tabelaControleServico;
     private javax.swing.JTable tabelaMorador;
     private javax.swing.JTable tabelaServicos;
     private javax.swing.JTable tabelaServicos2;

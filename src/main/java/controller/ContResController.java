@@ -85,7 +85,7 @@ public class ContResController {
 }// fim do método cadastroTurno()
     
     
-     public List<ControleReserva> listarUnidade(){
+     public List<ControleReserva> listarReserva(){
         List<ControleReserva> lista = new ArrayList<>();
         
         String query = "SELECT id_reserva,data_entrega,data_devolucao,funcionario_entrega,funcionario_devolucao FROM ControleReserva ;";
@@ -166,7 +166,7 @@ public class ContResController {
             return lista;
 
         }catch(SQLException e){
-            System.err.print("Erro ao listar vendas "+ e);
+            System.err.print("Erro ao listar Relatorio de Reservas "+ e);
             return null;
         }// final do try catch
 }

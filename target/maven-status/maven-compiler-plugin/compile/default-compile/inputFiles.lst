@@ -9,6 +9,8 @@ C:\Users\devmat\Documents\SCAR-main\src\main\java\view\TelaSac.java
 C:\Users\devmat\Documents\SCAR-main\src\main\java\view\telaRelatorioReserva.java
 C:\Users\devmat\Documents\SCAR-main\src\main\java\model\conexaoBD.java
 C:\Users\devmat\Documents\SCAR-main\src\main\java\model\Unidade.java
+C:\Users\devmat\Documents\SCAR-main\src\main\java\model\RelatorioServico.java
+C:\Users\devmat\Documents\SCAR-main\src\main\java\controller\ContServiceController.java
 C:\Users\devmat\Documents\SCAR-main\src\main\java\controller\AtividadeController.java
 C:\Users\devmat\Documents\SCAR-main\src\main\java\controller\LoginController.java
 C:\Users\devmat\Documents\SCAR-main\src\main\java\model\Atividade.java
@@ -24,8 +26,11 @@ C:\Users\devmat\Documents\SCAR-main\src\main\java\model\Servico.java
 C:\Users\devmat\Documents\SCAR-main\src\main\java\view\TelaCadastroVisitante.java
 C:\Users\devmat\Documents\SCAR-main\src\main\java\view\TelaFinanceiro.java
 C:\Users\devmat\Documents\SCAR-main\src\main\java\model\Funcionario.java
+C:\Users\devmat\Documents\SCAR-main\src\main\java\model\Visitante.java
 C:\Users\devmat\Documents\SCAR-main\src\main\java\controller\ServicoController.java
+C:\Users\devmat\Documents\SCAR-main\src\main\java\controller\VisitanteController.java
 C:\Users\devmat\Documents\SCAR-main\src\main\java\view\TelaCadastroUnidade.java
+C:\Users\devmat\Documents\SCAR-main\src\main\java\model\ControleServico.java
 C:\Users\devmat\Documents\SCAR-main\src\main\java\controller\ContResController.java
 C:\Users\devmat\Documents\SCAR-main\src\main\java\view\TelaAtividade.java
 C:\Users\devmat\Documents\SCAR-main\src\main\java\view\TelaEntradaSaida.java
