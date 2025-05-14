@@ -93,6 +93,11 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
 
         bCadastrarVisitante.setForeground(new java.awt.Color(255, 255, 255));
         bCadastrarVisitante.setText("CADASTRAR VISITANTE");
+        bCadastrarVisitante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCadastrarVisitanteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelEntradaLayout = new javax.swing.GroupLayout(PanelEntrada);
         PanelEntrada.setLayout(PanelEntradaLayout);
@@ -244,6 +249,12 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
                 : "N/A");  // Valor padrão para Data de Nascimento (caso seja nulo)
         } // fim do if*/
     }//GEN-LAST:event_tabelaMoradorMouseClicked
+
+    private void bCadastrarVisitanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadastrarVisitanteActionPerformed
+        // TODO add your handling code here:
+        TelaCadastroVisitante visitante = new TelaCadastroVisitante ();
+        visitante.setVisible(true);
+    }//GEN-LAST:event_bCadastrarVisitanteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
