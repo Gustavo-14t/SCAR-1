@@ -140,7 +140,7 @@ public class telaRelatorioReserva extends javax.swing.JInternalFrame {
     
     private void butaoBaixarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butaoBaixarRelatorioActionPerformed
         // TODO add your handling code here:
-        String pdfPath = "RelatorioDeVendas.pdf";
+        String pdfPath = "RelatorioDeReservas.pdf";
         
         try{
             

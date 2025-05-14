@@ -1,3 +1,4 @@
+controller\ContServiceController.class
 view\TelaReservas$7.class
 view\TelaServiceRequest$7.class
 view\TelaEmDev.class
@@ -31,7 +32,9 @@ view\AtividadeConcluida.class
 view\CadMorador.class
 view\TelaHome$7.class
 view\TelaHome$12.class
+model\RelatorioServico.class
 view\TelaSac.class
+model\ControleServico.class
 view\CadAtv$3.class
 view\telaReservaFeita$6.class
 model\Funcionario.class
@@ -54,6 +57,7 @@ view\CadAtv.class
 view\TelaAtividade$7.class
 view\TelaCadastroUnidade$6.class
 view\CadMorador$6.class
+model\Visitante.class
 view\TelaHome$6.class
 view\TelaCadastroVisitante$2.class
 view\TelaHome.class
@@ -71,6 +75,7 @@ view\TelaReservas.class
 model\ControleReserva.class
 view\TelaReservas$6.class
 view\TelaHome$13.class
+controller\VisitanteController.class
 model\ReservaList.class
 view\TelaCadastroUnidade$1.class
 view\CadAtv$2.class
@@ -98,6 +103,7 @@ view\TelaServiceRequest$3.class
 view\CadMorador$8.class
 view\TelaFinanceiro.class
 model\Servico.class
+view\TelaServiceRequest$10.class
 view\TelaCadastroUnidade$4.class
 view\TelaLogin$4.class
 view\TelaCadastroUnidade.class
@@ -116,6 +122,7 @@ controller\UnidadeController.class
 view\TelaAtividade$WrapLayout.class
 view\TelaLogin$3.class
 view\TelaServiceRequest$9.class
+view\TelaEntradaSaida$3.class
 view\CadFuncionario$10.class
 view\telaReservaFeita$2.class
 view\TelaHome$3.class

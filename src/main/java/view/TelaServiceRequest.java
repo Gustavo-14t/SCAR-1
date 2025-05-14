@@ -4,12 +4,20 @@
  */
 package view;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import controller.ContServiceController;
 import controller.MoradorController;
 import controller.ServicoController;
+import java.awt.Desktop;
+import java.io.File;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Morador;
+import model.RelatorioServico;
 import model.Servico;
 
 /**
@@ -33,6 +41,39 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
         ListagemUsuario();
         ListagemServicoPende();
         ListagemServicoAprovado();
+        ListagemRelatorio();
+    }
+    
+    public void ListagemRelatorio(){
+        //cria um objeto de vendasController
+        ContServiceController controller = new  ContServiceController();
+        //capturando a lista de relatório de vendas
+        List<RelatorioServico> lista = controller.listarServico();
+        
+        //modelo padrão de tabela
+       DefaultTableModel modeloTabela = (DefaultTableModel)tabelaControleServico.getModel();
+        
+       //Limpando a tabela antes de adicionar nobvos dados
+       modeloTabela.setRowCount(0);
+       
+       //verificar se a lista esta vazia
+       if(lista !=null && !lista.isEmpty()){
+           for (RelatorioServico servico : lista){
+               Object[] linha = {
+                   servico.getMorador(),
+                   servico.getNomeServico(),
+                   servico.getDiaDaSolciticao(),
+                   servico.getDataConclusao(),
+                   servico.getStatu(),
+   
+               };//fim do objeto linha
+               modeloTabela.addRow(linha);
+               
+           }//fim do for
+       }else{
+           JOptionPane.showMessageDialog(null,"Não existem Servicos!");
+       }//fim do else
+    
     }
     
     public void LimparCampos(){
@@ -196,6 +237,10 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         tabelaServicos2 = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tabelaControleServico = new javax.swing.JTable();
+        jButton4 = new javax.swing.JButton();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -367,7 +412,51 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
         });
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(546, 310, 150, -1));
 
-        jTabbedPane1.addTab("Serviços Solicitados", jPanel2);
+        jTabbedPane1.addTab("Serviços Aprovados", jPanel2);
+
+        jPanel4.setBackground(new java.awt.Color(255, 204, 51));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tabelaControleServico.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "MORADOR", "SERVIÇO", "DATA_SOLICITAÇÃO", "DATA_CONCLUSÃO", "STATUS"
+            }
+        ));
+        jScrollPane4.setViewportView(tabelaControleServico);
+
+        jPanel4.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 690, 340));
+
+        jButton4.setText("BAIXAR RELATÓRIO");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 390, 170, 30));
+
+        jTabbedPane1.addTab("Relatórios", jPanel4);
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 470));
 
@@ -416,7 +505,7 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
             ListagemUsuario();  
             ListagemServicoPende();
             ListagemServicoAprovado();
-            
+            ListagemRelatorio();
 
         }catch(Exception e){
              JOptionPane.showMessageDialog
@@ -508,6 +597,7 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
         }// fim do else 
         ListagemServicoPende();
         ListagemServicoAprovado();
+        ListagemRelatorio();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -550,7 +640,76 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
         }// fim do else 
         ListagemServicoPende();
         ListagemServicoAprovado();
+        ListagemRelatorio();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+         // TODO add your handling code here:
+        String pdfPath = "RelatorioDeReservas.pdf";
+        
+        try{
+            
+            //criando documento pdf
+            Document documento = new Document();
+            PdfWriter.getInstance(documento, new java.io.FileOutputStream(pdfPath));
+            
+            //abrir pdf
+            documento.open();
+            
+            //Criando tabela no pdf
+            //getColumn captura a quantidade do colunas da tabelaVendas
+            int  colunas = tabelaControleServico.getColumnCount() ;
+            //definindo a nossa tabela dentro do pdf
+            PdfPTable tabela = new PdfPTable(colunas);
+            //definindo a escala da tabela 100%, 80%, 50% 
+            tabela.setWidthPercentage(100);
+            
+            //adicionando o nome das colunas na tabela do pdf
+            for(int i=0 ; i< colunas; i++){
+                tabela.addCell(new Phrase(tabelaControleServico.getColumnName(i)));
+            }//fim do laço de repetição FOR
+            
+            //adicionando os dados na tabela pdf 
+            DefaultTableModel modeloTabela = (DefaultTableModel) tabelaControleServico.getModel();
+            //usnado laço de repetição para inserir os dados 
+            for(int l = 0; l < modeloTabela.getRowCount(); l ++){
+                for (int c = 0; c < modeloTabela.getColumnCount(); c++ ){
+                    //Adicionando os dados e jogando em um objeto 
+                    Object valorcelula = modeloTabela.getValueAt(l,c);
+                tabela.addCell(valorcelula != null ? valorcelula.toString():"");
+                
+            }//fim do 2° for     
+            }//fim do 1° for
+            
+            //adicionando a tabela dentro do pdf
+            documento.add(tabela);
+            
+            // fechando o documento 
+            documento.close();
+            
+            //mensagem de sucesso
+            JOptionPane.showMessageDialog(this,"PDF GERADO COM SUCESSO");
+            
+            //abrir o pdf automaticamente
+            File pdffile = new File(pdfPath);
+            //se pdf existir 
+            if(pdffile.exists()){
+                
+            if(Desktop.isDesktopSupported()){
+                //achou o aplicativo que abre o pdf então
+                //abre o arquivo dentro do aplicativo
+                Desktop.getDesktop().open(pdffile);
+            }
+            else{
+                JOptionPane.showMessageDialog(this,"Nenhum aplicativo suporta o PDF!");
+            }//fim do else
+            }//fim do if
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Não foi possível gerar PDF!" +e);
+        }//fim do trycatch
+    }//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -561,18 +720,22 @@ public class TelaServiceRequest extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel outServicText;
     private javax.swing.JTextField outroServico;
+    private javax.swing.JTable tabelaControleServico;
     private javax.swing.JTable tabelaMorador;
     private javax.swing.JTable tabelaServicos;
     private javax.swing.JTable tabelaServicos2;
