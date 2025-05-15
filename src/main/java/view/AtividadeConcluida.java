@@ -4,11 +4,26 @@
  */
 package view;
 
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Insets;
+import java.io.File;
+import java.io.FileOutputStream;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,6 +48,74 @@ getContentPane().add(scrollPane, new org.netbeans.lib.awtextra.AbsoluteConstrain
 
 listarAtividadesNaTela();
     }
+    
+    private void gerarRelatorioPDF(java.util.List<model.Atividade> lista) {
+    try {
+        String userHome = System.getProperty("user.home");
+        String filePath = userHome + "/Downloads/relatorio_atividades.pdf";
+
+        Document document = new Document(PageSize.A4);
+        PdfWriter.getInstance(document, new FileOutputStream(filePath));
+        document.open();
+
+        // Título
+        Font titleFont = new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD);
+        Paragraph title = new Paragraph("Relatório de Atividades Concluídas", titleFont);
+        title.setAlignment(Element.ALIGN_CENTER);
+        title.setSpacingAfter(20);
+        document.add(title);
+
+        // Fonte padrão
+        Font normalFont = new Font(Font.FontFamily.HELVETICA, 12, Font.NORMAL);
+
+        // Tabela com 4 colunas
+        PdfPTable table = new PdfPTable(4);
+        table.setWidthPercentage(100);
+        table.setWidths(new float[]{3, 5, 3, 2}); // larguras relativas das colunas
+        table.setSpacingBefore(10f);
+        table.setSpacingAfter(10f);
+
+        // Cabeçalho da tabela
+        Font headerFont = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD, BaseColor.WHITE);
+        BaseColor headerColor = new BaseColor(255, 153, 0); // laranja
+
+        String[] headers = {"Nome", "Descrição", "Prazo", "Status"};
+        for (String col : headers) {
+            PdfPCell header = new PdfPCell(new Phrase(col, headerFont));
+            header.setBackgroundColor(headerColor);
+            header.setHorizontalAlignment(Element.ALIGN_CENTER);
+            header.setPadding(5);
+            table.addCell(header);
+        }
+
+        // Dados da tabela
+        for (model.Atividade a : lista) {
+            table.addCell(new PdfPCell(new Phrase(a.getNome(), normalFont)));
+            table.addCell(new PdfPCell(new Phrase(a.getDescricao(), normalFont)));
+            table.addCell(new PdfPCell(new Phrase(a.getDatas(), normalFont)));
+            table.addCell(new PdfPCell(new Phrase(a.getStatu(), normalFont)));
+        }
+
+        document.add(table);
+
+        // Rodapé
+        Paragraph footer = new Paragraph("Relatório gerado em: " + new java.util.Date(), new Font(Font.FontFamily.HELVETICA, 10, Font.ITALIC));
+        footer.setAlignment(Element.ALIGN_RIGHT);
+        document.add(footer);
+
+        document.close();
+
+        // Abrir automaticamente
+        File pdfFile = new File(filePath);
+        if (pdfFile.exists()) {
+            Desktop.getDesktop().open(pdfFile);
+        }
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Erro ao gerar PDF: " + e.getMessage());
+    }
+}
     
     private model.Atividade atividadeSelecionada;
 
@@ -212,6 +295,11 @@ area.setBorder(javax.swing.BorderFactory.createCompoundBorder(
         painelBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bBaixarRela.setText("Baixar Relatório");
+        bBaixarRela.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBaixarRelaActionPerformed(evt);
+            }
+        });
         painelBar.add(bBaixarRela, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 11, 140, 38));
 
         jButton1.setText("Voltar");
@@ -232,6 +320,23 @@ area.setBorder(javax.swing.BorderFactory.createCompoundBorder(
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void bBaixarRelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBaixarRelaActionPerformed
+        // TODO add your handling code here:
+        bBaixarRela.addActionListener(new java.awt.event.ActionListener() {
+    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        controller.AtividadeController controller = new controller.AtividadeController();
+        java.util.List<model.Atividade> lista = controller.listarAtividadeConc();
+
+        if (lista != null && !lista.isEmpty()) {
+            gerarRelatorioPDF(lista);
+        } else {
+            JOptionPane.showMessageDialog(null, "Nenhuma atividade encontrada para gerar o relatório.");
+        }
+    }
+});
+
+    }//GEN-LAST:event_bBaixarRelaActionPerformed
 
     /**
      * @param args the command line arguments

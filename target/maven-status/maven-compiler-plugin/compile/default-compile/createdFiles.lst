@@ -1,4 +1,5 @@
 controller\ContServiceController.class
+view\AtividadeConcluida$6.class
 view\TelaReservas$7.class
 view\TelaServiceRequest$7.class
 view\TelaEmDev.class
@@ -129,6 +130,7 @@ view\TelaHome$3.class
 view\TelaServiceRequest$2.class
 view\TelaAtividade.class
 view\TelaCadastroUnidade$2.class
+view\AtividadeConcluida$5.class
 view\TelaLogin.class
 controller\AtividadeController.class
 view\TelaServiceRequest$1.class
