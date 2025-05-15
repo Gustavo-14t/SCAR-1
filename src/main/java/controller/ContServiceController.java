@@ -22,10 +22,7 @@ public class ContServiceController {
      public List<RelatorioServico> listarServico(){
         List<RelatorioServico> lista = new ArrayList<>();
         
-        String query = "SELECT  m.nome as Morador,cs.nomeServico as nomeServico,cs.diaDaSolicitacao as diaDaSolicitacao, cs.dataConclusao as dataConclusao, cs.statu as statu\n" +
-"FROM ControleServico cs\n" +
-"INNER JOIN Servico s ON cs.nomeServico = s.nome\n" +
-"INNER JOIN Morador m ON s.id_morador = m.id_morador;";
+        String query = "SELECT  morador, nomeServico, diaDaSolicitacao, dataConclusao, statu FROM ControleServico;";
 
         try(Connection connection = conexaoBD.getConection();//conexão com o banco de dados
      PreparedStatement preparedStatement = connection.prepareStatement(query)){
@@ -34,7 +31,7 @@ public class ContServiceController {
             
             while(resultSet.next()){
                 RelatorioServico contService = new RelatorioServico();     
-                 contService.setMorador(resultSet.getString("Morador"));
+                 contService.setMorador(resultSet.getString("morador"));
                   contService.setNomeServico(resultSet.getString("nomeServico"));
                 contService.setDiaDaSolciticao(resultSet.getString("diaDaSolicitacao"));
                 contService.setDataConclusao(resultSet.getString("dataConclusao"));
