@@ -32,6 +32,11 @@ que esta versão seja compatível com seu Java -->
             <artifactId>AbsoluteLayout</artifactId>
             <version>RELEASE220</version>
         </dependency>
-    </dependencies>
+              <dependency>
+                     <groupId>com.toedter</groupId>
+                     <artifactId>jcalendar</artifactId>
+                     <version>1.4</version>
+              </dependency>
+       </dependencies>
     <name>SCAR</name>
 </project>

@@ -4,6 +4,14 @@
  */
 package view;
 
+import controller.MoradorController;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.event.DocumentListener;
+import javax.swing.table.DefaultTableModel;
+import model.Funcionario;
+import model.Morador;
+
 /**
  *
  * @author devmat
@@ -13,9 +21,127 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
     /**
      * Creates new form TelaEntradaSaida
      */
-    public TelaEntradaSaida() {
+    Funcionario func;
+    int idFunc;
+    
+    public TelaEntradaSaida(Funcionario funcionario) {
         initComponents();
+        
+        func =funcionario ;
+        
+        //Verificando se o id de funcionário está sendo pegado:
+        idFunc = func.getId_funcionario();
+        //System.out.println(id);
+        
+        pesquisarMorador();
+        ListagemMorador();
+        
+       calendario.setVisible(false);
     }
+    
+    public void pesquisarMorador(){
+        campoPesquisar.getDocument().addDocumentListener(
+                new DocumentListener(){
+            //Anotação que informa que eu nção estou escrevendo um método e sim que eu estou sobre escrevendo
+            //o método atual
+             @Override
+            public void insertUpdate(javax.swing.event.DocumentEvent e){
+                pesquisar();
+            }// fim do insertUpdate
+             @Override
+            public void removeUpdate(javax.swing.event.DocumentEvent e){
+                pesquisar();
+            }
+             @Override
+         public void changedUpdate(javax.swing.event.DocumentEvent e){
+                pesquisar();
+         }
+        private void pesquisar (){
+            ListagemMoradorNome(campoPesquisar.getText());
+        }//fim do método pesquisar
+        });//fim do método de captura
+    }//fim do método PesquisarUsuario
+   
+    
+    public void ListagemMoradorNome(String nomeUsuario){
+        
+        // chamando o produtos controller
+        MoradorController controller = new MoradorController();
+        // capturando a lista de produtos que vem do banco de dados
+        List<Morador> listausuario = controller.listarMoradorNome(nomeUsuario);
+        
+        // Obtendo o modelo da tabela
+        DefaultTableModel modeloTabela = 
+                (DefaultTableModel) tabelaMorador.getModel();
+    
+    // Limpando a tabela antes de adicionar novos dados
+       modeloTabela.setRowCount(0);
+    
+    // Verificando se a lista não é nula
+    if (listausuario != null && !listausuario.isEmpty()) {
+        // Jogando os dados para dentro da minha tabela
+        for (Morador morador : listausuario) {
+            // Criando uma nova linha para a tabela
+            Object[] linha = {
+              
+    morador.getId_morador() != 0 ? morador.getId_morador() : "N/A", // Ajuste para int
+    morador.getId_unidade() != 0 ? morador.getId_unidade() : "N/A", // Ajuste para int
+    morador.getNome() != null ? morador.getNome() : "N/A", // Verifique se é null
+    morador.getCpf() != null ? morador.getCpf() : "N/A", // Verifique se é null
+    morador.getEmail() != null ? morador.getEmail() : "N/A", // Verifique se é null
+    morador.getData_nasc() != null ? morador.getData_nasc() : "N/A" // Verifique se é null
+};
+
+   
+            // Adicionando a linha ao modelo da tabela
+            modeloTabela.addRow(linha);
+        }
+    } else {
+        JOptionPane.showMessageDialog
+        (this, "Nenhum produto encontrado.");
+    }
+}// fim do metodo ListagemUsuarioN()
+    
+    public void ListagemMorador(){
+    
+        
+        // chamando o produtos controller
+        MoradorController controller = new MoradorController();
+        // capturando a lista de produtos que vem do banco de dados
+        List<Morador> listarMorador= controller.listarMorador();
+        
+        // Obtendo o modelo da tabela
+        DefaultTableModel modeloTabela = 
+                (DefaultTableModel) tabelaMorador.getModel();
+    
+    // Limpando a tabela antes de adicionar novos dados
+       modeloTabela.setRowCount(0);
+    
+    // Verificando se a lista não é nula
+    if (listarMorador != null && !listarMorador.isEmpty()) {
+        // Jogando os dados para dentro da minha tabela
+        for (Morador morador : listarMorador) {
+            // Criando uma nova linha para a tabela
+            Object[] linha = {
+             morador.getId_morador(), // Ajuste para int
+             morador.getId_unidade(), // Ajuste para int
+             morador.getNome(), // Verifique se é null
+             morador.getCpf(), // Verifique se é null
+             morador.getEmail(), // Verifique se é null
+             morador.getData_nasc() // Verifique se é null
+            };
+            // Adicionando a linha ao modelo da tabela
+            modeloTabela.addRow(linha);
+           
+        }
+         
+        
+    } else {
+        JOptionPane.showMessageDialog
+        (this, "Nenhum Cliente encontrado.");
+    }
+       
+ }//fim do método de listagemUsuarioP()
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,14 +152,27 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jSlider1 = new javax.swing.JSlider();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        PanelEntrada = new javax.swing.JPanel();
-        campoNomeMorador = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane5 = new javax.swing.JScrollPane();
+        SolicitEntrada = new javax.swing.JPanel();
+        solicitarEntrada = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        campoPesquisar = new javax.swing.JTextField();
+        jScrollPane6 = new javax.swing.JScrollPane();
         tabelaMorador = new javax.swing.JTable();
+        bSolicitarVisita = new javax.swing.JButton();
+        calendario = new com.toedter.calendar.JCalendar();
+        verificarPedido = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        PanelEntrada = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tabelaMorador2 = new javax.swing.JTable();
         bPermitirEntrada = new javax.swing.JButton();
         bCadastrarVisitante = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         PanelSaida = new javax.swing.JPanel();
         campoNomeVistante = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -41,14 +180,20 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
         tabelaVisitante = new javax.swing.JTable();
         bPermitirSaida = new javax.swing.JButton();
 
-        PanelEntrada.setBackground(new java.awt.Color(255, 204, 0));
+        SolicitEntrada.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        campoNomeMorador.setBackground(new java.awt.Color(255, 255, 255));
-        campoNomeMorador.setForeground(new java.awt.Color(0, 0, 0));
+        solicitarEntrada.setBackground(new java.awt.Color(255, 204, 0));
+        solicitarEntrada.setForeground(new java.awt.Color(0, 0, 0));
+        solicitarEntrada.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("MORADOR:");
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("MORADOR:");
+        solicitarEntrada.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+
+        campoPesquisar.setBackground(new java.awt.Color(255, 255, 255));
+        campoPesquisar.setForeground(new java.awt.Color(0, 0, 0));
+        solicitarEntrada.add(campoPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 200, 30));
 
         tabelaMorador.setBackground(new java.awt.Color(255, 255, 255));
         tabelaMorador.setForeground(new java.awt.Color(0, 0, 0));
@@ -86,7 +231,91 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
                 tabelaMoradorMouseClicked(evt);
             }
         });
-        jScrollPane5.setViewportView(tabelaMorador);
+        jScrollPane6.setViewportView(tabelaMorador);
+
+        solicitarEntrada.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 706, 210));
+
+        bSolicitarVisita.setText("SOLICITAR VISITA");
+        solicitarEntrada.add(bSolicitarVisita, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 400, 170, 41));
+        solicitarEntrada.add(calendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, 200, 150));
+
+        SolicitEntrada.add(solicitarEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 717, 460));
+
+        jTabbedPane1.addTab("Solicitação de Entrada", SolicitEntrada);
+
+        verificarPedido.setBackground(new java.awt.Color(255, 204, 0));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
+
+        javax.swing.GroupLayout verificarPedidoLayout = new javax.swing.GroupLayout(verificarPedido);
+        verificarPedido.setLayout(verificarPedidoLayout);
+        verificarPedidoLayout.setHorizontalGroup(
+            verificarPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(verificarPedidoLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 681, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(13, Short.MAX_VALUE))
+        );
+        verificarPedidoLayout.setVerticalGroup(
+            verificarPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(verificarPedidoLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(145, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Visitas Solicitadas", verificarPedido);
+
+        PanelEntrada.setBackground(new java.awt.Color(255, 204, 0));
+
+        tabelaMorador2.setBackground(new java.awt.Color(255, 255, 255));
+        tabelaMorador2.setForeground(new java.awt.Color(0, 0, 0));
+        tabelaMorador2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "CASA", "NOME", "CPF", "EMAIL", "DATA NASCIMENTO"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabelaMorador2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaMorador2MouseClicked(evt);
+            }
+        });
+        jScrollPane5.setViewportView(tabelaMorador2);
 
         bPermitirEntrada.setForeground(new java.awt.Color(255, 255, 255));
         bPermitirEntrada.setText("PERMITIR ENTRADA");
@@ -99,6 +328,14 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton1.setText("SELECIONAR VISITANTE");
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Visitante já cadastrado ?");
+
+        jLabel1.setText("jLabel1");
+
         javax.swing.GroupLayout PanelEntradaLayout = new javax.swing.GroupLayout(PanelEntrada);
         PanelEntrada.setLayout(PanelEntradaLayout);
         PanelEntradaLayout.setHorizontalGroup(
@@ -106,34 +343,35 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
             .addGroup(PanelEntradaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PanelEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE)
                     .addGroup(PanelEntradaLayout.createSequentialGroup()
-                        .addGroup(PanelEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(campoNomeMorador, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
+                        .addGroup(PanelEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bCadastrarVisitante, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bPermitirEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelEntradaLayout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelEntradaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(PanelEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(bCadastrarVisitante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bPermitirEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(275, 275, 275))
         );
         PanelEntradaLayout.setVerticalGroup(
             PanelEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelEntradaLayout.createSequentialGroup()
-                .addGap(7, 7, 7)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoNomeMorador, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addComponent(bPermitirEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(bCadastrarVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addGap(62, 62, 62)
+                .addGroup(PanelEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bPermitirEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bCadastrarVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Entrada", PanelEntrada);
@@ -151,6 +389,14 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
         tabelaVisitante.setForeground(new java.awt.Color(0, 0, 0));
         tabelaVisitante.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -172,7 +418,7 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
             .addGroup(PanelSaidaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PanelSaidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE)
                     .addGroup(PanelSaidaLayout.createSequentialGroup()
                         .addGroup(PanelSaidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -195,7 +441,7 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addComponent(bPermitirSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Saida", PanelSaida);
@@ -214,7 +460,7 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tabelaMoradorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMoradorMouseClicked
+    private void tabelaMorador2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMorador2MouseClicked
         // TODO add your handling code here:
         /*int linhaSelecionada = tabelaMorador.getSelectedRow();
 
@@ -248,7 +494,7 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
                 ? modeloTabela.getValueAt(linhaSelecionada, 5).toString()
                 : "N/A");  // Valor padrão para Data de Nascimento (caso seja nulo)
         } // fim do if*/
-    }//GEN-LAST:event_tabelaMoradorMouseClicked
+    }//GEN-LAST:event_tabelaMorador2MouseClicked
 
     private void bCadastrarVisitanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadastrarVisitanteActionPerformed
         // TODO add your handling code here:
@@ -256,21 +502,38 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
         visitante.setVisible(true);
     }//GEN-LAST:event_bCadastrarVisitanteActionPerformed
 
+    private void tabelaMoradorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMoradorMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tabelaMoradorMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelEntrada;
     private javax.swing.JPanel PanelSaida;
+    private javax.swing.JPanel SolicitEntrada;
     private javax.swing.JButton bCadastrarVisitante;
     private javax.swing.JButton bPermitirEntrada;
     private javax.swing.JButton bPermitirSaida;
-    private javax.swing.JTextField campoNomeMorador;
+    private javax.swing.JButton bSolicitarVisita;
+    private com.toedter.calendar.JCalendar calendario;
     private javax.swing.JTextField campoNomeVistante;
+    private javax.swing.JTextField campoPesquisar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JSlider jSlider1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JPanel solicitarEntrada;
     private javax.swing.JTable tabelaMorador;
+    private javax.swing.JTable tabelaMorador2;
     private javax.swing.JTable tabelaVisitante;
+    private javax.swing.JPanel verificarPedido;
     // End of variables declaration//GEN-END:variables
 }
