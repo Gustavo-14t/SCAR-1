@@ -25,6 +25,8 @@ public class TelaHome extends javax.swing.JFrame {
         optionCadastro.setVisible(false);
          optionRelatorio.setVisible(false);
          optionReserva.setVisible(false);
+         optionEntradaSaida.setVisible(false);
+         
         func = funcionario;
                 
          TelaAtividade atv = new TelaAtividade();
@@ -42,7 +44,7 @@ public class TelaHome extends javax.swing.JFrame {
      
         } else if (departamento.equals("Porteiro")) {
             // Adiciona funcionalidades exclusivas para o Porteiro
-            bCadastro.setVisible(false); // Exemplo, permitir cadastro
+            bCadastro.setEnabled(false); // Exemplo, permitir cadastro
             bRelatorio.setEnabled(true); // Exemplo, permitir relatórios
             bFinanceiro.setEnabled(true); // Exemplo, permitir acesso financeiro
             bReserva.setEnabled(true); // Exemplo, permitir reservasermitir reservas
@@ -52,16 +54,14 @@ public class TelaHome extends javax.swing.JFrame {
     }  
         
     public void fecharTelas(){
-        if(optionCadastro.isVisible()|| optionRelatorio.isVisible() || optionReserva.isVisible() ){
+        if(optionCadastro.isVisible()|| optionRelatorio.isVisible() || optionReserva.isVisible() || optionEntradaSaida.isVisible() ){
             optionCadastro.setVisible(false);
             optionRelatorio.setVisible(false);
             optionReserva.setVisible(false);
-            
+            optionEntradaSaida.setVisible(false);
            
         }
 }
-        
-     
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -72,7 +72,10 @@ public class TelaHome extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        geral = new javax.swing.JPanel();
+        optionEntradaSaida = new javax.swing.JPanel();
+        esMorador = new javax.swing.JButton();
+        esVisitante = new javax.swing.JButton();
         optionRelatorio = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -101,9 +104,40 @@ public class TelaHome extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        geral.setBackground(new java.awt.Color(255, 255, 255));
+        geral.setForeground(new java.awt.Color(0, 0, 0));
+        geral.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        esMorador.setText("MORADOR");
+        esMorador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                esMoradorActionPerformed(evt);
+            }
+        });
+
+        esVisitante.setText("VISITANTE");
+        esVisitante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                esVisitanteActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout optionEntradaSaidaLayout = new javax.swing.GroupLayout(optionEntradaSaida);
+        optionEntradaSaida.setLayout(optionEntradaSaidaLayout);
+        optionEntradaSaidaLayout.setHorizontalGroup(
+            optionEntradaSaidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(esMorador, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+            .addComponent(esVisitante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        optionEntradaSaidaLayout.setVerticalGroup(
+            optionEntradaSaidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(optionEntradaSaidaLayout.createSequentialGroup()
+                .addComponent(esMorador, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(esVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        geral.add(optionEntradaSaida, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 360, 200, 60));
 
         optionRelatorio.setBackground(new java.awt.Color(255, 255, 255));
         optionRelatorio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -132,7 +166,7 @@ public class TelaHome extends javax.swing.JFrame {
         });
         optionRelatorio.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 200, 20));
 
-        jPanel1.add(optionRelatorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 200, 60));
+        geral.add(optionRelatorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 200, 60));
 
         jPanel2.setBackground(new java.awt.Color(255, 153, 0));
 
@@ -161,7 +195,7 @@ public class TelaHome extends javax.swing.JFrame {
                 .addComponent(butaoHome, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 60));
+        geral.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 60));
 
         barraMenu.setBackground(new java.awt.Color(255, 204, 0));
         barraMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -253,7 +287,7 @@ public class TelaHome extends javax.swing.JFrame {
         });
         barraMenu.add(bSAC, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 50, 50));
 
-        jPanel1.add(barraMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 54, 200, 510));
+        geral.add(barraMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 54, 200, 510));
 
         optionCadastro.setBackground(new java.awt.Color(255, 255, 255));
         optionCadastro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -282,7 +316,7 @@ public class TelaHome extends javax.swing.JFrame {
         });
         optionCadastro.add(bCadMor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 200, 20));
 
-        jPanel1.add(optionCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 200, -1));
+        geral.add(optionCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 200, -1));
 
         optionReserva.setBackground(new java.awt.Color(255, 255, 255));
         optionReserva.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -303,7 +337,7 @@ public class TelaHome extends javax.swing.JFrame {
         });
         optionReserva.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 200, -1));
 
-        jPanel1.add(optionReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 200, 60));
+        geral.add(optionReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 200, 60));
 
         javax.swing.GroupLayout areaTrabalhoLayout = new javax.swing.GroupLayout(areaTrabalho);
         areaTrabalho.setLayout(areaTrabalhoLayout);
@@ -316,9 +350,9 @@ public class TelaHome extends javax.swing.JFrame {
             .addGap(0, 510, Short.MAX_VALUE)
         );
 
-        jPanel1.add(areaTrabalho, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 730, 510));
+        geral.add(areaTrabalho, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 730, 510));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 930, 560));
+        getContentPane().add(geral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 930, 560));
 
         pack();
         setLocationRelativeTo(null);
@@ -326,18 +360,23 @@ public class TelaHome extends javax.swing.JFrame {
 
     private void bEntSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEntSaidaActionPerformed
         // TODO add your handling code here:
-        TelaEmDev telaDev = new TelaEmDev();
-        areaTrabalho.add(telaDev);
-       telaDev.setVisible(true);
+        if(optionRelatorio.isVisible()|| optionReserva.isVisible()|| optionCadastro.isVisible() ){
+            optionRelatorio.setVisible(false);
+            optionReserva.setVisible(false);
+            optionCadastro.setVisible(false);
+        }
+        
+        optionEntradaSaida.setVisible(!optionEntradaSaida.isVisible());
+        
        
-       fecharTelas();
     }//GEN-LAST:event_bEntSaidaActionPerformed
 
     private void bCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadastroActionPerformed
         // TODO add your handling code here:
-        if(optionRelatorio.isVisible()|| optionReserva.isVisible() ){
+        if(optionRelatorio.isVisible()|| optionReserva.isVisible() || optionEntradaSaida.isVisible() ){
             optionRelatorio.setVisible(false);
             optionReserva.setVisible(false);
+            optionEntradaSaida.setVisible(false);
         }
         
         optionCadastro.setVisible(!optionCadastro.isVisible());
@@ -345,9 +384,10 @@ public class TelaHome extends javax.swing.JFrame {
 
     private void bRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRelatorioActionPerformed
         // TODO add your handling code here:
-        if(optionCadastro.isVisible()|| optionReserva.isVisible() ){
+        if(optionCadastro.isVisible()|| optionReserva.isVisible() || optionEntradaSaida.isVisible() ){
             optionCadastro.setVisible(false);
             optionReserva.setVisible(false);
+            optionEntradaSaida.setVisible(false);
         }
         
         optionRelatorio.setVisible(!optionRelatorio.isVisible());
@@ -356,9 +396,10 @@ public class TelaHome extends javax.swing.JFrame {
 
     private void bReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bReservaActionPerformed
         // TODO add your handling code here:
-        if(optionCadastro.isVisible()|| optionRelatorio.isVisible() ){
+        if(optionCadastro.isVisible()|| optionRelatorio.isVisible() || optionEntradaSaida.isVisible() ){
             optionCadastro.setVisible(false);
             optionRelatorio.setVisible(false);
+            optionEntradaSaida.setVisible(false);
         }
         
         optionReserva.setVisible(!optionReserva.isVisible());
@@ -435,9 +476,9 @@ public class TelaHome extends javax.swing.JFrame {
 
     private void bCadFunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadFunActionPerformed
         // TODO add your handling code here:
-         CadFuncionario func = new CadFuncionario();
-        areaTrabalho.add(func);
-       func.setVisible(true);
+         CadFuncionario funcio = new CadFuncionario();
+        areaTrabalho.add(funcio);
+       funcio.setVisible(true);
        
        fecharTelas();
     }//GEN-LAST:event_bCadFunActionPerformed
@@ -500,6 +541,20 @@ public class TelaHome extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private void esMoradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_esMoradorActionPerformed
+        // TODO add your handling code here:
+        fecharTelas();
+    }//GEN-LAST:event_esMoradorActionPerformed
+
+    private void esVisitanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_esVisitanteActionPerformed
+        // TODO add your handling code here:
+        TelaEntradaSaida entrada = new TelaEntradaSaida(func);
+        areaTrabalho.add(entrada);
+        entrada.setVisible(true);
+        
+        fecharTelas();
+    }//GEN-LAST:event_esVisitanteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -552,6 +607,9 @@ public class TelaHome extends javax.swing.JFrame {
     private javax.swing.JButton bSolicServis;
     private javax.swing.JPanel barraMenu;
     private javax.swing.JButton butaoHome;
+    private javax.swing.JButton esMorador;
+    private javax.swing.JButton esVisitante;
+    private javax.swing.JPanel geral;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -559,9 +617,9 @@ public class TelaHome extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel optionCadastro;
+    private javax.swing.JPanel optionEntradaSaida;
     private javax.swing.JPanel optionRelatorio;
     private javax.swing.JPanel optionReserva;
     // End of variables declaration//GEN-END:variables
