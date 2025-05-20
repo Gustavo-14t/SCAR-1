@@ -16,7 +16,7 @@ import model.conexaoBD;
  */
 public class VisitanteController {
     
-    public boolean cadastroAtividade( Visitante visitante){
+    public boolean cadastroVisita( Visitante visitante){
      //criuando uma String que recebe uma comando SQL
      String query = "INSERT INTO Visitante ( nome, cpf, telefone, PlacaVeiculo) values (?,?,?,?) ";
      
@@ -42,7 +42,7 @@ public class VisitanteController {
             
         }catch(SQLException e){
             // imprimindo erro que deu ao inserir usuário
-            System.err.print("Erro ao Inserir Dados!" + e);
+            System.err.print("Erro no ControllerVisitante ao tentar Inserir Dados!" + e);
             return false;
         }// final do try catch
     

@@ -162,16 +162,18 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
         tabelaMorador = new javax.swing.JTable();
         bSolicitarVisita = new javax.swing.JButton();
         calendario = new com.toedter.calendar.JCalendar();
+        bCadastrarVisitante1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         verificarPedido = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblVisitante = new javax.swing.JTable();
+        bPermitirEntrada = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         PanelEntrada = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         tabelaMorador2 = new javax.swing.JTable();
-        bPermitirEntrada = new javax.swing.JButton();
-        bCadastrarVisitante = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         PanelSaida = new javax.swing.JPanel();
         campoNomeVistante = new javax.swing.JTextField();
@@ -239,45 +241,74 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
         solicitarEntrada.add(bSolicitarVisita, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 400, 170, 41));
         solicitarEntrada.add(calendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, 200, 150));
 
+        bCadastrarVisitante1.setForeground(new java.awt.Color(255, 255, 255));
+        bCadastrarVisitante1.setText("CADASTRAR VISITANTE");
+        bCadastrarVisitante1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCadastrarVisitante1ActionPerformed(evt);
+            }
+        });
+        solicitarEntrada.add(bCadastrarVisitante1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 162, 35));
+
+        jButton2.setText("SELECIONAR VISITANTE");
+        solicitarEntrada.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, -1, 35));
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Data da visita");
+        solicitarEntrada.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, 162, -1));
+
+        jLabel5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Visitante já cadastrado ?");
+        solicitarEntrada.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 162, -1));
+
         SolicitEntrada.add(solicitarEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 717, 460));
 
         jTabbedPane1.addTab("Solicitação de Entrada", SolicitEntrada);
 
         verificarPedido.setBackground(new java.awt.Color(255, 204, 0));
+        verificarPedido.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblVisitante.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "MORADOR", "VISITANTE", "FUNCIONÁRIO", "DATA_VISITA", "STATUS"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(tblVisitante);
 
-        javax.swing.GroupLayout verificarPedidoLayout = new javax.swing.GroupLayout(verificarPedido);
-        verificarPedido.setLayout(verificarPedidoLayout);
-        verificarPedidoLayout.setHorizontalGroup(
-            verificarPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(verificarPedidoLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 681, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
-        );
-        verificarPedidoLayout.setVerticalGroup(
-            verificarPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(verificarPedidoLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(145, Short.MAX_VALUE))
-        );
+        verificarPedido.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 29, 681, 286));
 
-        jTabbedPane1.addTab("Visitas Solicitadas", verificarPedido);
+        bPermitirEntrada.setForeground(new java.awt.Color(255, 255, 255));
+        bPermitirEntrada.setText("PERMITIR ENTRADA");
+        verificarPedido.add(bPermitirEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 350, 156, 35));
+
+        jButton1.setText("SELECIONAR VISITANTE");
+        verificarPedido.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 414, -1, 35));
+
+        jTabbedPane1.addTab("Visitas agendadas", verificarPedido);
 
         PanelEntrada.setBackground(new java.awt.Color(255, 204, 0));
+        PanelEntrada.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tabelaMorador2.setBackground(new java.awt.Color(255, 255, 255));
         tabelaMorador2.setForeground(new java.awt.Color(0, 0, 0));
@@ -317,62 +348,10 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
         });
         jScrollPane5.setViewportView(tabelaMorador2);
 
-        bPermitirEntrada.setForeground(new java.awt.Color(255, 255, 255));
-        bPermitirEntrada.setText("PERMITIR ENTRADA");
-
-        bCadastrarVisitante.setForeground(new java.awt.Color(255, 255, 255));
-        bCadastrarVisitante.setText("CADASTRAR VISITANTE");
-        bCadastrarVisitante.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bCadastrarVisitanteActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("SELECIONAR VISITANTE");
-
-        jLabel3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Visitante já cadastrado ?");
+        PanelEntrada.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 48, 693, 210));
 
         jLabel1.setText("jLabel1");
-
-        javax.swing.GroupLayout PanelEntradaLayout = new javax.swing.GroupLayout(PanelEntrada);
-        PanelEntrada.setLayout(PanelEntradaLayout);
-        PanelEntradaLayout.setHorizontalGroup(
-            PanelEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelEntradaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PanelEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE)
-                    .addGroup(PanelEntradaLayout.createSequentialGroup()
-                        .addGroup(PanelEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bCadastrarVisitante, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bPermitirEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelEntradaLayout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        PanelEntradaLayout.setVerticalGroup(
-            PanelEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelEntradaLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
-                .addGroup(PanelEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bPermitirEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bCadastrarVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        PanelEntrada.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 15, 163, 21));
 
         jTabbedPane1.addTab("Entrada", PanelEntrada);
 
@@ -496,22 +475,23 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
         } // fim do if*/
     }//GEN-LAST:event_tabelaMorador2MouseClicked
 
-    private void bCadastrarVisitanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadastrarVisitanteActionPerformed
-        // TODO add your handling code here:
-        TelaCadastroVisitante visitante = new TelaCadastroVisitante ();
-        visitante.setVisible(true);
-    }//GEN-LAST:event_bCadastrarVisitanteActionPerformed
-
     private void tabelaMoradorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMoradorMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_tabelaMoradorMouseClicked
+
+    private void bCadastrarVisitante1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadastrarVisitante1ActionPerformed
+        // TODO add your handling code here:
+        TelaCadastroVisitante cadVisitante = new TelaCadastroVisitante();
+        cadVisitante.setVisible(true);
+        
+    }//GEN-LAST:event_bCadastrarVisitante1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelEntrada;
     private javax.swing.JPanel PanelSaida;
     private javax.swing.JPanel SolicitEntrada;
-    private javax.swing.JButton bCadastrarVisitante;
+    private javax.swing.JButton bCadastrarVisitante1;
     private javax.swing.JButton bPermitirEntrada;
     private javax.swing.JButton bPermitirSaida;
     private javax.swing.JButton bSolicitarVisita;
@@ -519,21 +499,23 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
     private javax.swing.JTextField campoNomeVistante;
     private javax.swing.JTextField campoPesquisar;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSlider jSlider1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JPanel solicitarEntrada;
     private javax.swing.JTable tabelaMorador;
     private javax.swing.JTable tabelaMorador2;
     private javax.swing.JTable tabelaVisitante;
+    private javax.swing.JTable tblVisitante;
     private javax.swing.JPanel verificarPedido;
     // End of variables declaration//GEN-END:variables
 }

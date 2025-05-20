@@ -38,6 +38,7 @@ view\TelaEntradaSaida$5.class
 view\TelaSac.class
 model\ControleServico.class
 view\CadAtv$3.class
+view\TelaCadastroVisitante$3.class
 view\telaReservaFeita$6.class
 model\Funcionario.class
 view\TelaHome$18.class
