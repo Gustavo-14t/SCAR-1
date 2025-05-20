@@ -1,5 +1,9 @@
 package view;
 
+import controller.VisitanteController;
+import javax.swing.JOptionPane;
+import model.Visitante;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -16,8 +20,17 @@ public class TelaCadastroVisitante extends javax.swing.JFrame {
      */
     public TelaCadastroVisitante() {
         initComponents();
+        
+        
     }
 
+    private void limparCampos(){
+        campoNomeVisitante.setText("");
+        campoCPFVisitante.setText("");
+        campoTelefoneVisitante.setText("");
+        campoPlacaVisitante.setText("");
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,37 +44,45 @@ public class TelaCadastroVisitante extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         campoNomeVisitante = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        campoCPFVisitante = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         campoTelefoneVisitante = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        campoPlacaVeiculoVisitante = new javax.swing.JTextField();
+        campoPlacaVisitante = new javax.swing.JTextField();
         bCadastarVisitante = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        campoCPFVisitante = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 0));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("NOME:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 58, 65, -1));
 
         campoNomeVisitante.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(campoNomeVisitante, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 79, 190, 35));
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("CPF:");
-
-        campoCPFVisitante.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 132, 50, -1));
 
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("TELEFONE:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 206, 69, -1));
 
         campoTelefoneVisitante.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(campoTelefoneVisitante, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 227, 190, 35));
 
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("PLACA VEICULO:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 280, 140, -1));
 
-        campoPlacaVeiculoVisitante.setBackground(new java.awt.Color(255, 255, 255));
+        campoPlacaVisitante.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(campoPlacaVisitante, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 301, 190, 35));
 
         bCadastarVisitante.setForeground(new java.awt.Color(255, 255, 255));
         bCadastarVisitante.setText("CADASTRAR");
@@ -70,80 +91,85 @@ public class TelaCadastroVisitante extends javax.swing.JFrame {
                 bCadastarVisitanteActionPerformed(evt);
             }
         });
+        jPanel1.add(bCadastarVisitante, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, -1, 35));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("CADASTRO VISITANTE");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, 28));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(92, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(81, 81, 81))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(bCadastarVisitante)
-                        .addGap(111, 111, 111))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(campoNomeVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoCPFVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoTelefoneVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoPlacaVeiculoVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoNomeVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoCPFVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoTelefoneVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoPlacaVeiculoVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
-                .addComponent(bCadastarVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
-        );
+        jButton1.setText("v");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, -1));
+
+        campoCPFVisitante.setBackground(new java.awt.Color(255, 255, 255));
+        campoCPFVisitante.setForeground(new java.awt.Color(0, 0, 0));
+        try {
+            campoCPFVisitante.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jPanel1.add(campoCPFVisitante, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 190, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void bCadastarVisitanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadastarVisitanteActionPerformed
         // TODO add your handling code here:     
+        // TODO add your handling code here:
+        if(campoNomeVisitante.getText().isEmpty() || campoCPFVisitante.getText().isEmpty() || 
+                campoTelefoneVisitante.getText().isEmpty() || campoPlacaVisitante.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos");
+        }else{
+        
+        try{
+       VisitanteController controller = new VisitanteController();
+         // criando um objeto do tipo usuario da pasta model
+            Visitante visita = new Visitante(
+                campoNomeVisitante.getText(),
+                campoCPFVisitante.getText(),
+                campoTelefoneVisitante.getText(),
+                campoPlacaVisitante.getText()
+                
+            );
+            
+                // chamando o metodo de cadastrar o usuario no banco de dados
+            controller.cadastroVisita(visita);
+            JOptionPane.showMessageDialog
+            (null,"Visitante Cadastrado com Sucesso!");
+
+          
+            limparCampos();
+
+        }catch(Exception e){
+             JOptionPane.showMessageDialog
+            (null,"Visitante Não Cadastrado! "+e);
+        }
+        }
     }//GEN-LAST:event_bCadastarVisitanteActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,10 +208,11 @@ public class TelaCadastroVisitante extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bCadastarVisitante;
-    private javax.swing.JTextField campoCPFVisitante;
+    private javax.swing.JFormattedTextField campoCPFVisitante;
     private javax.swing.JTextField campoNomeVisitante;
-    private javax.swing.JTextField campoPlacaVeiculoVisitante;
+    private javax.swing.JTextField campoPlacaVisitante;
     private javax.swing.JTextField campoTelefoneVisitante;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
