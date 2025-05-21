@@ -67,7 +67,7 @@ public class telaReservaFeita extends javax.swing.JInternalFrame {
                
            }//fim do for
        }else{
-           JOptionPane.showMessageDialog(null,"Não existem vendas!");
+           JOptionPane.showMessageDialog(null,"Não existem Reservas aprovadas para devolução!");
        }//fim do else
     
     }

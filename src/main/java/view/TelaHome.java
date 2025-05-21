@@ -543,6 +543,10 @@ public class TelaHome extends javax.swing.JFrame {
 
     private void esMoradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_esMoradorActionPerformed
         // TODO add your handling code here:
+         TelaINOUTmorador inout = new TelaINOUTmorador(func);
+        areaTrabalho.add(inout);
+        inout.setVisible(true);
+        
         fecharTelas();
     }//GEN-LAST:event_esMoradorActionPerformed
 

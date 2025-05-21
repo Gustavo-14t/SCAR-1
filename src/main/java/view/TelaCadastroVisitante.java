@@ -158,7 +158,7 @@ public class TelaCadastroVisitante extends javax.swing.JFrame {
 
           
             limparCampos();
-
+            dispose();
         }catch(Exception e){
              JOptionPane.showMessageDialog
             (null,"Visitante Não Cadastrado! "+e);

@@ -128,7 +128,7 @@ public class TelaReservas extends javax.swing.JInternalFrame {
         }
     } else {
         JOptionPane.showMessageDialog
-        (this, "Nenhum produto encontrado.");
+        (this, "Nenhum Morador encontrado.");
     }
 }// fim do metodo ListagemUsuarioN()
     
@@ -169,7 +169,7 @@ public class TelaReservas extends javax.swing.JInternalFrame {
         }
     } else {
         JOptionPane.showMessageDialog
-        (this, "Nenhum usuario encontrado.");
+        (this, "Nenhum Espaço de Evento encontrado.");
     }
 }// fim do metodo ListagemUsuarioN()
     
@@ -247,7 +247,7 @@ public class TelaReservas extends javax.swing.JInternalFrame {
         }
     } else {
         JOptionPane.showMessageDialog
-        (this, "Nenhum produto encontrado.");
+        (this, "Nenhum Espaço de evento encontrado.");
     }
 }// fim do metodo ListagemdeProdutos()
     
