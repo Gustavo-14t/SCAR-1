@@ -97,7 +97,7 @@ public class CadMorador extends javax.swing.JInternalFrame {
         }
     } else {
         JOptionPane.showMessageDialog
-        (this, "Nenhum produto encontrado.");
+        (this, "Nenhum Morador encontrado.");
     }
 }// fim do metodo ListagemUsuarioN()
     
@@ -144,7 +144,7 @@ public class CadMorador extends javax.swing.JInternalFrame {
         
     } else {
         JOptionPane.showMessageDialog
-        (this, "Nenhum Cliente encontrado.");
+        (this, "Nenhum Morador encontrado.");
     }
        
  }//fim do método de listagemUsuarioP()
@@ -185,7 +185,7 @@ public class CadMorador extends javax.swing.JInternalFrame {
         }
     } else {
         JOptionPane.showMessageDialog
-        (this, "Nenhum produto encontrado.");
+        (this, "Nenhuma unidade encontrada..");
     }
 }// fim do metodo ListagemdeProdutos()
     
@@ -414,7 +414,7 @@ public class CadMorador extends javax.swing.JInternalFrame {
                 // chamando o metodo de cadastrar o usuario no banco de dados
             controller.cadastroMorador(user);
             JOptionPane.showMessageDialog
-            (null,"Usuario Cadastrado com Sucesso!");
+            (null,"Morador Cadastrado com Sucesso!");
 
             ListagemUsuarioDelet();
              ListagemUnidades();
@@ -422,7 +422,7 @@ public class CadMorador extends javax.swing.JInternalFrame {
 
         }catch(Exception e){
              JOptionPane.showMessageDialog
-            (null,"Usuario Não Cadastrado! "+e);
+            (null,"Morador Não Cadastrado! "+e);
         }
         }
     }//GEN-LAST:event_butaoCadastrarActionPerformed

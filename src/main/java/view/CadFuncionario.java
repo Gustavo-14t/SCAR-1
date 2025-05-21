@@ -116,7 +116,7 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
         }
     } else {
         JOptionPane.showMessageDialog
-        (this, "Nenhum produto encontrado.");
+        (this, "Nenhum Funcionário encontrado.");
     }
 }// fim do metodo ListagemUsuarioN()
    
@@ -164,7 +164,7 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
         }
     } else {
         JOptionPane.showMessageDialog
-        (this, "Nenhum Cliente encontrado.");
+        (this, "Nenhum Funcionário encontrado.");
     }
        
  }//fim do método de listagemUsuarioP()
@@ -203,7 +203,7 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
         }
     } else {
         JOptionPane.showMessageDialog
-        (this, "Nenhum Cliente encontrado.");
+        (this, "Nenhum Funcionario encontrado.");
     }
         }//fim do método ListagemUsuario()
    
@@ -465,7 +465,7 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
                 // chamando o metodo de cadastrar o usuario no banco de dados
             controller.cadastroUsuario(user);
             JOptionPane.showMessageDialog
-            (null,"Usuario Cadastrado com Sucesso!");
+            (null,"Funcionário Cadastrado com Sucesso!");
 
             ListagemUsuario();  
             ListagemUsuarioDelet();  
@@ -473,7 +473,7 @@ public class CadFuncionario extends javax.swing.JInternalFrame {
 
         }catch(Exception e){
              JOptionPane.showMessageDialog
-            (null,"Usuario Não Cadastrado! "+e);
+            (null,"Funcionário Não Cadastrado! "+e);
         }
     }                                          
 

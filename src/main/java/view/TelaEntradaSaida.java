@@ -11,6 +11,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import model.Funcionario;
 import model.Morador;
+import model.Visitante;
 
 /**
  *
@@ -36,7 +37,7 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
         pesquisarMorador();
         ListagemMorador();
         
-       calendario.setVisible(false);
+       //calendario.setVisible(false);
     }
     
     public void pesquisarMorador(){
@@ -98,7 +99,7 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
         }
     } else {
         JOptionPane.showMessageDialog
-        (this, "Nenhum produto encontrado.");
+        (this, "Nenhum Morador encontrado.");
     }
 }// fim do metodo ListagemUsuarioN()
     
@@ -138,7 +139,7 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
         
     } else {
         JOptionPane.showMessageDialog
-        (this, "Nenhum Cliente encontrado.");
+        (this, "Nenhum Morador encontrado.");
     }
        
  }//fim do método de listagemUsuarioP()
@@ -161,7 +162,6 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
         jScrollPane6 = new javax.swing.JScrollPane();
         tabelaMorador = new javax.swing.JTable();
         bSolicitarVisita = new javax.swing.JButton();
-        calendario = new com.toedter.calendar.JCalendar();
         bCadastrarVisitante1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -239,19 +239,22 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
 
         bSolicitarVisita.setText("SOLICITAR VISITA");
         solicitarEntrada.add(bSolicitarVisita, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 400, 170, 41));
-        solicitarEntrada.add(calendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, 200, 150));
 
-        bCadastrarVisitante1.setForeground(new java.awt.Color(255, 255, 255));
         bCadastrarVisitante1.setText("CADASTRAR VISITANTE");
         bCadastrarVisitante1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bCadastrarVisitante1ActionPerformed(evt);
             }
         });
-        solicitarEntrada.add(bCadastrarVisitante1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 162, 35));
+        solicitarEntrada.add(bCadastrarVisitante1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 170, 35));
 
         jButton2.setText("SELECIONAR VISITANTE");
-        solicitarEntrada.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, -1, 35));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        solicitarEntrada.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 170, 35));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -387,7 +390,6 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tabelaVisitante);
 
-        bPermitirSaida.setForeground(new java.awt.Color(255, 255, 255));
         bPermitirSaida.setText("PERMITIR SAIDA");
 
         javax.swing.GroupLayout PanelSaidaLayout = new javax.swing.GroupLayout(PanelSaida);
@@ -486,6 +488,12 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_bCadastrarVisitante1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        telaListaDeVisitante visitante = new telaListaDeVisitante();
+        visitante.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelEntrada;
@@ -495,7 +503,6 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
     private javax.swing.JButton bPermitirEntrada;
     private javax.swing.JButton bPermitirSaida;
     private javax.swing.JButton bSolicitarVisita;
-    private com.toedter.calendar.JCalendar calendario;
     private javax.swing.JTextField campoNomeVistante;
     private javax.swing.JTextField campoPesquisar;
     private javax.swing.JButton jButton1;

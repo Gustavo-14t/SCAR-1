@@ -108,7 +108,7 @@ public class TelaCadastroUnidade extends javax.swing.JInternalFrame {
         }
     } else {
         JOptionPane.showMessageDialog
-        (this, "Nenhum produto encontrado.");
+        (this, "Nenhuma unidade encontrada.");
     }
 }// fim do metodo ListagemUsuarioN()
      
@@ -146,7 +146,7 @@ public class TelaCadastroUnidade extends javax.swing.JInternalFrame {
         }
     } else {
         JOptionPane.showMessageDialog
-        (this, "Nenhum produto encontrado.");
+        (this, "Nenhuma unidade encontrada.");
     }
 }// fim do metodo ListagemdeProdutos()
     
