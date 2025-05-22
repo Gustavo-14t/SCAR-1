@@ -37,7 +37,8 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
         pesquisarMorador();
         ListagemMorador();
         
-       //calendario.setVisible(false);
+       labelData.setVisible(false);
+       calendario.setVisible(false);
     }
     
     public void pesquisarMorador(){
@@ -164,8 +165,13 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
         bSolicitarVisita = new javax.swing.JButton();
         bCadastrarVisitante1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        labelData = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        calendario = new com.toedter.calendar.JCalendar();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         verificarPedido = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblVisitante = new javax.swing.JTable();
@@ -238,7 +244,7 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
         solicitarEntrada.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 706, 210));
 
         bSolicitarVisita.setText("SOLICITAR VISITA");
-        solicitarEntrada.add(bSolicitarVisita, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 400, 170, 41));
+        solicitarEntrada.add(bSolicitarVisita, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 410, 170, 40));
 
         bCadastrarVisitante1.setText("CADASTRAR VISITANTE");
         bCadastrarVisitante1.addActionListener(new java.awt.event.ActionListener() {
@@ -246,7 +252,7 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
                 bCadastrarVisitante1ActionPerformed(evt);
             }
         });
-        solicitarEntrada.add(bCadastrarVisitante1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 170, 35));
+        solicitarEntrada.add(bCadastrarVisitante1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 190, 35));
 
         jButton2.setText("SELECIONAR VISITANTE");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -254,17 +260,30 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        solicitarEntrada.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 170, 35));
+        solicitarEntrada.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 190, 35));
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Data da visita");
-        solicitarEntrada.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, 162, -1));
+        labelData.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        labelData.setForeground(new java.awt.Color(0, 0, 0));
+        labelData.setText("Data da visita");
+        solicitarEntrada.add(labelData, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 260, 162, -1));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("Visitante já cadastrado ?");
-        solicitarEntrada.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 162, -1));
+        jLabel5.setText("CPF do Visitante:");
+        solicitarEntrada.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 340, 162, -1));
+        solicitarEntrada.add(calendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 280, 170, 120));
+        solicitarEntrada.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 360, 180, 30));
+        solicitarEntrada.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 180, 30));
+
+        jLabel6.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("Visitante já cadastrado ?");
+        solicitarEntrada.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 162, -1));
+
+        jLabel7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Nome do Visitante:");
+        solicitarEntrada.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, 162, -1));
 
         SolicitEntrada.add(solicitarEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 717, 460));
 
@@ -503,21 +522,26 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
     private javax.swing.JButton bPermitirEntrada;
     private javax.swing.JButton bPermitirSaida;
     private javax.swing.JButton bSolicitarVisita;
+    private com.toedter.calendar.JCalendar calendario;
     private javax.swing.JTextField campoNomeVistante;
     private javax.swing.JTextField campoPesquisar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSlider jSlider1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel labelData;
     private javax.swing.JPanel solicitarEntrada;
     private javax.swing.JTable tabelaMorador;
     private javax.swing.JTable tabelaMorador2;
