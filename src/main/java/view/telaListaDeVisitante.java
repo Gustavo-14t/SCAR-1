@@ -25,13 +25,13 @@ public class telaListaDeVisitante extends javax.swing.JFrame {
     
     Visitante vis;
     
-    public telaListaDeVisitante(Visitante visita) {
+    public telaListaDeVisitante() {
         initComponents();
         
         ListagemVisitante();
         pesquisarVisitante();
         
-        vis = visita;
+        
     }
     
     public void pesquisarVisitante(){
@@ -248,9 +248,9 @@ public class telaListaDeVisitante extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         System.err.println(nomeVisita);
-        System.err.println(vis.getNome());
+        System.err.println(cpf); 
         
-        
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -283,8 +283,8 @@ public class telaListaDeVisitante extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Visitante visita = null;
-                new telaListaDeVisitante(visita).setVisible(true);
+                
+                new telaListaDeVisitante().setVisible(true);
             }
         });
     }
