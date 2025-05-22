@@ -4,12 +4,14 @@
  */
 package view;
 
+import controller.INOUTmorController;
 import controller.MoradorController;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import model.Funcionario;
+import model.INOUTmorador;
 import model.Morador;
 
 /**
@@ -25,12 +27,13 @@ public class TelaINOUTmorador extends javax.swing.JInternalFrame {
      */
     Funcionario func;
     
+    String idMor;
+    
     public TelaINOUTmorador(Funcionario funcionario) {
         initComponents();
         
         func = funcionario;
         
-        System.err.println(func.getId_funcionario());
         
         ListagemMorador();
         pesquisarMorador();
@@ -206,6 +209,11 @@ public class TelaINOUTmorador extends javax.swing.JInternalFrame {
         panelEntrada.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 700, 270));
 
         jButton1.setText("Permitir Entrada");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         panelEntrada.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 350, 150, 40));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -275,7 +283,46 @@ public class TelaINOUTmorador extends javax.swing.JInternalFrame {
 
     private void tabelaMorador1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMorador1MouseClicked
         // TODO add your handling code here:
+        // TODO add your handling code here:
+        // TODO add your handling code here:7
+        int linhaSelecionada = tabelaMorador1.getSelectedRow();
+
+        //verificando se alguam linha foi selecionada
+        if(linhaSelecionada>=0){
+            //definir modelo default para a tabela
+            DefaultTableModel modeloTabela =
+            (DefaultTableModel) tabelaMorador1.getModel();
+
+            //jogando os dados da tabela para os campos de texto
+           idMor = modeloTabela.getValueAt(linhaSelecionada, 0).toString();
+        }//fim do if
     }//GEN-LAST:event_tabelaMorador1MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:    
+        //criando o objeto Controller
+        INOUTmorController controller = new INOUTmorController();
+        
+        INOUTmorador iomorador = new INOUTmorador ();
+        //passando os valores para o objeto vendas
+        iomorador.setId_morador(idMor);
+        iomorador.setId_funcionario(func.getId_funcionario());
+        
+        
+        if (idMor == "null" ) {
+    JOptionPane.showMessageDialog(this, "Selecione um morador.");
+    return;
+}
+        // passando os dados da venda para o banco de dados
+        boolean cadastrou = controller.OUTmorador(iomorador);
+        if(cadastrou){
+            JOptionPane.showMessageDialog(
+                    null,"Saída de Morador registrada com sucesso");
+        }else{
+           JOptionPane.showMessageDialog(
+                    null,"Não foi possivel registrar a saída do morador!"); 
+        }// fim do else
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -82,6 +82,7 @@ view\TelaCadastroVisitante.class
 view\TelaHome$17.class
 view\AtividadeConcluida$2.class
 view\TelaAtividade$1.class
+view\TelaINOUTmorador$6.class
 view\CadFuncionario$1.class
 view\TelaEntradaSaida.class
 view\TelaReservas.class
@@ -168,4 +169,5 @@ view\CadMorador$3.class
 controller\ChaveController.class
 view\TelaHome$2.class
 view\telaRelatorioReserva.class
+controller\INOUTmorController.class
 view\telaReservaFeita$3.class
