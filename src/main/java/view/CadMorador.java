@@ -155,7 +155,7 @@ public class CadMorador extends javax.swing.JInternalFrame {
         // chamando o produtos controller
         UnidadeController controller = new UnidadeController();
         // capturando a lista de produtos que vem do banco de dados
-        List<Unidade> listaunidade = controller.listarUnidade();
+        List<Unidade> listaunidade = controller.listarCasas();
         
         // Obtendo o modelo da tabela
         DefaultTableModel modeloTabela = 
