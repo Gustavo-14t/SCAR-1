@@ -224,4 +224,39 @@ public class UnidadeController {
         }//fim do try
         
     }//fim do método listarClientes()
+     
+     public List<Unidade> listarCasas(){
+        List<Unidade> lista = new ArrayList<>();
+        
+        String query = "SELECT id_unidade,id_chave,nome,tipo,numero,bloco,capacidade FROM Unidade "
+                + "WHERE tipo = 'Casa' ;";
+
+        try(Connection connection = conexaoBD.getConection();//conexão com o banco de dados
+     PreparedStatement preparedStatement = connection.prepareStatement(query)){
+            
+            ResultSet resultSet = preparedStatement.executeQuery();
+            
+            while(resultSet.next()){
+                Unidade unidade = new Unidade();
+                unidade.setId_unidade(resultSet.getInt("id_unidade"));
+                unidade.setId_chave(resultSet.getInt("id_chave"));
+                unidade.setNome(resultSet.getString("nome"));
+                 unidade.setTipo(resultSet.getString("tipo"));
+                  unidade.setNumero(resultSet.getString("numero"));
+                unidade.setBloco(resultSet.getString("bloco"));
+                unidade.setCapacidade(resultSet.getString("capacidade"));
+                
+
+                lista.add(unidade);
+
+            }//fim do while
+          
+             return lista;
+            
+        }catch(SQLException e){
+         System.err.println("Erro listar o Morador "+ e );
+         return null;
+        }//fim do try
+        
+    }//fim do método listarClientes()
 }

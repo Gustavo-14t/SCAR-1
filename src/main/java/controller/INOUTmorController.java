@@ -6,7 +6,10 @@ package controller;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import model.INOUTmorador;
 import model.conexaoBD;
 
@@ -69,5 +72,33 @@ public class INOUTmorController {
         }// final do try catch
     
 }// fim do método cadastroTurno()
+    
+     public List<INOUTmorador> listarUsuario(){
+        List<INOUTmorador> lista = new ArrayList<>();
+        
+        String query = "SELECT id_funcionario,nome,cpf,telefone,endereco,departamento FROM Funcionario ;";
+
+        try(Connection connection = conexaoBD.getConection();//conexão com o banco de dados
+     PreparedStatement preparedStatement = connection.prepareStatement(query)){
+            
+            ResultSet resultSet = preparedStatement.executeQuery();
+            
+            while(resultSet.next()){
+                INOUTmorador morador = new INOUTmorador();
+                
+                morador.setId_funcionario(resultSet.getInt("id_morador"));
+                
+                lista.add(morador);
+
+            }//fim do while
+          
+             return lista;
+            
+        }catch(SQLException e){
+         System.err.println("Erro listar o usuário "+ e );
+         return null;
+        }//fim do try
+        
+    }//fim do método listarClientes()
     
 }
