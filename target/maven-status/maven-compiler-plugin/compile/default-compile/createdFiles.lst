@@ -134,7 +134,6 @@ model\RelatorioReserva.class
 view\TelaAtividade$3.class
 view\TelaReservas$2.class
 view\CadFuncionario$3.class
-controller\INOUTmoradorController.class
 view\AtividadeConcluida$4.class
 view\TelaCadastroUnidade$3.class
 controller\ServicoController.class

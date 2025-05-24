@@ -303,11 +303,11 @@ public class TelaINOUTmorador extends javax.swing.JInternalFrame {
         //criando o objeto Controller
         INOUTmorController controller = new INOUTmorController();
         
+        Morador morador = new Morador();
         INOUTmorador iomorador = new INOUTmorador ();
         //passando os valores para o objeto vendas
         iomorador.setId_morador(idMor);
-        iomorador.setId_funcionario(func.getId_funcionario());
-        
+        morador.getId_morador();
         
         if (idMor == "null" ) {
     JOptionPane.showMessageDialog(this, "Selecione um morador.");
