@@ -85,7 +85,6 @@ public class TelaINOUTmorador extends javax.swing.JInternalFrame {
             Object[] linha = {
               
     morador.getId_morador() != 0 ? morador.getId_morador() : "N/A", // Ajuste para int
-    morador.getId_unidade() != 0 ? morador.getId_unidade() : "N/A", // Ajuste para int
     morador.getNome() != null ? morador.getNome() : "N/A", // Verifique se é null
     morador.getCpf() != null ? morador.getCpf() : "N/A", // Verifique se é null
     morador.getEmail() != null ? morador.getEmail() : "N/A", // Verifique se é null
@@ -106,9 +105,9 @@ public class TelaINOUTmorador extends javax.swing.JInternalFrame {
     
         
         // chamando o produtos controller
-        MoradorController controller = new MoradorController();
+       INOUTmorController controller = new INOUTmorController();
         // capturando a lista de produtos que vem do banco de dados
-        List<Morador> listarMorador= controller.listarMorador();
+        List<Morador> listarMorador= controller.listarMoradornull();
         
         // Obtendo o modelo da tabela
         DefaultTableModel modeloTabela = 
@@ -124,7 +123,6 @@ public class TelaINOUTmorador extends javax.swing.JInternalFrame {
             // Criando uma nova linha para a tabela
             Object[] linha = {
              morador.getId_morador(), // Ajuste para int
-             morador.getId_unidade(), // Ajuste para int
              morador.getNome(), // Verifique se é null
              morador.getCpf(), // Verifique se é null
              morador.getEmail(), // Verifique se é null
@@ -139,6 +137,11 @@ public class TelaINOUTmorador extends javax.swing.JInternalFrame {
     } else {
         JOptionPane.showMessageDialog
         (this, "Nenhum Morador encontrado.");
+    } // Verificação se a tabela tem linhas
+    if (modeloTabela.getRowCount() == 0) {
+        panelMoradores.setVisible(false);
+    } else {
+        panelMoradores.setVisible(true);
     }
        
  }//fim do método de listagemUsuarioP()
@@ -153,46 +156,47 @@ public class TelaINOUTmorador extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        panelEntrada = new javax.swing.JPanel();
+        panelMoradores = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         tabelaMorador1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         campoPesquisar = new javax.swing.JTextField();
+        panelEnter = new javax.swing.JPanel();
         panelSaida = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         tabelaMorador2 = new javax.swing.JTable();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelEntrada.setBackground(new java.awt.Color(255, 204, 0));
-        panelEntrada.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelMoradores.setBackground(new java.awt.Color(255, 204, 0));
+        panelMoradores.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tabelaMorador1.setBackground(new java.awt.Color(255, 255, 255));
         tabelaMorador1.setForeground(new java.awt.Color(0, 0, 0));
         tabelaMorador1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "ID", "CASA", "NOME", "CPF", "EMAIL", "DATA NASCIMENTO"
+                "ID", "NOME", "CPF", "EMAIL", "DATA NASCIMENTO"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -206,7 +210,7 @@ public class TelaINOUTmorador extends javax.swing.JInternalFrame {
         });
         jScrollPane7.setViewportView(tabelaMorador1);
 
-        panelEntrada.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 700, 270));
+        panelMoradores.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 700, 270));
 
         jButton1.setText("Permitir Entrada");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -214,18 +218,19 @@ public class TelaINOUTmorador extends javax.swing.JInternalFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        panelEntrada.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 350, 150, 40));
+        panelMoradores.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 350, 150, 40));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("MORADOR:");
-        panelEntrada.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+        panelMoradores.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
         campoPesquisar.setBackground(new java.awt.Color(255, 255, 255));
         campoPesquisar.setForeground(new java.awt.Color(0, 0, 0));
-        panelEntrada.add(campoPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 200, 30));
+        panelMoradores.add(campoPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 200, 30));
 
-        jTabbedPane1.addTab("Morador Entrada", panelEntrada);
+        jTabbedPane1.addTab("Moradores", panelMoradores);
+        jTabbedPane1.addTab("tab3", panelEnter);
 
         panelSaida.setBackground(new java.awt.Color(255, 204, 0));
         panelSaida.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -307,14 +312,14 @@ public class TelaINOUTmorador extends javax.swing.JInternalFrame {
         INOUTmorador iomorador = new INOUTmorador ();
         //passando os valores para o objeto vendas
         iomorador.setId_morador(idMor);
-        morador.getId_morador();
+        
         
         if (idMor == "null" ) {
     JOptionPane.showMessageDialog(this, "Selecione um morador.");
     return;
 }
         // passando os dados da venda para o banco de dados
-        boolean cadastrou = controller.OUTmorador(iomorador);
+        boolean cadastrou = controller.editarINOUT(iomorador);
         if(cadastrou){
             JOptionPane.showMessageDialog(
                     null,"Saída de Morador registrada com sucesso");
@@ -322,6 +327,7 @@ public class TelaINOUTmorador extends javax.swing.JInternalFrame {
            JOptionPane.showMessageDialog(
                     null,"Não foi possivel registrar a saída do morador!"); 
         }// fim do else
+        ListagemMorador();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -332,7 +338,8 @@ public class TelaINOUTmorador extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JPanel panelEntrada;
+    private javax.swing.JPanel panelEnter;
+    private javax.swing.JPanel panelMoradores;
     private javax.swing.JPanel panelSaida;
     private javax.swing.JTable tabelaMorador1;
     private javax.swing.JTable tabelaMorador2;
