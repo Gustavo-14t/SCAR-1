@@ -30,7 +30,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="panelEntrada">
+        <Container class="javax.swing.JPanel" name="panelMoradores">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="cc" red="ff" type="rgb"/>
@@ -38,8 +38,8 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Morador Entrada">
-                <Property name="tabTitle" type="java.lang.String" value="Morador Entrada"/>
+              <JTabbedPaneConstraints tabName="Moradores">
+                <Property name="tabTitle" type="java.lang.String" value="Moradores"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -69,9 +69,8 @@
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="6" rowCount="14">
+                      <Table columnCount="5" rowCount="14">
                         <Column editable="false" title="ID" type="java.lang.Object"/>
-                        <Column editable="false" title="CASA" type="java.lang.Object"/>
                         <Column editable="false" title="NOME" type="java.lang.Object"/>
                         <Column editable="false" title="CPF" type="java.lang.Object"/>
                         <Column editable="false" title="EMAIL" type="java.lang.Object"/>
@@ -130,6 +129,17 @@
               </Constraints>
             </Component>
           </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="panelEnter">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="tab3">
+                <Property name="tabTitle" type="java.lang.String" value="tab3"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
         </Container>
         <Container class="javax.swing.JPanel" name="panelSaida">
           <Properties>

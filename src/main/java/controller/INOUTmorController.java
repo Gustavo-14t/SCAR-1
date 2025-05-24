@@ -20,10 +20,10 @@ import model.conexaoBD;
  * @author Todosdecasa
  */
 public class INOUTmorController {
-    
+    /*
     public boolean OUTmorador( INOUTmorador iomorador){
      //criuando uma String que recebe uma comando SQL
-     String query = "INSERT INTO MoradorINOUT ( id_morador, id_funcionario, datas, statu) values (?,'SAÍDA') ";
+     String query = "INSERT INTO MoradorINOUT ( id_morador, statu) values (?,'SAÍDA') ";
      
      try(Connection conection = conexaoBD.getConection();
         PreparedStatement preparedStatement =
@@ -33,9 +33,7 @@ public class INOUTmorController {
             preparedStatement.setString(1,iomorador.getId_morador());
             
              
-            /*try(ResultSet resultSet = preparedStatement.executeQuery()){
-                return resultSet.next();
-            }// final do segundo try*/
+            
             // verifica se o insert foi executado
             int rowsAffected = preparedStatement.executeUpdate();
             return rowsAffected > 0;
@@ -50,7 +48,7 @@ public class INOUTmorController {
     
     public boolean INmorador( INOUTmorador iomorador){
      //criuando uma String que recebe uma comando SQL
-     String query = "INSERT INTO INOUTmorador ( id_morador, id_funcionario, datas, statu) values (?,'ENTRADA') ";
+     String query = "INSERT INTO INOUTmorador ( id_morador, statu) values (?,'ENTRADA') ";
      
      try(Connection conection = conexaoBD.getConection();
         PreparedStatement preparedStatement =
@@ -59,9 +57,7 @@ public class INOUTmorController {
             // mandar os dados para dentro do insert
             preparedStatement.setString(1,iomorador.getId_morador());
              
-            /*try(ResultSet resultSet = preparedStatement.executeQuery()){
-                return resultSet.next();
-            }// final do segundo try*/
+           
             // verifica se o insert foi executado
             int rowsAffected = preparedStatement.executeUpdate();
             return rowsAffected > 0;
@@ -72,7 +68,7 @@ public class INOUTmorController {
             return false;
         }// final do try catch
     
-}// fim do método cadastroTurno()
+}// fim do método cadastroTurno()*/
     
     public boolean editarINOUT(INOUTmorador morador){
       String query = "update set statu = 'SAÍDA' from MoradorINOUT where id_morador = ? ";
@@ -96,8 +92,9 @@ public class INOUTmorController {
      public List<Morador> listarMoradornull(){
         List<Morador> lista = new ArrayList<>();
         
-        String query = "select m.nome, m.cpf, m.email, m.data_nasc from MoradorINOUT mi\n" +
-"JOIN Morador m ON m.id_morador = mi.id_morador";
+        String query = "select m.id_morador, m.nome, m.cpf, m.email, m.data_nasc "
+                + "from MoradorINOUT mi "
+                + "JOIN Morador m ON m.id_morador = mi.id_morador where mi.statu is null ";
 
         try(Connection connection = conexaoBD.getConection();//conexão com o banco de dados
      PreparedStatement preparedStatement = connection.prepareStatement(query)){
@@ -105,12 +102,14 @@ public class INOUTmorController {
             ResultSet resultSet = preparedStatement.executeQuery();
             
             while(resultSet.next()){
-                Morador morador = new Morador();
-                
-                morador.getNome();
-                morador.getCpf();
-                morador.getEmail();
-                morador.getData_nasc();
+               Morador morador = new Morador();
+
+                morador.setId_morador(resultSet.getInt("id_morador"));
+                morador.setNome(resultSet.getString("nome"));
+                morador.setCpf(resultSet.getString("cpf"));
+                morador.setEmail(resultSet.getString("email"));
+                morador.setData_nasc(resultSet.getString("data_nasc")); // ou getDate, dependendo do tipo
+
                 
                 lista.add(morador);
 
