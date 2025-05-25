@@ -71,7 +71,7 @@ public class INOUTmorController {
 }// fim do método cadastroTurno()*/
     
     public boolean editarINOUT(INOUTmorador morador){
-      String query = "update set statu = 'SAÍDA' from MoradorINOUT where id_morador = ? ";
+      String query = "update MoradorINOUT set statu = 'SAÍDA'  where id_morador = ?";
                    
     // Conexão com o banco de dados
     try (Connection conection = conexaoBD.getConection();
@@ -79,6 +79,7 @@ public class INOUTmorController {
 
         // Definindo os parâmetros do preparedStatement
         preparedStatement.setString(1, morador.getId_morador()); // id do morador da reserva
+        
         // Executando o update
         int cadastrou = preparedStatement.executeUpdate();
         return cadastrou > 0;
@@ -92,9 +93,9 @@ public class INOUTmorController {
      public List<Morador> listarMoradornull(){
         List<Morador> lista = new ArrayList<>();
         
-        String query = "select m.id_morador, m.nome, m.cpf, m.email, m.data_nasc "
-                + "from MoradorINOUT mi "
-                + "JOIN Morador m ON m.id_morador = mi.id_morador where mi.statu is null ";
+        String query = "select m.id_morador, m.nome, m.cpf, m.email, m.data_nasc \n" +
+"                 from MoradorINOUT mi \n" +
+"                JOIN Morador m ON m.id_morador = mi.id_morador where mi.statu is null and m.ativo = 1 ";
 
         try(Connection connection = conexaoBD.getConection();//conexão com o banco de dados
      PreparedStatement preparedStatement = connection.prepareStatement(query)){

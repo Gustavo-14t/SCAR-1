@@ -5,6 +5,7 @@
 package controller;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -56,7 +57,7 @@ public class MoradorController {
      public List<Morador> listarMorador(){
         List<Morador> lista = new ArrayList<>();
         
-        String query = "SELECT id_morador,id_unidade,nome,cpf,email,data_nasc FROM Morador ;";
+        String query = "SELECT id_morador,id_unidade,nome,cpf,email,data_nasc FROM Morador where ativo =1 ;";
 
         try(Connection connection = conexaoBD.getConection();//conexão com o banco de dados
      PreparedStatement preparedStatement = connection.prepareStatement(query)){
@@ -90,27 +91,27 @@ public class MoradorController {
      
      
      public boolean deletarMorador(int idMorador){
-         String query = "DELETE FROM Morador WHERE id_morador = ?";
-        //Connection - conecta-se ao banco de dados
-        //PreparedStatement manda o comando sql para executar no BD
-        try (Connection connection = conexaoBD.getConection();//conexão com o banco de dados
-     PreparedStatement preparedStatement = connection.prepareStatement(query)){//mandar o comando select 
-            //mandando idUsuario para dentro do camando sql
-            preparedStatement.setInt(1,idMorador);
-            
-                        int resultado = preparedStatement.executeUpdate();
-            return resultado > 0;
-           
-        }catch(SQLException e){
-             System.err.print(e+ " Exclusão não realizada  ");
-            return false;
-        }//fim do 
+    String sql = "UPDATE Morador SET ativo = 0 WHERE id_morador = ?";
+
+    try(Connection connection = conexaoBD.getConection();//conexão com o banco de dados
+     PreparedStatement stmt = connection.prepareStatement(sql)) {
+
+        stmt.setInt(1, idMorador);
+
+        int rowsAffected = stmt.executeUpdate();
+        return rowsAffected > 0;
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
+    
+}
      }//fim do public boolean
      
      
      public List<Morador> listarMoradorNome(String nome){
      
-     String query = "SELECT id_morador,id_unidade,nome,cpf,email,data_nasc FROM Morador where nome LIKE ?;";
+     String query = "SELECT id_morador,id_unidade,nome,cpf,email,data_nasc FROM Morador where nome LIKE ?  and ativo = 1";
      
       List<Morador> lista = new ArrayList<>();
         // criando o try catch

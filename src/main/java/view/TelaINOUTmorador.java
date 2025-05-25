@@ -6,6 +6,7 @@ package view;
 
 import controller.INOUTmorController;
 import controller.MoradorController;
+import controller.controllerControleInoutMor;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.event.DocumentListener;
@@ -13,6 +14,7 @@ import javax.swing.table.DefaultTableModel;
 import model.Funcionario;
 import model.INOUTmorador;
 import model.Morador;
+import model.controleINOUTmorador;
 
 /**
  *
@@ -163,6 +165,8 @@ public class TelaINOUTmorador extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         campoPesquisar = new javax.swing.JTextField();
         panelEnter = new javax.swing.JPanel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        tabelaMorador3 = new javax.swing.JTable();
         panelSaida = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         tabelaMorador2 = new javax.swing.JTable();
@@ -230,7 +234,51 @@ public class TelaINOUTmorador extends javax.swing.JInternalFrame {
         panelMoradores.add(campoPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 200, 30));
 
         jTabbedPane1.addTab("Moradores", panelMoradores);
-        jTabbedPane1.addTab("tab3", panelEnter);
+
+        panelEnter.setBackground(new java.awt.Color(255, 204, 0));
+        panelEnter.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tabelaMorador3.setBackground(new java.awt.Color(255, 255, 255));
+        tabelaMorador3.setForeground(new java.awt.Color(0, 0, 0));
+        tabelaMorador3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "CASA", "NOME", "CPF", "EMAIL", "DATA NASCIMENTO"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabelaMorador3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaMorador3MouseClicked(evt);
+            }
+        });
+        jScrollPane8.setViewportView(tabelaMorador3);
+
+        panelEnter.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 706, 210));
+
+        jTabbedPane1.addTab("Morador Entrada", panelEnter);
 
         panelSaida.setBackground(new java.awt.Color(255, 204, 0));
         panelSaida.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -277,7 +325,7 @@ public class TelaINOUTmorador extends javax.swing.JInternalFrame {
 
         jTabbedPane1.addTab("Morador Saída", panelSaida);
 
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 1, 730, 470));
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 730, 470));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -308,10 +356,17 @@ public class TelaINOUTmorador extends javax.swing.JInternalFrame {
         //criando o objeto Controller
         INOUTmorController controller = new INOUTmorController();
         
-        Morador morador = new Morador();
+        
         INOUTmorador iomorador = new INOUTmorador ();
         //passando os valores para o objeto vendas
         iomorador.setId_morador(idMor);
+        
+        controllerControleInoutMor controla = new controllerControleInoutMor();
+        
+        
+       controleINOUTmorador cim = new controleINOUTmorador ();
+       cim.setId_funcionario(func.getId_funcionario());
+        cim.setId_morEntradaSaida(idMor);
         
         
         if (idMor == "null" ) {
@@ -320,6 +375,7 @@ public class TelaINOUTmorador extends javax.swing.JInternalFrame {
 }
         // passando os dados da venda para o banco de dados
         boolean cadastrou = controller.editarINOUT(iomorador);
+        boolean cdastro = controla.editarControleINOUTMor(cim) ;
         if(cadastrou){
             JOptionPane.showMessageDialog(
                     null,"Saída de Morador registrada com sucesso");
@@ -330,6 +386,10 @@ public class TelaINOUTmorador extends javax.swing.JInternalFrame {
         ListagemMorador();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void tabelaMorador3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMorador3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tabelaMorador3MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField campoPesquisar;
@@ -337,11 +397,13 @@ public class TelaINOUTmorador extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel panelEnter;
     private javax.swing.JPanel panelMoradores;
     private javax.swing.JPanel panelSaida;
     private javax.swing.JTable tabelaMorador1;
     private javax.swing.JTable tabelaMorador2;
+    private javax.swing.JTable tabelaMorador3;
     // End of variables declaration//GEN-END:variables
 }
