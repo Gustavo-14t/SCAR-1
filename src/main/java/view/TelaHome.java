@@ -440,9 +440,9 @@ public class TelaHome extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        TelaEmDev telaDev = new TelaEmDev();
-        areaTrabalho.add(telaDev);
-       telaDev.setVisible(true);
+        relatorioEntradaSaida iNOUT = new relatorioEntradaSaida();
+        areaTrabalho.add(iNOUT);
+       iNOUT.setVisible(true);
        
       fecharTelas();
     }//GEN-LAST:event_jButton2ActionPerformed

@@ -14,6 +14,7 @@ import model.INOUTmorador;
 import model.Morador;
 import model.ReservaList;
 import model.conexaoBD;
+import model.moradorAndINOUT;
 
 /**
  *
@@ -71,7 +72,7 @@ public class INOUTmorController {
 }// fim do método cadastroTurno()*/
     
     public boolean editarINOUT(INOUTmorador morador){
-      String query = "update MoradorINOUT set statu = 'SAÍDA'  where id_morador = ?";
+      String query = "update MoradorINOUT set statu = 'ENTRADA'  where id_morador = ?";
                    
     // Conexão com o banco de dados
     try (Connection conection = conexaoBD.getConection();
@@ -90,10 +91,10 @@ public class INOUTmorController {
     } // fim do try-catch
 } // fim do método editarReserva
     
-     public List<Morador> listarMoradornull(){
-        List<Morador> lista = new ArrayList<>();
+     public List<moradorAndINOUT> listarMoradornull(){
+        List<moradorAndINOUT> lista = new ArrayList<>();
         
-        String query = "select m.id_morador, m.nome, m.cpf, m.email, m.data_nasc \n" +
+        String query = "select mi.id_morEntradaSaida, m.id_morador, m.nome, m.cpf, m.email, m.data_nasc \n" +
 "                 from MoradorINOUT mi \n" +
 "                JOIN Morador m ON m.id_morador = mi.id_morador where mi.statu is null and m.ativo = 1 ";
 
@@ -103,9 +104,11 @@ public class INOUTmorController {
             ResultSet resultSet = preparedStatement.executeQuery();
             
             while(resultSet.next()){
-               Morador morador = new Morador();
-
-                morador.setId_morador(resultSet.getInt("id_morador"));
+           
+               moradorAndINOUT morador = new moradorAndINOUT();
+               
+                morador.setId_morEntradaSaida(resultSet.getString("id_morEntradaSaida"));
+                morador.setId_morador(resultSet.getString("id_morador"));
                 morador.setNome(resultSet.getString("nome"));
                 morador.setCpf(resultSet.getString("cpf"));
                 morador.setEmail(resultSet.getString("email"));

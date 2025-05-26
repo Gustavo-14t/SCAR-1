@@ -13,13 +13,13 @@ public class relatorioEntradaSaida {
     String tipoMovimentacao;
     String nomeFuncionario;
     String dataMovimentacao;
-    String dataRegistro;
+    String nomeMorador;
 
-    public relatorioEntradaSaida(String tipoMovimentacao, String nomeFuncionario, String dataMovimentacao, String dataRegistro) {
+    public relatorioEntradaSaida(String tipoMovimentacao, String nomeFuncionario, String dataMovimentacao, String nomeMorador) {
         this.tipoMovimentacao = tipoMovimentacao;
         this.nomeFuncionario = nomeFuncionario;
         this.dataMovimentacao = dataMovimentacao;
-        this.dataRegistro = dataRegistro;
+        this.nomeMorador = nomeMorador;
     }
 
     public relatorioEntradaSaida() {
@@ -49,14 +49,13 @@ public class relatorioEntradaSaida {
         this.dataMovimentacao = dataMovimentacao;
     }
 
-    public String getDataRegistro() {
-        return dataRegistro;
+    public String getNomeMorador() {
+        return nomeMorador;
     }
 
-    public void setDataRegistro(String dataRegistro) {
-        this.dataRegistro = dataRegistro;
+    public void setNomeMorador(String nomeMorador) {
+        this.nomeMorador = nomeMorador;
     }
- 
-    
-    
+
+  
 }
