@@ -15,6 +15,7 @@ import model.Funcionario;
 import model.INOUTmorador;
 import model.Morador;
 import model.controleINOUTmorador;
+import model.moradorAndINOUT;
 
 /**
  *
@@ -30,15 +31,48 @@ public class TelaINOUTmorador extends javax.swing.JInternalFrame {
     Funcionario func;
     
     String idMor;
+    String idCim;
     
     public TelaINOUTmorador(Funcionario funcionario) {
         initComponents();
         
         func = funcionario;
         
-        
+         ListagemINOUT();
         ListagemMorador();
         pesquisarMorador();
+    }
+    public void ListagemINOUT(){
+        //cria um objeto de vendasController
+        controllerControleInoutMor controller = new  controllerControleInoutMor();
+        //capturando a lista de relatório de vendas
+        List<model.controleINOUTmorador> lista = controller.listarINOUT();
+        
+        //modelo padrão de tabela
+       DefaultTableModel modeloTabela = (DefaultTableModel)tabelaINOUT.getModel();
+        
+       //Limpando a tabela antes de adicionar nobvos dados
+       modeloTabela.setRowCount(0);
+       
+       //verificar se a lista esta vazia
+       if(lista !=null && !lista.isEmpty()){
+           for (model.controleINOUTmorador reserva : lista){
+               Object[] linha = {
+                   reserva.getId_CMINOUT(),
+                   reserva.getId_morEntradaSaida(),
+                   reserva.getFuncionarioSaida(),
+                   reserva.getDataSaida(),
+                   reserva.getStatu(),
+                   
+   
+               };//fim do objeto linha
+               modeloTabela.addRow(linha);
+               
+           }//fim do for
+       }else{
+           JOptionPane.showMessageDialog(null,"Não existem Entradas ou Saídas!");
+       }//fim do else
+    
     }
     
     public void pesquisarMorador(){
@@ -109,7 +143,7 @@ public class TelaINOUTmorador extends javax.swing.JInternalFrame {
         // chamando o produtos controller
        INOUTmorController controller = new INOUTmorController();
         // capturando a lista de produtos que vem do banco de dados
-        List<Morador> listarMorador= controller.listarMoradornull();
+        List<moradorAndINOUT> listarMorador= controller.listarMoradornull();
         
         // Obtendo o modelo da tabela
         DefaultTableModel modeloTabela = 
@@ -121,9 +155,11 @@ public class TelaINOUTmorador extends javax.swing.JInternalFrame {
     // Verificando se a lista não é nula
     if (listarMorador != null && !listarMorador.isEmpty()) {
         // Jogando os dados para dentro da minha tabela
-        for (Morador morador : listarMorador) {
+        
+        for (moradorAndINOUT morador : listarMorador) {
             // Criando uma nova linha para a tabela
             Object[] linha = {
+             morador.getId_morEntradaSaida(),
              morador.getId_morador(), // Ajuste para int
              morador.getNome(), // Verifique se é null
              morador.getCpf(), // Verifique se é null
@@ -166,10 +202,9 @@ public class TelaINOUTmorador extends javax.swing.JInternalFrame {
         campoPesquisar = new javax.swing.JTextField();
         panelEnter = new javax.swing.JPanel();
         jScrollPane8 = new javax.swing.JScrollPane();
-        tabelaMorador3 = new javax.swing.JTable();
-        panelSaida = new javax.swing.JPanel();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        tabelaMorador2 = new javax.swing.JTable();
+        tabelaINOUT = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -180,27 +215,27 @@ public class TelaINOUTmorador extends javax.swing.JInternalFrame {
         tabelaMorador1.setForeground(new java.awt.Color(0, 0, 0));
         tabelaMorador1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "NOME", "CPF", "EMAIL", "DATA NASCIMENTO"
+                "CONTROLE", "ID", "NOME", "CPF", "EMAIL", "DATA NASCIMENTO"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                true, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -238,101 +273,68 @@ public class TelaINOUTmorador extends javax.swing.JInternalFrame {
         panelEnter.setBackground(new java.awt.Color(255, 204, 0));
         panelEnter.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tabelaMorador3.setBackground(new java.awt.Color(255, 255, 255));
-        tabelaMorador3.setForeground(new java.awt.Color(0, 0, 0));
-        tabelaMorador3.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaINOUT.setBackground(new java.awt.Color(255, 255, 255));
+        tabelaINOUT.setForeground(new java.awt.Color(0, 0, 0));
+        tabelaINOUT.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "ID", "CASA", "NOME", "CPF", "EMAIL", "DATA NASCIMENTO"
+                "CONTROLE", "MORADOR", "FUNCIONARIO", "DATA_MOVIMENTO", "STATU"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        tabelaMorador3.addMouseListener(new java.awt.event.MouseAdapter() {
+        tabelaINOUT.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabelaMorador3MouseClicked(evt);
+                tabelaINOUTMouseClicked(evt);
             }
         });
-        jScrollPane8.setViewportView(tabelaMorador3);
+        jScrollPane8.setViewportView(tabelaINOUT);
 
         panelEnter.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 706, 210));
 
+        jButton2.setText("Entrada");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        panelEnter.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 280, 110, 40));
+
+        jButton3.setText("Saída");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        panelEnter.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 280, 110, 40));
+
         jTabbedPane1.addTab("Morador Entrada", panelEnter);
-
-        panelSaida.setBackground(new java.awt.Color(255, 204, 0));
-        panelSaida.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        tabelaMorador2.setBackground(new java.awt.Color(255, 255, 255));
-        tabelaMorador2.setForeground(new java.awt.Color(0, 0, 0));
-        tabelaMorador2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "ID", "CASA", "NOME", "CPF", "EMAIL", "DATA NASCIMENTO"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tabelaMorador2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabelaMorador2MouseClicked(evt);
-            }
-        });
-        jScrollPane6.setViewportView(tabelaMorador2);
-
-        panelSaida.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 706, 210));
-
-        jTabbedPane1.addTab("Morador Saída", panelSaida);
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 730, 470));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void tabelaMorador2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMorador2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tabelaMorador2MouseClicked
 
     private void tabelaMorador1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMorador1MouseClicked
         // TODO add your handling code here:
@@ -369,7 +371,7 @@ public class TelaINOUTmorador extends javax.swing.JInternalFrame {
         cim.setId_morEntradaSaida(idMor);
         
         
-        if (idMor == "null" ) {
+        if (idMor == null || idMor.trim().isEmpty() || "null".equals(idMor)) {
     JOptionPane.showMessageDialog(this, "Selecione um morador.");
     return;
 }
@@ -378,7 +380,15 @@ public class TelaINOUTmorador extends javax.swing.JInternalFrame {
         boolean cdastro = controla.editarControleINOUTMor(cim) ;
         if(cadastrou){
             JOptionPane.showMessageDialog(
-                    null,"Saída de Morador registrada com sucesso");
+                    null,"Entrada de Morador registrada com sucesso");
+            
+         if(cdastro){
+            JOptionPane.showMessageDialog(
+                    null,"Pegamo o id do funcionario");
+        }else{
+           JOptionPane.showMessageDialog(
+                    null,"Não foi possível pegar o id de funcionario"); 
+        }// fim do else
         }else{
            JOptionPane.showMessageDialog(
                     null,"Não foi possivel registrar a saída do morador!"); 
@@ -386,24 +396,81 @@ public class TelaINOUTmorador extends javax.swing.JInternalFrame {
         ListagemMorador();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void tabelaMorador3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMorador3MouseClicked
+    private void tabelaINOUTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaINOUTMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tabelaMorador3MouseClicked
+        int linhaSelecionada = tabelaINOUT.getSelectedRow();
+
+        //verificando se alguam linha foi selecionada
+        if(linhaSelecionada>=0){
+            //definir modelo default para a tabela
+            DefaultTableModel modeloTabela =
+            (DefaultTableModel) tabelaINOUT.getModel();
+
+            //jogando os dados da tabela para os campos de texto
+           idCim = modeloTabela.getValueAt(linhaSelecionada, 0).toString();
+        }//fim do if
+    }//GEN-LAST:event_tabelaINOUTMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        System.out.println("idCim: " + idCim);
+        if (idCim == null || idCim.trim().isEmpty() || "null".equals(idCim)) {
+        JOptionPane.showMessageDialog(this, "Selecione um controle (linha da tabela de entradas/saídas).");
+        return;
+    }
+
+    controllerControleInoutMor controller = new controllerControleInoutMor();
+    
+    controleINOUTmorador cim = new controleINOUTmorador();
+    cim.setStatu("ENTRADA");
+    cim.setFuncionarioSaida(func.getNome());
+    cim.setId_CMINOUT(idCim);  // <- aqui precisa estar preenchido
+    
+    boolean cadastrou = controller.entradaOuSaida(cim);
+    if(cadastrou){
+        JOptionPane.showMessageDialog(null, "Entrada registrada com sucesso");
+         ListagemINOUT();
+    } else {
+        JOptionPane.showMessageDialog(null, "Não foi possível registrar entrada");
+    }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    System.out.println("idCim: " + idCim);   
+    if (idCim == null || idCim.trim().isEmpty() || "null".equals(idCim)) {
+        JOptionPane.showMessageDialog(this, "Selecione um controle (linha da tabela de entradas/saídas).");
+        return;
+    }
+
+    controllerControleInoutMor controller = new controllerControleInoutMor();
+    
+    controleINOUTmorador cim = new controleINOUTmorador();
+    cim.setStatu("SAIDA");
+    cim.setFuncionarioSaida(func.getNome());
+    cim.setId_CMINOUT(idCim);
+    
+    boolean cadastrou = controller.entradaOuSaida(cim);
+    if(cadastrou){
+        JOptionPane.showMessageDialog(null, "Saída registrada com sucesso");
+         ListagemINOUT();
+    } else {
+        JOptionPane.showMessageDialog(null, "Não foi possível registrar saída");
+    }
+
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField campoPesquisar;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel panelEnter;
     private javax.swing.JPanel panelMoradores;
-    private javax.swing.JPanel panelSaida;
+    private javax.swing.JTable tabelaINOUT;
     private javax.swing.JTable tabelaMorador1;
-    private javax.swing.JTable tabelaMorador2;
-    private javax.swing.JTable tabelaMorador3;
     // End of variables declaration//GEN-END:variables
 }

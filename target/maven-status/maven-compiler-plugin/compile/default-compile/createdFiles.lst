@@ -4,6 +4,7 @@ view\TelaReservas$7.class
 view\TelaServiceRequest$7.class
 view\TelaEmDev.class
 view\TelaFinanceiro$1.class
+view\relatorioEntradaSaida.class
 view\TelaCadastroVisitante$1.class
 view\telaListaDeVisitante$1.class
 view\CadMorador$7.class
@@ -55,6 +56,7 @@ view\AtividadeConcluida$1.class
 model\conexaoBD.class
 model\Atividade.class
 model\Morador.class
+view\relatorioEntradaSaida$1.class
 view\TelaServiceRequest.class
 controller\LoginController.class
 view\TelaEntradaSaida$6.class
@@ -68,6 +70,7 @@ view\TelaReservas$5.class
 view\TelaHome$21.class
 view\CadMorador$1.class
 view\TelaINOUTmorador.class
+model\moradorAndINOUT.class
 view\CadAtv.class
 view\TelaAtividade$7.class
 view\TelaCadastroUnidade$6.class
