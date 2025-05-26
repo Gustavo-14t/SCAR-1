@@ -4,7 +4,9 @@
  */
 package view;
 
+import controller.FuncionarioController;
 import controller.MoradorController;
+import controller.controllerInoutVisitante;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.event.DocumentListener;
@@ -12,6 +14,7 @@ import javax.swing.table.DefaultTableModel;
 import model.Funcionario;
 import model.Morador;
 import model.Visitante;
+import model.inoutVisitante;
 
 /**
  *
@@ -24,6 +27,7 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
      */
     Funcionario func;
     int idFunc;
+    String nomeMor;
     
     public TelaEntradaSaida(Funcionario funcionario) {
         initComponents();
@@ -37,8 +41,18 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
         pesquisarMorador();
         ListagemMorador();
         
-       labelData.setVisible(false);
-       calendario.setVisible(false);
+      Verificacao();
+
+    }
+    
+    public void Verificacao(){
+         if (!campoNome.getText().trim().isEmpty() && !campoCpf.getText().trim().isEmpty()) {
+    labelData.setVisible(true);
+    calendario.setVisible(true);
+} else {
+    labelData.setVisible(false);
+    calendario.setVisible(false);
+}
     }
     
     public void pesquisarMorador(){
@@ -168,8 +182,8 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
         labelData = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         calendario = new com.toedter.calendar.JCalendar();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        campoCpf = new javax.swing.JTextField();
+        campoNome = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         verificarPedido = new javax.swing.JPanel();
@@ -244,6 +258,11 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
         solicitarEntrada.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 706, 210));
 
         bSolicitarVisita.setText("SOLICITAR VISITA");
+        bSolicitarVisita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSolicitarVisitaActionPerformed(evt);
+            }
+        });
         solicitarEntrada.add(bSolicitarVisita, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 410, 170, 40));
 
         bCadastrarVisitante1.setText("CADASTRAR VISITANTE");
@@ -272,8 +291,8 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
         jLabel5.setText("CPF do Visitante:");
         solicitarEntrada.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 340, 162, -1));
         solicitarEntrada.add(calendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 280, 170, 120));
-        solicitarEntrada.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 360, 180, 30));
-        solicitarEntrada.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 180, 30));
+        solicitarEntrada.add(campoCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 360, 180, 30));
+        solicitarEntrada.add(campoNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 180, 30));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
@@ -462,42 +481,22 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
 
     private void tabelaMorador2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMorador2MouseClicked
         // TODO add your handling code here:
-        /*int linhaSelecionada = tabelaMorador.getSelectedRow();
-
-        // Verificando se alguma linha foi selecionada
-        if (linhaSelecionada >= 0) {
-            // Definir modelo default para a tabela
-            DefaultTableModel modeloTabela = (DefaultTableModel) tabelaMorador.getModel();
-
-            // Verificando se os valores não são nulos antes de usar toString()
-            idMorador = modeloTabela.getValueAt(linhaSelecionada, 0) != null
-            ? Integer.parseInt(modeloTabela.getValueAt(linhaSelecionada, 0).toString())
-            : 0;  // Valor padrão para idMorador (caso seja nulo)
-
-            idUnidade = modeloTabela.getValueAt(linhaSelecionada, 1) != null
-            ? Integer.parseInt(modeloTabela.getValueAt(linhaSelecionada, 1).toString())
-            : 0;  // Valor padrão para idUnidade (caso seja nulo)
-
-            campoNome.setText(modeloTabela.getValueAt(linhaSelecionada, 2) != null
-                ? modeloTabela.getValueAt(linhaSelecionada, 2).toString()
-                : "N/A");  // Valor padrão para Nome (caso seja nulo)
-
-            campoCpf.setText(modeloTabela.getValueAt(linhaSelecionada, 3) != null
-                ? modeloTabela.getValueAt(linhaSelecionada, 3).toString()
-                : "N/A");  // Valor padrão para CPF (caso seja nulo)
-
-            campoEmail.setText(modeloTabela.getValueAt(linhaSelecionada, 4) != null
-                ? modeloTabela.getValueAt(linhaSelecionada, 4).toString()
-                : "N/A");  // Valor padrão para Email (caso seja nulo)
-
-            campNascimento.setText(modeloTabela.getValueAt(linhaSelecionada, 5) != null
-                ? modeloTabela.getValueAt(linhaSelecionada, 5).toString()
-                : "N/A");  // Valor padrão para Data de Nascimento (caso seja nulo)
-        } // fim do if*/
+        
     }//GEN-LAST:event_tabelaMorador2MouseClicked
 
     private void tabelaMoradorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMoradorMouseClicked
         // TODO add your handling code here:
+        // TODO add your handling code here:
+         int linhaSelecionada = tabelaMorador.getSelectedRow();
+
+        //verificando se alguam linha foi selecionada
+        if(linhaSelecionada>=0){
+            //definir modelo default para a tabela
+            DefaultTableModel modeloTabela =
+            (DefaultTableModel) tabelaMorador.getModel();
+
+           nomeMor = modeloTabela.getValueAt(linhaSelecionada, 2).toString();
+        }//fim do if
     }//GEN-LAST:event_tabelaMoradorMouseClicked
 
     private void bCadastrarVisitante1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadastrarVisitante1ActionPerformed
@@ -509,9 +508,46 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        telaListaDeVisitante visitante = new telaListaDeVisitante();
-        visitante.setVisible(true);
+       telaListadeVisitant tela = new telaListadeVisitant(null, true);
+    tela.setVisible(true);
+    
+    campoNome.setText(tela.nomeVisita);
+    campoCpf.setText(tela.cpf);
+    
+    Verificacao();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void bSolicitarVisitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSolicitarVisitaActionPerformed
+        // TODO add your handling code here:
+         if(calendario.getDate() == null){
+            JOptionPane.showMessageDialog(null, "Escolha a data");
+        }else{
+        
+        try{
+       controllerInoutVisitante controller = new controllerInoutVisitante();
+         // Suponha que você queira registrar nome do morador, visitante e data
+        inoutVisitante iov = new inoutVisitante();
+        iov.setNomeMorador(nomeMor);
+        iov.setNomeVisitante(campoNome.getText());
+        iov.setNomeMorador(func.getNome());
+        //iov.setDataVisita(calendario.getDate()); // a data do JCalendar
+
+            
+                // chamando o metodo de cadastrar o usuario no banco de dados
+            controller.cadastroUsuario(iov);
+            JOptionPane.showMessageDialog
+            (null,"Usuario Cadastrado com Sucesso!");
+
+            campoNome.setText("");
+             campoCpf.setText("");
+            
+
+        }catch(Exception e){
+             JOptionPane.showMessageDialog
+            (null,"Usuario Não Cadastrado! "+e);
+        }
+        }
+    }//GEN-LAST:event_bSolicitarVisitaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -523,6 +559,8 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
     private javax.swing.JButton bPermitirSaida;
     private javax.swing.JButton bSolicitarVisita;
     private com.toedter.calendar.JCalendar calendario;
+    private javax.swing.JTextField campoCpf;
+    private javax.swing.JTextField campoNome;
     private javax.swing.JTextField campoNomeVistante;
     private javax.swing.JTextField campoPesquisar;
     private javax.swing.JButton jButton1;
@@ -539,8 +577,6 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSlider jSlider1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel labelData;
     private javax.swing.JPanel solicitarEntrada;
     private javax.swing.JTable tabelaMorador;
