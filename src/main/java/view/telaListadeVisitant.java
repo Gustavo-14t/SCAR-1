@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package view;
 
@@ -15,24 +15,33 @@ import model.Visitante;
  *
  * @author Todosdecasa
  */
-public class telaListaDeVisitante extends javax.swing.JFrame {
+public class telaListadeVisitant extends javax.swing.JDialog {
 
-    /**
-     * Creates new form telaListaDeVisitante
-     */
     String nomeVisita;
     String cpf;
     
-    Visitante vis;
-    
-    public telaListaDeVisitante() {
+    /**
+     * Creates new form telaListadeVisitant
+     */
+    public telaListadeVisitant(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        
         initComponents();
         
-        ListagemVisitante();
         pesquisarVisitante();
-        
-        
+        ListagemVisitante();
     }
+    
+    // getters
+    public String getNomeVisita() {
+        return nomeVisita;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+
     
     public void pesquisarVisitante(){
         campoPesquisa.getDocument().addDocumentListener(
@@ -125,8 +134,7 @@ public class telaListaDeVisitante extends javax.swing.JFrame {
         JOptionPane.showMessageDialog
         (this, "Nenhum Visitante encontrado.");
     }
-        }//fim do método ListagemUsuario()
-    
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -144,9 +152,11 @@ public class telaListaDeVisitante extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         campoPesquisa = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 0));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tabelaVisitante.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -172,57 +182,23 @@ public class telaListaDeVisitante extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabelaVisitante);
 
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 68, 590, 201));
+
         jButton1.setText("Selecionar Visitante");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(425, 297, 187, 33));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Pesquisar visitante por nome:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 6, -1, -1));
+        jPanel1.add(campoPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 32, 231, 30));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(campoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 350));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -239,18 +215,16 @@ public class telaListaDeVisitante extends javax.swing.JFrame {
             (DefaultTableModel) tabelaVisitante.getModel();
 
             //jogando os dados da tabela para os campos de texto
-           nomeVisita = modeloTabela.getValueAt(linhaSelecionada, 0).toString();
-           cpf = modeloTabela.getValueAt(linhaSelecionada, 1).toString(); 
+            nomeVisita = modeloTabela.getValueAt(linhaSelecionada, 0).toString();
+            cpf = modeloTabela.getValueAt(linhaSelecionada, 1).toString();
         }//fim do if
     }//GEN-LAST:event_tabelaVisitanteMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
-        System.err.println(nomeVisita);
-        System.err.println(cpf); 
-        
-        dispose();
+
+        System.out.println("Visitante selecionado: " + nomeVisita + " - " + cpf);
+        dispose(); // fecha a janela
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -270,21 +244,27 @@ public class telaListaDeVisitante extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(telaListaDeVisitante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(telaListadeVisitant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(telaListaDeVisitante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(telaListadeVisitant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(telaListaDeVisitante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(telaListadeVisitant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(telaListaDeVisitante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(telaListadeVisitant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
-                new telaListaDeVisitante().setVisible(true);
+                telaListadeVisitant dialog = new telaListadeVisitant(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
