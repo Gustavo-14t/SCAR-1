@@ -59,13 +59,13 @@ public class relatorioEntradaSaida extends javax.swing.JInternalFrame {
        
        //verificar se a lista esta vazia
        if(lista !=null && !lista.isEmpty()){
-           for (model.historicoInoutVisitante reserva : lista){
+           for (model.historicoInoutVisitante iov : lista){
                Object[] linha = {
-                   reserva.getNomeMorador(),
-                   reserva.getNomeVisitante(),
-                   reserva.getNomeFuncionario(),
-                   reserva.getDataMovimentacao(),
-                   reserva.getTipoMovimentacao(),
+                   iov.getNomeMorador(),
+                   iov.getNomeVisitante(),
+                   iov.getNomeFuncionario(),
+                   iov.getDataMovimentacao(),
+                   iov.getTipoMovimentacao(),
                    
    
                };//fim do objeto linha

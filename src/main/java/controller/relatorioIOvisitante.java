@@ -33,7 +33,7 @@ public class relatorioIOvisitante {
                 historicoInoutVisitante reserva = new historicoInoutVisitante();
                 
                 reserva.setNomeMorador(resultset.getString("nomeMorador"));
-                reserva.setNomeFuncionario(resultset.getString("nomeVisitante"));
+                reserva.setNomeVisitante(resultset.getString("nomeVisitante"));
                 reserva.setNomeFuncionario(resultset.getString("nomeFuncionario"));
                 reserva.setDataMovimentacao(resultset.getString("dataMovimentacao"));
                 reserva.setTipoMovimentacao(resultset.getString("tipoMovimentacao"));
