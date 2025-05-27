@@ -89,6 +89,41 @@ public class MoradorController {
         
     }//fim do método listarClientes()
      
+     public List<Morador> listarNovoMorador(){
+        List<Morador> lista = new ArrayList<>();
+        
+        String query = "SELECT id_morador,id_unidade,nome,cpf,email,data_nasc FROM Morador where ativo =1 and statu = 'NOVO REGISTRO'";
+
+        try(Connection connection = conexaoBD.getConection();//conexão com o banco de dados
+     PreparedStatement preparedStatement = connection.prepareStatement(query)){
+            
+            ResultSet resultSet = preparedStatement.executeQuery();
+            
+            while(resultSet.next()){
+                Morador morador = new Morador();
+                
+                morador.setId_morador(resultSet.getInt("id_morador"));
+                morador.setId_unidade(resultSet.getInt("id_unidade"));
+                morador.setNome(resultSet.getString("nome"));
+                morador.setCpf(resultSet.getString("cpf"));
+                morador.setEmail(resultSet.getString("email"));
+                morador.setData_nasc(resultSet.getString("data_nasc"));
+               
+                
+                
+                lista.add(morador);
+
+            }//fim do while
+          
+             return lista;
+            
+        }catch(SQLException e){
+         System.err.println("Erro listar o Morador "+ e );
+         return null;
+        }//fim do try
+        
+    }//fim do método listarClientes()
+     
      
      public boolean deletarMorador(int idMorador){
     String sql = "UPDATE Morador SET ativo = 0 WHERE id_morador = ?";
@@ -111,7 +146,7 @@ public class MoradorController {
      
      public List<Morador> listarMoradorNome(String nome){
      
-     String query = "SELECT id_morador,id_unidade,nome,cpf,email,data_nasc FROM Morador where nome LIKE ?  and ativo = 1";
+     String query = "SELECT id_morador,id_unidade,nome,cpf,email,data_nasc FROM Morador where nome LIKE ? , ativo = 1";
      
       List<Morador> lista = new ArrayList<>();
         // criando o try catch

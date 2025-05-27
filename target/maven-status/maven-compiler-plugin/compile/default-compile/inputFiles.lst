@@ -19,7 +19,6 @@ C:\Users\devmat\Documents\SCAR-main\src\main\java\view\TelaFinanceiro.java
 C:\Users\devmat\Documents\SCAR-main\src\main\java\model\Visitante.java
 C:\Users\devmat\Documents\SCAR-main\src\main\java\controller\ServicoController.java
 C:\Users\devmat\Documents\SCAR-main\src\main\java\controller\VisitanteController.java
-C:\Users\devmat\Documents\SCAR-main\src\main\java\controller\INOUTmorController.java
 C:\Users\devmat\Documents\SCAR-main\src\main\java\controller\controllerControleInoutMor.java
 C:\Users\devmat\Documents\SCAR-main\src\main\java\view\TelaCadastroUnidade.java
 C:\Users\devmat\Documents\SCAR-main\src\main\java\model\ControleServico.java
@@ -33,7 +32,6 @@ C:\Users\devmat\Documents\SCAR-main\src\main\java\view\TelaReservas.java
 C:\Users\devmat\Documents\SCAR-main\src\main\java\view\TelaSac.java
 C:\Users\devmat\Documents\SCAR-main\src\main\java\view\telaRelatorioReserva.java
 C:\Users\devmat\Documents\SCAR-main\src\main\java\model\conexaoBD.java
-C:\Users\devmat\Documents\SCAR-main\src\main\java\model\INOUTmorador.java
 C:\Users\devmat\Documents\SCAR-main\src\main\java\model\Atividade.java
 C:\Users\devmat\Documents\SCAR-main\src\main\java\view\telaReservaFeita.java
 C:\Users\devmat\Documents\SCAR-main\src\main\java\controller\relatorioIOvisitante.java
@@ -42,7 +40,6 @@ C:\Users\devmat\Documents\SCAR-main\src\main\java\model\Reserva.java
 C:\Users\devmat\Documents\SCAR-main\src\main\java\view\TelaHome.java
 C:\Users\devmat\Documents\SCAR-main\src\main\java\controller\controllerRelatorioEntradaSaida.java
 C:\Users\devmat\Documents\SCAR-main\src\main\java\model\Funcionario.java
-C:\Users\devmat\Documents\SCAR-main\src\main\java\model\moradorAndINOUT.java
 C:\Users\devmat\Documents\SCAR-main\src\main\java\model\relatorioEntradaSaida.java
 C:\Users\devmat\Documents\SCAR-main\src\main\java\controller\ContResController.java
 C:\Users\devmat\Documents\SCAR-main\src\main\java\view\TelaAtividade.java

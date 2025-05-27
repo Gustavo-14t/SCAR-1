@@ -10,93 +10,44 @@ package model;
  */
 public class controleINOUTmorador {
     
-    String id_CMINOUT;
-    String id_morEntradaSaida;
-    int id_funcionario; 
-    String funcionarioSaida;
-    String dataSaida; 
-    String funcionarioEntrada;
-    String dataEntrada;
+       
+    String nomeMorador;
+    String nomeFuncionario; 
+    String dataMovimentacao;
     String statu;
 
-    public controleINOUTmorador(String id_CMINOUT, String id_morEntradaSaida, int id_funcionario, String funcionarioSaida, String dataSaida, String funcionarioEntrada, String dataEntrada, String statu) {
-        this.id_CMINOUT = id_CMINOUT;
-        this.id_morEntradaSaida = id_morEntradaSaida;
-        this.id_funcionario = id_funcionario;
-        this.funcionarioSaida = funcionarioSaida;
-        this.dataSaida = dataSaida;
-        this.funcionarioEntrada = funcionarioEntrada;
-        this.dataEntrada = dataEntrada;
-        this.statu = statu;
-    }
-
-    public controleINOUTmorador(String id_morEntradaSaida, int id_funcionario, String funcionarioSaida, String dataSaida, String funcionarioEntrada, String dataEntrada, String statu) {
-        this.id_morEntradaSaida = id_morEntradaSaida;
-        this.id_funcionario = id_funcionario;
-        this.funcionarioSaida = funcionarioSaida;
-        this.dataSaida = dataSaida;
-        this.funcionarioEntrada = funcionarioEntrada;
-        this.dataEntrada = dataEntrada;
+    public controleINOUTmorador(String nomeMorador, String nomeFuncionario, String dataMovimentacao, String statu) {
+        this.nomeMorador = nomeMorador;
+        this.nomeFuncionario = nomeFuncionario;
+        this.dataMovimentacao = dataMovimentacao;
         this.statu = statu;
     }
 
     public controleINOUTmorador() {
     }
 
-    public String getId_CMINOUT() {
-        return id_CMINOUT;
+    public String getNomeMorador() {
+        return nomeMorador;
     }
 
-    public void setId_CMINOUT(String id_CMINOUT) {
-        this.id_CMINOUT = id_CMINOUT;
+    public void setNomeMorador(String nomeMorador) {
+        this.nomeMorador = nomeMorador;
     }
 
-    public String getId_morEntradaSaida() {
-        return id_morEntradaSaida;
+    public String getNomeFuncionario() {
+        return nomeFuncionario;
     }
 
-    public void setId_morEntradaSaida(String id_morEntradaSaida) {
-        this.id_morEntradaSaida = id_morEntradaSaida;
+    public void setNomeFuncionario(String nomeFuncionario) {
+        this.nomeFuncionario = nomeFuncionario;
     }
 
-    public int getId_funcionario() {
-        return id_funcionario;
+    public String getDataMovimentacao() {
+        return dataMovimentacao;
     }
 
-    public void setId_funcionario(int id_funcionario) {
-        this.id_funcionario = id_funcionario;
-    }
-
-    public String getFuncionarioSaida() {
-        return funcionarioSaida;
-    }
-
-    public void setFuncionarioSaida(String funcionarioSaida) {
-        this.funcionarioSaida = funcionarioSaida;
-    }
-
-    public String getDataSaida() {
-        return dataSaida;
-    }
-
-    public void setDataSaida(String dataSaida) {
-        this.dataSaida = dataSaida;
-    }
-
-    public String getFuncionarioEntrada() {
-        return funcionarioEntrada;
-    }
-
-    public void setFuncionarioEntrada(String funcionarioEntrada) {
-        this.funcionarioEntrada = funcionarioEntrada;
-    }
-
-    public String getDataEntrada() {
-        return dataEntrada;
-    }
-
-    public void setDataEntrada(String dataEntrada) {
-        this.dataEntrada = dataEntrada;
+    public void setDataMovimentacao(String dataMovimentacao) {
+        this.dataMovimentacao = dataMovimentacao;
     }
 
     public String getStatu() {
@@ -106,10 +57,7 @@ public class controleINOUTmorador {
     public void setStatu(String statu) {
         this.statu = statu;
     }
-
-   
     
     
-
     
 }

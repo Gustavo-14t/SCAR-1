@@ -20,15 +20,8 @@ import model.relatorioEntradaSaida;
 public class controllerRelatorioEntradaSaida {
     
     public List <relatorioEntradaSaida> listarRelatorios(){
-        String query = " SELECT \n" +
-"    m.nome AS nomeMorador,\n" +
-"    h.nomeFuncionario,\n" +
-"    h.dataMovimentacao,\n" +
-"    h.tipoMovimentacao\n" +
-"FROM HistoricoMovimentacaoMorador h\n" +
-"INNER JOIN ControleMoradorINOUT c ON h.id_CMINOUT = c.id_CMINOUT\n" +
-"INNER JOIN MoradorINOUT mi ON c.id_morEntradaSaida = mi.id_morEntradaSaida\n" +
-"INNER JOIN Morador m ON mi.id_morador = m.id_morador";
+        String query = "SELECT nomeMorador, nomeFuncionario, dataMovimentacao, tipoMovimentacao "
+                + "FROM HistoricoMovimentacaoMorador";
         
                      List<relatorioEntradaSaida> lista = new ArrayList<>();
                      
