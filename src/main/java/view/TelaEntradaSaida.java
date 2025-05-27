@@ -7,6 +7,8 @@ package view;
 import controller.FuncionarioController;
 import controller.MoradorController;
 import controller.controllerInoutVisitante;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.event.DocumentListener;
@@ -26,8 +28,9 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
      * Creates new form TelaEntradaSaida
      */
     Funcionario func;
-    int idFunc;
+    String idFunc;
     String nomeMor;
+    String idVisitCont;
     
     public TelaEntradaSaida(Funcionario funcionario) {
         initComponents();
@@ -35,12 +38,14 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
         func =funcionario ;
         
         //Verificando se o id de funcionário está sendo pegado:
-        idFunc = func.getId_funcionario();
-        //System.out.println(id);
-        
+        if(func.getNome()!=null){
+        idFunc = func.getNome();
+        System.out.println(idFunc);
+        }
         pesquisarMorador();
         ListagemMorador();
-        
+        ListagemVisitas();
+        listarSaidaDeVisita();
       Verificacao();
 
     }
@@ -53,6 +58,84 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
     labelData.setVisible(false);
     calendario.setVisible(false);
 }
+    }
+    
+     public void listarSaidaDeVisita(){
+    
+        
+        // chamando o produtos controller
+        controllerInoutVisitante controller = new controllerInoutVisitante();
+        // capturando a lista de produtos que vem do banco de dados
+        List<inoutVisitante> listarVisita= controller.listarSaidaDeVisita();
+        
+        // Obtendo o modelo da tabela
+        DefaultTableModel modeloTabela = 
+                (DefaultTableModel) tabelaVisitante.getModel();
+    
+    // Limpando a tabela antes de adicionar novos dados
+       modeloTabela.setRowCount(0);
+    
+    // Verificando se a lista não é nula
+    if (listarVisita != null && !listarVisita.isEmpty()) {
+        // Jogando os dados para dentro da minha tabela
+        for (inoutVisitante visita : listarVisita) {
+            // Criando uma nova linha para a tabela
+            Object[] linha = {
+             
+             visita.getNomeMorador(), // Ajuste para int
+             visita.getNomeVisitante(), // Verifique se é null            
+             visita.getStatu()// Verifique se é null
+            };
+            // Adicionando a linha ao modelo da tabela
+            modeloTabela.addRow(linha);
+           
+        }
+         
+        
+    } else {
+        JOptionPane.showMessageDialog
+        (this, "Nenhuma Visita Entrou.");
+    }
+    }
+    
+     public void ListagemVisitas(){
+    
+        
+        // chamando o produtos controller
+        controllerInoutVisitante controller = new controllerInoutVisitante();
+        // capturando a lista de produtos que vem do banco de dados
+        List<inoutVisitante> listarVisita= controller.listarVisitas();
+        
+        // Obtendo o modelo da tabela
+        DefaultTableModel modeloTabela = 
+                (DefaultTableModel) tblVisitante.getModel();
+    
+    // Limpando a tabela antes de adicionar novos dados
+       modeloTabela.setRowCount(0);
+    
+    // Verificando se a lista não é nula
+    if (listarVisita != null && !listarVisita.isEmpty()) {
+        // Jogando os dados para dentro da minha tabela
+        for (inoutVisitante visita : listarVisita) {
+            // Criando uma nova linha para a tabela
+            Object[] linha = {
+             visita.getId_ControleEntradaSaida(), // Ajuste para int
+             visita.getNomeMorador(), // Ajuste para int
+             visita.getNomeVisitante(), // Verifique se é null
+             visita.getNomeFuncionario(), // Verifique se é null
+             visita.getDataVisita(), // Verifique se é null
+             visita.getStatu()// Verifique se é null
+            };
+            // Adicionando a linha ao modelo da tabela
+            modeloTabela.addRow(linha);
+           
+        }
+         
+        
+    } else {
+        JOptionPane.showMessageDialog
+        (this, "Nenhuma Visita agendada.");
+    }
     }
     
     public void pesquisarMorador(){
@@ -190,11 +273,6 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblVisitante = new javax.swing.JTable();
         bPermitirEntrada = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        PanelEntrada = new javax.swing.JPanel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        tabelaMorador2 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
         PanelSaida = new javax.swing.JPanel();
         campoNomeVistante = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -313,48 +391,9 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
 
         tblVisitante.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "MORADOR", "VISITANTE", "FUNCIONÁRIO", "DATA_VISITA", "STATUS"
-            }
-        ));
-        jScrollPane2.setViewportView(tblVisitante);
-
-        verificarPedido.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 29, 681, 286));
-
-        bPermitirEntrada.setForeground(new java.awt.Color(255, 255, 255));
-        bPermitirEntrada.setText("PERMITIR ENTRADA");
-        verificarPedido.add(bPermitirEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 350, 156, 35));
-
-        jButton1.setText("SELECIONAR VISITANTE");
-        verificarPedido.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 414, -1, 35));
-
-        jTabbedPane1.addTab("Visitas agendadas", verificarPedido);
-
-        PanelEntrada.setBackground(new java.awt.Color(255, 204, 0));
-        PanelEntrada.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        tabelaMorador2.setBackground(new java.awt.Color(255, 255, 255));
-        tabelaMorador2.setForeground(new java.awt.Color(0, 0, 0));
-        tabelaMorador2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -371,97 +410,72 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "CASA", "NOME", "CPF", "EMAIL", "DATA NASCIMENTO"
+                "CONTROLE", "MORADOR", "VISITANTE", "FUNCIONÁRIO", "DATA_VISITA", "STATUS"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tabelaMorador2.addMouseListener(new java.awt.event.MouseAdapter() {
+        ));
+        tblVisitante.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabelaMorador2MouseClicked(evt);
+                tblVisitanteMouseClicked(evt);
             }
         });
-        jScrollPane5.setViewportView(tabelaMorador2);
+        jScrollPane2.setViewportView(tblVisitante);
 
-        PanelEntrada.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 48, 693, 210));
+        verificarPedido.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 29, 681, 286));
 
-        jLabel1.setText("jLabel1");
-        PanelEntrada.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 15, 163, 21));
+        bPermitirEntrada.setText("PERMITIR ENTRADA");
+        bPermitirEntrada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bPermitirEntradaActionPerformed(evt);
+            }
+        });
+        verificarPedido.add(bPermitirEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 350, 156, 35));
 
-        jTabbedPane1.addTab("Entrada", PanelEntrada);
+        jTabbedPane1.addTab("Visitas agendadas", verificarPedido);
 
         PanelSaida.setBackground(new java.awt.Color(255, 204, 0));
+        PanelSaida.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         campoNomeVistante.setBackground(new java.awt.Color(255, 255, 255));
         campoNomeVistante.setForeground(new java.awt.Color(0, 0, 0));
+        PanelSaida.add(campoNomeVistante, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 34, 200, 30));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("NOME VISITANTE:");
+        PanelSaida.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
 
         tabelaVisitante.setBackground(new java.awt.Color(255, 255, 255));
         tabelaVisitante.setForeground(new java.awt.Color(0, 0, 0));
         tabelaVisitante.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "NOME", "CPF", "TELEFONE", "PLACA VEICULO"
+                "NOME MORADOR", "NOME VISITANTE", "STATUS"
             }
         ));
         jScrollPane1.setViewportView(tabelaVisitante);
 
-        bPermitirSaida.setText("PERMITIR SAIDA");
+        PanelSaida.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 76, 705, 210));
 
-        javax.swing.GroupLayout PanelSaidaLayout = new javax.swing.GroupLayout(PanelSaida);
-        PanelSaida.setLayout(PanelSaidaLayout);
-        PanelSaidaLayout.setHorizontalGroup(
-            PanelSaidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelSaidaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PanelSaidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE)
-                    .addGroup(PanelSaidaLayout.createSequentialGroup()
-                        .addGroup(PanelSaidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(campoNomeVistante, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(PanelSaidaLayout.createSequentialGroup()
-                .addGap(290, 290, 290)
-                .addComponent(bPermitirSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        PanelSaidaLayout.setVerticalGroup(
-            PanelSaidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelSaidaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoNomeVistante, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(bPermitirSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(87, Short.MAX_VALUE))
-        );
+        bPermitirSaida.setText("PERMITIR SAIDA");
+        bPermitirSaida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bPermitirSaidaActionPerformed(evt);
+            }
+        });
+        PanelSaida.add(bPermitirSaida, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 332, 130, 35));
 
         jTabbedPane1.addTab("Saida", PanelSaida);
 
@@ -478,11 +492,6 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void tabelaMorador2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMorador2MouseClicked
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_tabelaMorador2MouseClicked
 
     private void tabelaMoradorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMoradorMouseClicked
         // TODO add your handling code here:
@@ -529,29 +538,110 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
         inoutVisitante iov = new inoutVisitante();
         iov.setNomeMorador(nomeMor);
         iov.setNomeVisitante(campoNome.getText());
-        iov.setNomeMorador(func.getNome());
-        //iov.setDataVisita(calendario.getDate()); // a data do JCalendar
+        iov.setNomeFuncionario(idFunc);
+        // Converter a data para String
+            Date data = calendario.getDate();
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            String dataFormatada = sdf.format(data);
+
+// Você pode armazenar a data como String (se for o caso do seu banco, por exemplo)
+            iov.setDataVisita(dataFormatada); // Supondo que o método aceita String
 
             
                 // chamando o metodo de cadastrar o usuario no banco de dados
             controller.cadastroUsuario(iov);
             JOptionPane.showMessageDialog
-            (null,"Usuario Cadastrado com Sucesso!");
+            (null,"Visita agendada");
 
             campoNome.setText("");
              campoCpf.setText("");
-            
+            ListagemMorador();
+            ListagemVisitas();
+            listarSaidaDeVisita();
 
         }catch(Exception e){
              JOptionPane.showMessageDialog
-            (null,"Usuario Não Cadastrado! "+e);
+            (null,"Não foi possível agendar Visita "+e);
         }
         }
     }//GEN-LAST:event_bSolicitarVisitaActionPerformed
 
+    private void tblVisitanteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblVisitanteMouseClicked
+        // TODO add your handling code here:
+        int linhaSelecionada = tblVisitante.getSelectedRow();
+
+        //verificando se alguam linha foi selecionada
+        if(linhaSelecionada>=0){
+            //definir modelo default para a tabela
+            DefaultTableModel modeloTabela =
+            (DefaultTableModel) tblVisitante.getModel();
+
+           idVisitCont = modeloTabela.getValueAt(linhaSelecionada, 0).toString();
+        }//fim do if
+    }//GEN-LAST:event_tblVisitanteMouseClicked
+
+    private void bPermitirEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPermitirEntradaActionPerformed
+        // TODO add your handling code here:
+        if(idVisitCont == null){
+            JOptionPane.showMessageDialog(null, "Escolha a Visita");
+        }else{
+        
+        try{
+       controllerInoutVisitante controller = new controllerInoutVisitante();
+         // Suponha que você queira registrar nome do morador, visitante e data
+        inoutVisitante iov = new inoutVisitante();
+        iov.setStatu("ENTRADA");
+        iov.setNomeFuncionario(idFunc);
+        iov.setId_ControleEntradaSaida(idVisitCont);
+        
+            controller.editarVisita(iov);
+            JOptionPane.showMessageDialog
+            (null,"Entrada permitida");
+
+            
+            ListagemMorador();
+            ListagemVisitas();
+            listarSaidaDeVisita();
+
+        }catch(Exception e){
+             JOptionPane.showMessageDialog
+            (null,"Entrada não foi permitida "+e);
+        }
+        }
+    }//GEN-LAST:event_bPermitirEntradaActionPerformed
+
+    private void bPermitirSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPermitirSaidaActionPerformed
+        // TODO add your handling code here:
+        if(idVisitCont == null){
+            JOptionPane.showMessageDialog(null, "Escolha a Visita");
+        }else{
+        
+        try{
+       controllerInoutVisitante controller = new controllerInoutVisitante();
+         // Suponha que você queira registrar nome do morador, visitante e data
+        inoutVisitante iov = new inoutVisitante();
+        iov.setStatu("SAIDA");
+        iov.setNomeFuncionario(idFunc);
+        iov.setId_ControleEntradaSaida(idVisitCont);
+        
+            controller.editarVisita(iov);
+            JOptionPane.showMessageDialog
+            (null,"Sáida permitida");
+
+            
+            ListagemMorador();
+            ListagemVisitas();
+            listarSaidaDeVisita();
+
+        }catch(Exception e){
+             JOptionPane.showMessageDialog
+            (null,"´Não foi possível permitir saída "+e);
+        }
+        }
+    }//GEN-LAST:event_bPermitirSaidaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel PanelEntrada;
     private javax.swing.JPanel PanelSaida;
     private javax.swing.JPanel SolicitEntrada;
     private javax.swing.JButton bCadastrarVisitante1;
@@ -563,9 +653,7 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
     private javax.swing.JTextField campoNome;
     private javax.swing.JTextField campoNomeVistante;
     private javax.swing.JTextField campoPesquisar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -573,14 +661,12 @@ public class TelaEntradaSaida extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSlider jSlider1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel labelData;
     private javax.swing.JPanel solicitarEntrada;
     private javax.swing.JTable tabelaMorador;
-    private javax.swing.JTable tabelaMorador2;
     private javax.swing.JTable tabelaVisitante;
     private javax.swing.JTable tblVisitante;
     private javax.swing.JPanel verificarPedido;

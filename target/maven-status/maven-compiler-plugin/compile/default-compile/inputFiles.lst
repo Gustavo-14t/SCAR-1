@@ -16,6 +16,7 @@ C:\Users\Todosdecasa\Documents\NetBeansProjects\SCAR-1\src\main\java\model\relat
 C:\Users\Todosdecasa\Documents\NetBeansProjects\SCAR-1\src\main\java\model\Unidade.java
 C:\Users\Todosdecasa\Documents\NetBeansProjects\SCAR-1\src\main\java\controller\AtividadeController.java
 C:\Users\Todosdecasa\Documents\NetBeansProjects\SCAR-1\src\main\java\model\RelatorioReserva.java
+C:\Users\Todosdecasa\Documents\NetBeansProjects\SCAR-1\src\main\java\controller\relatorioIOvisitante.java
 C:\Users\Todosdecasa\Documents\NetBeansProjects\SCAR-1\src\main\java\view\telaRelatorioReserva.java
 C:\Users\Todosdecasa\Documents\NetBeansProjects\SCAR-1\src\main\java\view\TelaSac.java
 C:\Users\Todosdecasa\Documents\NetBeansProjects\SCAR-1\src\main\java\model\Visitante.java
@@ -27,6 +28,8 @@ C:\Users\Todosdecasa\Documents\NetBeansProjects\SCAR-1\src\main\java\model\contr
 C:\Users\Todosdecasa\Documents\NetBeansProjects\SCAR-1\src\main\java\controller\ContServiceController.java
 C:\Users\Todosdecasa\Documents\NetBeansProjects\SCAR-1\src\main\java\controller\UnidadeController.java
 C:\Users\Todosdecasa\Documents\NetBeansProjects\SCAR-1\src\main\java\controller\ChaveController.java
+C:\Users\Todosdecasa\Documents\NetBeansProjects\SCAR-1\src\main\java\model\inoutVisitante.java
+C:\Users\Todosdecasa\Documents\NetBeansProjects\SCAR-1\src\main\java\model\historicoInoutVisitante.java
 C:\Users\Todosdecasa\Documents\NetBeansProjects\SCAR-1\src\main\java\view\TelaCadastroUnidade.java
 C:\Users\Todosdecasa\Documents\NetBeansProjects\SCAR-1\src\main\java\controller\MoradorController.java
 C:\Users\Todosdecasa\Documents\NetBeansProjects\SCAR-1\src\main\java\model\moradorAndINOUT.java
@@ -42,10 +45,10 @@ C:\Users\Todosdecasa\Documents\NetBeansProjects\SCAR-1\src\main\java\view\CadFun
 C:\Users\Todosdecasa\Documents\NetBeansProjects\SCAR-1\src\main\java\controller\LoginController.java
 C:\Users\Todosdecasa\Documents\NetBeansProjects\SCAR-1\src\main\java\controller\ContResController.java
 C:\Users\Todosdecasa\Documents\NetBeansProjects\SCAR-1\src\main\java\model\INOUTmorador.java
+C:\Users\Todosdecasa\Documents\NetBeansProjects\SCAR-1\src\main\java\controller\controllerInoutVisitante.java
 C:\Users\Todosdecasa\Documents\NetBeansProjects\SCAR-1\src\main\java\view\relatorioEntradaSaida.java
 C:\Users\Todosdecasa\Documents\NetBeansProjects\SCAR-1\src\main\java\view\TelaReservas.java
 C:\Users\Todosdecasa\Documents\NetBeansProjects\SCAR-1\src\main\java\model\Funcionario.java
-C:\Users\Todosdecasa\Documents\NetBeansProjects\SCAR-1\src\main\java\view\telaListaDeVisitante.java
 C:\Users\Todosdecasa\Documents\NetBeansProjects\SCAR-1\src\main\java\model\ControleServico.java
 C:\Users\Todosdecasa\Documents\NetBeansProjects\SCAR-1\src\main\java\model\RelatorioServico.java
 C:\Users\Todosdecasa\Documents\NetBeansProjects\SCAR-1\src\main\java\model\Morador.java
