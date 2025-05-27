@@ -72,7 +72,6 @@ view\TelaReservas$5.class
 view\TelaHome$21.class
 view\CadMorador$1.class
 view\TelaINOUTmorador.class
-model\moradorAndINOUT.class
 view\CadAtv.class
 view\TelaAtividade$7.class
 view\TelaCadastroUnidade$6.class
@@ -175,7 +174,6 @@ view\telaRelatorioReserva$1.class
 view\telaReservaFeita.class
 view\TelaHome$9.class
 view\CadFuncionario$4.class
-model\INOUTmorador.class
 view\TelaAtividade$4.class
 view\TelaServiceRequest$8.class
 view\CadAtv$1.class
@@ -184,6 +182,5 @@ view\CadMorador$3.class
 controller\ChaveController.class
 view\TelaHome$2.class
 view\telaRelatorioReserva.class
-controller\INOUTmorController.class
 view\telaReservaFeita$3.class
 view\telaListadeVisitant.class

@@ -14,7 +14,6 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import controller.controllerControleInoutMor;
 import controller.controllerRelatorioEntradaSaida;
 import controller.relatorioIOvisitante;
 import java.awt.Desktop;
