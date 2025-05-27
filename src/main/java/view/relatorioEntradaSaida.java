@@ -14,7 +14,9 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import controller.controllerControleInoutMor;
 import controller.controllerRelatorioEntradaSaida;
+import controller.relatorioIOvisitante;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -23,6 +25,7 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.historicoInoutVisitante;
 
 
 
@@ -39,6 +42,40 @@ public class relatorioEntradaSaida extends javax.swing.JInternalFrame {
         initComponents();
         
         ListagemRelatorio();
+        ListagemIOV();
+    }
+    
+     public void ListagemIOV(){
+        //cria um objeto de vendasController
+         relatorioIOvisitante controller = new  relatorioIOvisitante();
+        //capturando a lista de relatório de vendas
+        List<model.historicoInoutVisitante> lista = controller.listarRelatorios();
+        
+        //modelo padrão de tabela
+       DefaultTableModel modeloTabela = (DefaultTableModel)tblVisitante.getModel();
+        
+       //Limpando a tabela antes de adicionar nobvos dados
+       modeloTabela.setRowCount(0);
+       
+       //verificar se a lista esta vazia
+       if(lista !=null && !lista.isEmpty()){
+           for (model.historicoInoutVisitante reserva : lista){
+               Object[] linha = {
+                   reserva.getNomeMorador(),
+                   reserva.getNomeVisitante(),
+                   reserva.getNomeFuncionario(),
+                   reserva.getDataMovimentacao(),
+                   reserva.getTipoMovimentacao(),
+                   
+   
+               };//fim do objeto linha
+               modeloTabela.addRow(linha);
+               
+           }//fim do for
+       }else{
+           JOptionPane.showMessageDialog(null,"Não existem Entradas ou Saídas!");
+       }//fim do else
+    
     }
     
     public void ListagemRelatorio(){
@@ -82,11 +119,19 @@ public class relatorioEntradaSaida extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaRelatorio = new javax.swing.JTable();
         butaoBaixarRelatorio = new javax.swing.JToggleButton();
         relatoriomensal = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        relatoriomensal1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblVisitante = new javax.swing.JTable();
+        butaoBaixarRelatorio1 = new javax.swing.JToggleButton();
+
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -136,29 +181,66 @@ public class relatorioEntradaSaida extends javax.swing.JInternalFrame {
 
         relatoriomensal.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         relatoriomensal.setForeground(new java.awt.Color(0, 0, 0));
-        relatoriomensal.setText("RELATÓRIO MENSAL");
-        jPanel1.add(relatoriomensal, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, -1, -1));
+        relatoriomensal.setText("RELATÓRIO DE ENTRADAS E SAÍDAS DE MORADORES");
+        jPanel1.add(relatoriomensal, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 520, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 727, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        jTabbedPane1.addTab("EntradaSaidaMorador", jPanel1);
+
+        jPanel2.setBackground(new java.awt.Color(255, 204, 0));
+        jPanel2.setForeground(new java.awt.Color(255, 204, 0));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        relatoriomensal1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        relatoriomensal1.setForeground(new java.awt.Color(0, 0, 0));
+        relatoriomensal1.setText("RELATÓRIO DE ENTRADAS E SAÍDAS DE VISITANTES");
+        jPanel2.add(relatoriomensal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 520, -1));
+
+        tblVisitante.setBackground(new java.awt.Color(255, 255, 255));
+        tblVisitante.setForeground(new java.awt.Color(0, 0, 0));
+        tblVisitante.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Morador", "Visitante", "Funcionário", " DataMovimentacao", "TipoMovimentacao"
+            }
+        ));
+        jScrollPane2.setViewportView(tblVisitante);
+
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 690, 330));
+
+        butaoBaixarRelatorio1.setBackground(new java.awt.Color(255, 204, 0));
+        butaoBaixarRelatorio1.setForeground(new java.awt.Color(0, 0, 0));
+        butaoBaixarRelatorio1.setText("Baixar Relatório");
+        butaoBaixarRelatorio1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butaoBaixarRelatorio1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(butaoBaixarRelatorio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, 130, 30));
+
+        jTabbedPane1.addTab("EntradaSaidaVisitante", jPanel2);
+
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, -5, 730, 460));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -239,12 +321,94 @@ public class relatorioEntradaSaida extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_butaoBaixarRelatorioActionPerformed
 
+    private void butaoBaixarRelatorio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butaoBaixarRelatorio1ActionPerformed
+        // TODO add your handling code here:
+        String pdfPath = "RelatorioDeEntradaSaida.pdf";
+
+    try {
+        // Criando o documento
+        Document documento = new Document(PageSize.A4, 50, 50, 50, 50);
+        PdfWriter.getInstance(documento, new FileOutputStream(pdfPath));
+        documento.open();
+
+        // Fonte personalizada
+        Font tituloFont = new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD, BaseColor.DARK_GRAY);
+        Font cabecalhoFont = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD, BaseColor.WHITE);
+        Font celulaFont = new Font(Font.FontFamily.HELVETICA, 11);
+
+        // Título
+        Paragraph titulo = new Paragraph("Relatório de Entrada/Saída de Moradores", tituloFont);
+        titulo.setAlignment(Element.ALIGN_CENTER);
+        titulo.setSpacingAfter(20);
+        documento.add(titulo);
+
+        // Data/hora
+        String dataHora = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
+        Paragraph data = new Paragraph("Gerado em: " + dataHora, new Font(Font.FontFamily.HELVETICA, 10, Font.ITALIC));
+        data.setAlignment(Element.ALIGN_RIGHT);
+        data.setSpacingAfter(10);
+        documento.add(data);
+
+        // Captura e cria tabela
+        int colunas = tblVisitante.getColumnCount();
+        PdfPTable tabela = new PdfPTable(colunas);
+        tabela.setWidthPercentage(100);
+        tabela.setSpacingBefore(10f);
+        tabela.setSpacingAfter(10f);
+
+        // Cabeçalhos
+        for (int i = 0; i < colunas; i++) {
+            PdfPCell cell = new PdfPCell(new Phrase(tblVisitante.getColumnName(i), cabecalhoFont));
+            cell.setBackgroundColor(BaseColor.GRAY);
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell.setPadding(5);
+            tabela.addCell(cell);
+        }
+
+        // Corpo da tabela
+        DefaultTableModel modeloTabela = (DefaultTableModel) tblVisitante.getModel();
+        for (int l = 0; l < modeloTabela.getRowCount(); l++) {
+            for (int c = 0; c < modeloTabela.getColumnCount(); c++) {
+                Object valorCelula = modeloTabela.getValueAt(l, c);
+                PdfPCell cell = new PdfPCell(new Phrase(valorCelula != null ? valorCelula.toString() : "", celulaFont));
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cell.setPadding(4);
+                tabela.addCell(cell);
+            }
+        }
+
+        // Adiciona a tabela ao documento
+        documento.add(tabela);
+        documento.close();
+
+        JOptionPane.showMessageDialog(this, "PDF GERADO COM SUCESSO");
+
+        File pdffile = new File(pdfPath);
+        if (pdffile.exists()) {
+            if (Desktop.isDesktopSupported()) {
+                Desktop.getDesktop().open(pdffile);
+            } else {
+                JOptionPane.showMessageDialog(this, "Nenhum aplicativo suporta o PDF!");
+            }
+        }
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Erro ao gerar PDF: " + e.getMessage());
+    }
+    }//GEN-LAST:event_butaoBaixarRelatorio1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton butaoBaixarRelatorio;
+    private javax.swing.JToggleButton butaoBaixarRelatorio1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel relatoriomensal;
+    private javax.swing.JLabel relatoriomensal1;
     private javax.swing.JTable tabelaRelatorio;
+    private javax.swing.JTable tblVisitante;
     // End of variables declaration//GEN-END:variables
 }

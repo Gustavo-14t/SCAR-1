@@ -6,7 +6,10 @@ package controller;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import model.conexaoBD;
 import model.inoutVisitante;
 
@@ -49,5 +52,94 @@ public class controllerInoutVisitante {
         }// final do try catch
     
 }// fim do método cadastroTurno()
+    
+    public List<inoutVisitante> listarVisitas(){
+        List<inoutVisitante> lista = new ArrayList<>();
+        
+        String query = "SELECT *FROM VisitanteINOUT where statu = 'PENDENTE' ;";
+
+        try(Connection connection = conexaoBD.getConection();//conexão com o banco de dados
+     PreparedStatement preparedStatement = connection.prepareStatement(query)){
+            
+            ResultSet resultSet = preparedStatement.executeQuery();
+            
+            while(resultSet.next()){
+                inoutVisitante iov = new inoutVisitante();
+                
+                iov.setId_ControleEntradaSaida(resultSet.getString("id_ControleEntradaSaida"));
+                iov.setNomeMorador(resultSet.getString("nomeMorador"));
+                iov.setNomeVisitante(resultSet.getString("nomeVisitante"));
+                iov.setNomeFuncionario(resultSet.getString("nomeFuncionario"));
+                iov.setDataVisita(resultSet.getString("dataVisita"));
+                iov.setStatu(resultSet.getString("statu"));
+               
+                
+                
+                lista.add(iov);
+
+            }//fim do while
+          
+             return lista;
+            
+        }catch(SQLException e){
+         System.err.println("Erro listar o usuário "+ e );
+         return null;
+        }//fim do try
+        
+    }//fim do método listarClientes()
+    
+    public List<inoutVisitante> listarSaidaDeVisita(){
+        List<inoutVisitante> lista = new ArrayList<>();
+        
+        String query = "SELECT nomeMorador,nomeVisitante, statu FROM VisitanteINOUT  where statu = 'ENTRADA' ;";
+
+        try(Connection connection = conexaoBD.getConection();//conexão com o banco de dados
+     PreparedStatement preparedStatement = connection.prepareStatement(query)){
+            
+            ResultSet resultSet = preparedStatement.executeQuery();
+            
+            while(resultSet.next()){
+                inoutVisitante iov = new inoutVisitante();
+                
+                
+                iov.setNomeMorador(resultSet.getString("nomeMorador"));
+                iov.setNomeVisitante(resultSet.getString("nomeVisitante"));
+                iov.setStatu(resultSet.getString("statu"));
+               
+                
+                
+                lista.add(iov);
+
+            }//fim do while
+          
+             return lista;
+            
+        }catch(SQLException e){
+         System.err.println("Erro listar o usuário "+ e );
+         return null;
+        }//fim do try
+        
+    }//fim do método listarClientes()
+    
+     public boolean editarVisita(inoutVisitante iov){
+      String query = "Update VisitanteINOUT set statu = ?, nomeFuncionario = ? where id_ControleEntradaSaida = ? ";
+                   
+    // Conexão com o banco de dados
+    try (Connection conection = conexaoBD.getConection();
+         PreparedStatement preparedStatement = conection.prepareStatement(query)) {
+
+        // Definindo os parâmetros do preparedStatement
+        preparedStatement.setString(1, iov.getStatu());  // Novo status da reserva
+        preparedStatement.setString(2, iov.getNomeFuncionario()); // id do morador da reserva
+        preparedStatement.setString(3, iov.getId_ControleEntradaSaida());
+        // Executando o update
+        int cadastrou = preparedStatement.executeUpdate();
+        return cadastrou > 0;
+
+    } catch (SQLException e) {
+        System.err.println("Erro ao editar o status da Visita: " + e);
+        return false;
+    } // fim do try-catch
+} // fim do método editarReserva
     
 }
